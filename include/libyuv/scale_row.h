@@ -166,6 +166,11 @@ extern "C" {
 #define HAS_SCALEUVROWDOWN4_RVV
 #endif
 #define HAS_SCALEUVROWDOWNEVEN_RVV
+<<<<<<< PATCH SET (965143 [RVV] Optimize ScaleARGBFilterCols with RVV)
+#if __riscv_v_intrinsic == 11000
+#define HAS_SCALEARGBFILTERCOLS_RVV
+=======
+>>>>>>> BASE      (192b8c Add NV24 scaling support to libyuv)
 #define HAS_SCALEARGBROWDOWN2_RVV
 #define HAS_SCALEARGBROWDOWN2BOX_RVV
 #define HAS_SCALEARGBROWDOWN2LINEAR_RVV
@@ -938,6 +943,11 @@ void ScaleARGBCols_Any_MSA(uint8_t* dst_ptr,
                            int dst_width,
                            int x,
                            int dx);
+void ScaleARGBFilterCols_RVV(uint8_t* dst_argb,
+                             const uint8_t* src_argb,
+                             int dst_width,
+                             int x,
+                             int dx);
 
 // ARGB Row functions
 void ScaleARGBRowDown2_SSE2(const uint8_t* src_argb,
