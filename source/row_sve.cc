@@ -7,6 +7,14 @@
  *  in the file PATENTS. All contributing project authors may
  *  be found in the AUTHORS file in the root of the source tree.
  */
+#ifdef __aarch64__
+#ifdef __clang__
+#pragma clang attribute push(__attribute__((target("+sve2"))), \
+                             apply_to = function)
+#elif defined(__GNUC__)
+#pragma GCC target("+sve2")
+#endif
+#endif
 
 #include "libyuv/row_sve.h"
 #include "libyuv/row.h"
@@ -1242,4 +1250,12 @@ void I212ToARGBRow_SVE2(const uint16_t* src_y,
 #ifdef __cplusplus
 }  // extern "C"
 }  // namespace libyuv
+#endif
+
+#ifdef __aarch64__
+#ifdef __clang__
+#pragma clang attribute pop
+#elif defined(__GNUC__)
+#pragma GCC reset_options
+#endif
 #endif

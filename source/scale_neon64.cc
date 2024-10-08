@@ -7,6 +7,14 @@
  *  in the file PATENTS. All contributing project authors may
  *  be found in the AUTHORS file in the root of the source tree.
  */
+#ifdef __aarch64__
+#ifdef __clang__
+#pragma clang attribute push(__attribute__((target("+dotprod+i8mm"))), \
+                             apply_to = function)
+#elif defined(__GNUC__)
+#pragma GCC target("+dotprod", "+i8mm")
+#endif
+#endif
 
 #include "libyuv/row.h"
 #include "libyuv/scale.h"
@@ -1548,4 +1556,12 @@ void ScaleUVRowDownEven_NEON(const uint8_t* src_ptr,
 #ifdef __cplusplus
 }  // extern "C"
 }  // namespace libyuv
+#endif
+
+#ifdef __aarch64__
+#ifdef __clang__
+#pragma clang attribute pop
+#elif defined(__GNUC__)
+#pragma GCC reset_options
+#endif
 #endif

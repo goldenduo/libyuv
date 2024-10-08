@@ -7,6 +7,14 @@
  *  in the file PATENTS. All contributing project authors may
  *  be found in the AUTHORS file in the root of the source tree.
  */
+#ifdef __aarch64__
+#ifdef __clang__
+#pragma clang attribute push(__attribute__((target("+sme"))), \
+                             apply_to = function)
+#elif defined(__GNUC__)
+#pragma GCC target("+sme")
+#endif
+#endif
 
 #include "libyuv/scale_row.h"
 
@@ -552,4 +560,12 @@ __arm_locally_streaming void ScaleARGBRowDown2Box_SME(const uint8_t* src_argb,
 #ifdef __cplusplus
 }  // extern "C"
 }  // namespace libyuv
+#endif
+
+#ifdef __aarch64__
+#ifdef __clang__
+#pragma clang attribute pop
+#elif defined(__GNUC__)
+#pragma GCC reset_options
+#endif
 #endif
