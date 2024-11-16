@@ -595,6 +595,7 @@ extern "C" {
 #define HAS_I422TOARGBROW_SME
 #define HAS_I444TOARGBROW_SME
 #define HAS_MULTIPLYROW_16_SME
+#define HAS_CONVERT16TO8ROW_SME
 #endif
 
 // The following are available on AArch64 platforms:
@@ -3473,6 +3474,10 @@ void Convert16To8Row_Any_NEON(const uint16_t* src_ptr,
                               uint8_t* dst_ptr,
                               int scale,
                               int width);
+void Convert16To8Row_SME(const uint16_t* src_y,
+                         uint8_t* dst_y,
+                         int scale,
+                         int width);
 
 void CopyRow_SSE2(const uint8_t* src, uint8_t* dst, int width);
 void CopyRow_AVX(const uint8_t* src, uint8_t* dst, int width);

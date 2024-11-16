@@ -312,6 +312,168 @@ __arm_locally_streaming void ARGBMultiplyRow_SME(const uint8_t* src_argb,
       : "memory", "cc", "z0", "z1", "z2", "p0", "p1");
 }
 
+<<<<<<< PATCH SET (9f9fc8 [AArch64] Add SME implementation of Convert16To8Row)
+__arm_locally_streaming void MergeUVRow_SME(const uint8_t* src_u,
+                                            const uint8_t* src_v,
+                                            uint8_t* dst_uv,
+                                            int width) {
+  // Streaming-SVE only, no use of ZA tile.
+  int vl;
+  asm volatile(
+      "cntb    %x[vl]                                   \n"
+      "subs    %w[width], %w[width], %w[vl]             \n"
+      "b.lt    2f                                       \n"
+
+      // Run bulk of computation with an all-true predicate to avoid predicate
+      // generation overhead.
+      "ptrue   p0.b                                     \n"
+      "1:                                               \n"
+      "ld1b    {z1.b}, p0/z, [%[src_u]]                 \n"
+      "ld1b    {z2.b}, p0/z, [%[src_v]]                 \n"
+      "incb    %[src_u]                                 \n"
+      "incb    %[src_v]                                 \n"
+      "subs    %w[width], %w[width], %w[vl]             \n"
+      "st2b    {z1.b, z2.b}, p0, [%[dst_uv]]            \n"
+      "incb    %[dst_uv], all, mul #2                   \n"
+      "b.ge    1b                                       \n"
+
+      "2:                                               \n"
+      "adds    %w[width], %w[width], %w[vl]             \n"
+      "b.eq    99f                                      \n"
+
+      // Calculate a predicate for the final iteration to deal with the tail.
+      "whilelt p0.b, wzr, %w[width]                     \n"
+      "ld1b    {z1.b}, p0/z, [%[src_u]]                 \n"
+      "ld1b    {z2.b}, p0/z, [%[src_v]]                 \n"
+      "subs    %w[width], %w[width], %w[vl]             \n"
+      "st2b    {z1.b, z2.b}, p0, [%[dst_uv]]            \n"
+
+      "99:                                              \n"
+      : [src_u] "+r"(src_u),    // %[src_u]
+        [src_v] "+r"(src_v),    // %[src_v]
+        [dst_uv] "+r"(dst_uv),  // %[dst_uv]
+        [width] "+r"(width),    // %[width]
+        [vl] "=&r"(vl)          // %[vl]
+      :
+      : "memory", "cc", "z0", "z1", "z2", "p0");
+}
+
+__arm_locally_streaming void MergeUVRow_16_SME(const uint16_t* src_u,
+                                               const uint16_t* src_v,
+                                               uint16_t* dst_uv,
+                                               int depth,
+                                               int width) {
+  int shift = 16 - depth;
+  // Streaming-SVE only, no use of ZA tile.
+  int vl;
+  asm volatile(
+      "cnth    %x[vl]                                   \n"
+      "mov     z0.h, %w[shift]                          \n"
+      "subs    %w[width], %w[width], %w[vl]             \n"
+      "b.lt    2f                                       \n"
+
+      // Run bulk of computation with an all-true predicate to avoid predicate
+      // generation overhead.
+      "ptrue   p0.h                                     \n"
+      "1:                                               \n"
+      "ld1h    {z1.h}, p0/z, [%[src_u]]                 \n"
+      "ld1h    {z2.h}, p0/z, [%[src_v]]                 \n"
+      "incb    %[src_u]                                 \n"
+      "incb    %[src_v]                                 \n"
+      "lsl     z1.h, p0/m, z1.h, z0.h                   \n"
+      "lsl     z2.h, p0/m, z2.h, z0.h                   \n"
+      "subs    %w[width], %w[width], %w[vl]             \n"
+      "st2h    {z1.h, z2.h}, p0, [%[dst_uv]]            \n"
+      "incb    %[dst_uv], all, mul #2                   \n"
+      "b.ge    1b                                       \n"
+
+      "2:                                               \n"
+      "adds    %w[width], %w[width], %w[vl]             \n"
+      "b.eq    99f                                      \n"
+
+      // Calculate a predicate for the final iteration to deal with the tail.
+      "whilelt p0.h, wzr, %w[width]                     \n"
+      "ld1h    {z1.h}, p0/z, [%[src_u]]                 \n"
+      "ld1h    {z2.h}, p0/z, [%[src_v]]                 \n"
+      "lsl     z1.h, p0/m, z1.h, z0.h                   \n"
+      "lsl     z2.h, p0/m, z2.h, z0.h                   \n"
+      "subs    %w[width], %w[width], %w[vl]             \n"
+      "st2h    {z1.h, z2.h}, p0, [%[dst_uv]]            \n"
+
+      "99:                                              \n"
+      : [src_u] "+r"(src_u),    // %[src_u]
+        [src_v] "+r"(src_v),    // %[src_v]
+        [dst_uv] "+r"(dst_uv),  // %[dst_uv]
+        [width] "+r"(width),    // %[width]
+        [vl] "=&r"(vl)          // %[vl]
+      : [shift] "r"(shift)      // %[shift]
+      : "memory", "cc", "z0", "z1", "z2", "p0");
+}
+
+// Use scale to convert lsb formats to msb, depending how many bits there are:
+// 32768 = 9 bits = shr 1
+// 16384 = 10 bits = shr 2
+// 4096 = 12 bits = shr 4
+// 256 = 16 bits = shr 8
+__arm_locally_streaming void Convert16To8Row_SME(const uint16_t* src_y,
+                                                 uint8_t* dst_y,
+                                                 int scale,
+                                                 int width) {
+  // 15 - clz(scale), + 8 to shift result into the high half of the lane to
+  // saturate, then we can just use UZP2 to narrow rather than a pair of
+  // saturating narrow instructions.
+  int shift = 23 - __builtin_clz((int32_t)scale);
+  int vl;
+  asm volatile(
+      "cntb     %x[vl]                                  \n"
+      "dup      z0.h, %w[shift]                         \n"
+      "subs     %w[width], %w[width], %w[vl]            \n"
+      "b.lt     2f                                      \n"
+
+      // Run bulk of computation with an all-true predicate to avoid predicate
+      // generation overhead.
+      "ptrue    p0.b                                    \n"
+      "1:                                               \n"
+      "ld1h     {z1.h}, p0/z, [%[src_y]]                \n"
+      "ld1h     {z2.h}, p0/z, [%[src_y], #1, mul vl]    \n"
+      "incb     %[src_y], all, mul #2                   \n"
+      "uqshl    z1.h, p0/m, z1.h, z0.h                  \n"
+      "uqshl    z2.h, p0/m, z2.h, z0.h                  \n"
+      "subs     %w[width], %w[width], %w[vl]            \n"
+      "uzp2     z1.b, z1.b, z2.b                        \n"
+      "st1b     {z1.b}, p0, [%[dst_y]]                  \n"
+      "incb     %[dst_y]                                \n"
+      "b.ge     1b                                      \n"
+
+      "2:                                               \n"
+      "adds     %w[width], %w[width], %w[vl]            \n"
+      "b.eq     99f                                     \n"
+
+      // Calculate a predicate for the final iteration to deal with the tail.
+      // We need separate predicates for the load and store instructions since
+      // they are operating on different element sizes (.b vs .h).
+      "cnth     %x[vl]                                  \n"
+      "whilelt  p0.h, wzr, %w[width]                    \n"
+      "whilelt  p1.h, %w[vl], %w[width]                 \n"
+      "whilelt  p2.b, wzr, %w[width]                    \n"
+      "ld1h     {z1.h}, p0/z, [%[src_y]]                \n"
+      "ld1h     {z2.h}, p1/z, [%[src_y], #1, mul vl]    \n"
+      "uqshl    z1.h, p0/m, z1.h, z0.h                  \n"
+      "uqshl    z2.h, p1/m, z2.h, z0.h                  \n"
+      "uzp2     z1.b, z1.b, z2.b                        \n"
+      "st1b     {z1.b}, p2, [%[dst_y]]                  \n"
+
+      "99:                                              \n"
+      : [src_y] "+r"(src_y),  // %[src_y]
+        [dst_y] "+r"(dst_y),  // %[dst_y]
+        [width] "+r"(width),  // %[width]
+        [vl] "=&r"(vl)        // %[vl]
+      : [shift] "r"(shift)    // %[shift]
+      : "cc", "memory", "z0", "z1", "z2", "p0", "p1", "p2");
+}
+
+=======
+>>>>>>> BASE      (3e75e4 [AArch64] Add "limit" variable explanations in SVE *AR30 ker)
 #endif  // !defined(LIBYUV_DISABLE_SME) && defined(CLANG_HAS_SME) &&
         // defined(__aarch64__)
 
