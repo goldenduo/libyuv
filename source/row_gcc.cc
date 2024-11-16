@@ -5504,17 +5504,20 @@ void SplitRGBRow_SSSE3(const uint8_t* src_rgb,
 #endif  // HAS_SPLITRGBROW_SSSE3
 
 #ifdef HAS_SPLITRGBROW_SSE41
-// Shuffle table for converting RGB to Planar, SSE4.1.
-alignas(16) static const uvec8 kSplitRGBShuffleSSE41[4] = {
-    {1u, 128u, 0u, 1u, 128u, 0u, 1u, 128u, 0u, 1u, 128u, 0u, 1u, 128u, 0u, 1u},
+// Shuffle table for converting RGB to Planar, SSE4.1. Note: these are used for
+// the AVX2 implementation as well.
+static const uvec8 kSplitRGBShuffleSSE41[5] = {
     {0u, 3u, 6u, 9u, 12u, 15u, 2u, 5u, 8u, 11u, 14u, 1u, 4u, 7u, 10u, 13u},
     {1u, 4u, 7u, 10u, 13u, 0u, 3u, 6u, 9u, 12u, 15u, 2u, 5u, 8u, 11u, 14u},
-    {2u, 5u, 8u, 11u, 14u, 1u, 4u, 7u, 10u, 13u, 0u, 3u, 6u, 9u, 12u, 15u}};
+    {2u, 5u, 8u, 11u, 14u, 1u, 4u, 7u, 10u, 13u, 0u, 3u, 6u, 9u, 12u, 15u},
+    {0u, 128u, 0u, 0u, 128u, 0u, 0u, 128u, 0u, 0u, 128u, 0u, 0u, 128u, 0u, 0u},
+    {0u, 0u, 128u, 0u, 0u, 128u, 0u, 0u, 128u, 0u, 0u, 128u, 0u, 0u, 128u, 0u},
+};
 
 void SplitRGBRow_SSE41(const uint8_t* src_rgb, uint8_t* dst_r,
                        uint8_t* dst_g, uint8_t* dst_b, int width) {
   asm volatile(
-      "movdqa      0(%5), %%xmm0                \n"
+      "movdqa      48(%5), %%xmm0               \n"
       "1:                                       \n"
       "movdqu      (%0),%%xmm1                  \n"
       "movdqu      0x10(%0),%%xmm2              \n"
@@ -5524,14 +5527,14 @@ void SplitRGBRow_SSE41(const uint8_t* src_rgb, uint8_t* dst_r,
       "pblendvb    %%xmm3, %%xmm1               \n"
       "pblendvb    %%xmm2, %%xmm3               \n"
       "pblendvb    %%xmm4, %%xmm2               \n"
-      "psrlq       $0x1, %%xmm0                 \n"
+      "palignr     $0xF, %%xmm0, %%xmm0         \n"
       "pblendvb    %%xmm2, %%xmm1               \n"
       "pblendvb    %%xmm3, %%xmm2               \n"
       "pblendvb    %%xmm4, %%xmm3               \n"
-      "psllq       $0x1, %%xmm0                 \n"
-      "pshufb      16(%5), %%xmm1               \n"
-      "pshufb      32(%5), %%xmm2               \n"
-      "pshufb      48(%5), %%xmm3               \n"
+      "palignr     $0x1, %%xmm0, %%xmm0         \n"
+      "pshufb      0(%5), %%xmm1                \n"
+      "pshufb      16(%5), %%xmm2               \n"
+      "pshufb      32(%5), %%xmm3               \n"
       "movdqu      %%xmm1,(%1)                  \n"
       "lea         0x10(%1),%1                  \n"
       "movdqu      %%xmm2,(%2)                  \n"
@@ -5540,11 +5543,11 @@ void SplitRGBRow_SSE41(const uint8_t* src_rgb, uint8_t* dst_r,
       "lea         0x10(%3),%3                  \n"
       "sub         $0x10,%4                     \n"
       "jg          1b                           \n"
-      : "+r"(src_rgb),                 // %0
-        "+r"(dst_r),                   // %1
-        "+r"(dst_g),                   // %2
-        "+r"(dst_b),                   // %3
-        "+r"(width)                    // %4
+      : "+r"(src_rgb),                  // %0
+        "+r"(dst_r),                    // %1
+        "+r"(dst_g),                    // %2
+        "+r"(dst_b),                    // %3
+        "+r"(width)                     // %4
       : "r"(&kSplitRGBShuffleSSE41[0])  // %5
       : "memory", "cc", "xmm0", "xmm1", "xmm2", "xmm3", "xmm4");
 }
@@ -5554,8 +5557,13 @@ void SplitRGBRow_SSE41(const uint8_t* src_rgb, uint8_t* dst_r,
 void SplitRGBRow_AVX2(const uint8_t* src_rgb, uint8_t* dst_r,
                       uint8_t* dst_g, uint8_t* dst_b, int width) {
   asm volatile(
-      "vbroadcasti128        0(%5), %%ymm0                         \n"
-      "vpsrlq                $0x1,%%ymm0,%%ymm7                    \n"
+      "vbroadcasti128        48(%5), %%ymm0                        \n"
+      "vbroadcasti128        64(%5), %%ymm7                        \n"
+#if defined(__x86_64__)
+      "vbroadcasti128        0(%5), %%ymm8                         \n"
+      "vbroadcasti128        16(%5), %%ymm9                        \n"
+      "vbroadcasti128        32(%5), %%ymm10                       \n"
+#endif
       "1:                                                          \n"
       "vmovdqu               (%0),%%ymm4                           \n"
       "vmovdqu               0x20(%0),%%ymm5                       \n"
@@ -5570,12 +5578,18 @@ void SplitRGBRow_AVX2(const uint8_t* src_rgb, uint8_t* dst_r,
       "vpblendvb             %%ymm7, %%ymm5, %%ymm4, %%ymm1        \n"
       "vpblendvb             %%ymm7, %%ymm6, %%ymm5, %%ymm2        \n"
       "vpblendvb             %%ymm7, %%ymm4, %%ymm6, %%ymm3        \n"
-      "vbroadcasti128        16(%5), %%ymm4                        \n"
-      "vbroadcasti128        32(%5), %%ymm5                        \n"
-      "vbroadcasti128        48(%5), %%ymm6                        \n"
+#if defined(__x86_64__)
+      "vpshufb               %%ymm8, %%ymm1, %%ymm1                \n"
+      "vpshufb               %%ymm9, %%ymm2, %%ymm2                \n"
+      "vpshufb               %%ymm10, %%ymm3, %%ymm3               \n"
+#else
+      "vbroadcasti128        0(%5), %%ymm4                         \n"
+      "vbroadcasti128        16(%5), %%ymm5                        \n"
+      "vbroadcasti128        32(%5), %%ymm6                        \n"
       "vpshufb               %%ymm4, %%ymm1, %%ymm1                \n"
       "vpshufb               %%ymm5, %%ymm2, %%ymm2                \n"
       "vpshufb               %%ymm6, %%ymm3, %%ymm3                \n"
+#endif
       "vmovdqu               %%ymm1,(%1)                           \n"
       "lea                   0x20(%1),%1                           \n"
       "vmovdqu               %%ymm2,(%2)                           \n"
@@ -5591,7 +5605,11 @@ void SplitRGBRow_AVX2(const uint8_t* src_rgb, uint8_t* dst_r,
         "+r"(width)                     // %4
       : "r"(&kSplitRGBShuffleSSE41[0])  // %5
       : "memory", "cc", "xmm0", "xmm1", "xmm2", "xmm3", "xmm4", "xmm5", "xmm6",
-        "xmm7");
+        "xmm7"
+#if defined(__x86_64__)
+        , "xmm8", "xmm9", "xmm10"
+#endif
+  );
 }
 #endif  // HAS_SPLITRGBROW_AVX2
 
