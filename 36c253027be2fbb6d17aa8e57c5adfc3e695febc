@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63bdb753_d5c973aa",
+        "filename": "DIR_METADATA",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2024-11-18T14:14:35Z",
+      "side": 1,
+      "message": "You also have `1363539` as alternative.",
+      "range": {
+        "startLine": 5,
+        "startChar": 16,
+        "endLine": 5,
+        "endChar": 23
+      },
+      "revId": "36c253027be2fbb6d17aa8e57c5adfc3e695febc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
