@@ -22,6 +22,30 @@
       },
       "revId": "36c253027be2fbb6d17aa8e57c5adfc3e695febc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ad17cf_483f1200",
+        "filename": "DIR_METADATA",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1547432
+      },
+      "writtenOn": "2024-11-18T14:17:00Z",
+      "side": 1,
+      "message": "Right. Although this seems to be in a different project. This one is in Chromium, so I think that\u0027s the one we should set. WDYT?",
+      "parentUuid": "63bdb753_d5c973aa",
+      "range": {
+        "startLine": 5,
+        "startChar": 16,
+        "endLine": 5,
+        "endChar": 23
+      },
+      "revId": "36c253027be2fbb6d17aa8e57c5adfc3e695febc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
