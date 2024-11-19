@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e983c9b6_3a0c8441",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-19T23:49:35Z",
+      "side": 1,
+      "message": "adds 0x80000021 bit 15 for ERMS on AMD",
+      "revId": "608e3c0f962e0fd6dc2a7beeed723e40fca7205f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
