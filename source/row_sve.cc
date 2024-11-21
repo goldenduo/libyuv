@@ -2070,7 +2070,6 @@ void I210ToARGBRow_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   asm volatile(
       "ptrue    p0.b                                    \n" YUVTORGB_SVE_SETUP
       "dup      z19.b, #255                             \n"  // A
@@ -2119,7 +2118,6 @@ void I210AlphaToARGBRow_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   asm volatile(
       "ptrue    p0.b                                    \n" YUVTORGB_SVE_SETUP
       "subs     %w[width], %w[width], %w[vl]            \n"
@@ -2169,7 +2167,6 @@ void I210ToAR30Row_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   uint16_t limit = 0x3ff0;
   asm volatile(
       "ptrue    p0.b                                    \n" YUVTORGB_SVE_SETUP
@@ -2216,7 +2213,6 @@ void P210ToARGBRow_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   int width_last_uv = width_last_y + (width_last_y & 1);
   uint32_t nv_uv_start = 0x03010301U;
   uint32_t nv_uv_step = 0x04040404U;
@@ -2271,7 +2267,6 @@ void P210ToAR30Row_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   int width_last_uv = width_last_y + (width_last_y & 1);
   uint32_t nv_uv_start = 0x03010301U;
   uint32_t nv_uv_step = 0x04040404U;
@@ -2327,7 +2322,6 @@ void I410ToARGBRow_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   asm volatile(
       "ptrue    p0.b                                    \n" YUVTORGB_SVE_SETUP
       "dup      z19.b, #255                             \n"  // A
@@ -2376,7 +2370,6 @@ void I410AlphaToARGBRow_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   asm volatile(
       "ptrue    p0.b                                    \n" YUVTORGB_SVE_SETUP
       "cmp      %w[width], %w[vl]                       \n"
@@ -2427,7 +2420,6 @@ void I410ToAR30Row_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   uint16_t limit = 0x3ff0;
   asm volatile(
       "ptrue    p0.b                                    \n" YUVTORGB_SVE_SETUP
@@ -2473,7 +2465,6 @@ void P410ToARGBRow_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   asm volatile(
       "ptrue    p0.b                                    \n" YUVTORGB_SVE_SETUP
       "dup      z19.b, #255                             \n"  // A
@@ -2524,7 +2515,6 @@ void P410ToAR30Row_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   uint16_t limit = 0x3ff0;
   asm volatile(
       "ptrue    p0.b                                    \n" YUVTORGB_SVE_SETUP
@@ -2576,7 +2566,6 @@ void I212ToAR30Row_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   uint16_t limit = 0x3ff0;
   asm volatile(
       "ptrue    p0.b                                    \n" YUVTORGB_SVE_SETUP
@@ -2623,7 +2612,6 @@ void I212ToARGBRow_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
-  width_last_y = width_last_y == 0 ? vl : width_last_y;
   asm volatile(
       "ptrue    p0.b                                    \n" YUVTORGB_SVE_SETUP
       "dup      z19.b, #255                             \n"  // A
