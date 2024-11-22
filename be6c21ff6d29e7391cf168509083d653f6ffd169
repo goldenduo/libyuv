@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b2f0481_d90befb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-22T08:41:05Z",
+      "side": 1,
+      "message": "16 bit with scale of 1/65535 produces a denormal scale, which is flushed to zero for armv7 neon.  \nthe vmul can be expanded to 4 vmul of scalars and work, but slow\n\na cvt version was tried which is slowish, but requires build options and cpuid\nso just fall back on C for armv7 when scale is smaller than 1/4096\naarch64 scale 1 was using cvt and not checking cpuid so replaced it with vmul technique which is fast and does not require fp16\n\navoid d8-d15 for armv7 so they dont need to be saved",
+      "revId": "be6c21ff6d29e7391cf168509083d653f6ffd169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
