@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c426d177_d6837f53",
+        "filename": "source/planar_functions.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5213,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-22T21:48:12Z",
+      "side": 1,
+      "message": "Thats not fully accurate either.  The scale of 1/65535 * 2^-112 is a denormal float which, will correctly be expressed.\nBut when vmul is asked to multiply a normal float by that denormal, even though the result would have been normal, it flushes to zero.\nUpdated comment.",
+      "parentUuid": "321bca89_77ea62a4",
+      "revId": "c05efc8e491a78d4c6750fd8ceb15385312f1c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e83fca1c_ce9f2bfe",
