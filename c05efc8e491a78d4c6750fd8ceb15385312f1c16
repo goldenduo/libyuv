@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2a19ab_67d15370",
+        "filename": "source/planar_functions.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5213,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-11-22T19:05:31Z",
+      "side": 1,
+      "message": "Nit: This comment should say \"if scale \u003c 1 / 4096\", otherwise the condition in the next line seems to imply \"if scale \u003e\u003d 1 / 4096, scaling value becomes denormal and flushed to zero.\"",
+      "revId": "c05efc8e491a78d4c6750fd8ceb15385312f1c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83fca1c_ce9f2bfe",
+        "filename": "unit_test/planar_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-11-22T19:05:31Z",
+      "side": 1,
+      "message": "Nit: This blank line is not needed.",
+      "revId": "c05efc8e491a78d4c6750fd8ceb15385312f1c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb529dd_fdf261a2",
+        "filename": "unit_test/planar_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2637,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-11-22T19:05:31Z",
+      "side": 1,
+      "message": "Nit: No need for two blank lines. Delete one?",
+      "revId": "c05efc8e491a78d4c6750fd8ceb15385312f1c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
