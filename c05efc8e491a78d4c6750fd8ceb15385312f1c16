@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "321bca89_77ea62a4",
+        "filename": "source/planar_functions.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5213,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-11-22T19:18:47Z",
+      "side": 1,
+      "message": "Actually what you wrote in another comment is very informative: \"16 bit with scale of 1/65535 produces a denormal scale, which is flushed to zero for armv7 neon.\"",
+      "parentUuid": "2e2a19ab_67d15370",
+      "revId": "c05efc8e491a78d4c6750fd8ceb15385312f1c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e83fca1c_ce9f2bfe",
         "filename": "unit_test/planar_test.cc",
         "patchSetId": 4
