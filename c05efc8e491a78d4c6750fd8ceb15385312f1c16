@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9b6d72_cb246db0",
+        "filename": "unit_test/planar_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-22T21:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e83fca1c_ce9f2bfe",
+      "revId": "c05efc8e491a78d4c6750fd8ceb15385312f1c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bb529dd_fdf261a2",
@@ -84,6 +102,24 @@
       "writtenOn": "2024-11-22T19:05:31Z",
       "side": 1,
       "message": "Nit: No need for two blank lines. Delete one?",
+      "revId": "c05efc8e491a78d4c6750fd8ceb15385312f1c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b13bcc_c827c5fb",
+        "filename": "unit_test/planar_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2637,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-22T21:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bb529dd_fdf261a2",
       "revId": "c05efc8e491a78d4c6750fd8ceb15385312f1c16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
