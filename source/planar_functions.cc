@@ -5207,12 +5207,20 @@ int HalfFloatPlane(const uint16_t* src_y,
     }
   }
 #endif
-#if defined(HAS_HALFFLOATROW_NEON)
+#if defined(HAS_HALFFLOATROW_NEON) && defined(__aarch64__)
   if (TestCpuFlag(kCpuHasNEON)) {
-    HalfFloatRow =
-        scale == 1.0f ? HalfFloat1Row_Any_NEON : HalfFloatRow_Any_NEON;
+    HalfFloatRow = HalfFloatRow_Any_NEON;
     if (IS_ALIGNED(width, 16)) {
-      HalfFloatRow = scale == 1.0f ? HalfFloat1Row_NEON : HalfFloatRow_NEON;
+      HalfFloatRow = HalfFloatRow_NEON;
+    }
+  }
+#endif
+#if defined(HAS_HALFFLOATROW_NEON) && defined(__arm__)
+  // Caveat: Scaling trick underflows if scale is smaller than 1/4096
+  if (TestCpuFlag(kCpuHasNEON) && scale >= 1.0f / 4096.0f) {
+    HalfFloatRow = HalfFloatRow_Any_NEON;
+    if (IS_ALIGNED(width, 16)) {
+      HalfFloatRow = HalfFloatRow_NEON;
     }
   }
 #endif
