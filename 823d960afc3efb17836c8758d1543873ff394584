@@ -1,0 +1,154 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e67f68ab_084f220e",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1961,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:26:38Z",
+      "side": 1,
+      "message": "these uv indexes feels like it leads to tbl that are slow and unnecessary?\nyou could unzip the U and V if needed?",
+      "fixSuggestions": [
+        {
+          "fixId": "306675d1_73b86120",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1946,
+                "startChar": 0,
+                "endLine": 1946,
+                "endChar": 0
+              },
+              "replacement": "static const uint8_t kP210ToAR30Indices[] \u003d {\n    2,   1,   0,   5,   4,   3,   8,   7,   6,   11,  10,  9,   14,  13,  12,\n    17,  16,  15,  20,  19,  18,  23,  22,  21,  26,  25,  24,  29,  28,  27,\n    32,  31,  30,  35,  34,  33,  38,  37,  36,  41,  40,  39,  44,  43,  42,\n    47,  46,  45,  50,  49,  48,  53,  52,  51,  56,  55,  54,  59,  58,  57,\n    62,  61,  60,  65,  64,  63,  68,  67,  66,  71,  70,  69,  74,  73,  72,\n    77,  76,  75,  80,  79,  78,  83,  82,  81,  86,  85,  84,  89,  88,  87,\n    92,  91,  90,  95,  94,  93,  98,  97,  96,  101, 100, 99,  104, 103, 102,\n    107, 106, 105, 110, 109, 108, 113, 112, 111, 116, 115, 114, 119, 118, 117,\n    122, 121, 120, 125, 124, 123, 128, 127, 126, 131, 130, 129, 134, 133, 132,\n    137, 136, 135, 140, 139, 138, 143, 142, 141, 146, 145, 144, 149, 148, 147,\n    152, 151, 150, 155, 154, 153, 158, 157, 156, 161, 160, 159, 164, 163, 162,\n    167, 166, 165, 170, 169, 168, 173, 172, 171, 176, 175, 174, 179, 178, 177,\n    182, 181, 180, 185, 184, 183, 188, 187, 186, 191, 190, 189, 194, 193, 192,\n    197, 196, 195, 200, 199, 198, 203, 202, 201, 206, 205, 204, 209, 208, 207,\n    212, 211, 210, 215, 214, 213, 218, 217, 216, 221, 220, 219, 224, 223, 222,\n    227, 226, 225, 230, 229, 228, 233, 232, 231, 236, 235, 234, 239, 238, 237,\n    242, 241, 240, 245, 244, 243, 248, 247, 246, 251, 250, 249, 254, 253, 252};\n\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1961,
+                "startChar": 0,
+                "endLine": 1962,
+                "endChar": 0
+              },
+              "replacement": "      \"ld1b    {z31.b}, p0/z, [%[kIndices]]              \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1971,
+                "startChar": 0,
+                "endLine": 1972,
+                "endChar": 0
+              },
+              "replacement": "      READP210_SVE NVTORGB_SVE RGBTOARGB8_SVE\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1983,
+                "startChar": 0,
+                "endLine": 1984,
+                "endChar": 0
+              },
+              "replacement": "      READP210_SVE NVTORGB_SVE RGBTOARGB8_SVE STOREAR30_SVE\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1993,
+                "startChar": 0,
+                "endLine": 1995,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1997,
+                "startChar": 0,
+                "endLine": 1999,
+                "endChar": 0
+              },
+              "replacement": "        [limit] \"r\"(limit),                                // %[limit]\n        [kIndices] \"r\"(kP210ToAR30Indices)                 // %[kIndices]\n      : \"cc\", \"memory\", YUVTORGB_SVE_REGS, \"z31\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "823d960afc3efb17836c8758d1543873ff394584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76cc8a8_a8c28065",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:26:38Z",
+      "side": 1,
+      "message": "needing 2 predicates is inefficient.  the y and uv have the same number of elements... can\u0027t you use the y predicate on uv?",
+      "fixSuggestions": [
+        {
+          "fixId": "3985e416_f7a2c965",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2019,
+                "startChar": 0,
+                "endLine": 2021,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2034,
+                "startChar": 0,
+                "endLine": 2037,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2071,
+                "startChar": 0,
+                "endLine": 2073,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2085,
+                "startChar": 0,
+                "endLine": 2088,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "823d960afc3efb17836c8758d1543873ff394584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
