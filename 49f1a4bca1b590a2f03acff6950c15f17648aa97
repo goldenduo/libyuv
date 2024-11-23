@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a59ec1_52b89b58",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1965,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:52:55Z",
+      "side": 1,
+      "message": "there could be alot fewer row functions if there were a way to make to \u002710\u0027 in I210 a parameter",
+      "fixSuggestions": [
+        {
+          "fixId": "4ebcd49a_e6115c7d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1964,
+                "startChar": 0,
+                "endLine": 2011,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2067,
+                "startChar": 0,
+                "endLine": 2122,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2173,
+                "startChar": 0,
+                "endLine": 2271,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "49f1a4bca1b590a2f03acff6950c15f17648aa97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
