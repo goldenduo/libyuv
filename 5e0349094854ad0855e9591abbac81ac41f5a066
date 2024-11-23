@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77fb3c01_dea489bd",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2208,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:58:06Z",
+      "side": 1,
+      "message": "maybe do your comment trick to format things on their own line.  but also it seems wrong that you need to do anything for alpha in the main loop.  On neon we used st4.. i guess this is a downside of using st2h",
+      "fixSuggestions": [
+        {
+          "fixId": "c74b5f71_e1cf0469",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2206,
+                "startChar": 0,
+                "endLine": 2209,
+                "endChar": 0
+              },
+              "replacement": "      \"1:                                               \\n\"\n      READI410_SVE I4XXTORGB_SVE RGBATOARGB8_SVE\n      \"incb     %[src_a]                                \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2219,
+                "startChar": 0,
+                "endLine": 2220,
+                "endChar": 0
+              },
+              "replacement": "      \"whilelt  p1.h, wzr, %w[width_last_y]             \\n\"\n      READI410_SVE I4XXTORGB_SVE RGBATOARGB8_SVE\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2221,
+                "startChar": 0,
+                "endLine": 2222,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "5e0349094854ad0855e9591abbac81ac41f5a066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
