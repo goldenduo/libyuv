@@ -1,0 +1,394 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "590b5ea4_f58d0b45",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:46:47Z",
+      "side": 1,
+      "message": "I\u0027m getting the impression that the \u0027t\u0027 in uqshrnt is the secret sauce to sve performance",
+      "fixSuggestions": [
+        {
+          "fixId": "36a50525_abb44bd2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 211,
+                "startChar": 0,
+                "endLine": 212,
+                "endChar": 0
+              },
+              "replacement": "  \"trn1        z17.b, z18.b, z19.b  \\n\" /* RA */          \\\n  \"uqshl       z19.b, p0/m, z19.b, #2     \\n\" /* A */\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 218,
+                "startChar": 0,
+                "endLine": 219,
+                "endChar": 0
+              },
+              "replacement": "  \"uqshl       z19.b, p0/m, z19.b, #2     \\n\" /* A */\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 227,
+                "startChar": 0,
+                "endLine": 228,
+                "endChar": 0
+              },
+              "replacement": "  \"uqshrnt     z18.b, z22.h, #6     \\n\" /* R1 */          \\\n  \"uqshl       z23.b, p0/m, z23.b, #2     \\n\" /* A */\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 236,
+                "startChar": 0,
+                "endLine": 237,
+                "endChar": 0
+              },
+              "replacement": "  \"uqshl     z22.h, p0/m, z22.h, #2     \\n\" /* R1 */ \\\n  \"uqshl       z23.b, p0/m, z23.b, #2     \\n\" /* A */\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 244,
+                "startChar": 0,
+                "endLine": 245,
+                "endChar": 0
+              },
+              "replacement": "  \"uqshrnt     z20.b, z18.h, #6     \\n\" /* GR */          \\\n  \"uqshl       z23.b, p0/m, z23.b, #2     \\n\" /* A */\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 273,
+                "startChar": 0,
+                "endLine": 274,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 316,
+                "startChar": 0,
+                "endLine": 317,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 365,
+                "startChar": 0,
+                "endLine": 366,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 621,
+                "startChar": 0,
+                "endLine": 622,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 667,
+                "startChar": 0,
+                "endLine": 668,
+                "endChar": 0
+              },
+              "replacement": "      \"subs     %w[width], %w[width], %w[vl]            \\n\"  // A\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 674,
+                "startChar": 0,
+                "endLine": 676,
+                "endChar": 0
+              },
+              "replacement": "      \"ld1b     {z19.b}, p1/z, [%[src_a]]               \\n\"  // A\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 716,
+                "startChar": 0,
+                "endLine": 717,
+                "endChar": 0
+              },
+              "replacement": "      \"subs     %w[width], %w[width], %w[vl]            \\n\"  // A\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 723,
+                "startChar": 0,
+                "endLine": 725,
+                "endChar": 0
+              },
+              "replacement": "      \"ld1b     {z19.b}, p1/z, [%[src_a]]               \\n\"  // A\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 738,
+                "startChar": 0,
+                "endLine": 739,
+                "endChar": 0
+              },
+              "replacement": "      \"ld1b     {z19.b}, p1/z, [%[src_a]]               \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 770,
+                "startChar": 0,
+                "endLine": 771,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1340,
+                "startChar": 0,
+                "endLine": 1341,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1393,
+                "startChar": 0,
+                "endLine": 1394,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "61c4b046b270c1859bb3af0f2bc59c8664babe3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a56ecbf6_70d46baa",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1931,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:46:47Z",
+      "side": 1,
+      "message": "should these macros be _SVE2 ?",
+      "fixSuggestions": [
+        {
+          "fixId": "8c92f4e6_ffc83fee",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 629,
+                "startChar": 0,
+                "endLine": 630,
+                "endChar": 0
+              },
+              "replacement": "      READYUV422_SVE I4XXTORGB_SVE RGBTORGBA8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 641,
+                "startChar": 0,
+                "endLine": 642,
+                "endChar": 0
+              },
+              "replacement": "      READYUV422_SVE I4XXTORGB_SVE RGBTORGBA8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 676,
+                "startChar": 0,
+                "endLine": 677,
+                "endChar": 0
+              },
+              "replacement": "      I4XXTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 689,
+                "startChar": 0,
+                "endLine": 690,
+                "endChar": 0
+              },
+              "replacement": "      I4XXTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 779,
+                "startChar": 0,
+                "endLine": 780,
+                "endChar": 0
+              },
+              "replacement": "      READNV_SVE NVTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 793,
+                "startChar": 0,
+                "endLine": 794,
+                "endChar": 0
+              },
+              "replacement": "      READNV_SVE NVTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1350,
+                "startChar": 0,
+                "endLine": 1351,
+                "endChar": 0
+              },
+              "replacement": "      READYUY2_SVE NVTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1363,
+                "startChar": 0,
+                "endLine": 1364,
+                "endChar": 0
+              },
+              "replacement": "      READYUY2_SVE NVTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1403,
+                "startChar": 0,
+                "endLine": 1404,
+                "endChar": 0
+              },
+              "replacement": "      READUYVY_SVE NVTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1418,
+                "startChar": 0,
+                "endLine": 1419,
+                "endChar": 0
+              },
+              "replacement": "      \"st2h     {z16.h, z17.h}, p1, [%[dst_argb]]       \\n\"  //\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1869,
+                "startChar": 0,
+                "endLine": 1871,
+                "endChar": 0
+              },
+              "replacement": "      READI210_SVE I4XXTORGB_SVE RGBTOARGB8_SVE_TOP\n      \"subs     %w[width], %w[width], %w[vl]            \\n\"  //\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1881,
+                "startChar": 0,
+                "endLine": 1882,
+                "endChar": 0
+              },
+              "replacement": "      READI210_SVE I4XXTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1973,
+                "startChar": 0,
+                "endLine": 1974,
+                "endChar": 0
+              },
+              "replacement": "      READP210_SVE NVTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1986,
+                "startChar": 0,
+                "endLine": 1987,
+                "endChar": 0
+              },
+              "replacement": "      READP210_SVE NVTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2080,
+                "startChar": 0,
+                "endLine": 2081,
+                "endChar": 0
+              },
+              "replacement": "      READP410_SVE NVTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2095,
+                "startChar": 0,
+                "endLine": 2096,
+                "endChar": 0
+              },
+              "replacement": "      READP410_SVE NVTORGB_SVE RGBTOARGB8_SVE_TOP\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2146,
+                "startChar": 0,
+                "endLine": 2147,
+                "endChar": 0
+              },
+              "replacement": "      READP410_SVE NVTORGB_SVE STOREAR30_SVE_TOP\n"
+            }
+          ]
+        }
+      ],
+      "revId": "61c4b046b270c1859bb3af0f2bc59c8664babe3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
