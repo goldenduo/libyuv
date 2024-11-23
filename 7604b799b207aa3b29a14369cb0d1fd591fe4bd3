@@ -16,6 +16,61 @@
       "message": "needs a rebase.\nmerge conflict(s):\ninclude/libyuv/row.h\nsource/row_sve.cc\nIt may be simplier to land CL\u0027s if you dont use \u0027chains\u0027.  If you write a new macro/row function, hook it up in all the calling code in 1 CL?",
       "revId": "7604b799b207aa3b29a14369cb0d1fd591fe4bd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "256064d2_8b3599eb",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1973,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:43:18Z",
+      "side": 1,
+      "message": "a comment or more descriptive name would remind me what this limit is for.\nYou can also consider passing registers are arguments to macros so its not so hardcoded to z23.  But its fine as is.  \nIf you can make the AR30 without this constant, by saturating to the msb, thats potentially better",
+      "fixSuggestions": [
+        {
+          "fixId": "2c83d7b7_65cfe119",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1973,
+                "startChar": 0,
+                "endLine": 1974,
+                "endChar": 0
+              },
+              "replacement": "  uint16_t limit \u003d 0x3ff0;  // Limit for AR30 format.\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2078,
+                "startChar": 0,
+                "endLine": 2079,
+                "endChar": 0
+              },
+              "replacement": "  uint16_t limit \u003d 0x3ff0;  // Limit for AR30 format.\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2281,
+                "startChar": 0,
+                "endLine": 2282,
+                "endChar": 0
+              },
+              "replacement": "  uint16_t limit \u003d 0x3ff0;  // Limit for AR30 format.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7604b799b207aa3b29a14369cb0d1fd591fe4bd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
