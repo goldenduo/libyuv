@@ -1,0 +1,286 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e9ab58_c8c669f9",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:21:09Z",
+      "side": 1,
+      "message": "consider processing UV first, in both the conversion and read, since UV is small/faster load but more complex and lastly load the Y, which will cache miss but we can do the yuv conversion in matching order.",
+      "fixSuggestions": [
+        {
+          "fixId": "1e99a57d_94237ac3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 82,
+                "startChar": 0,
+                "endLine": 82,
+                "endChar": 0
+              },
+              "replacement": "  \"ld1h       {z1.s}, p1/z, [%[src_u]]       \\n\" \\\n  \"ld1h       {z2.s}, p1/z, [%[src_v]]       \\n\" \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 85,
+                "startChar": 0,
+                "endLine": 87,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 99,
+                "startChar": 0,
+                "endLine": 99,
+                "endChar": 0
+              },
+              "replacement": "  \"ld1h       {z1.s}, p1/z, [%[src_u]]       \\n\" \\\n  \"ld1h       {z2.s}, p1/z, [%[src_v]]       \\n\" \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 102,
+                "startChar": 0,
+                "endLine": 104,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 125,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "  \"ld1h       {z1.h}, p1/z, [%[src_u]]       \\n\" \\\n  \"ld1h       {z2.h}, p1/z, [%[src_v]]       \\n\" \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 128,
+                "startChar": 0,
+                "endLine": 130,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 142,
+                "startChar": 0,
+                "endLine": 143,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 145,
+                "startChar": 0,
+                "endLine": 145,
+                "endChar": 0
+              },
+              "replacement": "  \"ld1h       {z0.h}, p1/z, [%[src_y]]              \\n\" \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "060cbfa6_a1974a3c",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:21:09Z",
+      "side": 1,
+      "message": "iirc theres a way bit shuffle instruction that could combine these 2 shifts?\nif the fields were smaller a multiply could do it.  e.g. 4 bit to 16 bit can be done with multiply by 0x1111",
+      "fixSuggestions": [
+        {
+          "fixId": "5a3935ed_f6cd5c9b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 83,
+                "startChar": 0,
+                "endLine": 85,
+                "endChar": 0
+              },
+              "replacement": "  \"usra       z0.h, z3.h, #12                 \\n\" \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 100,
+                "startChar": 0,
+                "endLine": 102,
+                "endChar": 0
+              },
+              "replacement": "  \"usra       z0.h, z3.h, #16                 \\n\" \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 126,
+                "startChar": 0,
+                "endLine": 128,
+                "endChar": 0
+              },
+              "replacement": "  \"usra       z0.h, z3.h, #12                 \\n\" \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37818330_3bea25af",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:21:09Z",
+      "side": 1,
+      "message": "loads can\u0027t post increment?",
+      "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b514b131_b4932a76",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2394,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-23T00:21:09Z",
+      "side": 1,
+      "message": "like cpuid, assuming this doesnt change at runtime it might be good to make a copy of the value and initialize it once.\nAlso if we could lie and force the vl to be smaller, it would be handy for testing the code can adapt to other sizes.",
+      "fixSuggestions": [
+        {
+          "fixId": "7dfa8a16_f4f486d7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1888,
+                "startChar": 0,
+                "endLine": 1889,
+                "endChar": 0
+              },
+              "replacement": "  asm volatile(\"cnth %0\" : \"\u003dr\"(vl));\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1937,
+                "startChar": 0,
+                "endLine": 1938,
+                "endChar": 0
+              },
+              "replacement": "  asm volatile(\"cnth %0\" : \"\u003dr\"(vl));\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1987,
+                "startChar": 0,
+                "endLine": 1988,
+                "endChar": 0
+              },
+              "replacement": "  asm volatile(\"cnth %0\" : \"\u003dr\"(vl));\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2034,
+                "startChar": 0,
+                "endLine": 2035,
+                "endChar": 0
+              },
+              "replacement": "  asm volatile(\"cnth %0\" : \"\u003dr\"(vl));\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2245,
+                "startChar": 0,
+                "endLine": 2246,
+                "endChar": 0
+              },
+              "replacement": "  asm volatile(\"cnth %0\" : \"\u003dr\"(vl));\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2291,
+                "startChar": 0,
+                "endLine": 2292,
+                "endChar": 0
+              },
+              "replacement": "  asm volatile(\"cnth %0\" : \"\u003dr\"(vl));\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2342,
+                "startChar": 0,
+                "endLine": 2343,
+                "endChar": 0
+              },
+              "replacement": "  asm volatile(\"cnth %0\" : \"\u003dr\"(vl));\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2394,
+                "startChar": 0,
+                "endLine": 2395,
+                "endChar": 0
+              },
+              "replacement": "  asm volatile(\"cnth %0\" : \"\u003dr\"(vl));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
