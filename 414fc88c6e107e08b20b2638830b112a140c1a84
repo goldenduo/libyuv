@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3614aee_0450d99d",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-24T19:47:15Z",
+      "side": 1,
+      "message": "code can be simplified by not having 16 pixel handler.. scale_any will do remainders",
+      "fixSuggestions": [
+        {
+          "fixId": "0a8ebcd7_a9bfea2a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/scale_neon64.cc",
+              "range": {
+                "startLine": 1364,
+                "startChar": 0,
+                "endLine": 1400,
+                "endChar": 0
+              },
+              "replacement": "      \"1:                                        \\n\"\n      \"ldp   q0, q1, [%[src_ptr]]                \\n\"\n      \"ldp   q2, q3, [%[src_ptr], #32]           \\n\"\n      \"ldp   q4, q5, [%[src_ptr], #64]           \\n\"\n      \"ldp   q6, q7, [%[src_ptr], #96]           \\n\"\n      \"add   %[src_ptr], %[src_ptr], #128        \\n\"\n      \"subs  %w[dst_width], %w[dst_width], #32   \\n\"  // 32 elems per iteration.\n      \"uzp2  v0.8h, v0.8h, v1.8h                 \\n\"\n      \"uzp2  v1.8h, v2.8h, v3.8h                 \\n\"\n      \"uzp2  v2.8h, v4.8h, v5.8h                 \\n\"\n      \"uzp2  v3.8h, v6.8h, v7.8h                 \\n\"\n      \"stp   q0, q1, [%[dst_ptr]]                \\n\"\n      \"stp   q2, q3, [%[dst_ptr], #32]           \\n\"\n      \"add   %[dst_ptr], %[dst_ptr], #64         \\n\"\n      \"b.gt        1b                            \\n\"\n      : [src_ptr] \"+r\"(src_ptr),\n        [dst_ptr] \"+r\"(dst),\n        [dst_width] \"+r\"(dst_width)\n      :\n      : \"cc\", \"memory\", \"v0\", \"v1\", \"v2\", \"v3\", \"v4\", \"v5\", \"v6\", \"v7\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "414fc88c6e107e08b20b2638830b112a140c1a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5c3d7b_9efeec97",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1389,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-24T19:47:15Z",
+      "side": 1,
+      "message": "remove... unused",
+      "fixSuggestions": [
+        {
+          "fixId": "7a7f5863_c462c60b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/scale_neon64.cc",
+              "range": {
+                "startLine": 1389,
+                "startChar": 0,
+                "endLine": 1390,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "414fc88c6e107e08b20b2638830b112a140c1a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
