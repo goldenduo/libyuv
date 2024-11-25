@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ed754c_4d991a76",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-25T21:09:58Z",
+      "side": 1,
+      "message": "Acknowledged.  Note any and calling functions would need to allow for larger main block, which is potentially slower since fallback on remainder is C",
+      "parentUuid": "c3614aee_0450d99d",
+      "revId": "414fc88c6e107e08b20b2638830b112a140c1a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba5c3d7b_9efeec97",
@@ -67,6 +85,24 @@
           ]
         }
       ],
+      "revId": "414fc88c6e107e08b20b2638830b112a140c1a84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "517bb0c8_5f30a862",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1389,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-11-25T21:09:58Z",
+      "side": 1,
+      "message": "Acknowledged.  Can cleanup or remove later... harmless",
+      "parentUuid": "ba5c3d7b_9efeec97",
       "revId": "414fc88c6e107e08b20b2638830b112a140c1a84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
