@@ -111,6 +111,30 @@
       },
       "revId": "b8e1539ce0471f6758709597f18e10c63907680e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1adc0d_c0b61160",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1366072
+      },
+      "writtenOn": "2024-11-28T11:53:45Z",
+      "side": 1,
+      "message": "I couldn\u0027t upload a fix. So re-uploaded here https://crrev.com/c/6055341",
+      "parentUuid": "7095b939_e0651578",
+      "range": {
+        "startLine": 18,
+        "startChar": 32,
+        "endLine": 18,
+        "endChar": 52
+      },
+      "revId": "b8e1539ce0471f6758709597f18e10c63907680e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
