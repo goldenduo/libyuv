@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fb14a2e_b22b6c8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366072
+      },
+      "writtenOn": "2024-11-28T07:12:51Z",
+      "side": 1,
+      "message": "I submitted https://crrev.com/c/6034073 because I thought all builders that use Recilent have already been using DEPS to fetch reclient cfgs. It may break libyuv builders. In that case, this CL is necessary.",
+      "revId": "b8e1539ce0471f6758709597f18e10c63907680e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "369fbda1_0ccc6172",
         "filename": "DEPS",
         "patchSetId": 3
@@ -14,6 +31,30 @@
       "writtenOn": "2024-11-06T09:29:11Z",
       "side": 1,
       "message": "Thanks Ben.\n\nAs of today, we don\u0027t use RBE in libyuv, is the plan to add use it here as well?\n\nAlso, was this copied from https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/DEPS;l\u003d46;drc\u003daaaeb29ef54828cce3f6aab4d718487640235ab5 (in such case, why `rbe-webrtc-untrusted` instead of `rbe-webrtc-developer`?).",
+      "range": {
+        "startLine": 18,
+        "startChar": 32,
+        "endLine": 18,
+        "endChar": 52
+      },
+      "revId": "b8e1539ce0471f6758709597f18e10c63907680e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7044694_e422846f",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1366072
+      },
+      "writtenOn": "2024-11-28T07:12:51Z",
+      "side": 1,
+      "message": "\u003e As of today, we don\u0027t use RBE in libyuv, is the plan to add use it here as well?\n\nHmm, looking at this builder, it uses RBE?\n\nhttps://ci.chromium.org/ui/p/libyuv/builders/ci/Linux32%20Release/2181/overview\nhttps://logs.chromium.org/logs/libyuv/buildbucket/cr-buildbucket/8730263108697446481/+/u/gn/l_execution_details#L645_6\n\u003e    \u0027--args\u003dis_debug\u003dfalse target_cpu\u003d\"x86\" use_remoteexec\u003dtrue\u0027,",
+      "parentUuid": "369fbda1_0ccc6172",
       "range": {
         "startLine": 18,
         "startChar": 32,
