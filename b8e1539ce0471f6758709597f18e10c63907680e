@@ -63,6 +63,30 @@
       },
       "revId": "b8e1539ce0471f6758709597f18e10c63907680e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f452f768_d4d653a7",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1366072
+      },
+      "writtenOn": "2024-11-28T07:26:16Z",
+      "side": 1,
+      "message": "\u003e Also, was this copied from https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/DEPS;l\u003d46;drc\u003daaaeb29ef54828cce3f6aab4d718487640235ab5 (in such case, why rbe-webrtc-untrusted instead of rbe-webrtc-developer?).\n\n@mbonadei@chromium.org is correct.\nChrome developers uses`rbe-chrome-untrusted`, while WebRTC developers use `rbe-webrtc-developer`. There is some context in go/webtc-rbe-instances.\n\nSo this should be `rbe-webrtc-developer`, I think.",
+      "parentUuid": "a7044694_e422846f",
+      "range": {
+        "startLine": 18,
+        "startChar": 32,
+        "endLine": 18,
+        "endChar": 52
+      },
+      "revId": "b8e1539ce0471f6758709597f18e10c63907680e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
