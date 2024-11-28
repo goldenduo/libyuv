@@ -27,6 +27,7 @@ vars = {
   # other images can override this with additional images.
   'checkout_fuchsia_boot_images': "terminal.qemu-x64,terminal.x64",
   'checkout_fuchsia_product_bundles': '"{checkout_fuchsia_boot_images}" != ""',
+  'test': 'test',
 }
 
 deps = {
