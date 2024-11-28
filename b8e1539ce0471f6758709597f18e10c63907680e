@@ -87,6 +87,30 @@
       },
       "revId": "b8e1539ce0471f6758709597f18e10c63907680e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7095b939_e0651578",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2024-11-28T08:48:05Z",
+      "side": 1,
+      "message": "Uh, I am likely wrong here and we do use RBE. Thanks Junji!\n\nYes, let\u0027s mirror WebRTC here.",
+      "parentUuid": "f452f768_d4d653a7",
+      "range": {
+        "startLine": 18,
+        "startChar": 32,
+        "endLine": 18,
+        "endChar": 52
+      },
+      "revId": "b8e1539ce0471f6758709597f18e10c63907680e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
