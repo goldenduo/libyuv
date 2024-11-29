@@ -214,6 +214,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42e504f5_f9456571",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-11-29T10:18:50Z",
+      "side": 1,
+      "message": "The bottom/top interleaving allowing us to avoid ST4 instructions is definitely a big performance advantage compared to Neon :)",
+      "parentUuid": "aa3547de_13cd11c0",
+      "revId": "61c4b046b270c1859bb3af0f2bc59c8664babe3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a56ecbf6_70d46baa",
