@@ -88,6 +88,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e62e224f_409fe2ee",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1961,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-11-29T10:31:32Z",
+      "side": 1,
+      "message": "UZP2 wouldn\u0027t work because you need to duplicate the subsampled elements, hence why we don\u0027t need this for P410.",
+      "parentUuid": "e67f68ab_084f220e",
+      "revId": "823d960afc3efb17836c8758d1543873ff394584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f76cc8a8_a8c28065",
         "filename": "source/row_sve.cc",
         "patchSetId": 3
@@ -147,6 +165,24 @@
           ]
         }
       ],
+      "revId": "823d960afc3efb17836c8758d1543873ff394584",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f67f1a0_e8d8b741",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-11-29T10:31:32Z",
+      "side": 1,
+      "message": "They don\u0027t quite have the same number of elements: e.g. if y\u003d\u003d1 and y\u003d\u003d2 we still read 2 elements from uv in both cases.",
+      "parentUuid": "f76cc8a8_a8c28065",
       "revId": "823d960afc3efb17836c8758d1543873ff394584",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
