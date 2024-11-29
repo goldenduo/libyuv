@@ -301,7 +301,10 @@ extern "C" {
       "z20", "z22", "z23", "z24", "z25", "z26", "z27", "z28", "z29", "z30",   \
       "z31", "p0", "p1", "p2", "p3"
 
-// Store AR30 elements
+// Store AR30 elements. Inputs are 2.14 fixed point RGB. We expect z23 to be
+// populated with 0x3ff0 (0x3fff would also work) to saturate the R input
+// rather than needing a pair of shifts to saturate and then insert into the
+// correct position in the lane.
 #define STOREAR30_SVE                                                    \
   "uqshl    z16.h, p0/m, z16.h, #2            \n" /* bbbbbbbbbbxxxxxx */ \
   "uqshl    z17.h, p0/m, z17.h, #2            \n" /* ggggggggggxxxxxx */ \
@@ -2193,6 +2196,7 @@ void I210ToAR30Row_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
+  // The limit is used for saturating the 2.14 red channel in STOREAR30_SVE.
   uint16_t limit = 0x3ff0;
   asm volatile(
       "ptrue    p0.b                                    \n"  //
@@ -2298,6 +2302,7 @@ void P210ToAR30Row_SVE2(const uint16_t* src_y,
   int width_last_uv = width_last_y + (width_last_y & 1);
   uint32_t nv_uv_start = 0x03010301U;
   uint32_t nv_uv_step = 0x04040404U;
+  // The limit is used for saturating the 2.14 red channel in STOREAR30_SVE.
   uint16_t limit = 0x3ff0;
   asm volatile(
       "ptrue    p0.b                                    \n"  //
@@ -2452,6 +2457,7 @@ void I410ToAR30Row_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
+  // The limit is used for saturating the 2.14 red channel in STOREAR30_SVE.
   uint16_t limit = 0x3ff0;
   asm volatile(
       "ptrue    p0.b                                    \n"  //
@@ -2549,6 +2555,7 @@ void P410ToAR30Row_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
+  // The limit is used for saturating the 2.14 red channel in STOREAR30_SVE.
   uint16_t limit = 0x3ff0;
   asm volatile(
       "ptrue    p0.b                                    \n"  //
@@ -2601,6 +2608,7 @@ void I212ToAR30Row_SVE2(const uint16_t* src_y,
   uint64_t vl;
   asm("cnth %0" : "=r"(vl));
   int width_last_y = width & (vl - 1);
+  // The limit is used for saturating the 2.14 red channel in STOREAR30_SVE.
   uint16_t limit = 0x3ff0;
   asm volatile(
       "ptrue    p0.b                                    \n"  //
