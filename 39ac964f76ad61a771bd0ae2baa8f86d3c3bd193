@@ -108,6 +108,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a025b6b1_0bd22909",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-11-29T15:43:41Z",
+      "side": 1,
+      "message": "Ack! This seems to give a small improvement, will post in a follow-up commit in the next week or two.",
+      "parentUuid": "e0e9ab58_c8c669f9",
+      "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "060cbfa6_a1974a3c",
         "filename": "source/row_sve.cc",
         "patchSetId": 1
@@ -163,6 +181,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9b054c0a_19c2a17d",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-11-29T15:43:41Z",
+      "side": 1,
+      "message": "The SVE2-BitPerm BGRP instruction can perform a bit shuffle however it does not allow you to duplicate bits (the high four bits of the loaded data need to end up duplicated in the high and low four bits of the resulting 16-bit element) so you\u0027d still need two instructions here. Additionally BGRP is very slow on Cortex-A510 and later little cores.",
+      "parentUuid": "060cbfa6_a1974a3c",
+      "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "37818330_3bea25af",
         "filename": "source/row_sve.cc",
         "patchSetId": 1
@@ -174,6 +210,24 @@
       "writtenOn": "2024-11-23T00:21:09Z",
       "side": 1,
       "message": "loads can\u0027t post increment?",
+      "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15344a8d_3a6bc0fa",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-11-29T15:43:41Z",
+      "side": 1,
+      "message": "Correct.",
+      "parentUuid": "37818330_3bea25af",
       "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -279,6 +333,24 @@
           ]
         }
       ],
+      "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82219f36_1739e241",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2394,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-11-29T15:43:41Z",
+      "side": 1,
+      "message": "No need for volatile here since we don\u0027t touch memory. The ABI assumes that the {non-,}streaming vector lengths do not change within an application since it would break unwinding, so the easiest way to run the tests is to run them multiple times under emulation where you can explicitly specify the vector length.\n\nOn real silicon you can use the PR_SVE_SET_VL(_ONEXEC) prctl() + exec() to start a new program with a new vector length, but only vector lengths ≤ the micro-architectural maximum would be permitted (so only 128-bits anyway on Neoverse V2), which makes it useless for testing longer vector lengths.",
+      "parentUuid": "b514b131_b4932a76",
       "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
