@@ -1,0 +1,139 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86ea9ff1_146496a0",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2072,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-03T21:53:59Z",
+      "side": 1,
+      "message": "if it makes you feel more comfortable, you could add asserts the values are what you expect.",
+      "fixSuggestions": [
+        {
+          "fixId": "f56bc6b0_85be8dda",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2073,
+                "startChar": 0,
+                "endLine": 2073,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2121,
+                "startChar": 0,
+                "endLine": 2121,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2170,
+                "startChar": 0,
+                "endLine": 2170,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2216,
+                "startChar": 0,
+                "endLine": 2216,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2270,
+                "startChar": 0,
+                "endLine": 2270,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2325,
+                "startChar": 0,
+                "endLine": 2325,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2373,
+                "startChar": 0,
+                "endLine": 2373,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2423,
+                "startChar": 0,
+                "endLine": 2423,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2468,
+                "startChar": 0,
+                "endLine": 2468,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2518,
+                "startChar": 0,
+                "endLine": 2518,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 2615,
+                "startChar": 0,
+                "endLine": 2615,
+                "endChar": 0
+              },
+              "replacement": "  assert(width_last_y \u003c\u003d 15);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9463d96eaa46d2634957e568b53c26ee40a9df2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
