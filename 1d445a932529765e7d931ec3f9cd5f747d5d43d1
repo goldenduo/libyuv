@@ -1,0 +1,86 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0694b4bc_1fae7d97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-03T22:03:26Z",
+      "side": 1,
+      "message": "kind of messy to have 2 versions of everything, but a big win on a very important function, so well done.",
+      "revId": "1d445a932529765e7d931ec3f9cd5f747d5d43d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a587aa86_013e8b0a",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-03T22:03:26Z",
+      "side": 1,
+      "message": "this feels wrong to have so many add/sub and not merge them with the mul.\nBut 6 instructions only takes 1 cycle on Cortex X925 :-)",
+      "fixSuggestions": [
+        {
+          "fixId": "a90b8225_e54e5dba",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 183,
+                "startChar": 0,
+                "endLine": 189,
+                "endChar": 0
+              },
+              "replacement": "  \"add        z17.h, z0.h, z26.h             \\n\" /* G \u003d Y + 0.25 * U */  \\\n  \"add        z16.h, z0.h, z4.h              \\n\" /* B \u003d Y + 0.50 * V */  \\\n  \"add        z18.h, z0.h, z5.h              \\n\" /* R \u003d Y + 0.75 * V */  \\\n  \"uqsub      z17.h, z17.h, z6.h             \\n\" /* G \u003d G - 0.25 * U */  \\\n  \"uqsub      z16.h, z16.h, z25.h            \\n\" /* B \u003d B - 0.50 * V */  \\\n  \"uqsub      z18.h, z18.h, z27.h            \\n\" /* R \u003d R - 0.75 * V */\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 198,
+                "startChar": 0,
+                "endLine": 204,
+                "endChar": 0
+              },
+              "replacement": "  \"add        z17.h, z0.h, z26.h             \\n\" /* G \u003d Y + 0.25 * U */  \\\n  \"add        z16.h, z0.h, z4.h              \\n\" /* B \u003d Y + 0.50 * V */  \\\n  \"add        z18.h, z0.h, z5.h              \\n\" /* R \u003d Y + 0.75 * V */  \\\n  \"uqsub      z17.h, z17.h, z6.h             \\n\" /* G \u003d G - 0.25 * U */  \\\n  \"uqsub      z16.h, z16.h, z25.h            \\n\" /* B \u003d B - 0.50 * V */  \\\n  \"uqsub      z18.h, z18.h, z27.h            \\n\" /* R \u003d R - 0.75 * V */\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 215,
+                "startChar": 0,
+                "endLine": 227,
+                "endChar": 0
+              },
+              "replacement": "  \"add        z17.h, z0.h, z26.h             \\n\" /* G0 \u003d Y0 + 0.25 * U0 */ \\\n  \"add        z21.h, z1.h, z26.h             \\n\" /* G1 \u003d Y1 + 0.25 * U0 */ \\\n  \"add        z16.h, z0.h, z4.h              \\n\" /* B0 \u003d Y0 + 0.50 * V0 */ \\\n  \"add        z20.h, z1.h, z4.h              \\n\" /* B1 \u003d Y1 + 0.50 * V0 */ \\\n  \"add        z18.h, z0.h, z5.h              \\n\" /* R0 \u003d Y0 + 0.75 * V0 */ \\\n  \"add        z22.h, z1.h, z5.h              \\n\" /* R1 \u003d Y1 + 0.75 * V0 */ \\\n  \"uqsub      z17.h, z17.h, z6.h             \\n\" /* G0 \u003d G0 - 0.25 * U0 */ \\\n  \"uqsub      z21.h, z21.h, z6.h             \\n\" /* G1 \u003d G1 - 0.25 * U0 */ \\\n  \"uqsub      z16.h, z16.h, z25.h            \\n\" /* B0 \u003d B0 - 0.50 * V0 */ \\\n  \"uqsub      z20.h, z20.h, z25.h            \\n\" /* B1 \u003d B1 - 0.50 * V0 */ \\\n  \"uqsub      z18.h, z18.h, z27.h            \\n\" /* R0 \u003d R0 - 0.75 * V0 */ \\\n  \"uqsub      z22.h, z22.h, z27.h            \\n\" /* R1 \u003d R1 - 0.75 * V0 */\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 236,
+                "startChar": 0,
+                "endLine": 248,
+                "endChar": 0
+              },
+              "replacement": "  \"add        z17.h, z0.h, z26.h             \\n\" /* G0 \u003d Y0 + 0.25 * U0 */ \\\n  \"add        z21.h, z1.h, z26.h             \\n\" /* G1 \u003d Y1 + 0.25 * U0 */ \\\n  \"add        z16.h, z0.h, z4.h              \\n\" /* B0 \u003d Y0 + 0.50 * V0 */ \\\n  \"add        z20.h, z1.h, z4.h              \\n\" /* B1 \u003d Y1 + 0.50 * V0 */ \\\n  \"add        z18.h, z0.h, z5.h              \\n\" /* R0 \u003d Y0 + 0.75 * V0 */ \\\n  \"add        z22.h, z1.h, z5.h              \\n\" /* R1 \u003d Y1 + 0.75 * V0 */ \\\n  \"uqsub      z17.h, z17.h, z6.h             \\n\" /* G0 \u003d G0 - 0.25 * U0 */ \\\n  \"uqsub      z21.h, z21.h, z6.h             \\n\" /* G1 \u003d G1 - 0.25 * U0 */ \\\n  \"uqsub      z16.h, z16.h, z25.h            \\n\" /* B0 \u003d B0 - 0.50 * V0 */ \\\n  \"uqsub      z20.h, z20.h, z25.h            \\n\" /* B1 \u003d B1 - 0.50 * V0 */ \\\n  \"uqsub      z18.h, z18.h, z27.h            \\n\" /* R0 \u003d R0 - 0.75 * V0 */ \\\n  \"uqsub      z22.h, z22.h, z27.h            \\n\" /* R1 \u003d R1 - 0.75 * V0 */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1d445a932529765e7d931ec3f9cd5f747d5d43d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
