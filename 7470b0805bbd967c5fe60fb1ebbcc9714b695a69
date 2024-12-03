@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1dfbe8_6135f98d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-03T20:44:30Z",
+      "side": 1,
+      "message": "(this is based on a comment from here: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6023582/2/source/row_sve.cc#2208 )",
+      "revId": "7470b0805bbd967c5fe60fb1ebbcc9714b695a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
