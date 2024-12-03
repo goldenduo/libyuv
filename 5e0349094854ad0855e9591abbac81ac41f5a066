@@ -54,6 +54,24 @@
       ],
       "revId": "5e0349094854ad0855e9591abbac81ac41f5a066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c57288_fe10d9f4",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2208,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-03T20:44:06Z",
+      "side": 1,
+      "message": "done here: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6067152",
+      "parentUuid": "77fb3c01_dea489bd",
+      "revId": "5e0349094854ad0855e9591abbac81ac41f5a066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
