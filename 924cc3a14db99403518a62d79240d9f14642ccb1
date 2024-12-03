@@ -1,0 +1,301 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d116c82_80407f37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-03T22:10:57Z",
+      "side": 1,
+      "message": "Note that MultiplyRow has a rounding error.  If the pixels are all 0xFF the result is 0xFE.",
+      "revId": "924cc3a14db99403518a62d79240d9f14642ccb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0b30df_79d7f700",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-03T22:10:57Z",
+      "side": 1,
+      "message": "It seems to be SME is a misnomer... these are really streaming sve.. So SSVE.\nAs opposed to using tile registers.\nAlso if you have a regular SVE function, the SME version could call it.  clang might inline the SVE into the SME.\nEventually SVE will have wider registers and more vector units and we\u0027ll probably have both functions and some logic about which one is preferred.",
+      "fixSuggestions": [
+        {
+          "fixId": "249895ff_b2f68cca",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": "#define YUVTORGB_SSVE_SETUP                          \\\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 34,
+                "startChar": 0,
+                "endLine": 35,
+                "endChar": 0
+              },
+              "replacement": "#define READYUV422_SSVE_2X                        \\\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 49,
+                "startChar": 0,
+                "endLine": 50,
+                "endChar": 0
+              },
+              "replacement": "#define READYUV444_SSVE_2X                        \\\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 64,
+                "startChar": 0,
+                "endLine": 65,
+                "endChar": 0
+              },
+              "replacement": "#define I422TORGB_SSVE_2X                                  \\\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 85,
+                "startChar": 0,
+                "endLine": 86,
+                "endChar": 0
+              },
+              "replacement": "#define I444TORGB_SSVE_2X                                  \\\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 109,
+                "startChar": 0,
+                "endLine": 110,
+                "endChar": 0
+              },
+              "replacement": "#define RGBTOARGB8_SSVE_2X                                 \\\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 118,
+                "startChar": 0,
+                "endLine": 119,
+                "endChar": 0
+              },
+              "replacement": "#define YUVTORGB_SSVE_REGS                                                     \\\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 123,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": "__arm_locally_streaming void I444ToARGBRow_SSVE(\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 135,
+                "startChar": 0,
+                "endLine": 136,
+                "endChar": 0
+              },
+              "replacement": "      YUVTORGB_SSVE_SETUP\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 144,
+                "startChar": 0,
+                "endLine": 145,
+                "endChar": 0
+              },
+              "replacement": "      READYUV444_SSVE_2X I444TORGB_SSVE_2X RGBTOARGB8_SSVE_2X\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 156,
+                "startChar": 0,
+                "endLine": 157,
+                "endChar": 0
+              },
+              "replacement": "      READYUV444_SSVE_2X I444TORGB_SSVE_2X RGBTOARGB8_SSVE_2X\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 168,
+                "startChar": 0,
+                "endLine": 169,
+                "endChar": 0
+              },
+              "replacement": "      : \"cc\", \"memory\", YUVTORGB_SSVE_REGS);\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 171,
+                "startChar": 0,
+                "endLine": 172,
+                "endChar": 0
+              },
+              "replacement": "__arm_locally_streaming void I422ToARGBRow_SSVE(\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 183,
+                "startChar": 0,
+                "endLine": 184,
+                "endChar": 0
+              },
+              "replacement": "      YUVTORGB_SSVE_SETUP\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 192,
+                "startChar": 0,
+                "endLine": 193,
+                "endChar": 0
+              },
+              "replacement": "      READYUV422_SSVE_2X I422TORGB_SSVE_2X RGBTOARGB8_SSVE_2X\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 204,
+                "startChar": 0,
+                "endLine": 205,
+                "endChar": 0
+              },
+              "replacement": "      READYUV422_SSVE_2X I422TORGB_SSVE_2X RGBTOARGB8_SSVE_2X\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 216,
+                "startChar": 0,
+                "endLine": 217,
+                "endChar": 0
+              },
+              "replacement": "      : \"cc\", \"memory\", YUVTORGB_SSVE_REGS);\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 219,
+                "startChar": 0,
+                "endLine": 220,
+                "endChar": 0
+              },
+              "replacement": "__arm_locally_streaming void MultiplyRow_16_SSVE(const uint16_t* src_y,\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 262,
+                "startChar": 0,
+                "endLine": 263,
+                "endChar": 0
+              },
+              "replacement": "__arm_locally_streaming void ARGBMultiplyRow_SSVE(const uint8_t* src_argb,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "924cc3a14db99403518a62d79240d9f14642ccb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c444e118_19497070",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-03T22:10:57Z",
+      "side": 1,
+      "message": "I wonder if there would be a benefit to prefetch on SME?",
+      "fixSuggestions": [
+        {
+          "fixId": "cd2a0f5c_11c783c0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 236,
+                "startChar": 0,
+                "endLine": 236,
+                "endChar": 0
+              },
+              "replacement": "      \"prfm    pldl1keep, [%[src_y], 128]              \\n\"\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 250,
+                "startChar": 0,
+                "endLine": 250,
+                "endChar": 0
+              },
+              "replacement": "      \"prfm    pldl1keep, [%[src_y], 128]              \\n\"\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 280,
+                "startChar": 0,
+                "endLine": 280,
+                "endChar": 0
+              },
+              "replacement": "      \"prfm    pldl1keep, [%[src_argb], 128]            \\n\"\n      \"prfm    pldl1keep, [%[src_argb1], 128]           \\n\"\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 299,
+                "startChar": 0,
+                "endLine": 299,
+                "endChar": 0
+              },
+              "replacement": "      \"prfm    pldl1keep, [%[src_argb], 128]            \\n\"\n      \"prfm    pldl1keep, [%[src_argb1], 128]           \\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "924cc3a14db99403518a62d79240d9f14642ccb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
