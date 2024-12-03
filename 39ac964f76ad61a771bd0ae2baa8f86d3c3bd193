@@ -126,6 +126,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6edba1eb_1e1df177",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-03T20:43:14Z",
+      "side": 1,
+      "message": "This is done in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6067150",
+      "parentUuid": "a025b6b1_0bd22909",
+      "revId": "39ac964f76ad61a771bd0ae2baa8f86d3c3bd193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "060cbfa6_a1974a3c",
         "filename": "source/row_sve.cc",
         "patchSetId": 1
