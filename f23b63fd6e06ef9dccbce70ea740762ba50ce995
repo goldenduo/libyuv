@@ -1,0 +1,109 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ab0fc4_7a855563",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-04T17:50:54Z",
+      "side": 1,
+      "message": "Could these take the constants as immediates?",
+      "fixSuggestions": [
+        {
+          "fixId": "16a17136_91b7e7de",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 825,
+                "startChar": 0,
+                "endLine": 827,
+                "endChar": 0
+              },
+              "replacement": "      \"index    z7.h, %w[nv_u_start], %w[nv_u_step]     \\n\"  // U\n      \"index    z23.h, %w[nv_v_start], %w[nv_v_step]    \\n\"  // V\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 885,
+                "startChar": 0,
+                "endLine": 887,
+                "endChar": 0
+              },
+              "replacement": "      \"index    z7.h, %w[nv_u_start], %w[nv_u_step]     \\n\"  // U\n      \"index    z23.h, %w[nv_v_start], %w[nv_v_step]    \\n\"  // V\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 945,
+                "startChar": 0,
+                "endLine": 947,
+                "endChar": 0
+              },
+              "replacement": "      \"index    z7.h, %w[nv_u_start], %w[nv_u_step]     \\n\"  // U\n      \"index    z23.h, %w[nv_v_start], %w[nv_v_step]    \\n\"  // V\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1005,
+                "startChar": 0,
+                "endLine": 1007,
+                "endChar": 0
+              },
+              "replacement": "      \"index    z7.h, %w[nv_u_start], %w[nv_u_step]     \\n\"  // U\n      \"index    z23.h, %w[nv_v_start], %w[nv_v_step]    \\n\"  // V\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1554,
+                "startChar": 0,
+                "endLine": 1555,
+                "endChar": 0
+              },
+              "replacement": "      \"index    z22.s, %w[nv_uv_start], %w[nv_uv_step]  \\n\"  // UV\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1607,
+                "startChar": 0,
+                "endLine": 1608,
+                "endChar": 0
+              },
+              "replacement": "      \"index    z22.s, %w[nv_uv_start], %w[nv_uv_step]  \\n\"  // UV\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1660,
+                "startChar": 0,
+                "endLine": 1661,
+                "endChar": 0
+              },
+              "replacement": "      \"index   z31.s, %w[idx_start], %w[idx_step]        \\n\"  // WXYZ\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1762,
+                "startChar": 0,
+                "endLine": 1763,
+                "endChar": 0
+              },
+              "replacement": "      \"ld1b    {z31.b}, p0/z, [%[kIndices]]              \\n\"  // RGB24\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f23b63fd6e06ef9dccbce70ea740762ba50ce995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
