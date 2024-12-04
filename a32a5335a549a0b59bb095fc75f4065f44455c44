@@ -33,6 +33,24 @@
       "message": "Looks right, thanks.\nOn most cpus with 2 vector units it makes sense to try to issue 2 instructions per cycle that can co-issue as well as allow for some latency (4 cycles) before using the result.\nOn cpus with 4 vector units that means unrolling a bit more and sometimes using additional (destination) registers to allow for the co-issueing.\nFor every 2 vector instructions, there can also be loads and GPR instructions.\nIts really microops, not instructions, that mainly determine scheduling, so keeping to simplier instructions helps.",
       "revId": "a32a5335a549a0b59bb095fc75f4065f44455c44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b72bd8_a1b9aaab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-04T16:43:41Z",
+      "side": 1,
+      "message": "Indeed, although worth keeping in mind that most out-of-order CPUs have a dispatch width for vector instructions larger for than the number of pipelines. As an example, the Cortex-X925 Software Optimization Guide second 4.1 \"Dispatch constraints\" states that \"Up to 9 µOPs utilizing the V pipelines\" which is larger than the 6 vector pipelines that can actually issue instructions per cycle.",
+      "parentUuid": "8eff608d_d5aaae50",
+      "revId": "a32a5335a549a0b59bb095fc75f4065f44455c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
