@@ -16,6 +16,29 @@
       "message": "(this is based on a comment from here: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6023582/2/source/row_sve.cc#2208 )",
       "revId": "7470b0805bbd967c5fe60fb1ebbcc9714b695a69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec23bc73_ef273467",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2157,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-04T16:54:45Z",
+      "side": 1,
+      "message": "just noticed this has been formatted incorrectly. will fix.",
+      "range": {
+        "startLine": 2154,
+        "startChar": 5,
+        "endLine": 2157,
+        "endChar": 21
+      },
+      "revId": "7470b0805bbd967c5fe60fb1ebbcc9714b695a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
