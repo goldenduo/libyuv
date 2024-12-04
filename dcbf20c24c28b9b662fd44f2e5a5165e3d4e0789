@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba61731_7ca9084d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3775295
+      },
+      "writtenOn": "2024-12-04T13:03:13Z",
+      "side": 1,
+      "message": "Hi, I am a developer of Tencent. Our project requires scaling for the NV24 format, but the function is currently missing in scale.h. This commit adds the necessary implementation to support NV24 scaling.",
+      "revId": "dcbf20c24c28b9b662fd44f2e5a5165e3d4e0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
