@@ -16,6 +16,24 @@
       "message": "Also keep in mind it is not necessary to handle complexity.  The calling code can fall back on C or Neon if it helps the SVE be simple/efficient.  By far the common case is nicely aligned width... e.g. 1280.  And for planar functions width * height is used and so the resulting width x 1 will have a large round number.",
       "revId": "03a935493d41bf1e3ec409bf3809a06e3bb6ad58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f124b6bf_3314ebfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-04T16:44:21Z",
+      "side": 1,
+      "message": "Planar functions is good to know, thanks!",
+      "parentUuid": "efc18c28_514ea184",
+      "revId": "03a935493d41bf1e3ec409bf3809a06e3bb6ad58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
