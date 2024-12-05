@@ -104,6 +104,24 @@
       ],
       "revId": "f23b63fd6e06ef9dccbce70ea740762ba50ce995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2adee36_5d035efa",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-05T13:40:26Z",
+      "side": 1,
+      "message": "The start no since it doesn\u0027t fit in an immediate encoding, but the step yes since it is just 2. Will do as a follow-up change in the next couple of weeks.",
+      "parentUuid": "91ab0fc4_7a855563",
+      "revId": "f23b63fd6e06ef9dccbce70ea740762ba50ce995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
