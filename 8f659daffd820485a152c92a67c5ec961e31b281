@@ -16,6 +16,24 @@
       "message": "note in our machine learning use cases, NV12 and \u0027RAW\u0027 (rgb24) are the most common 2 formats, and often need to be converted to/from and between.  Its good that ARM can deal with 24 bit, and usually faster than 32 bit.",
       "revId": "8f659daffd820485a152c92a67c5ec961e31b281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d1085d5_c2dfd36a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-05T13:40:57Z",
+      "side": 1,
+      "message": "Ack! Thanks for the context.",
+      "parentUuid": "ecb0024d_4c646355",
+      "revId": "8f659daffd820485a152c92a67c5ec961e31b281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
