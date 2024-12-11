@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d695478b_f99c410b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-11T16:16:33Z",
+      "side": 1,
+      "message": "Agree it\u0027s a bit messy. If we were using C++ and intrinsics then I think we could probably do something with C++ template specialisation to avoid the duplication but short of macro-ing the whole function body or writing a Python script to generate the kernels I don\u0027t think there\u0027s much we can do here...",
+      "parentUuid": "0694b4bc_1fae7d97",
+      "revId": "1d445a932529765e7d931ec3f9cd5f747d5d43d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a587aa86_013e8b0a",
         "filename": "source/row_sve.cc",
         "patchSetId": 1
@@ -79,6 +97,24 @@
           ]
         }
       ],
+      "revId": "1d445a932529765e7d931ec3f9cd5f747d5d43d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ca081be_9ca8592f",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-11T16:16:33Z",
+      "side": 1,
+      "message": "Indeed, however the ADDs are preferable here since each multiply result is used in two places due to subsampling.",
+      "parentUuid": "a587aa86_013e8b0a",
       "revId": "1d445a932529765e7d931ec3f9cd5f747d5d43d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
