@@ -16,6 +16,24 @@
       "message": "This is probably out of scope for this CL, but I noticed this predicate-loop pattern for SVE and SME row functions is a little repetitive. Do we think it might be worth turning it into a macro?\n\nMaybe something like:\n```\n#define HANDLE_PREDICATES(inner_loop, final_predicate) { \\\n\"ptrue p0.b                        \\n\" \\\n\"1:                                \\n\" \\\ninner_loop                             \\\n\"incb %[dst_ptr]                   \\n\" \\\n\"subs %w[width], %w[width], %w[vl] \\n\" \\\n\"b.ge 1b                           \\n\" \\\n\"2:                                \\n\" \\\n\"adds %w[width], %w[width], %w[vl] \\n\" \\\n\"b.eq 99f                          \\n\" \\\nfinal_predicate                        \\\ninner_loop                             \\\n\"99:                               \\n\" \\\n}\n```",
       "revId": "3611b543a8b3909ce4297a47a831563012907e7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f469e9_e4345346",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-11T16:15:36Z",
+      "side": 1,
+      "message": "Perhaps, there are definitely a few different common patterns depending on e.g. whether we need different predicates for Y vs UV components, but in general yes. If we were actually aiming for minimum code size though we would probably just rewrite the whole thing in intrinsics though since then we could properly template the different helper functions to avoid the duplication, which isn\u0027t really possible with the current assembly macro system...",
+      "parentUuid": "64f7b5a8_f1cea99a",
+      "revId": "3611b543a8b3909ce4297a47a831563012907e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
