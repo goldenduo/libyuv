@@ -50,6 +50,24 @@
       "message": "I see some issues on iOS bots (https://ci.chromium.org/ui/p/libyuv/builders/try/ios_arm64_rel/3335/overview).\n\nCan you take a look?",
       "revId": "f97f8a1b43d9911fe8759c24ac89d8bdbda42fb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e684cdd_56c65e6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-12T19:32:27Z",
+      "side": 1,
+      "message": "those are an arm sve regression.  unrelated to rvv but will need a fix",
+      "parentUuid": "43bfb65f_8c9993c1",
+      "revId": "f97f8a1b43d9911fe8759c24ac89d8bdbda42fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
