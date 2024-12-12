@@ -135,6 +135,30 @@
       },
       "revId": "b8e1539ce0471f6758709597f18e10c63907680e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3735eac6_c4fe2ece",
+        "filename": "DEPS",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-12T10:06:52Z",
+      "side": 1,
+      "message": "Acknowledged.  looks like the other CL landed, so we can close this one?",
+      "parentUuid": "0f1adc0d_c0b61160",
+      "range": {
+        "startLine": 18,
+        "startChar": 32,
+        "endLine": 18,
+        "endChar": 52
+      },
+      "revId": "b8e1539ce0471f6758709597f18e10c63907680e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
