@@ -51,6 +51,24 @@
       "parentUuid": "b26ed1c6_e79a978d",
       "revId": "b119232c3dcd49bc54f76c732ec21d0ed60617bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "960e43ec_4c517a9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-12T11:07:48Z",
+      "side": 1,
+      "message": "Sounds good.\nFeels like this could be done cleaner but if we figure something out it can be revisited.\nFor actual sve we may want to do a full port, or back port, and then come up with some calling code logic for when sve is faster than neon... e.g. if vl \u003e 128",
+      "parentUuid": "428cf28e_d73d5563",
+      "revId": "b119232c3dcd49bc54f76c732ec21d0ed60617bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
