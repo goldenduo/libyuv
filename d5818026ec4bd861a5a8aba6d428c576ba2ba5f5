@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f23531a_fee498dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-12T07:45:57Z",
+      "side": 1,
+      "message": "ideally run sme benchmarks on apple m4 or equivalent.\nconsider doing LDP with int64 to achieve 128 bit load/store",
+      "revId": "d5818026ec4bd861a5a8aba6d428c576ba2ba5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
