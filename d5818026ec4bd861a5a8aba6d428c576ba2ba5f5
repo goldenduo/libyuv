@@ -16,6 +16,24 @@
       "message": "ideally run sme benchmarks on apple m4 or equivalent.\nconsider doing LDP with int64 to achieve 128 bit load/store",
       "revId": "d5818026ec4bd861a5a8aba6d428c576ba2ba5f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aae285fe_0f0426f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-12T10:58:31Z",
+      "side": 1,
+      "message": "SVE and the first version of SME do not have an LDP equivalent instruction. SVE 2.1 and SME 2 introduce multi-vector load/store instructions which are equivalent to LDP/STP however these would need additional compiler features to be enabled (-march\u003d...+sme2 rather than -march\u003d...+sme which we currently use).\n\nOf course if you can guarantee that the vector length is 128 bits then you can use the Neon LDP/STP instructions since they share the same vector length, but this is not portable so I would prefer to avoid hard-coding this anywhere.",
+      "parentUuid": "6f23531a_fee498dc",
+      "revId": "d5818026ec4bd861a5a8aba6d428c576ba2ba5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
