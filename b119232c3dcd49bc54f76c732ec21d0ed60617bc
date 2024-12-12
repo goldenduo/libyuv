@@ -16,6 +16,23 @@
       "message": "(this needs all of the earlier commits in the chain to be committed first)",
       "revId": "b119232c3dcd49bc54f76c732ec21d0ed60617bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26ed1c6_e79a978d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-12T09:33:50Z",
+      "side": 1,
+      "message": "theres pros and cons to this approach, but the end result is roughly 4x less code, so thats a win.\nIts a little hard to see how the macros piece together into a row function because they are far away from the wrapper.  If each macro is basically only used once, it may be easier to understand it if its just above the function?",
+      "revId": "b119232c3dcd49bc54f76c732ec21d0ed60617bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
