@@ -67,6 +67,23 @@
       "message": "Needs a rebase",
       "revId": "3023031ade768ed8c444155f576dd685d3307a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c087d26c_e38b6b4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1247893
+      },
+      "writtenOn": "2024-12-12T11:07:22Z",
+      "side": 1,
+      "message": "Hi Frank, Cosmina has left Arm. This patch was respun by George here: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5790971/5\n\n(Please abandon this change as we don\u0027t have permission to do so. Thanks!)",
+      "revId": "3023031ade768ed8c444155f576dd685d3307a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
