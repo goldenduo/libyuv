@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a756edf5_71177900",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-12-12T20:35:53Z",
+      "side": 1,
+      "message": "George: on macOS, the macro `STREAMING_COMPATIBLE` is not defined (because `CLANG_HAS_SME` is only defined for Linux right now), so compilation fails here.",
+      "revId": "7fd0bd197ee458a1c81be975b15308728a523331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
