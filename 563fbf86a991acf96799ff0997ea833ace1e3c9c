@@ -67,6 +67,23 @@
       "message": "still looks good but has a merge conflict and needs a rebase",
       "revId": "563fbf86a991acf96799ff0997ea833ace1e3c9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16671f66_726bd654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1247893
+      },
+      "writtenOn": "2024-12-12T11:05:33Z",
+      "side": 1,
+      "message": "Hi Frank, Cosmina has left Arm. This change was respun by George here: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5790972\n\n(I\u0027d have abandoned this one but don\u0027t have permissions to do so - please abandon it for us.)",
+      "revId": "563fbf86a991acf96799ff0997ea833ace1e3c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
