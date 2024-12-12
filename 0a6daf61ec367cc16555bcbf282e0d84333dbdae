@@ -16,6 +16,29 @@
       "message": "Note I\u0027m on vacation and this needs another reviewer to land",
       "revId": "0a6daf61ec367cc16555bcbf282e0d84333dbdae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f571b5b_28de50f0",
+        "filename": "source/scale.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2726,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2024-12-12T10:18:05Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Please remove the trailing whitespace.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nPlease remove the trailing whitespace.",
+      "range": {
+        "startLine": 2726,
+        "startChar": 0,
+        "endLine": 2726,
+        "endChar": 2
+      },
+      "revId": "0a6daf61ec367cc16555bcbf282e0d84333dbdae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
