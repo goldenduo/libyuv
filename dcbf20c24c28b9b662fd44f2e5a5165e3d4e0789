@@ -16,6 +16,23 @@
       "message": "Hi, I am a developer of Tencent. Our project requires scaling for the NV24 format, but the function is currently missing in scale.h. This commit adds the necessary implementation to support NV24 scaling.",
       "revId": "dcbf20c24c28b9b662fd44f2e5a5165e3d4e0789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c849ee2_236a62c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-12T09:48:20Z",
+      "side": 1,
+      "message": "Thanks for the contribution!  Looks good.  Would be nice to have a unit test, but really the planar functions need more complete tests.\nIn the future there is P010 that is equivalent to NV12 but 10 bit and P410 is like NV24 with 4:4:4 subsampling.\nAlso NV42 is the same as NV24 but VU vs UV, which doesnt matter, but you might provide a macro in the header",
+      "revId": "dcbf20c24c28b9b662fd44f2e5a5165e3d4e0789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
