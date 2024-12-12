@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da9cb48_d62daf20",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-12-12T20:54:27Z",
+      "side": 1,
+      "message": "The variables `y1_fraction` and `y0_fraction` are not used. Delete them or use them?",
+      "revId": "c2e7f8389ace4c3cd37287b1d0db6e43cb7938b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25afd67b_ceb8d1d2",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-12-12T20:54:27Z",
+      "side": 1,
+      "message": "The variables `y1_fraction` and `y0_fraction` are not used. Delete them or use them?",
+      "revId": "c2e7f8389ace4c3cd37287b1d0db6e43cb7938b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
