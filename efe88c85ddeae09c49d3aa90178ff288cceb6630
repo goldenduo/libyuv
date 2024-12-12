@@ -16,6 +16,23 @@
       "message": "(rebased)",
       "revId": "efe88c85ddeae09c49d3aa90178ff288cceb6630",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e7f4d0_a27a468a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-12-12T07:48:51Z",
+      "side": 1,
+      "message": "feel free to fix clang format... it should be able to format gcc/clang style inline in a cpu agnostic way.\nI have a python script to format the content part of the inline... putting the code into columns.  But it doesnt do the c/c++ part of it",
+      "revId": "efe88c85ddeae09c49d3aa90178ff288cceb6630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
