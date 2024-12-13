@@ -122,6 +122,24 @@
       "parentUuid": "91ab0fc4_7a855563",
       "revId": "f23b63fd6e06ef9dccbce70ea740762ba50ce995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b49d96a_3d5e2816",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-13T09:59:11Z",
+      "side": 1,
+      "message": "It turns out that these indices are completely unused, so removed them here:\nhttps://chromium-review.googlesource.com/c/libyuv/libyuv/+/6089957",
+      "parentUuid": "d2adee36_5d035efa",
+      "revId": "f23b63fd6e06ef9dccbce70ea740762ba50ce995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
