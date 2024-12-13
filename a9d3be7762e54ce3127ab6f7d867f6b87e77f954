@@ -16,6 +16,24 @@
       "message": "The problem on iOS looks real:\n\n```\n[69/95] CXX obj/libyuv_sve/row_sve.o\nFAILED: obj/libyuv_sve/row_sve.o\n../../buildtools/reclient/rewrapper -cfg\u003d../../buildtools/reclient_cfgs/chromium-browser-clang/rewrapper_mac.cfg -exec_root\u003d/Volumes/Work/s/w/...(too long)\nIn file included from ../../source/row_sve.cc:11:\n../../include/libyuv/row_sve.h:321:52: error: expected function body after function declarator\n321 |                                         int width) STREAMING_COMPATIBLE {\n|                                                    ^\n../../source/row_sve.cc:89:3: error: use of undeclared identifier \u0027I400ToARGBRow_SVE_SC\u0027; did you mean \u0027I400ToARGBRow_SVE2\u0027?\n89 |   I400ToARGBRow_SVE_SC(src_y, dst_argb, yuvconstants, width);\n|   ^~~~~~~~~~~~~~~~~~~~\n|   I400ToARGBRow_SVE2\n../../source/row_sve.cc:85:6: note: \u0027I400ToARGBRow_SVE2\u0027 declared here\n85 | void I400ToARGBRow_SVE2(const uint8_t* src_y,\n|      ^\n../../source/row_sve.cc:98:3: error: use of undeclared identifier \u0027I422ToARGBRow_SVE_SC\u0027; did you mean \u0027I422ToARGBRow_SVE2\u0027?\n```\n\nCan you take a look before landing?",
       "revId": "a9d3be7762e54ce3127ab6f7d867f6b87e77f954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64efdb14_ab4b02e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-12-13T15:52:30Z",
+      "side": 1,
+      "message": "This compilation error (on iOS and macOS with arm64 CPUs) is not introduced by this CL. It will be fixed by my other CL: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6087913",
+      "parentUuid": "94b976a0_09c92a33",
+      "revId": "a9d3be7762e54ce3127ab6f7d867f6b87e77f954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
