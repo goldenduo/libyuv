@@ -16,6 +16,24 @@
       "message": "George: on macOS, the macro `STREAMING_COMPATIBLE` is not defined (because `CLANG_HAS_SME` is only defined for Linux right now), so compilation fails here.",
       "revId": "7fd0bd197ee458a1c81be975b15308728a523331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a8e424_f2c3ada8",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-13T11:59:59Z",
+      "side": 1,
+      "message": "Thanks for flagging, fixed in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6087913",
+      "parentUuid": "a756edf5_71177900",
+      "revId": "7fd0bd197ee458a1c81be975b15308728a523331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
