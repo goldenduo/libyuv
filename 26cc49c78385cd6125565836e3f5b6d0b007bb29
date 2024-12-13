@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af82e681_731bbb95",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-12-13T14:57:37Z",
+      "side": 1,
+      "message": "Nit: The comment after `#else` can be omitted after a short `#if` block.",
+      "revId": "26cc49c78385cd6125565836e3f5b6d0b007bb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
