@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a55a85_baa686b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-13T11:59:33Z",
+      "side": 1,
+      "message": "Ack! Enjoy your holiday!",
+      "parentUuid": "19071804_6b60816d",
+      "revId": "2d8652f3e7ba0427c2e72b086a787b96169e1466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bb4bf5c_de5342c0",
@@ -49,6 +67,24 @@
           ]
         }
       ],
+      "revId": "2d8652f3e7ba0427c2e72b086a787b96169e1466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b81ccbd2_6dbfacb5",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-13T11:59:33Z",
+      "side": 1,
+      "message": "I think no at a vector length of 128 bits due to the lack of LDP/STP. In some other code we have tried to mix Neon and SVE and just use SVE for the remainder loop, but I guess in libyuv it is uncommon to need a remainder loop anyway so probably not worthwhile?",
+      "parentUuid": "0bb4bf5c_de5342c0",
       "revId": "2d8652f3e7ba0427c2e72b086a787b96169e1466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +140,24 @@
           ]
         }
       ],
+      "revId": "2d8652f3e7ba0427c2e72b086a787b96169e1466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea92ef53_0cbe9c8b",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-12-13T11:59:33Z",
+      "side": 1,
+      "message": "I tried a pair of LD1/ST1 instructions per iteration and it was marginally slower, but this may depend on the exact memory layout of the data being copied.",
+      "parentUuid": "d8b5f72d_2bb0a37f",
       "revId": "2d8652f3e7ba0427c2e72b086a787b96169e1466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
