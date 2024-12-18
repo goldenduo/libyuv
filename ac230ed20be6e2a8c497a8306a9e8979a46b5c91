@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da990199_e728a8ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1191289
+      },
+      "writtenOn": "2024-12-18T16:59:21Z",
+      "side": 1,
+      "message": "note: This isn\u0027t sufficient to restore the roll. I have a larger, follow up CL (mostly cipd changes) and there might be more issues not yet discovered.",
+      "revId": "ac230ed20be6e2a8c497a8306a9e8979a46b5c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
