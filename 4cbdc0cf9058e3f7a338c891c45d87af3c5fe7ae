@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "555707df_379d4831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1191289
+      },
+      "writtenOn": "2024-12-18T13:12:43Z",
+      "side": 1,
+      "message": "I\u0027m not able to +2. Could either of you trigger CQ please?",
+      "revId": "4cbdc0cf9058e3f7a338c891c45d87af3c5fe7ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
