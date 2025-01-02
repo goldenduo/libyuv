@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66fb1ee5_04d3f0a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-01-02T21:08:07Z",
+      "side": 1,
+      "message": "Optional: I recommend moving the clang-format changes to a prerequisite CL, so that it\u0027s easier to see the actual changes in this CL.",
+      "revId": "f4031956e07bc952cb91d5846527d3414d24597e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
