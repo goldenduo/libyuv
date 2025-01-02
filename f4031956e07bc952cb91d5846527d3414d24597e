@@ -16,6 +16,24 @@
       "message": "Optional: I recommend moving the clang-format changes to a prerequisite CL, so that it\u0027s easier to see the actual changes in this CL.",
       "revId": "f4031956e07bc952cb91d5846527d3414d24597e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0143a416_f2043b76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-02T21:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66fb1ee5_04d3f0a8",
+      "revId": "f4031956e07bc952cb91d5846527d3414d24597e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
