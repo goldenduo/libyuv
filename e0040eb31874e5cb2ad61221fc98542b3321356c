@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "396bd461_c641a0b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3819535
+      },
+      "writtenOn": "2025-01-08T01:30:59Z",
+      "side": 1,
+      "message": "6138934: Apply clang format | https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6138934",
+      "revId": "e0040eb31874e5cb2ad61221fc98542b3321356c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
