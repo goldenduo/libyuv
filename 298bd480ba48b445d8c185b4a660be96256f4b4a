@@ -280,6 +280,24 @@
       "parentUuid": "95e580ce_76f88f82",
       "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cffcedb_d1803a26",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 3668288
+      },
+      "writtenOn": "2025-01-13T16:15:42Z",
+      "side": 1,
+      "message": "I\u0027ve opted in to using pragma directives for pushing and popping the required attributes for each file respectively. \nThis seemed like the most convenient solution and is also possible to do in clang/gcc. Would like to know your input.",
+      "parentUuid": "f538ab58_b062bd5d",
+      "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
