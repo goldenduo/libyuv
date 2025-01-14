@@ -16,6 +16,24 @@
       "message": "at a high level there are 3 issues\n1. affects all build systems, not just GN, creating build errors on those build systems that use this code\n2. pragmas are overridden by command line or incompatible targets, creating build errors.  e.g. -mcpu\u003dcortex-a53\nin cpu_support.h the compiler support for an isa is checked.\nin row.h the compiler support is checked to enable individual functions\nthe newer dot product and i8mm havent been checked yet - currently clang 3 is required for neon.  if a newer clang version is required for neon dot product it will be added to those tests.\n3. only clang and gcc were done, but libyuv is used extensively in open source and/or internally in embedded applications, with a larger variety of compilers.\n\nWe tried and failed to use the attribute approach in the past (on x86), mainly because of issue (2) where a build system would provide specific targets and the pragma/attrribute is incompatible.\n\nIf this works (I dont think it does), I\u0027d prefer do it consistently for all cpus/compilers.\nAs attribute, it would also allow libraries to be built with a single command line..e.g. remove sve/sme and use only neon64.",
       "revId": "bc8ff1df61599ce56dc495aa1b61a6e158d9bb9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe34630_80412880",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001629
+      },
+      "writtenOn": "2025-01-14T14:35:50Z",
+      "side": 1,
+      "message": "Could maybe put it behind a macro and only opt in in chromium when we know we don\u0027t use target flags?",
+      "parentUuid": "db023039_fa851cd6",
+      "revId": "bc8ff1df61599ce56dc495aa1b61a6e158d9bb9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
