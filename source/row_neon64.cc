@@ -5277,11 +5277,11 @@ void MultiplyRow_16_NEON(const uint16_t* src_y,
       "dup         v2.8h, %w3                    \n"
       "1:                                        \n"
       "ldp         q0, q1, [%0], #32             \n"
+      "subs        %w2, %w2, #16                 \n"  // 16 src pixels per loop
       "mul         v0.8h, v0.8h, v2.8h           \n"
       "prfm        pldl1keep, [%0, 448]          \n"
       "mul         v1.8h, v1.8h, v2.8h           \n"
       "stp         q0, q1, [%1], #32             \n"  // store 16 pixels
-      "subs        %w2, %w2, #16                 \n"  // 16 src pixels per loop
       "b.gt        1b                            \n"
       : "+r"(src_y),  // %0
         "+r"(dst_y),  // %1
@@ -5298,6 +5298,7 @@ void DivideRow_16_NEON(const uint16_t* src_y,
       "dup         v4.8h, %w3                    \n"
       "1:                                        \n"
       "ldp         q2, q3, [%0], #32             \n"
+      "subs        %w2, %w2, #16                 \n"  // 16 src pixels per loop
       "umull       v0.4s, v2.4h, v4.4h           \n"
       "umull2      v1.4s, v2.8h, v4.8h           \n"
       "umull       v2.4s, v3.4h, v4.4h           \n"
@@ -5306,7 +5307,6 @@ void DivideRow_16_NEON(const uint16_t* src_y,
       "uzp2        v0.8h, v0.8h, v1.8h           \n"
       "uzp2        v1.8h, v2.8h, v3.8h           \n"
       "stp         q0, q1, [%1], #32             \n"  // store 16 pixels
-      "subs        %w2, %w2, #16                 \n"  // 16 src pixels per loop
       "b.gt        1b                            \n"
       : "+r"(src_y),  // %0
         "+r"(dst_y),  // %1
@@ -5332,11 +5332,11 @@ void Convert16To8Row_NEON(const uint16_t* src_y,
       "dup         v2.8h, %w3                    \n"
       "1:                                        \n"
       "ldp         q0, q1, [%0], #32             \n"
+      "subs        %w2, %w2, #16                 \n"  // 16 src pixels per loop
       "uqshl       v0.8h, v0.8h, v2.8h           \n"
       "uqshl       v1.8h, v1.8h, v2.8h           \n"
       "prfm        pldl1keep, [%0, 448]          \n"
       "uzp2        v0.16b, v0.16b, v1.16b        \n"
-      "subs        %w2, %w2, #16                 \n"  // 16 src pixels per loop
       "str         q0, [%1], #16                 \n"  // store 16 pixels
       "b.gt        1b                            \n"
       : "+r"(src_y),  // %0
@@ -5344,6 +5344,40 @@ void Convert16To8Row_NEON(const uint16_t* src_y,
         "+r"(width)   // %2
       : "r"(shift)    // %3
       : "cc", "memory", "v0", "v1", "v2");
+}
+
+// Use scale to convert J420 to I420
+// scale parameter is 8.8 fixed point but limited to 0 to 255
+// Function is based on DivideRow, but adds a bias
+// Does not clamp
+void Convert8To8Row_NEON(const uint8_t* src_y,
+                          uint8_t* dst_y,
+                          int scale,
+                          int bias,
+                          int width) {
+  asm volatile(
+      "dup         v4.16b, %w3                   \n"  // scale
+      "dup         v5.16b, %w4                   \n"  // bias
+      "1:                                        \n"
+      "ldp         q2, q3, [%0], #32             \n"
+      "subs        %w2, %w2, #32                 \n"  // 32 pixels per loop
+      "umull       v0.8h, v2.8b, v4.8b           \n"
+      "umull2      v1.8h, v2.16b, v4.16b         \n"
+      "umull       v2.8h, v3.8b, v4.8b           \n"
+      "umull2      v3.8h, v3.16b, v4.16b         \n"
+      "prfm        pldl1keep, [%0, 448]          \n"
+      "uzp2        v0.16b, v0.16b, v1.16b        \n"
+      "uzp2        v1.16b, v2.16b, v3.16b        \n"
+      "add         v0.16b, v0.16b, v5.16b        \n"  // add bias (16)
+      "add         v1.16b, v1.16b, v5.16b        \n"
+      "stp         q0, q1, [%1], #32             \n"  // store 16 pixels
+      "b.gt        1b                            \n"
+      : "+r"(src_y),  // %0
+        "+r"(dst_y),  // %1
+        "+r"(width)   // %2
+      : "r"(scale),   // %3
+        "r"(bias)     // %4
+      : "cc", "memory", "v0", "v1", "v2", "v3", "v4", "v5");
 }
 
 #endif  // !defined(LIBYUV_DISABLE_NEON) && defined(__aarch64__)
