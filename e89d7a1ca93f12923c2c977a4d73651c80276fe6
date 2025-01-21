@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1abe1791_e1e1dece",
+        "filename": "source/row_common.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3257,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-21T23:29:44Z",
+      "side": 1,
+      "message": "The important aspects of rounding it to maintain some key values 0, 128, 255.\nIn the ARGBAttenuate, which is incomplete, we arrived at\n(a * b + 127) / 255 as correct rounding.\nBut using a shift, the exact same results can be achieved with\n(a * 0x0100 * b 0x0101 + 0x800000) \u003e\u003e 24\nwhich is 32 bit math but can use pmulhuw with\n(((a * 0x0100 * b * 0x0101) \u003e\u003e 16) + 0x80) \u003e\u003e 8\non arm the +0x80 \u003e\u003e 8 is a rounding shift, but the 16 bit multiply doesnt exist.\nso it would either use 32 bit math, or a bit more complex vqdmulh which is a signed, saturating, doubling multiply that returns the upper 16 bits.\nso a * 0x0080 to compensate for the doubling.  Thats potentially a rounding difference from the original formula.\nBut the saturation would kick in, so we\u0027d have to convert values to signed, or further shift the multiplicand.\nIntel does have a doubling multiply, so it may be possible to get intel and arm to implement the same rounding, but it may not be absolutely correct anymore.\nMore investigation needed.",
+      "parentUuid": "ea503a6f_65461b05",
+      "revId": "e89d7a1ca93f12923c2c977a4d73651c80276fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a22f6c5_b46aedad",
         "filename": "unit_test/convert_test.cc",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2025-01-21T23:13:30Z",
       "side": 1,
       "message": "Please add this simple known answer test:\nhttps://chromium-review.googlesource.com/c/libyuv/libyuv/+/6188243/1..2",
+      "revId": "e89d7a1ca93f12923c2c977a4d73651c80276fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f807dd97_834162a0",
+        "filename": "unit_test/convert_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-21T23:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a22f6c5_b46aedad",
       "revId": "e89d7a1ca93f12923c2c977a4d73651c80276fe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
