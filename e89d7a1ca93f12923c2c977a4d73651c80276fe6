@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea503a6f_65461b05",
+        "filename": "source/row_common.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3257,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-01-21T23:13:30Z",
+      "side": 1,
+      "message": "There should be a rounding term to match the use of the Round() function in the following equations in ITU-T H.273:\n\n```\nY \u003d Clip1Y( Round( ( 1 \u003c\u003c ( BitDepthY − 8 ) ) * ( 219 * E′Y + 16 ) ) )       (30)\nCb \u003d Clip1C( Round( ( 1 \u003c\u003c ( BitDepthC − 8 ) ) * ( 224 * E′PB + 128 ) ) )    (31)\nCr \u003d Clip1C( Round( ( 1 \u003c\u003c ( BitDepthC − 8 ) ) * ( 224 * E′PR + 128 ) ) )    (32)\n```",
+      "revId": "e89d7a1ca93f12923c2c977a4d73651c80276fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a22f6c5_b46aedad",
+        "filename": "unit_test/convert_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-01-21T23:13:30Z",
+      "side": 1,
+      "message": "Please add this simple known answer test:\nhttps://chromium-review.googlesource.com/c/libyuv/libyuv/+/6188243/1..2",
+      "revId": "e89d7a1ca93f12923c2c977a4d73651c80276fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
