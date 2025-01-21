@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5dc8b32_24f7db8d",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5357,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-21T22:03:21Z",
+      "side": 1,
+      "message": "Acknowledged.  After review I plan to run clang-format",
+      "parentUuid": "8389373d_d3694171",
+      "range": {
+        "startLine": 5353,
+        "startChar": 0,
+        "endLine": 5357,
+        "endChar": 38
+      },
+      "revId": "9b915160c202c3bb0c27ed371580483e1d9ce760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cad0d583_9eda700c",
@@ -119,6 +143,30 @@
       "writtenOn": "2025-01-21T19:20:41Z",
       "side": 1,
       "message": "perhaps do this earlier?",
+      "range": {
+        "startLine": 5373,
+        "startChar": 0,
+        "endLine": 5373,
+        "endChar": 75
+      },
+      "revId": "9b915160c202c3bb0c27ed371580483e1d9ce760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "881515d6_f4b8c27b",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5373,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-21T22:03:21Z",
+      "side": 1,
+      "message": "Done.  This came from similar functions that I think you tweaked to use UZP2... I moved subs after the load.\nOn cpus with 4 or even 6 vector units, its good to have the subs be able to co-issue at least 1 cycle before the branch.\nOn cpus with slow load the subs just after the load can be done while waiting on loads.\nSome cpus can fuse a subs/branch, but on those that can\u0027t, having subs further away avoids the branch mispredicting.\nOn some Core2 duo, an update to a vector immediately before a store can cause a \u0027bubble\u0027 which can be avoided by putting anything, including subs, just before the store.  But as far as I know, ARM doesnt have that issue.  But the store wont start until the vector instruction completes.",
+      "parentUuid": "cad0d583_9eda700c",
       "range": {
         "startLine": 5373,
         "startChar": 0,
