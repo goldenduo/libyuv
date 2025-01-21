@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c5a0ffa5_3db50a72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-21T21:53:05Z",
+      "side": 1,
+      "message": "Its a port from Divide which just lacks bias, and uses 16 bits.  But the API is based on Convert16To8.\n\nThe problem with this implementation is that only multiplies by 8 bits, so it can only scale the range down, and it doesnt clamp, so it cant be used for I420ToJ420.\n\nTo implement J420ToI420 need to multiply by a larger constant and clamp values out of range.  Maybe SQDMULH and USQADD.\nAs a first step I may be forced to implement 16 bit math on Intel and support J420ToI420 and I420ToJ420 but disable the Neon.  The row function API allows for \u0027int\u0027 for scale and bias and different functions could be used when scaling the range up.",
+      "parentUuid": "0efd8103_ab137d9f",
+      "revId": "9b915160c202c3bb0c27ed371580483e1d9ce760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5a49d7b5_1ad88894",
         "filename": "source/planar_functions.cc",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2025-01-21T19:20:41Z",
       "side": 1,
       "message": "are you intending to write an sve/sme version of this? if not i can probably take a look some time in the next week or two",
+      "range": {
+        "startLine": 274,
+        "startChar": 12,
+        "endLine": 274,
+        "endChar": 34
+      },
+      "revId": "9b915160c202c3bb0c27ed371580483e1d9ce760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ccb5a0_6331d75a",
+        "filename": "source/planar_functions.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-21T21:53:05Z",
+      "side": 1,
+      "message": "I probably wont have time... first priority is implement Intel and 32 bit Neon, then RiscV, and then fill in some of the optional versions like avx512 and sve.\nContributions welcome.\nThe team that asked for the function has not responded on features needed.\nBut I\u0027ve wanted to have a function like this to allow for work arounds on missing functions like J444ToRGB24 that can at least be implemented with a 2 step conversion now - J444ToI444 using the Convert8To8Plane and then I444ToRGB24",
+      "parentUuid": "5a49d7b5_1ad88894",
       "range": {
         "startLine": 274,
         "startChar": 12,
