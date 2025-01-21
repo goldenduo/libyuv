@@ -16,6 +16,24 @@
       "message": "This code will work checking for the three least significant bits but I believe the version field can be a full byte and we could check \u003e\u003d 2 for versions of AVX 10.2.  In checking for AVX 1 and 2 the example shows in documentation \u003e\u003d 1.",
       "revId": "c8f40618b7d4aa928b15f8ec481c4c9fc7d6fc2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc4046e5_afd339eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-21T21:07:46Z",
+      "side": 1,
+      "message": "Added check for avx10 as well as 8 bit version number for 10_2",
+      "parentUuid": "7ed521c7_2daf5569",
+      "revId": "c8f40618b7d4aa928b15f8ec481c4c9fc7d6fc2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
