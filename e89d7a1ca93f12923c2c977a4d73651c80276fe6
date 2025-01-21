@@ -69,6 +69,24 @@
       "parentUuid": "7a22f6c5_b46aedad",
       "revId": "e89d7a1ca93f12923c2c977a4d73651c80276fe6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1849b351_b64abfb1",
+        "filename": "unit_test/convert_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-01-21T23:31:00Z",
+      "side": 1,
+      "message": "Frank pointed out that the test has a bug. Thanks! It is fixed in patchset 3:\nhttps://chromium-review.googlesource.com/c/libyuv/libyuv/+/6188243/2..3",
+      "parentUuid": "7a22f6c5_b46aedad",
+      "revId": "e89d7a1ca93f12923c2c977a4d73651c80276fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
