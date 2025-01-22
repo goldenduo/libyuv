@@ -3955,6 +3955,41 @@ void Convert16To8Row_NEON(const uint16_t* src_y,
       : "cc", "memory", "q0", "q1", "q2");
 }
 
+// Use scale to convert J420 to I420
+// scale parameter is 8.8 fixed point but limited to 0 to 255
+// Function is based on DivideRow, but adds a bias
+// Does not clamp
+void Convert8To8Row_NEON(const uint8_t* src_y,
+                         uint8_t* dst_y,
+                         int scale,
+                         int bias,
+                         int width) {
+  asm volatile(
+      "vdup.8      d8, %3                        \n"
+      "vdup.8      q5, %4                        \n"
+      "1:                                        \n"
+      "vld1.8      {q2, q3}, [%0]!               \n"
+      "subs        %2, %2, #32                   \n"  // 32 src pixels per loop
+      "vmull.u8    q0, d4, d8                    \n"
+      "vmull.u8    q1, d5, d8                    \n"
+      "vmull.u8    q2, d6, d8                    \n"
+      "vmull.u8    q3, d7, d8                    \n"
+      "vshrn.u16   d0, q0, #8                    \n"
+      "vshrn.u16   d1, q1, #8                    \n"
+      "vshrn.u16   d2, q2, #8                    \n"
+      "vshrn.u16   d3, q3, #8                    \n"
+      "vadd.u8     q0, q0, q5                    \n"
+      "vadd.u8     q1, q1, q5                    \n"
+      "vst1.8      {q0, q1}, [%1]!               \n"  // store 32 pixels
+      "bgt         1b                            \n"
+      : "+r"(src_y),  // %0
+        "+r"(dst_y),  // %1
+        "+r"(width)   // %2
+      : "r"(scale),   // %3
+        "r"(bias)     // %4
+      : "cc", "memory", "q0", "q1", "q2", "q3", "d8", "q5");
+}
+
 #endif  // !defined(LIBYUV_DISABLE_NEON) && defined(__ARM_NEON__)..
 
 #ifdef __cplusplus

@@ -5376,7 +5376,7 @@ void Convert8To8Row_NEON(const uint8_t* src_y,
       "uzp2        v1.16b, v2.16b, v3.16b        \n"
       "add         v0.16b, v0.16b, v5.16b        \n"  // add bias (16)
       "add         v1.16b, v1.16b, v5.16b        \n"
-      "stp         q0, q1, [%1], #32             \n"  // store 16 pixels
+      "stp         q0, q1, [%1], #32             \n"  // store 32 pixels
       "b.gt        1b                            \n"
       : "+r"(src_y),  // %0
         "+r"(dst_y),  // %1
