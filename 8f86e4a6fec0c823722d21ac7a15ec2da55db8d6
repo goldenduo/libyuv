@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "289cecb3_4ddf84c0",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-01-27T23:52:02Z",
+      "side": 1,
+      "message": "Nikolay: I noticed a stale variable name `TEST` in this comment. I wrote [a CL to update it](https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6203445), so you may need to resolve a merge conflict if my CL is submitted first. My apologies.",
+      "revId": "8f86e4a6fec0c823722d21ac7a15ec2da55db8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80a46ec3_d48b550d",
