@@ -298,6 +298,24 @@
       "parentUuid": "f538ab58_b062bd5d",
       "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a64781_e1b17a6b",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-27T22:53:13Z",
+      "side": 1,
+      "message": "I\u0027ve had bad experiences with these pragmas in the past.\n1. they require a compiler version check for each.\n2. they conflict with commandline.  If the command line specifies incompatible options, it can\u0027t be detected and the build will fail, or have unexpected results.\n3. the build command line comes from different build systems, and this (GN) is just 1 of many.  Assuming you could update them all, this makes arm64 inconsistent with arm32 and other cpus and/or compilers like Visual C",
+      "parentUuid": "9cffcedb_d1803a26",
+      "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
