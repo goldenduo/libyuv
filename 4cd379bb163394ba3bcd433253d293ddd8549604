@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a94b9b_b2d16301",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-28T18:25:06Z",
+      "side": 1,
+      "message": "nice!  a bit like neon subh\n\nso even if we did upgrade this to using 8.8 shorts, umulh could be used on .h values producing the same results as intel vpmulhuw.  16 x 16 -\u003e upper 16.",
+      "fixSuggestions": [
+        {
+          "fixId": "57ff9aff_03e91fc1",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 1727,
+                "startChar": 0,
+                "endLine": 1781,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "4cd379bb163394ba3bcd433253d293ddd8549604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "837baaba_aa71d190",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-28T18:25:06Z",
+      "side": 1,
+      "message": "This is width (param 2)?  Can it use %w[width]?",
+      "fixSuggestions": [
+        {
+          "fixId": "0b78f2d7_abe44592",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 1768,
+                "startChar": 0,
+                "endLine": 1770,
+                "endChar": 0
+              },
+              "replacement": "      \"whilelt     p0.b, wzr, %w[width]                   \\n\"\n      \"whilelt     p1.b, %w[vl], %w[width]                \\n\"  //\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4cd379bb163394ba3bcd433253d293ddd8549604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
