@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0cab238_4a794283",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-28T20:41:07Z",
+      "side": 1,
+      "message": "ARGBToJ444 first draft using C for UV.\nThe ARGBToUVJ444Row_NEON etc could be easily ported from ARGBToUV444Row_NEON using the JPeg (full range BT.601) coefficients\nBut it would be good to simplify ARGBToJ420\n\n1. implement subsampling as a first pass that averages 2 rows down using full accuracy (a+b+c+d+2)/4\nintel currently does this\n ((a+b+1)/2+(c+d+1)/2 + 1)/2\nand arm does this\n (a+b+c+d+1)/2\nand then uses rgb to uv coeffiecients that are 2x smaller.\nboth are low quality for performance, but arm especially has rounding error.\n\nthe subsampling quality needs to be improved.  its not necessary to do 2 passes to do it, but the performance cost is at most 20% on arm and 5% on intel.\nthe upside is \u0027exact\u0027 will use SIMD on intel and be 5x faster.\n2 pass is much simpler overall.\nthe improved quality would likely cause \u0027golden\u0027 test failures and might have to be optional, but projects already expect differences, so i think its managable.\n\n2. the argbtoyuv supports several variations - 7 bit vs 8 bit, truncation vs rounding.  7 bit is to maintain visual c and could be dropped, since the assembly is only for 32 bit x86.  But I did just set up a windows machine with vs2022, so if native visual c is still important, i may try setting up ninja\nrounding is done with a hardcoded add 0x80 that is 8 bit yuv specific.  this is bad because the coefficients cant be used for 10 bit yuv.  a rounding shift could be used, but i think the corect answer is truncation.  when upsampling 8 to 16, replicate.  when downsampling 16 to 8, truncate.\nIn this case, its the intel code that rounds and arm that truncates.  Its easy to remove the rounding on intel, and might lead to optimizations on arm to use mulh and/or uzip2\n\n3. the argbtouv could be split into argbtou and argbtov.  since the source is in cache, doing 2 passes is often faster due to single stream of writes at a time.\nas is there is some subsampling computation saving to having them combined, but that goes away with subsampling done once.\n\nthe math for uv doesnt easily lend itself to a single function with coefficients, due to signed math.\nBut it might still be possible to use an 8 bit dot product\nneg rgb channels that need to be subtracted\nsudot / vnni\n\nif kept as argbuv it can be called with channel swapped rgb vs bgr coefficients and swapped u and v pointers to achieve 2 endians - rgbtouv and bgrtouv",
+      "revId": "284462ceb4c29cf4bc543991947b84318d430358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
