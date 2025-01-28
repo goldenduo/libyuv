@@ -16,6 +16,24 @@
       "message": "Is that more standard?",
       "revId": "05f9db878e691177c65f8e147645f5f25ee5e747",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08090e56_4672b752",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-01-28T00:19:07Z",
+      "side": 1,
+      "message": "`UNIT_TEST` is the name of the option. See line 9:\n\n```\noption( UNIT_TEST \"Built unit tests\" OFF )\n```\n\nI guess the option was originally named \"TEST\" and the comment was not updated when the option was renamed \"UNIT_TEST\". But I didn\u0027t look at the git history to verify this.",
+      "parentUuid": "367ab446_1d711291",
+      "revId": "05f9db878e691177c65f8e147645f5f25ee5e747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
