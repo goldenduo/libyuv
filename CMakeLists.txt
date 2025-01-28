@@ -1,12 +1,13 @@
 # CMakeLists for libyuv
 # Originally created for "roxlu build system" to compile libyuv on windows
 # Run with -DUNIT_TEST=ON to build unit tests
+cmake_minimum_required( VERSION 2.8.12 )
 
 include(CheckCSourceCompiles)
 
 project ( YUV C CXX )	# "C" is required even for C++ projects
-cmake_minimum_required( VERSION 2.8.12 )
 option( UNIT_TEST "Built unit tests" OFF )
+option( LIBYUV_DISABLE_JPEG "Disable JPEG support" OFF )
 
 set ( ly_base_dir	${PROJECT_SOURCE_DIR} )
 set ( ly_src_dir	${ly_base_dir}/source )
@@ -196,11 +197,13 @@ target_link_libraries	( yuvconvert ${ly_lib_static} )
 add_executable      ( yuvconstants ${ly_base_dir}/util/yuvconstants.c )
 target_link_libraries  ( yuvconstants ${ly_lib_static} )
 
-find_package ( JPEG )
-if (JPEG_FOUND)
-  include_directories( ${JPEG_INCLUDE_DIR} )
-  target_link_libraries( ${ly_lib_shared} ${JPEG_LIBRARY} )
-  add_definitions( -DHAVE_JPEG )
+if (NOT LIBYUV_DISABLE_JPEG)
+  find_package ( JPEG )
+  if (JPEG_FOUND)
+    include_directories( ${JPEG_INCLUDE_DIR} )
+    target_link_libraries( ${ly_lib_shared} ${JPEG_LIBRARY} )
+    add_definitions( -DHAVE_JPEG )
+  endif()
 endif()
 
 if(UNIT_TEST)
