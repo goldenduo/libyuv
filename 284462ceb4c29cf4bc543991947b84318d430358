@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "696b430b_fdc0532f",
+        "filename": "source/convert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3551,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-29T22:20:10Z",
+      "side": 1,
+      "message": "added TODO comment\nThe simple solution is add a loop\nfor (x \u003d 0; x \u003c width; x +\u003d BLOCK_SIZE)\nand make row buffer BLOCK_SIZE with a relatively small value...eg 4096.\nexperimentation could tell us the best performance.  We need all the arrays to fit in L1 - the source, the row buffer, y, u and v.  So 5 arrays of BLOCK_SIZE.\nTotal size in this case would be\n4096 * 3 + 4096 * 4 + 4096 + 4096 + 4096 \u003d 10 * 4096 \u003d 40960.  High end cpus have 64k L1, but low end is 32k, so perhaps 2048 would work better, allow \u0027streaming\u0027 the source into cache.",
+      "parentUuid": "1d6cb412_e9a268ee",
+      "revId": "284462ceb4c29cf4bc543991947b84318d430358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa84e2e9_e447d18b",
@@ -101,6 +119,24 @@
       "writtenOn": "2025-01-29T21:11:44Z",
       "side": 1,
       "message": "IMPORTANT: Free this buffer when done.",
+      "revId": "284462ceb4c29cf4bc543991947b84318d430358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83555e8_9267c820",
+        "filename": "source/convert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3717,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-29T22:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa84e2e9_e447d18b",
       "revId": "284462ceb4c29cf4bc543991947b84318d430358",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
