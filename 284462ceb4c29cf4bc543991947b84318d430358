@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b04d8241_9b066954",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-29T21:52:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05c81c65_01caedb3",
+      "revId": "284462ceb4c29cf4bc543991947b84318d430358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bc0ff0c_52e49444",
@@ -48,6 +66,24 @@
       "writtenOn": "2025-01-29T21:11:44Z",
       "side": 1,
       "message": "Can we coalesce rows in this function? Or would that make the temp row buffer too big?",
+      "revId": "284462ceb4c29cf4bc543991947b84318d430358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6cb412_e9a268ee",
+        "filename": "source/convert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3551,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-29T21:52:20Z",
+      "side": 1,
+      "message": "no.  coalesce only works for packed formats - one to one.\nhmmm... lemme think.  It doesnt work if the source does subsampling because the source isn\u0027t contiguous... it would step 2 rows.  But it might work on planar without subsampling.  So lets say it probably could.\nBut because these do a conversion, you dont necessarily want to coalesce.\nIf we end up with a very large width, the conversion / row buffer will miss the cache.\nThe way I\u0027ve handled that in the past is make a row function... e.g. RAWToUV444 and it internally does 2 steps - RAWToARGB + ARGBToUV444, taking a large width, but add an inner width loop that does a cache friendly size.\nThe main reason for doing this was RAWToUV444 is technically feasible and desirable on ARM, where you can LD3 the source.\nBut it has several drawbacks:\n1. the RAWToY and RAWToUV would redundently do the same conversion on Intel\n2. requires different row functions on ARM.  As is, this function leverages 2 existing row functions\n3. LD3 is slow, so even arm can optimize RAWToARGB using shuffles, but it requires unrolled code and registers for shufflers, that doesnt integrate into RGB to YUV functions nicely.\n4. The conversion here could be replaced with nearly any conversion.  If we get requests, I might make the type a parameter.\n\nThe issue you raise with row buffer to big is why we use malloc.  We used to use alloca, and prior to that, a simple char buf[MAXWIDTH].  even legit webcams were hitting the limits.  But for performance, it might make sense to break up the large widths.  e.g.  create a 2 KB buffer (on stack) and loop thru width 2k at a time.  Maybe this is something \u0027any\u0027 functions could do.\n\nMarking resolved because this is 2 pass, and even if we can coalesce, we dont want to.  I could add a comment about why, if you want.",
+      "parentUuid": "9bc0ff0c_52e49444",
       "revId": "284462ceb4c29cf4bc543991947b84318d430358",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "413aa7fd_4ccedb8d",
+        "filename": "source/convert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3724,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-29T21:52:20Z",
+      "side": 1,
+      "message": "This is for some reason :-)\nDoing UV first is faster.\nIn general, UV is more computational/less data than Y... Y is just memcpy speed.\nThe UV will leave the common source (row) in cache, speeding up Y.\nWhen its not subsampled, it probably makes less difference\nWhen the conversion puts the source in cache, its probably makes less difference\nBut I\u0027m pretty sure this is still the marginally faster order, since UV does 2 writes, making the source read less of a bottleneck than in the Y.\nPlus the Y is simplier - a very simple udot.  The UV is at best, a complicated dot product, but currently it is C, and sometimes it is Neon but not a dot product.",
+      "parentUuid": "ff820bbd_a870712b",
+      "revId": "284462ceb4c29cf4bc543991947b84318d430358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edc056eb_82bb3942",
@@ -99,6 +153,24 @@
       "writtenOn": "2025-01-29T21:11:44Z",
       "side": 1,
       "message": "Nit: It looks nicer to operate on Y and then UV, unless the current order is better for some reason.",
+      "revId": "284462ceb4c29cf4bc543991947b84318d430358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "163b3ad1_d73cd824",
+        "filename": "source/convert_from_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2552,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-29T21:52:20Z",
+      "side": 1,
+      "message": "ditto.  UV first is for performance",
+      "parentUuid": "edc056eb_82bb3942",
       "revId": "284462ceb4c29cf4bc543991947b84318d430358",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
