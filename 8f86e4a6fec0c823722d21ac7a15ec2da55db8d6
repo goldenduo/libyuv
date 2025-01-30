@@ -50,6 +50,24 @@
       "message": "This build option is named `libyuv_disable_jpeg` in the other two build systems (GN and GYP). I suggest naming the CMake option `LIBYUV_DISABLE_JPEG` (and inverting its meaning) for consistency.",
       "revId": "8f86e4a6fec0c823722d21ac7a15ec2da55db8d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07bbb2f3_cad93dec",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3849901
+      },
+      "writtenOn": "2025-01-30T17:36:35Z",
+      "side": 1,
+      "message": "Hey, I\u0027ve applyed the requested changes.",
+      "parentUuid": "80a46ec3_d48b550d",
+      "revId": "8f86e4a6fec0c823722d21ac7a15ec2da55db8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
