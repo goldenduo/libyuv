@@ -16,6 +16,23 @@
       "message": "wow freetype.  I used to use that years ago when making video games.",
       "revId": "4974f6b742d7786472ce1f27c2a2369d9fca877a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "891d55d3_150fe43e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-30T20:00:27Z",
+      "side": 1,
+      "message": "Note reviews take 2 owners, so I\u0027ll add Mirko, who knows the DEPS best",
+      "revId": "4974f6b742d7786472ce1f27c2a2369d9fca877a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
