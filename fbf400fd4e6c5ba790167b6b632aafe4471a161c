@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d781df85_60dcac23",
+        "filename": "DIR_METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-01-30T20:28:50Z",
+      "side": 1,
+      "message": "The component I\u0027m seeing internally for libyuv is 324586 ?",
+      "revId": "fbf400fd4e6c5ba790167b6b632aafe4471a161c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
