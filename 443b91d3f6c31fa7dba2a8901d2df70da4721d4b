@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd8666d2_4e51b6d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-03T22:16:27Z",
+      "side": 1,
+      "message": "Turns out to be my bad... I somehow submitted the NEON without \u0027neg\u0027 to flip the sign.  Should be resolved now.\nTo test I build 32 bit and 64 bit, and run with\nlibyuv_test \u0027--gunit_filter\u003d*\u0027 --gunit_also_run_disabled_tests --libyuv_flags\u003d1 --libyuv_cpu_info\u003d256\nwhere --libyuv_flags\u003d1 is the \u0027C\u0027 version to compare with\n--libyuv_cpu_info\u003d256 is NEON for the \u0027OPT\u0027",
+      "parentUuid": "158d08e4_5fa8f04a",
+      "revId": "443b91d3f6c31fa7dba2a8901d2df70da4721d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a40b768_a576e808",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-03T21:58:31Z",
       "side": 1,
       "message": "Should this change be reverted now that we have https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6226854.\n\nIf we still need this change, please add a comment to explain why these two macro definitions are commented out, and mention this change in the commit message.",
+      "revId": "443b91d3f6c31fa7dba2a8901d2df70da4721d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c476520_d4c125da",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-03T22:16:27Z",
+      "side": 1,
+      "message": "Done.  comments removed.. row functions are fixed.",
+      "parentUuid": "5a40b768_a576e808",
       "revId": "443b91d3f6c31fa7dba2a8901d2df70da4721d4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
