@@ -16,6 +16,23 @@
       "message": "attn George - ARGBToI444 fails on Neon, both 32 bit and 64 bit.  But works with C and NEON_DOTPROD.  Disabled ARGBToYRow_NEON in this upload",
       "revId": "443b91d3f6c31fa7dba2a8901d2df70da4721d4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a40b768_a576e808",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-03T21:58:31Z",
+      "side": 1,
+      "message": "Should this change be reverted now that we have https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6226854.\n\nIf we still need this change, please add a comment to explain why these two macro definitions are commented out, and mention this change in the commit message.",
+      "revId": "443b91d3f6c31fa7dba2a8901d2df70da4721d4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
