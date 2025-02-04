@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb58c81_938ed5bc",
+        "filename": "source/row_common.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-04T22:24:43Z",
+      "side": 1,
+      "message": "Nit: Add \"of\" after \"average\". See line 854.",
+      "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5aeff04_628db028",
+        "filename": "source/row_common.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-04T22:24:43Z",
+      "side": 1,
+      "message": "Nit: and \u003d\u003e with",
+      "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "758331d2_1d4f383b",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3122,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-04T22:24:43Z",
+      "side": 1,
+      "message": "Optional: Should we also change the comment to \"average of 4\"?\n\nNote: There are several other instances of this comment below.",
+      "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
