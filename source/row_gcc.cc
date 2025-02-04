@@ -1535,11 +1535,18 @@ void RGBAToYJRow_AVX2(const uint8_t* src_rgba, uint8_t* dst_y, int width) {
 #endif  // HAS_RGBATOYJROW_AVX2
 
 #ifdef HAS_ARGBTOUVROW_SSSE3
-void ARGBToUVRow_SSSE3(const uint8_t* src_argb,
-                       int src_stride_argb,
-                       uint8_t* dst_u,
-                       uint8_t* dst_v,
-                       int width) {
+
+struct RgbUVConstants {
+  vec8 kRGBToU;
+  vec8 kRGBToV;
+};
+
+void ARGBToUVMatrixRow_SSSE3(const uint8_t* src_argb,
+                             int src_stride_argb,
+                             uint8_t* dst_u,
+                             uint8_t* dst_v,
+                             int width,
+                             const struct RgbUVConstants* rgbuvconstants) {
   asm volatile(
       "movdqa      %5,%%xmm3                     \n"
       "movdqa      %6,%%xmm4                     \n"
@@ -1572,10 +1579,10 @@ void ARGBToUVRow_SSSE3(const uint8_t* src_argb,
       "pavgb       %%xmm7,%%xmm2                 \n"
       "movdqa      %%xmm0,%%xmm1                 \n"
       "movdqa      %%xmm2,%%xmm6                 \n"
-      "pmaddubsw   %%xmm4,%%xmm0                 \n"
-      "pmaddubsw   %%xmm4,%%xmm2                 \n"
-      "pmaddubsw   %%xmm3,%%xmm1                 \n"
-      "pmaddubsw   %%xmm3,%%xmm6                 \n"
+      "pmaddubsw   %%xmm3,%%xmm0                 \n"
+      "pmaddubsw   %%xmm3,%%xmm2                 \n"
+      "pmaddubsw   %%xmm4,%%xmm1                 \n"
+      "pmaddubsw   %%xmm4,%%xmm6                 \n"
       "phaddw      %%xmm2,%%xmm0                 \n"
       "phaddw      %%xmm6,%%xmm1                 \n"
       "psraw       $0x8,%%xmm0                   \n"
@@ -1592,12 +1599,59 @@ void ARGBToUVRow_SSSE3(const uint8_t* src_argb,
         "+r"(dst_v),                       // %2
         "+rm"(width)                       // %3
       : "r"((intptr_t)(src_stride_argb)),  // %4
-        "m"(kARGBToV),                     // %5
-        "m"(kARGBToU),                     // %6
+        "m"(rgbuvconstants->kRGBToU),      // %5
+        "m"(rgbuvconstants->kRGBToV),      // %6
         "m"(kAddUV128)                     // %7
       : "memory", "cc", "xmm0", "xmm1", "xmm2", "xmm6", "xmm7");
 }
+
+// RGB to bt601 coefficients
+// UB   0.875 coefficient = 112
+// UG -0.5781 coefficient = -74
+// UR -0.2969 coefficient = -38
+// VB -0.1406 coefficient = -18
+// VG -0.7344 coefficient = -94
+// VR   0.875 coefficient = 112
+
+static const struct RgbUVConstants kRgb24I601UVConstants = {
+    {112, -74, -38, 0, 112, -74, -38, 0, 112, -74, -38, 0, 112, -74, -38, 0},
+    {-18, -94, 112, 0, -18, -94, 112, 0, -18, -94, 112, 0, -18, -94, 112, 0}};
+
+void ARGBToUVRow_SSSE3(const uint8_t* src_argb,
+                       int src_stride_argb,
+                       uint8_t* dst_u,
+                       uint8_t* dst_v,
+                       int width) {
+  ARGBToUVMatrixRow_SSSE3(src_argb, src_stride_argb, dst_u, dst_v, width,
+                          &kRgb24I601UVConstants);
+}
+
 #endif  // HAS_ARGBTOUVROW_SSSE3
+
+#ifdef HAS_ARGBTOUVJROW_SSSE3
+
+// RGB to JPEG coefficients
+// UB  0.500    coefficient = 127
+// UG -0.33126  coefficient = -84
+// UR -0.16874  coefficient = -43
+// VB -0.08131  coefficient = -20
+// VG -0.41869  coefficient = -107
+// VR 0.500     coefficient = 127
+
+static const struct RgbUVConstants kRgb24JPEGUVConstants = {
+    {127, -84, -43, 0, 127, -84, -43, 0, 127, -84, -43, 0, 127, -84, -43, 0},
+    {-20, -107, 127, 0, -20, -107, 127, 0, -20, -107, 127, 0, -20, -107, 127,
+     0}};
+
+void ARGBToUVJRow_SSSE3(const uint8_t* src_argb,
+                        int src_stride_argb,
+                        uint8_t* dst_u,
+                        uint8_t* dst_v,
+                        int width) {
+  ARGBToUVMatrixRow_SSSE3(src_argb, src_stride_argb, dst_u, dst_v, width,
+                          &kRgb24JPEGUVConstants);
+}
+#endif  // HAS_ARGBTOUVJROW_SSSE3
 
 #if defined(HAS_ARGBTOUVROW_AVX2) || defined(HAS_ABGRTOUVROW_AVX2) || \
     defined(HAS_ARGBTOUVJROW_AVX2) || defined(HAS_ABGRTOUVJROW_AVX2)
@@ -1861,72 +1915,6 @@ void ABGRToUVJRow_AVX2(const uint8_t* src_abgr,
         "xmm7");
 }
 #endif  // HAS_ABGRTOUVJROW_AVX2
-
-#ifdef HAS_ARGBTOUVJROW_SSSE3
-void ARGBToUVJRow_SSSE3(const uint8_t* src_argb,
-                        int src_stride_argb,
-                        uint8_t* dst_u,
-                        uint8_t* dst_v,
-                        int width) {
-  asm volatile(
-      "movdqa      %5,%%xmm3                     \n"
-      "movdqa      %6,%%xmm4                     \n"
-      "movdqa      %7,%%xmm5                     \n"
-      "sub         %1,%2                         \n"
-
-      LABELALIGN
-      "1:                                        \n"
-      "movdqu      (%0),%%xmm0                   \n"
-      "movdqu      0x00(%0,%4,1),%%xmm7          \n"
-      "pavgb       %%xmm7,%%xmm0                 \n"
-      "movdqu      0x10(%0),%%xmm1               \n"
-      "movdqu      0x10(%0,%4,1),%%xmm7          \n"
-      "pavgb       %%xmm7,%%xmm1                 \n"
-      "movdqu      0x20(%0),%%xmm2               \n"
-      "movdqu      0x20(%0,%4,1),%%xmm7          \n"
-      "pavgb       %%xmm7,%%xmm2                 \n"
-      "movdqu      0x30(%0),%%xmm6               \n"
-      "movdqu      0x30(%0,%4,1),%%xmm7          \n"
-      "pavgb       %%xmm7,%%xmm6                 \n"
-
-      "lea         0x40(%0),%0                   \n"
-      "movdqa      %%xmm0,%%xmm7                 \n"
-      "shufps      $0x88,%%xmm1,%%xmm0           \n"
-      "shufps      $0xdd,%%xmm1,%%xmm7           \n"
-      "pavgb       %%xmm7,%%xmm0                 \n"
-      "movdqa      %%xmm2,%%xmm7                 \n"
-      "shufps      $0x88,%%xmm6,%%xmm2           \n"
-      "shufps      $0xdd,%%xmm6,%%xmm7           \n"
-      "pavgb       %%xmm7,%%xmm2                 \n"
-      "movdqa      %%xmm0,%%xmm1                 \n"
-      "movdqa      %%xmm2,%%xmm6                 \n"
-      "pmaddubsw   %%xmm4,%%xmm0                 \n"
-      "pmaddubsw   %%xmm4,%%xmm2                 \n"
-      "pmaddubsw   %%xmm3,%%xmm1                 \n"
-      "pmaddubsw   %%xmm3,%%xmm6                 \n"
-      "phaddw      %%xmm2,%%xmm0                 \n"
-      "phaddw      %%xmm6,%%xmm1                 \n"
-      "paddw       %%xmm5,%%xmm0                 \n"
-      "paddw       %%xmm5,%%xmm1                 \n"
-      "psraw       $0x8,%%xmm0                   \n"
-      "psraw       $0x8,%%xmm1                   \n"
-      "packsswb    %%xmm1,%%xmm0                 \n"
-      "movlps      %%xmm0,(%1)                   \n"
-      "movhps      %%xmm0,0x00(%1,%2,1)          \n"
-      "lea         0x8(%1),%1                    \n"
-      "sub         $0x10,%3                      \n"
-      "jg          1b                            \n"
-      : "+r"(src_argb),                    // %0
-        "+r"(dst_u),                       // %1
-        "+r"(dst_v),                       // %2
-        "+rm"(width)                       // %3
-      : "r"((intptr_t)(src_stride_argb)),  // %4
-        "m"(kARGBToVJ),                    // %5
-        "m"(kARGBToUJ),                    // %6
-        "m"(kSub128)                       // %7
-      : "memory", "cc", "xmm0", "xmm1", "xmm2", "xmm6", "xmm7");
-}
-#endif  // HAS_ARGBTOUVJROW_SSSE3
 
 #ifdef HAS_ABGRTOUVJROW_SSSE3
 void ABGRToUVJRow_SSSE3(const uint8_t* src_abgr,
