@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2747b0_ddf7a658",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-04T23:18:20Z",
+      "side": 0,
+      "message": "nit: although its good to use coefficients to implement BGRA and UVJ, the ultimate goal is to make these semi-public and use the same matrix names for all CPUs, and it would help simplify it to have the content at least the same as NEON.",
+      "revId": "5a9a6ea936085310f3b9fbd4a774868e6a984ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47ca01cf_8c652c3c",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-04T23:18:20Z",
+      "side": 0,
+      "message": "the old half add was cool, and I wish we had used it for neon as well.  \nNow we need 2 instructions and my only thought is SRA shift right an accumulate.  But I dont think that has a rounding version.\n\nif we wanted a specialized ARGBToUV422 the urhadd could be used, but currently that is implemented by passing the same pointer to 2 rows (stride 0).",
+      "revId": "5a9a6ea936085310f3b9fbd4a774868e6a984ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c09bc50_f3cbeba1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-04T23:18:20Z",
+      "side": 1,
+      "message": "Note 1\nthis change affects accuracy, on intel with exact, as well as ARM, and is likely to cause some golden tests to fail.\n\nif it becomes too painful, an option could be added to fallback on the old method, but only implemented in row_common\n\nNote 2\narm averaging produces int16 in range of 0 to 255.\nit may make sense to pack this back down to bytes (uzp2) to allow sudot on bytes\n\nas is, it could use 16 bit dot product, which is less common, or sudot as it is, with half the values being 0.  But a uzp2 would combine 2 registers of 16 bit into 1 register of 8 bit.  or addhn for the final add to get the upper half.\n\nThe code would then be substantially similar to J444 versions but with a subsample step.\nJ444 supports NEON (mls), sdot (sub 128 from argb, then sdot), sudot (i8mm)\nsve currently does sdot but should probably be sudot.",
+      "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bb58c81_938ed5bc",
@@ -14,6 +31,24 @@
       "writtenOn": "2025-02-04T22:24:43Z",
       "side": 1,
       "message": "Nit: Add \"of\" after \"average\". See line 854.",
+      "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee232deb_bdf92567",
+        "filename": "source/row_common.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-04T23:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bb58c81_938ed5bc",
       "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -35,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82f4e9f_47da86d5",
+        "filename": "source/row_common.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-04T23:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5aeff04_628db028",
+      "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "758331d2_1d4f383b",
@@ -48,6 +101,209 @@
       "writtenOn": "2025-02-04T22:24:43Z",
       "side": 1,
       "message": "Optional: Should we also change the comment to \"average of 4\"?\n\nNote: There are several other instances of this comment below.",
+      "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a35ebc7f_15d124fd",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3122,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-04T23:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "758331d2_1d4f383b",
+      "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1d9561_aabb4030",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-04T23:18:20Z",
+      "side": 1,
+      "message": "i wonder if filling in the rounding constant would replace 2x addhnb with 1x uzp2",
+      "fixSuggestions": [
+        {
+          "fixId": "7ab35862_a1b16ffc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 248,
+                "startChar": 0,
+                "endLine": 249,
+                "endChar": 0
+              },
+              "replacement": "      \"movi     v16.8h, #0x80                        \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 298,
+                "startChar": 0,
+                "endLine": 299,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 326,
+                "startChar": 0,
+                "endLine": 328,
+                "endChar": 0
+              },
+              "replacement": "      \"uzp2     z16.b, z16.h, v16.h                 \\n\"  // U\n      \"uzp2     z20.b, z20.h, v16.h                 \\n\"  // V\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 362,
+                "startChar": 0,
+                "endLine": 366,
+                "endChar": 0
+              },
+              "replacement": "      \"subs     %w[width], %w[width], %w[vl]        \\n\"  // 2*VL per loop\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 370,
+                "startChar": 0,
+                "endLine": 372,
+                "endChar": 0
+              },
+              "replacement": "      \"uzp2     z16.b, z16.h, v16.h                 \\n\"  // U\n      \"uzp2     z20.b, z20.h, v16.h                 \\n\"  // V\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 388,
+                "startChar": 0,
+                "endLine": 390,
+                "endChar": 0
+              },
+              "replacement": "        \"z17\", \"z18\", \"z19\", \"z20\", \"z21\", \"z22\", \"z23\", \"z24\", \"z25\", \"p0\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8eef1ee_f3cb81d6",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-04T23:18:20Z",
+      "side": 1,
+      "message": "sudot .b?  overall this row function is inefficient compared to neon i8mm which directly multiplies unsigned ARGB by signed int8 coefficients.\nideally use sudot .h .b .b since we dont need 32 bits.",
+      "fixSuggestions": [
+        {
+          "fixId": "84609581_a2de2657",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 308,
+                "startChar": 0,
+                "endLine": 312,
+                "endChar": 0
+              },
+              "replacement": "      \"sdot     z16.b, z0.h, z24.h                  \\n\"  // UUxxxxxx\n      \"sdot     z17.b, z2.h, z24.h                  \\n\"  // UUxxxxxx\n      \"sdot     z18.b, z4.h, z24.h                  \\n\"  // UUxxxxxx\n      \"sdot     z19.b, z6.h, z24.h                  \\n\"  // UUxxxxxx\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 313,
+                "startChar": 0,
+                "endLine": 317,
+                "endChar": 0
+              },
+              "replacement": "      \"sdot     z20.b, z0.h, z25.h                  \\n\"  // VVxxxxxx\n      \"sdot     z21.b, z2.h, z25.h                  \\n\"  // VVxxxxxx\n      \"sdot     z22.b, z4.h, z25.h                  \\n\"  // VVxxxxxx\n      \"sdot     z23.b, z6.h, z25.h                  \\n\"  // VVxxxxxx\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 373,
+                "startChar": 0,
+                "endLine": 375,
+                "endChar": 0
+              },
+              "replacement": "      \"st1b     {z16.h}, p0, [%[dst_u]]             \\n\"  // U\n      \"st1b     {z20.h}, p0, [%[dst_v]]             \\n\"  // V\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 387,
+                "startChar": 0,
+                "endLine": 390,
+                "endChar": 0
+              },
+              "replacement": "      : \"cc\", \"memory\", \"z0\", \"z1\", \"z2\", \"z3\", \"z4\", \"z5\", \"z6\", \"z7\", \"z16\", \"z17\", \"z18\", \"z19\", \"z20\", \"z21\", \"z22\", \"z23\", \"z24\", \"z25\", \"z26\", \"p0\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f492b49c_2c624210",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-04T23:18:20Z",
+      "side": 1,
+      "message": "this is a simple store with no conversion?  z16 is bytes after the addhnb so it should be:\nst1b     {z16.b}, p0, [%[dst_u]]",
+      "fixSuggestions": [
+        {
+          "fixId": "0798b9af_89f5b9b5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 329,
+                "startChar": 0,
+                "endLine": 331,
+                "endChar": 0
+              },
+              "replacement": "      \"st1b     {z16.b}, p0, [%[dst_u]]             \\n\"  // U\n      \"st1b     {z20.b}, p0, [%[dst_v]]             \\n\"  // V\n"
+            }
+          ]
+        }
+      ],
       "revId": "a65aba070ddeef37c73b8b2d9d0d3c0e57575fc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
