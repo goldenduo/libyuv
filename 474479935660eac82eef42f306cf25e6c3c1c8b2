@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f09309fe_deb14e55",
+        "filename": "source/row_common.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3632996
+      },
+      "writtenOn": "2025-02-09T18:14:53Z",
+      "side": 1,
+      "message": "Should this stay here commented out, or should it be removed? (Or should it be defined as 0, with #if instead of #ifdef below?)",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "474479935660eac82eef42f306cf25e6c3c1c8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c68c37_e5d45eb1",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2470,
+      "author": {
+        "id": 3632996
+      },
+      "writtenOn": "2025-02-09T18:14:53Z",
+      "side": 1,
+      "message": "nit: is the indent intentional?",
+      "range": {
+        "startLine": 2470,
+        "startChar": 30,
+        "endLine": 2470,
+        "endChar": 63
+      },
+      "revId": "474479935660eac82eef42f306cf25e6c3c1c8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
