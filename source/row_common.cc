@@ -47,7 +47,7 @@ extern "C" {
 #if !defined(LIBYUV_BIT_EXACT) && (defined(__x86_64__) || defined(_M_X64) || \
                                    defined(__i386__) || defined(_M_IX86))
 #define LIBYUV_ARGBTOUV_PAVGB 1
-#define LIBYUV_RGBTOU_TRUNCATE 1
+// #define LIBYUV_RGBTOU_TRUNCATE 1
 #endif
 #if defined(LIBYUV_BIT_EXACT)
 #define LIBYUV_UNATTENUATE_DUP 1
@@ -644,7 +644,7 @@ static __inline uint8_t RGBToY(uint8_t r, uint8_t g, uint8_t b) {
 
 #define AVGB(a, b) (((a) + (b) + 1) >> 1)
 
-// LIBYUV_RGBTOU_TRUNCATE mimics x86 code that does not round.
+// LIBYUV_RGBTOU_TRUNCATE mimics old x86 code that does not round.
 #ifdef LIBYUV_RGBTOU_TRUNCATE
 static __inline uint8_t RGBToU(uint8_t r, uint8_t g, uint8_t b) {
   return STATIC_CAST(uint8_t, (112 * b - 74 * g - 38 * r + 0x8000) >> 8);
@@ -653,7 +653,6 @@ static __inline uint8_t RGBToV(uint8_t r, uint8_t g, uint8_t b) {
   return STATIC_CAST(uint8_t, (112 * r - 94 * g - 18 * b + 0x8000) >> 8);
 }
 #else
-// TODO(fbarchard): Add rounding to x86 SIMD and use this
 static __inline uint8_t RGBToU(uint8_t r, uint8_t g, uint8_t b) {
   return STATIC_CAST(uint8_t, (112 * b - 74 * g - 38 * r + 0x8080) >> 8);
 }

@@ -89,6 +89,7 @@ extern "C" {
 #if !defined(LIBYUV_BIT_EXACT)
 #define HAS_ABGRTOUVROW_SSSE3
 #define HAS_ARGBTOUV444ROW_SSSE3
+#define HAS_ARGBTOUVJ444ROW_SSSE3
 #define HAS_ARGBTOUVJROW_SSSE3
 #define HAS_ARGBTOUVROW_SSSE3
 #define HAS_BGRATOUVROW_SSSE3
@@ -183,6 +184,8 @@ extern "C" {
 #if !defined(LIBYUV_BIT_EXACT)
 #define HAS_ARGBTOUVJROW_AVX2
 #define HAS_ARGBTOUVROW_AVX2
+#define HAS_ARGBTOUV444ROW_AVX2
+#define HAS_ARGBTOUVJ444ROW_AVX2
 #endif
 
 // Effects:
@@ -2695,6 +2698,33 @@ void ARGBToUV444Row_SSSE3(const uint8_t* src_argb,
                           uint8_t* dst_v,
                           int width);
 void ARGBToUV444Row_Any_SSSE3(const uint8_t* src_ptr,
+                              uint8_t* dst_u,
+                              uint8_t* dst_v,
+                              int width);
+
+void ARGBToUVJ444Row_SSSE3(const uint8_t* src_argb,
+                           uint8_t* dst_u,
+                           uint8_t* dst_v,
+                           int width);
+void ARGBToUVJ444Row_Any_SSSE3(const uint8_t* src_ptr,
+                               uint8_t* dst_u,
+                               uint8_t* dst_v,
+                               int width);
+
+void ARGBToUV444Row_AVX2(const uint8_t* src_argb,
+                         uint8_t* dst_u,
+                         uint8_t* dst_v,
+                         int width);
+void ARGBToUV444Row_Any_AVX2(const uint8_t* src_ptr,
+                             uint8_t* dst_u,
+                             uint8_t* dst_v,
+                             int width);
+
+void ARGBToUVJ444Row_AVX2(const uint8_t* src_argb,
+                          uint8_t* dst_u,
+                          uint8_t* dst_v,
+                          int width);
+void ARGBToUVJ444Row_Any_AVX2(const uint8_t* src_ptr,
                               uint8_t* dst_u,
                               uint8_t* dst_v,
                               int width);

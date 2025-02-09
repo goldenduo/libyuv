@@ -3559,6 +3559,14 @@ int RAWToI444(const uint8_t* src_raw,
     }
   }
 #endif
+#if defined(HAS_ARGBTOUV444ROW_AVX2)
+  if (TestCpuFlag(kCpuHasAVX2)) {
+    ARGBToUV444Row = ARGBToUV444Row_Any_AVX2;
+    if (IS_ALIGNED(width, 32)) {
+      ARGBToUV444Row = ARGBToUV444Row_AVX2;
+    }
+  }
+#endif
 #if defined(HAS_ARGBTOUV444ROW_NEON)
   if (TestCpuFlag(kCpuHasNEON)) {
     ARGBToUV444Row = ARGBToUV444Row_Any_NEON;
@@ -3762,12 +3770,19 @@ int RAWToJ444(const uint8_t* src_raw,
     src_stride_raw = -src_stride_raw;
   }
   // TODO: add row coalesce when main loop handles large width in blocks
-  // TODO: implement UVJ444 or trim the ifdef below
 #if defined(HAS_ARGBTOUVJ444ROW_SSSE3)
   if (TestCpuFlag(kCpuHasSSSE3)) {
     ARGBToUVJ444Row = ARGBToUVJ444Row_Any_SSSE3;
     if (IS_ALIGNED(width, 16)) {
       ARGBToUVJ444Row = ARGBToUVJ444Row_SSSE3;
+    }
+  }
+#endif
+#if defined(HAS_ARGBTOUVJ444ROW_AVX2)
+  if (TestCpuFlag(kCpuHasAVX2)) {
+    ARGBToUVJ444Row = ARGBToUVJ444Row_Any_AVX2;
+    if (IS_ALIGNED(width, 32)) {
+      ARGBToUVJ444Row = ARGBToUVJ444Row_AVX2;
     }
   }
 #endif
