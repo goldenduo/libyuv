@@ -69,6 +69,24 @@
       "parentUuid": "8869e62d_930c3304",
       "revId": "95be0116c0fa8ce8a164728c08f1c7f9c50afeee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b0a7b3_ec2b453f",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-10T22:49:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8869e62d_930c3304",
+      "revId": "95be0116c0fa8ce8a164728c08f1c7f9c50afeee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
