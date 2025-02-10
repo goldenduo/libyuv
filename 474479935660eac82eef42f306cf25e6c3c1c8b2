@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f6ce61b_91e40c31",
+        "filename": "source/row_common.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-10T19:52:44Z",
+      "side": 1,
+      "message": "Done.  I was thinking of keeping it incase we need a fallback, but I think we\u0027re good to remove it.\nThe other question is if rounding is the right answer.  The simple answer is yes, but its complicated\nif the source values have been upsampled with replication, then a truncating shift is better.\nif the output is more than 8 bits, the \u0027rounding\u0027 needs to change, and the answer will be different than 8 bit, even if you look at the upper 8 bits.  So truncating may be the right answer.\nif the math is simply multiple 2 values and shift right, rounding is closer to correct.\n\nthis will need reexamination when 10 bit UV values are output.\nalso when 10 bits are in the upper 10 bits, the math is effectively 16 bits, which is different than if it is in the low 10 bits, for something like averaging of 4 values.",
+      "parentUuid": "f09309fe_deb14e55",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "474479935660eac82eef42f306cf25e6c3c1c8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69c68c37_e5d45eb1",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-09T18:14:53Z",
       "side": 1,
       "message": "nit: is the indent intentional?",
+      "range": {
+        "startLine": 2470,
+        "startChar": 30,
+        "endLine": 2470,
+        "endChar": 63
+      },
+      "revId": "474479935660eac82eef42f306cf25e6c3c1c8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d0d72c_e1d1ab3e",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2470,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-10T19:52:44Z",
+      "side": 1,
+      "message": "Done.  Its clang-format being weird.  Fixed by adding a blank line.\nNote that I did add some // to lines in inline asm to prevent clang format from combining them.... a method I picked up on, thanks to George Steed.",
+      "parentUuid": "69c68c37_e5d45eb1",
       "range": {
         "startLine": 2470,
         "startChar": 30,
