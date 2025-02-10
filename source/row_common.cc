@@ -47,7 +47,6 @@ extern "C" {
 #if !defined(LIBYUV_BIT_EXACT) && (defined(__x86_64__) || defined(_M_X64) || \
                                    defined(__i386__) || defined(_M_IX86))
 #define LIBYUV_ARGBTOUV_PAVGB 1
-#define LIBYUV_RGBTOU_TRUNCATE 1
 #endif
 #if defined(LIBYUV_BIT_EXACT)
 #define LIBYUV_UNATTENUATE_DUP 1
@@ -644,25 +643,14 @@ static __inline uint8_t RGBToY(uint8_t r, uint8_t g, uint8_t b) {
 
 #define AVGB(a, b) (((a) + (b) + 1) >> 1)
 
-// LIBYUV_RGBTOU_TRUNCATE mimics x86 code that does not round.
-#ifdef LIBYUV_RGBTOU_TRUNCATE
-static __inline uint8_t RGBToU(uint8_t r, uint8_t g, uint8_t b) {
-  return STATIC_CAST(uint8_t, (112 * b - 74 * g - 38 * r + 0x8000) >> 8);
-}
-static __inline uint8_t RGBToV(uint8_t r, uint8_t g, uint8_t b) {
-  return STATIC_CAST(uint8_t, (112 * r - 94 * g - 18 * b + 0x8000) >> 8);
-}
-#else
-// TODO(fbarchard): Add rounding to x86 SIMD and use this
 static __inline uint8_t RGBToU(uint8_t r, uint8_t g, uint8_t b) {
   return STATIC_CAST(uint8_t, (112 * b - 74 * g - 38 * r + 0x8080) >> 8);
 }
 static __inline uint8_t RGBToV(uint8_t r, uint8_t g, uint8_t b) {
   return STATIC_CAST(uint8_t, (112 * r - 94 * g - 18 * b + 0x8080) >> 8);
 }
-#endif
 
-// ARM uses uint16
+// ARM uses uint16.  todo: Make ARM use uint8 to allow dotproduct.
 #if !defined(LIBYUV_ARGBTOUV_PAVGB)
 static __inline int RGBxToU(uint16_t r, uint16_t g, uint16_t b) {
   return STATIC_CAST(uint8_t, (112 * b - 74 * g - 38 * r + 0x8080) >> 8);
@@ -4379,13 +4367,17 @@ void RGB24ToYJRow_AVX2(const uint8_t* src_rgb24, uint8_t* dst_yj, int width) {
 #endif  // HAS_RGB24TOYJROW_AVX2
 
 #ifdef HAS_RAWTOYJROW_AVX2
-// Convert 16 RAW pixels (64 bytes) to 16 YJ values.
+// Convert 32 RAW pixels (128 bytes) to 32 YJ values.
 void RAWToYJRow_AVX2(const uint8_t* src_raw, uint8_t* dst_yj, int width) {
   // Row buffer for intermediate ARGB pixels.
   SIMD_ALIGNED(uint8_t row[MAXTWIDTH * 4]);
   while (width > 0) {
     int twidth = width > MAXTWIDTH ? MAXTWIDTH : width;
+#ifdef HAS_RAWTOARGBROW_AVX2
+    RAWToARGBRow_AVX2(src_raw, row, twidth);
+#else
     RAWToARGBRow_SSSE3(src_raw, row, twidth);
+#endif
     ARGBToYJRow_AVX2(row, dst_yj, twidth);
     src_raw += twidth * 3;
     dst_yj += twidth;
