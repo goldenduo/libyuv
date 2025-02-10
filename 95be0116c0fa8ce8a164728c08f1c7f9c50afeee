@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "accf84b7_501e9938",
+        "filename": "source/row_common.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-10T20:13:26Z",
+      "side": 1,
+      "message": "Nit: Capitalize \"TODO\"",
+      "revId": "95be0116c0fa8ce8a164728c08f1c7f9c50afeee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8869e62d_930c3304",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-10T20:13:26Z",
+      "side": 1,
+      "message": "Nit: Capitalize \"BT601\"",
+      "revId": "95be0116c0fa8ce8a164728c08f1c7f9c50afeee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
