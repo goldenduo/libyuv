@@ -69,6 +69,24 @@
       "message": "/COMMIT_MSG",
       "revId": "a26cd45cbf10466fc09870ea39f2566a633d2f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "773b0f7a_483ea94e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549607
+      },
+      "writtenOn": "2025-02-11T13:25:19Z",
+      "side": 1,
+      "message": "I have checked the respective sources, all the arch-specific optimization sources are gated behind preprocessor macro checks, so compilation units of different architectures just turn up as empty.\n\nSo I think the current approach is okay and we can handle the ARM bits later; for now my work is focused on the LoongArch port and I will have to set up an environment for ARM verification. Would that work for you?",
+      "parentUuid": "08263d3b_dbc585c1",
+      "revId": "a26cd45cbf10466fc09870ea39f2566a633d2f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
