@@ -68,6 +68,23 @@
       "message": "done",
       "revId": "11bc3de8da4f08f00fc43b397774ef866b2468a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda34b67_2789a31b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-02-11T07:53:15Z",
+      "side": 1,
+      "message": "For both this CL and https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6241803, I suggest we port the changes to the BUILD.gn file as well and we try to keep the 2 build systems in sync.\n\nThis makes it easier to test things later on (instead of having to port chages).\n\nI think this can be done in a follow-up CL.",
+      "revId": "11bc3de8da4f08f00fc43b397774ef866b2468a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
