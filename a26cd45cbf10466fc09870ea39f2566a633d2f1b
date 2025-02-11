@@ -16,6 +16,24 @@
       "message": "Did you test the arm version builds?\nsme/sve require different build options.  libyuv.gyp needs an update?",
       "revId": "a26cd45cbf10466fc09870ea39f2566a633d2f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab85e30_cc173dbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549607
+      },
+      "writtenOn": "2025-02-11T01:36:34Z",
+      "side": 1,
+      "message": "I haven\u0027t yet. This CL contains just the additions of files because I wanted to separate logical changes, so that further CL(s) can deal with architectures one by one.\n\nIn fact, the LoongArch files need special CFLAGS as well -- so is it better for me to squash the next CL into this one and add the ARM bits as well, or is it okay to have another CL added to the chain to deal with ARM build option changes? I might as well add RVV to the mix while at it...",
+      "parentUuid": "47b490d5_d69c1458",
+      "revId": "a26cd45cbf10466fc09870ea39f2566a633d2f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
