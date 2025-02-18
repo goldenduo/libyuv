@@ -2733,7 +2733,8 @@ static void ARGBToUV444MatrixRow_NEON(
       "neg         v26.16b, v26.16b              \n"
       "neg         v27.16b, v27.16b              \n"
       "neg         v28.16b, v28.16b              \n"
-      "movi        v29.16b, #0x80                \n"  // 128.5
+      "movi        v29.8h, #0x0080               \n"  // 128.0
+      "shl         v29.8h, v29.8h, #8            \n"
 
       "1:                                        \n"
       "ld4         {v0.8b,v1.8b,v2.8b,v3.8b}, [%0], #32 \n"  // load 8 ARGB
@@ -2768,8 +2769,10 @@ static void ARGBToUV444MatrixRow_NEON_I8MM(
     uint8_t* dst_v,
     int width,
     const struct RgbUVConstants* rgbuvconstants) {
-      asm("ld2r        {v16.4s, v17.4s}, [%[rgbuvconstants]] \n"
-      "movi        v29.16b, #0x80                \n"  // 128.5
+    asm volatile(
+      "ld2r        {v16.4s, v17.4s}, [%[rgbuvconstants]] \n"
+      "movi        v29.8h, #0x0080               \n"  // 128.0
+      "shl         v29.8h, v29.8h, #8            \n"
       "1:                                        \n"
       "ldp         q0, q1, [%[src]], #32         \n"
       "subs        %w[width], %w[width], #8      \n"  // 8 processed per loop.
@@ -2853,13 +2856,14 @@ void ARGBToUVJ444Row_NEON_I8MM(const uint8_t* src_argb,
                                  &kRgb24JPEGUVConstants);
 }
 
-#define RGBTOUV_SETUP_REG                                             \
-  "movi       v20.8h, #112     \n" /* UB/VR coefficient  (0.875)   */ \
-  "movi       v21.8h, #74      \n" /* UG coefficient    (-0.5781)  */ \
-  "movi       v22.8h, #38      \n" /* UR coefficient    (-0.2969)  */ \
-  "movi       v23.8h, #18      \n" /* VB coefficient    (-0.1406)  */ \
-  "movi       v24.8h, #94      \n" /* VG coefficient    (-0.7344)  */ \
-  "movi       v25.16b, #0x80   \n" /* 128.5 (0x8080 in 16-bit)      */
+#define RGBTOUV_SETUP_REG                                               \
+  "movi       v20.8h, #112       \n" /* UB/VR coefficient  (0.875)   */ \
+  "movi       v21.8h, #74        \n" /* UG coefficient    (-0.5781)  */ \
+  "movi       v22.8h, #38        \n" /* UR coefficient    (-0.2969)  */ \
+  "movi       v23.8h, #18        \n" /* VB coefficient    (-0.1406)  */ \
+  "movi       v24.8h, #94        \n" /* VG coefficient    (-0.7344)  */ \
+  "movi       v25.8h, #0x80      \n" /* 128.0 (0x8000 in 16-bit)     */ \
+  "shl        v25.8h, v25.8h, #8 \n"
 
 // 16x2 pixels -> 8x1.  width is number of argb pixels. e.g. 16.
 // clang-format off
@@ -3606,27 +3610,27 @@ static void ARGBToYMatrixRow_NEON_DotProd(
 // B * 0.1140 coefficient = 29
 // G * 0.5870 coefficient = 150
 // R * 0.2990 coefficient = 77
-// Add 0.5 = 0x80
-static const struct RgbConstants kRgb24JPEGConstants = {{29, 150, 77, 0}, 128};
+// Add 0
+static const struct RgbConstants kRgb24JPEGConstants = {{29, 150, 77, 0}, 0};
 static const struct RgbConstants kRgb24JPEGDotProdConstants = {{0, 29, 150, 77},
-                                                               128};
+                                                               0};
 
-static const struct RgbConstants kRawJPEGConstants = {{77, 150, 29, 0}, 128};
+static const struct RgbConstants kRawJPEGConstants = {{77, 150, 29, 0}, 0};
 
 // RGB to BT.601 coefficients
 // B * 0.1016 coefficient = 25
 // G * 0.5078 coefficient = 129
 // R * 0.2578 coefficient = 66
-// Add 16.5 = 0x1080
+// Add 16.0 = 0x1000
 
 static const struct RgbConstants kRgb24I601Constants = {{25, 129, 66, 0},
-                                                        0x1080};
+                                                        0x1000};
 static const struct RgbConstants kRgb24I601DotProdConstants = {{0, 25, 129, 66},
-                                                               0x1080};
+                                                               0x1000};
 
-static const struct RgbConstants kRawI601Constants = {{66, 129, 25, 0}, 0x1080};
+static const struct RgbConstants kRawI601Constants = {{66, 129, 25, 0}, 0x1000};
 static const struct RgbConstants kRawI601DotProdConstants = {{0, 66, 129, 25},
-                                                             0x1080};
+                                                             0x1000};
 
 void ARGBToYRow_NEON(const uint8_t* src_argb, uint8_t* dst_y, int width) {
   ARGBToYMatrixRow_NEON(src_argb, dst_y, width, &kRgb24I601Constants);
