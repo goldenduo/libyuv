@@ -3606,27 +3606,27 @@ static void ARGBToYMatrixRow_NEON_DotProd(
 // B * 0.1140 coefficient = 29
 // G * 0.5870 coefficient = 150
 // R * 0.2990 coefficient = 77
-// Add 0.5 = 0x80
-static const struct RgbConstants kRgb24JPEGConstants = {{29, 150, 77, 0}, 128};
+// Add 0
+static const struct RgbConstants kRgb24JPEGConstants = {{29, 150, 77, 0}, 0};
 static const struct RgbConstants kRgb24JPEGDotProdConstants = {{0, 29, 150, 77},
-                                                               128};
+                                                               0};
 
-static const struct RgbConstants kRawJPEGConstants = {{77, 150, 29, 0}, 128};
+static const struct RgbConstants kRawJPEGConstants = {{77, 150, 29, 0}, 0};
 
 // RGB to BT.601 coefficients
 // B * 0.1016 coefficient = 25
 // G * 0.5078 coefficient = 129
 // R * 0.2578 coefficient = 66
-// Add 16.5 = 0x1080
+// Add 16.0 = 0x1000
 
 static const struct RgbConstants kRgb24I601Constants = {{25, 129, 66, 0},
-                                                        0x1080};
+                                                        0x1000};
 static const struct RgbConstants kRgb24I601DotProdConstants = {{0, 25, 129, 66},
-                                                               0x1080};
+                                                               0x1000};
 
-static const struct RgbConstants kRawI601Constants = {{66, 129, 25, 0}, 0x1080};
+static const struct RgbConstants kRawI601Constants = {{66, 129, 25, 0}, 0x1000};
 static const struct RgbConstants kRawI601DotProdConstants = {{0, 66, 129, 25},
-                                                             0x1080};
+                                                             0x1000};
 
 void ARGBToYRow_NEON(const uint8_t* src_argb, uint8_t* dst_y, int width) {
   ARGBToYMatrixRow_NEON(src_argb, dst_y, width, &kRgb24I601Constants);
