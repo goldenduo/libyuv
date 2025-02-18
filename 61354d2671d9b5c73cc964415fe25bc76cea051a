@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6fcd144_020fee0a",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1389,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-02-18T21:23:41Z",
+      "side": 0,
+      "message": "Looks like this is handled outside of the macro.",
+      "revId": "61354d2671d9b5c73cc964415fe25bc76cea051a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

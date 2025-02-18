@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d43d653_bb5545f4",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-02-18T21:23:41Z",
+      "side": 1,
+      "message": "It looks like the indent is off for these.",
+      "fixSuggestions": [
+        {
+          "fixId": "12d0ae29_79bed32f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1468,
+                "startChar": 0,
+                "endLine": 1469,
+                "endChar": 0
+              },
+              "replacement": "      \"vzeroupper                                \\n\"\n"
+            },
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1492,
+                "startChar": 0,
+                "endLine": 1493,
+                "endChar": 0
+              },
+              "replacement": "      \"vzeroupper                                \\n\"\n"
+            },
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1516,
+                "startChar": 0,
+                "endLine": 1517,
+                "endChar": 0
+              },
+              "replacement": "      \"vzeroupper                                \\n\"\n"
+            },
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1541,
+                "startChar": 0,
+                "endLine": 1542,
+                "endChar": 0
+              },
+              "replacement": "      \"vzeroupper                                \\n\"\n"
+            },
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1565,
+                "startChar": 0,
+                "endLine": 1566,
+                "endChar": 0
+              },
+              "replacement": "      \"vzeroupper                                \\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f5adda7e3b7ef219bcbf2364b98efc9c08559201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a42a644c_debbfcc4",
+        "filename": "source/row_neon.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2764,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-02-18T21:23:41Z",
+      "side": 1,
+      "message": "The C code is using `0x1080` no?",
+      "range": {
+        "startLine": 2764,
+        "startChar": 56,
+        "endLine": 2764,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "aebdfcc0_d0f07ea7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_neon.cc",
+              "range": {
+                "startLine": 2761,
+                "startChar": 0,
+                "endLine": 2762,
+                "endChar": 0
+              },
+              "replacement": "// Add 0\n"
+            },
+            {
+              "path": "source/row_neon.cc",
+              "range": {
+                "startLine": 2763,
+                "startChar": 0,
+                "endLine": 2765,
+                "endChar": 0
+              },
+              "replacement": "static const struct RgbConstants kRgb24I601Constants \u003d {{25, 129, 66, 0}, 0};\n"
+            },
+            {
+              "path": "source/row_neon.cc",
+              "range": {
+                "startLine": 2766,
+                "startChar": 0,
+                "endLine": 2767,
+                "endChar": 0
+              },
+              "replacement": "static const struct RgbConstants kRawI601Constants \u003d {{66, 129, 25, 0}, 0};\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f5adda7e3b7ef219bcbf2364b98efc9c08559201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
