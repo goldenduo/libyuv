@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3984cd9b_633736b1",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-02-19T23:27:24Z",
+      "side": 1,
+      "message": "I wonder if a trailing `\"\"` or `\"\\n\"` in the previous line would help",
+      "revId": "b24bb8f36f69b96925312b36c41fbf06b421e63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
