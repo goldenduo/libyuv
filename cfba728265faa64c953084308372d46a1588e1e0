@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aaa654b_cddfa963",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-22T08:04:11Z",
+      "side": 1,
+      "message": "Should we delete the commented-out lines in this file?",
+      "revId": "cfba728265faa64c953084308372d46a1588e1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b597dd76_f4800ff0",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-22T08:04:11Z",
+      "side": 1,
+      "message": "Align the `\\n`?",
+      "revId": "cfba728265faa64c953084308372d46a1588e1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a882005_7797b886",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-22T08:04:11Z",
+      "side": 1,
+      "message": "Align the `\\n`?",
+      "revId": "cfba728265faa64c953084308372d46a1588e1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c98993_cab78f51",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 2786,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-22T08:04:11Z",
+      "side": 1,
+      "message": "Just wanted to confirm you meant to say `-signed`, with the negative sign.",
+      "range": {
+        "startLine": 2786,
+        "startChar": 57,
+        "endLine": 2786,
+        "endChar": 64
+      },
+      "revId": "cfba728265faa64c953084308372d46a1588e1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
