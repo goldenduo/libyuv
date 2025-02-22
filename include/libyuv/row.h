@@ -86,13 +86,6 @@ extern "C" {
 #define HAS_YUY2TOUV422ROW_SSE2
 #define HAS_YUY2TOUVROW_SSE2
 #define HAS_YUY2TOYROW_SSE2
-#if !defined(LIBYUV_BIT_EXACT)
-#define HAS_ABGRTOUVROW_SSSE3
-#define HAS_ARGBTOUVJROW_SSSE3
-#define HAS_ARGBTOUVROW_SSSE3
-#define HAS_BGRATOUVROW_SSSE3
-#define HAS_RGBATOUVROW_SSSE3
-#endif
 
 // Effects:
 #define HAS_ARGBADDROW_SSE2
@@ -274,6 +267,12 @@ extern "C" {
 #define HAS_YUY2TONVUVROW_SSE2
 #if !defined(LIBYUV_BIT_EXACT)
 #define HAS_ABGRTOUVJROW_SSSE3
+// TODO: adjust row_win to use 8 bit negative coefficients.
+#define HAS_ABGRTOUVROW_SSSE3
+#define HAS_ARGBTOUVJROW_SSSE3
+#define HAS_ARGBTOUVROW_SSSE3
+#define HAS_BGRATOUVROW_SSSE3
+#define HAS_RGBATOUVROW_SSSE3
 #endif
 
 #if defined(__x86_64__) || !defined(__pic__)
@@ -547,8 +546,8 @@ extern "C" {
 
 // The following are available on AArch64 SVE platforms:
 #if !defined(LIBYUV_DISABLE_SVE) && defined(__aarch64__)
-#define HAS_ABGRTOUVJROW_SVE2
-#define HAS_ABGRTOUVROW_SVE2
+//#define HAS_ABGRTOUVJROW_SVE2
+//#define HAS_ABGRTOUVROW_SVE2
 #define HAS_ARGB1555TOARGBROW_SVE2
 #define HAS_ARGBTORAWROW_SVE2
 #define HAS_ARGBTORGB24ROW_SVE2
@@ -558,7 +557,7 @@ extern "C" {
 #define HAS_ARGBTOUVROW_SVE2
 #define HAS_AYUVTOUVROW_SVE2
 #define HAS_AYUVTOVUROW_SVE2
-#define HAS_BGRATOUVROW_SVE2
+//#define HAS_BGRATOUVROW_SVE2
 #define HAS_CONVERT8TO8ROW_SVE2
 #define HAS_DIVIDEROW_16_SVE2
 #define HAS_HALFFLOATROW_SVE2
@@ -592,7 +591,7 @@ extern "C" {
 #define HAS_RAWTORGB24ROW_SVE2
 #define HAS_RAWTORGBAROW_SVE2
 #define HAS_RGB24TOARGBROW_SVE2
-#define HAS_RGBATOUVROW_SVE2
+//#define HAS_RGBATOUVROW_SVE2
 #define HAS_UYVYTOARGBROW_SVE2
 #define HAS_YUY2TOARGBROW_SVE2
 #endif
