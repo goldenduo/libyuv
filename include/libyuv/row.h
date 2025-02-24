@@ -86,13 +86,6 @@ extern "C" {
 #define HAS_YUY2TOUV422ROW_SSE2
 #define HAS_YUY2TOUVROW_SSE2
 #define HAS_YUY2TOYROW_SSE2
-#if !defined(LIBYUV_BIT_EXACT)
-#define HAS_ABGRTOUVROW_SSSE3
-#define HAS_ARGBTOUVJROW_SSSE3
-#define HAS_ARGBTOUVROW_SSSE3
-#define HAS_BGRATOUVROW_SSSE3
-#define HAS_RGBATOUVROW_SSSE3
-#endif
 
 // Effects:
 #define HAS_ARGBADDROW_SSE2
@@ -274,6 +267,12 @@ extern "C" {
 #define HAS_YUY2TONVUVROW_SSE2
 #if !defined(LIBYUV_BIT_EXACT)
 #define HAS_ABGRTOUVJROW_SSSE3
+// TODO: adjust row_win to use 8 bit negative coefficients.
+#define HAS_ABGRTOUVROW_SSSE3
+#define HAS_ARGBTOUVJROW_SSSE3
+#define HAS_ARGBTOUVROW_SSSE3
+#define HAS_BGRATOUVROW_SSSE3
+#define HAS_RGBATOUVROW_SSSE3
 #endif
 
 #if defined(__x86_64__) || !defined(__pic__)
