@@ -1,0 +1,105 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "525b4f23_9735f273",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-02-24T19:40:22Z",
+      "side": 1,
+      "message": "you can make the same change as line 1375 here.",
+      "range": {
+        "startLine": 1419,
+        "startChar": 17,
+        "endLine": 1419,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "22bfcdfe_4882c05f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1397,
+                "startChar": 0,
+                "endLine": 1399,
+                "endChar": 0
+              },
+              "replacement": "      LABELALIGN \"\"      //\n      RGBTOY(xmm7)       //\n"
+            },
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1419,
+                "startChar": 0,
+                "endLine": 1421,
+                "endChar": 0
+              },
+              "replacement": "      LABELALIGN \"\"      //\n      RGBTOY(xmm7)       //\n"
+            },
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1441,
+                "startChar": 0,
+                "endLine": 1443,
+                "endChar": 0
+              },
+              "replacement": "      LABELALIGN \"\"      //\n      RGBTOY(xmm7)       //\n"
+            },
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1470,
+                "startChar": 0,
+                "endLine": 1472,
+                "endChar": 0
+              },
+              "replacement": "      LABELALIGN \"\"      //\n      RGBTOY_AVX2(ymm7)  //\n"
+            },
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1494,
+                "startChar": 0,
+                "endLine": 1496,
+                "endChar": 0
+              },
+              "replacement": "      LABELALIGN \"\"      //\n      RGBTOY_AVX2(ymm7)  //\n"
+            },
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1518,
+                "startChar": 0,
+                "endLine": 1520,
+                "endChar": 0
+              },
+              "replacement": "      LABELALIGN \"\"      //\n      RGBTOY_AVX2(ymm7)  //\n"
+            },
+            {
+              "path": "source/row_gcc.cc",
+              "range": {
+                "startLine": 1567,
+                "startChar": 0,
+                "endLine": 1569,
+                "endChar": 0
+              },
+              "replacement": "      LABELALIGN \"\"      //\n      RGBTOY_AVX2(ymm7)  //\n"
+            }
+          ]
+        }
+      ],
+      "revId": "fb2b55d405117986e935aa85b4d30c3670a7ccb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
