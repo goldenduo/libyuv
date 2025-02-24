@@ -16,6 +16,24 @@
       "message": "Many instances of `\\n` in this CL are not aligned. What happened?",
       "revId": "19ec0f4c46716d764d994e6b0e19f277320ac317",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "768e87c4_d086b450",
+        "filename": "source/compare_gcc.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-24T23:29:44Z",
+      "side": 1,
+      "message": "assembly_prettify.py script used by formatyuv had a warning\n\nThis line\nfor i, l in enumerate(file_lines):\n    if re.search(\u0027asm.*\\(\u0027, l):\n\nand needed a change to\nfor i, l in enumerate(file_lines):\n    if re.search(r\u0027asm.*\\(\u0027, l):\n\nafter running the updated formatyuv the assembly label lines changed\n\nformatyuv does assembly after clang-format\n#!/bin/bash\nset -e -x\n\nclang-format -style\u003dfile -i include/*.h                  \u0026\nclang-format -style\u003dfile -i include/libyuv/*.h           \u0026\nclang-format -style\u003dfile -i unit_test/*.h unit_test/*.cc \u0026\nclang-format -style\u003dfile -i source/*.cc                  \u0026\nclang-format -style\u003dfile -i util/*.cc util/*.h           \u0026\nwait\n\nls source/*neon* source/*gcc* | xargs -n1 assembly_prettify.py\n\nI\u0027ll change the order to run assembly_prettify.py first, so clang-format gets the last word on formatting.",
+      "parentUuid": "cb4c312b_6f0b863a",
+      "revId": "19ec0f4c46716d764d994e6b0e19f277320ac317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
