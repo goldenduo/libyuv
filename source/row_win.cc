@@ -1511,7 +1511,9 @@ __declspec(naked) void ARGBToUVJRow_SSSE3(const uint8_t* src_argb,
     mov        edx, [esp + 8 + 12]  // dst_u
     mov        edi, [esp + 8 + 16]  // dst_v
     mov        ecx, [esp + 8 + 20]  // width
+    // TODO: change biasuv to 0x8000
     movdqa     xmm5, xmmword ptr kBiasUV128
+        // TODO: use negated coefficients to allow -128
     movdqa     xmm6, xmmword ptr kARGBToVJ
     movdqa     xmm7, xmmword ptr kARGBToUJ
     sub        edi, edx  // stride from u to v
@@ -1552,10 +1554,12 @@ __declspec(naked) void ARGBToUVJRow_SSSE3(const uint8_t* src_argb,
     pmaddubsw  xmm3, xmm6
     phaddw     xmm0, xmm2
     phaddw     xmm1, xmm3
+        // TODO: negate by subtracting from 0x8000
     paddw      xmm0, xmm5  // +.5 rounding -> unsigned
     paddw      xmm1, xmm5
     psraw      xmm0, 8
     psraw      xmm1, 8
+    // TODO: packuswb
     packsswb   xmm0, xmm1
 
         // step 3 - store 8 U and 8 V values
