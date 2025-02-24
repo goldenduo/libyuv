@@ -100,6 +100,30 @@
       ],
       "revId": "fb2b55d405117986e935aa85b4d30c3670a7ccb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a6a640_ecb436eb",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-24T19:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "525b4f23_9735f273",
+      "range": {
+        "startLine": 1419,
+        "startChar": 17,
+        "endLine": 1419,
+        "endChar": 18
+      },
+      "revId": "fb2b55d405117986e935aa85b4d30c3670a7ccb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
