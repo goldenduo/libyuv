@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4c312b_6f0b863a",
+        "filename": "source/compare_gcc.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-24T23:06:07Z",
+      "side": 1,
+      "message": "Many instances of `\\n` in this CL are not aligned. What happened?",
+      "revId": "19ec0f4c46716d764d994e6b0e19f277320ac317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
