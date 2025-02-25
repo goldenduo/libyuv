@@ -22,7 +22,7 @@ extern "C" {
 
 // The following are available on all x86 platforms:
 #if !defined(LIBYUV_DISABLE_X86) && \
-    (defined(_M_IX86) || defined(__x86_64__) || defined(__i386__))
+    (defined(_M_IX86) || (defined(__x86_64__) && !defined(LIBYUV_ENABLE_ROWWIN)) || defined(__i386__))
 #define HAS_FIXEDDIV1_X86
 #define HAS_FIXEDDIV_X86
 #define HAS_SCALEADDROW_SSE2
@@ -41,7 +41,7 @@ extern "C" {
 
 // The following are available for gcc/clang x86 platforms:
 // TODO(fbarchard): Port to Visual C
-#if !defined(LIBYUV_DISABLE_X86) && (defined(__x86_64__) || defined(__i386__))
+#if !defined(LIBYUV_DISABLE_X86) && (defined(__x86_64__) || defined(__i386__)) && !defined(LIBYUV_ENABLE_ROWWIN)
 #define HAS_SCALEUVROWDOWN2BOX_SSSE3
 #define HAS_SCALEROWUP2_LINEAR_SSE2
 #define HAS_SCALEROWUP2_LINEAR_SSSE3
@@ -80,8 +80,7 @@ extern "C" {
 // require VS2012, clang 3.4 or gcc 4.7.
 // The code supports NaCL but requires a new compiler and validator.
 #if !defined(LIBYUV_DISABLE_X86) &&                          \
-    (defined(VISUALC_HAS_AVX2) || defined(CLANG_HAS_AVX2) || \
-     defined(GCC_HAS_AVX2))
+    (defined(VISUALC_HAS_AVX2) || defined(CLANG_HAS_AVX2) || defined(GCC_HAS_AVX2))
 #define HAS_SCALEADDROW_AVX2
 #define HAS_SCALEROWDOWN2_AVX2
 #define HAS_SCALEROWDOWN4_AVX2
