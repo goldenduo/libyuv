@@ -34,6 +34,24 @@
       "parentUuid": "500719d7_4104f22f",
       "revId": "e37e136c58fcf6a2ee90732ea381c1651a48bcae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d924b6_4b9cea9e",
+        "filename": "source/scale_gcc.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-25T18:51:56Z",
+      "side": 1,
+      "message": "format and rebase again seems to have fixed it.\nthe formatting is pretty bad, and I started attempting to fix it in this CL\nGeorge\u0027s trick of // on each line prevents rows from being merged\nJames\u0027 trick of adding \"\" prevents the next line from indenting\nLABELALIGN was for the benefit of NaCL that required 16 byte aligned branch targets.  Its not necessary and can be removed.",
+      "parentUuid": "f64fcc05_129d216a",
+      "revId": "e37e136c58fcf6a2ee90732ea381c1651a48bcae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
