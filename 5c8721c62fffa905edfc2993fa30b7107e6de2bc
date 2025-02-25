@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc17cb31_aeacde80",
+        "filename": "source/compare_gcc.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-25T07:19:14Z",
+      "side": 1,
+      "message": "the easiest way to do that is do a CL that does just the formatting",
+      "parentUuid": "7e83f041_c7bb01f8",
+      "revId": "5c8721c62fffa905edfc2993fa30b7107e6de2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1628f4a2_1412ae3b",
         "filename": "source/row_win.cc",
         "patchSetId": 20
@@ -48,6 +66,24 @@
       "writtenOn": "2025-02-25T02:29:01Z",
       "side": 1,
       "message": "Looks like this needs to be pulled out of this ifdef or more code ifdef\u0027d",
+      "revId": "5c8721c62fffa905edfc2993fa30b7107e6de2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb69c53_855855ba",
+        "filename": "source/row_win.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-25T07:19:14Z",
+      "side": 1,
+      "message": "Acknowledged.  The ifdefs in general needed work when enabling UV but not Y.\nIn order to test this, I\u0027ve added a flag\nblaze build --config\u003dlexan_x86 -c opt --copt\u003d-DLIBYUV_ENABLE_ROWWIN //third_party/libyuv:libyuv_test\nto force clang (for windows) to use row_win instead of row_gcc",
+      "parentUuid": "1628f4a2_1412ae3b",
       "revId": "5c8721c62fffa905edfc2993fa30b7107e6de2bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
