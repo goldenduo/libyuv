@@ -16,6 +16,24 @@
       "message": "Frank: I still see formatting changes in this CL, for example, in this function and the next function.",
       "revId": "e37e136c58fcf6a2ee90732ea381c1651a48bcae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f64fcc05_129d216a",
+        "filename": "source/scale_gcc.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-25T18:35:49Z",
+      "side": 1,
+      "message": "Acknowledged.  Unclear why... I\u0027ve made another CL where I repeat the clang-format\nhttps://chromium-review.googlesource.com/c/libyuv/libyuv/+/6302317",
+      "parentUuid": "500719d7_4104f22f",
+      "revId": "e37e136c58fcf6a2ee90732ea381c1651a48bcae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
