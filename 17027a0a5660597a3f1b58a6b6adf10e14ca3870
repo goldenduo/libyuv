@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba10cc37_a17b6d1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-25T00:07:02Z",
+      "side": 1,
+      "message": "tap is catching an error\n\nerror: register allocation failed: maximum depth for recoloring reached. Use -fexhaustive-register-search to skip cutoffs\nthird_party/libyuv/files/source/row_gcc.cc:1737:7: error: inline assembly requires more registers than available\n 1737 |       \"vbroadcastf128 %5,%%ymm5                  \\n\"\n      |       ^\n2 errors generated.",
+      "revId": "17027a0a5660597a3f1b58a6b6adf10e14ca3870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
