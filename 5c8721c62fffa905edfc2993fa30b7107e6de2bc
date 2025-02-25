@@ -16,6 +16,40 @@
       "message": "tap is passing (google3)",
       "revId": "5c8721c62fffa905edfc2993fa30b7107e6de2bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e83f041_c7bb01f8",
+        "filename": "source/compare_gcc.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-02-25T02:29:01Z",
+      "side": 1,
+      "message": "I guess this is expected now since it aligns by column and since this and other instructions have no args, it goes to column 2. It might be nice to split this out to a separate change to keep this size of the diff down.",
+      "revId": "5c8721c62fffa905edfc2993fa30b7107e6de2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1628f4a2_1412ae3b",
+        "filename": "source/row_win.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-02-25T02:29:01Z",
+      "side": 1,
+      "message": "Looks like this needs to be pulled out of this ifdef or more code ifdef\u0027d",
+      "revId": "5c8721c62fffa905edfc2993fa30b7107e6de2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
