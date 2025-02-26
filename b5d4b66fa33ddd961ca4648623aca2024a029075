@@ -350,6 +350,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d24293_0eb32b57",
+        "filename": "source/rotate_win.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T23:45:27Z",
+      "side": 1,
+      "message": "no change needed, but I did note that rotate functions can crash when built with clang and LIBYUV_ENABLE_ROWWIN so in rotate_row.h these functions are disabled",
+      "parentUuid": "44d0ea1f_55eb7a85",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ff5e788_7c1404c5",
@@ -433,6 +451,24 @@
       "writtenOn": "2025-02-26T00:30:20Z",
       "side": 1,
       "message": "The location of `|| defined(LIBYUV_ENABLE_ROWWIN)` seems wrong here.\n\nThe expression `defined(_MSC_VER) \u0026\u0026 !defined(__clang__)` means it is genuine MSVC, not clang-cl. It seems wrong to insert `|| defined(LIBYUV_ENABLE_ROWWIN)` in the middle of this expression.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a609d798_ff31f902",
+        "filename": "source/row_win.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T23:45:27Z",
+      "side": 1,
+      "message": "unlike others, row_win does support 64 bit Visual C via intrinsics for a few functions.  So this line is right... true MSVC will work for x64 and x86, but clang can also use it with the macro.\n\nIts weird that line 18 below this is for arm, but thats unrelated.",
+      "parentUuid": "e1898838_794cd4b0",
       "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
