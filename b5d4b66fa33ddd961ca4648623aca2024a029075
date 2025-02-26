@@ -1,0 +1,276 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad79541_2b99544a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "Frank: This CL is still too big to review. It still contains some formatting changes, which make it even bigger. I did my best to skim through the whole CL.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a42206b_ce3bd285",
+        "filename": "include/libyuv/compare_row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "Is the location of `!defined(LIBYUV_ENABLE_ROWWIN)` correct?\n\nPlease compare with line 42 and line 49, which adds `!defined(LIBYUV_ENABLE_ROWWIN)` outside `(defined(__x86_64__) || defined(__i386__))`. Following that pattern, this should be:\n\n```\n#if !defined(LIBYUV_DISABLE_X86) \u0026\u0026 \\\n    (defined(__x86_64__) || defined(__i386__) || defined(_M_IX86)) \u0026\u0026 \\\n    !defined(LIBYUV_ENABLE_ROWWIN)\n```",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63301646_5a3122e0",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "The location of `|| defined(LIBYUV_ENABLE_ROWWIN)` seems wrong here.\n\nThe expression `!defined(__clang__) \u0026\u0026 defined(_MSC_VER)` means it is genuine MSVC, not clang-cl. It seems wrong to insert `|| defined(LIBYUV_ENABLE_ROWWIN)` in the middle of this expression.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de9e8a5b_640863f3",
+        "filename": "include/libyuv/planar_functions.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "Same question as my comment at include/libyuv/compare_row.h:25.\n\nI wonder if this should read:\n\n```\n#if !defined(LIBYUV_DISABLE_X86) \u0026\u0026 \\\n    (defined(_M_IX86) || defined(__x86_64__) || defined(__i386__)) \u0026\u0026 \\\n    !defined(LIBYUV_ENABLE_ROWWIN)\n```",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b2188f_83ebbbfe",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "Same question as my comment at include/libyuv/compare_row.h:25.\n\nI wonder if this should read:\n\n```\n#if !defined(LIBYUV_DISABLE_X86) \u0026\u0026 \\\n    (defined(_M_IX86) || defined(__x86_64__) || defined(__i386__)) \u0026\u0026 \\\n    !defined(LIBYUV_ENABLE_ROWWIN)\n```",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aab2456_9eb6b519",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "Is this expression correct? Note that `!defined(LIBYUV_ENABLE_ROWWIN)` appears twice.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8deb9e6_8efc86b3",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "Nit: rowwin \u003d\u003e row_win",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a8a15aa_b574270f",
+        "filename": "include/libyuv/scale_row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "Same question as my comment at include/libyuv/compare_row.h:25.\n\nI wonder if this should read:\n\n```\n#if !defined(LIBYUV_DISABLE_X86) \u0026\u0026 \\\n    (defined(_M_IX86) || defined(__x86_64__) || defined(__i386__)) \u0026\u0026 \\\n    !defined(LIBYUV_ENABLE_ROWWIN)\n```",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d18693_49466dee",
+        "filename": "source/compare_neon64.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "The indentation seems wrong.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55fc2cb1_1d8516e9",
+        "filename": "source/compare_win.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "The location of `|| defined(LIBYUV_ENABLE_ROWWIN)` seems wrong here.\n\nThe expression `defined(_MSC_VER) \u0026\u0026 !defined(__clang__)` means it is genuine MSVC, not clang-cl. It seems wrong to insert `|| defined(LIBYUV_ENABLE_ROWWIN)` in the middle of this expression.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f89342cd_46e2a01d",
+        "filename": "source/rotate_win.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "The location of `|| defined(LIBYUV_ENABLE_ROWWIN)` seems wrong here.\n\nThe expression `defined(_MSC_VER) \u0026\u0026 !defined(__clang__)` means it is genuine MSVC, not clang-cl. It seems wrong to insert `|| defined(LIBYUV_ENABLE_ROWWIN)` in the middle of this expression.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff5e788_7c1404c5",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "The indentation of several `asm` lines in this file seems wrong.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eaa900a_3dacf16f",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 4399,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "The indentation of many `asm` lines in this file seems wrong.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1898838_794cd4b0",
+        "filename": "source/row_win.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "The location of `|| defined(LIBYUV_ENABLE_ROWWIN)` seems wrong here.\n\nThe expression `defined(_MSC_VER) \u0026\u0026 !defined(__clang__)` means it is genuine MSVC, not clang-cl. It seems wrong to insert `|| defined(LIBYUV_ENABLE_ROWWIN)` in the middle of this expression.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe58d9b_5f33f4e8",
+        "filename": "source/scale_gcc.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "The indentation of several `asm` lines in this file seems wrong.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a083ab95_3b43c371",
+        "filename": "source/scale_win.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-26T00:30:20Z",
+      "side": 1,
+      "message": "The location of `|| defined(LIBYUV_ENABLE_ROWWIN)` seems wrong here.\n\nThe expression `defined(_MSC_VER) \u0026\u0026 !defined(__clang__)` means it is genuine MSVC, not clang-cl. It seems wrong to insert `|| defined(LIBYUV_ENABLE_ROWWIN)` in the middle of this expression.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
