@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27914fd6_71b2f3d7",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T17:56:29Z",
+      "side": 1,
+      "message": "!defined(__clang__) means its genuine MSVC\n(!defined(__clang__) || defined(LIBYUV_ENABLE_ROWWIN)) means its MSVC or clangcl being told to use row_win anyway.\n\ndefined(_MSC_VER) \u0026\u0026 _MSC_VER \u003e\u003d 1700 is a version check to ensure the compiler is new enough to support AVX2.  This works for any compiler that mimics MSVC, since they stay in lock step.",
+      "parentUuid": "63301646_5a3122e0",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de9e8a5b_640863f3",
@@ -118,6 +136,24 @@
       "writtenOn": "2025-02-26T00:30:20Z",
       "side": 1,
       "message": "Same question as my comment at include/libyuv/compare_row.h:25.\n\nI wonder if this should read:\n\n```\n#if !defined(LIBYUV_DISABLE_X86) \u0026\u0026 \\\n    (defined(_M_IX86) || defined(__x86_64__) || defined(__i386__)) \u0026\u0026 \\\n    !defined(LIBYUV_ENABLE_ROWWIN)\n```",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eed78fd_3dff8361",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T17:56:29Z",
+      "side": 1,
+      "message": "no the row_win for these functions only supports 32 bit.",
+      "parentUuid": "16b2188f_83ebbbfe",
       "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
