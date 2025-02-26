@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1850c4a1_c05242c4",
+        "filename": "include/libyuv/planar_functions.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T23:40:17Z",
+      "side": 1,
+      "message": "no compare functions for compare_win support 32 bit but not 64 bit",
+      "parentUuid": "de9e8a5b_640863f3",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16b2188f_83ebbbfe",
@@ -209,6 +227,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "690125f5_5e65f0ef",
+        "filename": "include/libyuv/scale_row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T23:40:17Z",
+      "side": 1,
+      "message": "same as others.  we have assembly for 32 bit visual c, or 32 or 64 bit clang.  but not 64 bit visual c.",
+      "parentUuid": "2a8a15aa_b574270f",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52d18693_49466dee",
@@ -226,6 +262,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec509d2_6bef61b7",
+        "filename": "source/compare_neon64.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T23:40:17Z",
+      "side": 1,
+      "message": "Acknowledged.  But I dont have a quick fix.  I\u0027ve run clang format on this CL, as well as clean git, so it shouldnt be changing these, and the indent is weird.\n\nI think \u0027asm\u0027 can be forced onto its own line with // but that should be a global change for all cpus.",
+      "parentUuid": "52d18693_49466dee",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55fc2cb1_1d8516e9",
@@ -239,6 +293,24 @@
       "writtenOn": "2025-02-26T00:30:20Z",
       "side": 1,
       "message": "The location of `|| defined(LIBYUV_ENABLE_ROWWIN)` seems wrong here.\n\nThe expression `defined(_MSC_VER) \u0026\u0026 !defined(__clang__)` means it is genuine MSVC, not clang-cl. It seems wrong to insert `|| defined(LIBYUV_ENABLE_ROWWIN)` in the middle of this expression.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f817a2_51b61ed2",
+        "filename": "source/compare_win.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T23:40:17Z",
+      "side": 1,
+      "message": "this looks right... we have 32 bit compare_win support, but not 64 bit.  so first we check for 32 bit.\ndefined(_MSC_VER) \u0026\u0026 defined(_M_IX86)\nit would suffice to use just defined(_M_IX86), since its a microsoft only macro.\nthen we check its true MSVC with !defined(__clang__)\nbecause clang could use compare_gcc normally.\nbut here we says it needs to be true MSVC or the macro LIBYUV_ENABLE_ROWWIN, forcing compare_win to be used.",
+      "parentUuid": "55fc2cb1_1d8516e9",
       "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -262,6 +334,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44d0ea1f_55eb7a85",
+        "filename": "source/rotate_win.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T23:40:17Z",
+      "side": 1,
+      "message": "ditto.  only 32 bit assembly is supported.",
+      "parentUuid": "f89342cd_46e2a01d",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ff5e788_7c1404c5",
         "filename": "source/row_gcc.cc",
         "patchSetId": 29
@@ -273,6 +363,24 @@
       "writtenOn": "2025-02-26T00:30:20Z",
       "side": 1,
       "message": "The indentation of several `asm` lines in this file seems wrong.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d5cc9d6_388ab16a",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T23:40:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5ff5e788_7c1404c5",
       "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -346,6 +454,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c512a568_406724b0",
+        "filename": "source/scale_gcc.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T23:40:17Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5fe58d9b_5f33f4e8",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a083ab95_3b43c371",
@@ -359,6 +485,24 @@
       "writtenOn": "2025-02-26T00:30:20Z",
       "side": 1,
       "message": "The location of `|| defined(LIBYUV_ENABLE_ROWWIN)` seems wrong here.\n\nThe expression `defined(_MSC_VER) \u0026\u0026 !defined(__clang__)` means it is genuine MSVC, not clang-cl. It seems wrong to insert `|| defined(LIBYUV_ENABLE_ROWWIN)` in the middle of this expression.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0104b79_871046e3",
+        "filename": "source/scale_win.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T23:40:17Z",
+      "side": 1,
+      "message": "its right, but if you have a different way to express it, I\u0027m open to alternative ifdefs.  These functions are available for 32 bit x86 visual or clang can use the scale_win, but it does not guarantee that the function is also in scale_gcc for clang\n\ni should document somewhere in getting started, how this LIBYUV_ENABLE_ROWWIN works",
+      "parentUuid": "a083ab95_3b43c371",
       "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
