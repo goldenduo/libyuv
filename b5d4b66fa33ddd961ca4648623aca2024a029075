@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7df5835_94d0f2da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T17:51:11Z",
+      "side": 1,
+      "message": "There are 2 changes in addition to J444\nformatting for J444\nenabling row_win for J444\n\nDuring the review, James suggested \"\" // to avoid lines causing indent, so I applied that where I use //\nI did the change to the relevant functions - RGBTOUV, but anything that followed the same pattern.  There are more formatting issues\nIf we need this to be outside the review, either the formatting could be removed, or another CL to attempt to mimic the J444 formatting changes\n\nThe other big change is row_win is partially updated and tested, but to test I build row_win with clang.  Both aspects caused a number of small changed.\nThe VC version was not passing tests (on try bots).  I couldnt build with VC - furthest I got was cmake can build the library, but not the tests.\nSo I did the clangcl approach of building with lexan.  The logic for each set of \u0027HAS\u0027 macros needed an update.\nUnresolved is why I420Alpha and Rotate functions fail tests when build with clang, but they are disabled.  Follow up needed to re-enable all row_win functions and port them to 8 bit accuracy.\nI did to a series of tests\n32 bit with and without exact\n64 bit with and without exact\nGetting row_win to build was pretty complicated, but in theory a new CL could focus on just this.\nOne idea of the change, is that Y and UV can be enabled seperately.  So the calling functions need to respect HAS_UV seperately from HAS_Y\nIn row_win a number of functions were reusing constants from functions that were disabled.  In row_win its not entirely necessary to disable functions being generated... the only reason to do that is old compiles that do not support new instructions.  But we\u0027re using fairly old ISA on Intel.",
+      "parentUuid": "cad79541_2b99544a",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a42206b_ce3bd285",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-02-26T00:30:20Z",
       "side": 1,
       "message": "Is the location of `!defined(LIBYUV_ENABLE_ROWWIN)` correct?\n\nPlease compare with line 42 and line 49, which adds `!defined(LIBYUV_ENABLE_ROWWIN)` outside `(defined(__x86_64__) || defined(__i386__))`. Following that pattern, this should be:\n\n```\n#if !defined(LIBYUV_DISABLE_X86) \u0026\u0026 \\\n    (defined(__x86_64__) || defined(__i386__) || defined(_M_IX86)) \u0026\u0026 \\\n    !defined(LIBYUV_ENABLE_ROWWIN)\n```",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "728ca065_34defaac",
+        "filename": "include/libyuv/compare_row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T17:51:11Z",
+      "side": 1,
+      "message": "This file is fairly typical, in that it has assembly for:\nclang 32 bit and 64 bit - compare_gcc.cc\nvisual c 32 bit - compare_win.cc\nit does not have visual c 64 bit.\nso overall it says this header applies to 64 bit clang, unless LIBYUV_ENABLE_ROWWIN is defined, in which case the file is guarded and enabled nothing\nor 32 bit clang or visual c.\n\nat line 42 and 49 it enables functions that are only for clang, so it disables that functions if using LIBYUV_ENABLE_ROWWIN\nline 35 enables Visual C-only functions\ncuriously they dont overlap, and it would be possible to enable both compare_gcc and compare_win when building with lexan.  But it would make more sense to port the visual c only functions to clang",
+      "parentUuid": "7a42206b_ce3bd285",
       "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -218,6 +254,24 @@
       "writtenOn": "2025-02-26T00:30:20Z",
       "side": 1,
       "message": "The indentation of many `asm` lines in this file seems wrong.",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69fc3382_f73aab99",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 29
+      },
+      "lineNbr": 4399,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-26T17:51:11Z",
+      "side": 1,
+      "message": "yes, unclear why.\non the formatting CLs I did the format several times over to make sure it doesnt degenerate.  And I\u0027m doing clang format on this CL, which you would think would produce the same result.\nIt might be time to ping the clang-format folks",
+      "parentUuid": "2eaa900a_3dacf16f",
       "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
