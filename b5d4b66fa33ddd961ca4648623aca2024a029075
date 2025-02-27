@@ -229,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e690fc6a_370fcb97",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-27T18:32:39Z",
+      "side": 1,
+      "message": "Done.  The original expression enabled row_win but when I tested it, it fails when built with clang.  So I disabled the clang build of I420Alpha for windows",
+      "parentUuid": "0aab2456_9eb6b519",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8deb9e6_8efc86b3",
@@ -242,6 +260,24 @@
       "writtenOn": "2025-02-26T00:30:20Z",
       "side": 1,
       "message": "Nit: rowwin \u003d\u003e row_win",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7839891c_01848cea",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-27T18:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8deb9e6_8efc86b3",
       "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
