@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cc49bf5_2fc930fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-02-27T20:41:50Z",
+      "side": 1,
+      "message": "ATTN George  This CL updated ARGBToJ444.  i8mm is nearly perfect and I would like to use it as the basis for SME and the same idea for VNNI on Intel.\nSME is using 16 bit.  We could avoid the conversion and do 2x more using sudot on 8 bit data.  ARGB as unsigned and coefficients as signed",
+      "revId": "91e5c97dc13d4def6c5997fb05e702f8bbbf477a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
