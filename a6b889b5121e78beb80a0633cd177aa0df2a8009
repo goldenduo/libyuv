@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbf780b_7842e607",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-02-27T20:10:19Z",
+      "side": 1,
+      "message": "\u003e note godbolt test for movi 0x8000  https://godbolt.org/z/dqq9W33Ys\n\nLooks like the shifted immediate version is the only option:\n\nhttps://developer.arm.com/documentation/ddi0602/2024-12/SIMD-FP-Instructions/MOVI--Move-immediate--vector--",
+      "parentUuid": "625eb2c1_26ee54d5",
+      "revId": "a6b889b5121e78beb80a0633cd177aa0df2a8009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fa6d576_230bdd09",
@@ -48,6 +66,23 @@
       "writtenOn": "2025-02-27T18:53:00Z",
       "side": 1,
       "message": "Nit: Please format this file.",
+      "revId": "a6b889b5121e78beb80a0633cd177aa0df2a8009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a078ef_f8fe7c96",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-02-27T20:10:19Z",
+      "side": 1,
+      "message": "It\u0027s not clear why this line and others behave differently to 244-255 and 268-269",
       "revId": "a6b889b5121e78beb80a0633cd177aa0df2a8009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
