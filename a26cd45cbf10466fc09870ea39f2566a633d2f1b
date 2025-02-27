@@ -87,6 +87,23 @@
       "parentUuid": "08263d3b_dbc585c1",
       "revId": "a26cd45cbf10466fc09870ea39f2566a633d2f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "671c38cc_58bae946",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549607
+      },
+      "writtenOn": "2025-02-27T06:16:13Z",
+      "side": 1,
+      "message": "Gentle ping -- one more CR+1 needed for the loong64 GYP build fix to land, which helps integration into Firefox that I\u0027m currently working on.",
+      "revId": "a26cd45cbf10466fc09870ea39f2566a633d2f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
