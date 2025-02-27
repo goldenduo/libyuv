@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca99d83_f73f26af",
+        "filename": "include/libyuv/compare_row.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-27T00:14:48Z",
+      "side": 1,
+      "message": "Thanks for the explanation!",
+      "parentUuid": "728ca065_34defaac",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63301646_5a3122e0",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "!defined(__clang__) means its genuine MSVC\n(!defined(__clang__) || defined(LIBYUV_ENABLE_ROWWIN)) means its MSVC or clangcl being told to use row_win anyway.\n\ndefined(_MSC_VER) \u0026\u0026 _MSC_VER \u003e\u003d 1700 is a version check to ensure the compiler is new enough to support AVX2.  This works for any compiler that mimics MSVC, since they stay in lock step.",
       "parentUuid": "63301646_5a3122e0",
+      "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caa3ed28_df334493",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-02-27T00:14:48Z",
+      "side": 1,
+      "message": "Thanks for the explanation.",
+      "parentUuid": "27914fd6_71b2f3d7",
       "revId": "b5d4b66fa33ddd961ca4648623aca2024a029075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
