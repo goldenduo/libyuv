@@ -3371,16 +3371,15 @@ int RAWToJ420(const uint8_t* src_raw,
               int height) {
   int y;
 #if defined(HAS_RAWTOYJROW)
-  void (*RAWToUVJRow)(const uint8_t* src_raw, int src_stride_raw,
-                      uint8_t* dst_u, uint8_t* dst_v, int width) =
-      RAWToUVJRow_C;
+  void (*RAWToUVJRow)(const uint8_t* src_raw, int src_stride_raw, uint8_t* dst_u,
+                     uint8_t* dst_v, int width) = RAWToUVJRow_C;
   void (*RAWToYJRow)(const uint8_t* src_raw, uint8_t* dst_y, int width) =
       RAWToYJRow_C;
 #else
   void (*RAWToARGBRow)(const uint8_t* src_rgb, uint8_t* dst_argb, int width) =
       RAWToARGBRow_C;
   void (*ARGBToUVJRow)(const uint8_t* src_argb0, int src_stride_argb,
-                       uint8_t* dst_u, uint8_t* dst_v, int width) =
+                      uint8_t* dst_u, uint8_t* dst_v, int width) =
       ARGBToUVJRow_C;
   void (*ARGBToYJRow)(const uint8_t* src_argb, uint8_t* dst_y, int width) =
       ARGBToYJRow_C;
@@ -3418,19 +3417,23 @@ int RAWToJ420(const uint8_t* src_raw,
     }
   }
 #endif
-#if defined(HAS_RAWTOYJROW_LSX)
+#if defined(HAS_RAWTOYJROW_LSX) && defined(HAS_RAWTOUVJROW_LSX)
   if (TestCpuFlag(kCpuHasLSX)) {
+    RAWToUVJRow = RAWToUVJRow_Any_LSX;
     RAWToYJRow = RAWToYJRow_Any_LSX;
     if (IS_ALIGNED(width, 16)) {
       RAWToYJRow = RAWToYJRow_LSX;
+      RAWToUVJRow = RAWToUVJRow_LSX;
     }
   }
 #endif
-#if defined(HAS_RAWTOYJROW_LASX)
+#if defined(HAS_RAWTOYJROW_LASX) && defined(HAS_RAWTOUVJROW_LASX)
   if (TestCpuFlag(kCpuHasLASX)) {
+    RAWToUVJRow = RAWToUVJRow_Any_LASX;
     RAWToYJRow = RAWToYJRow_Any_LASX;
     if (IS_ALIGNED(width, 32)) {
       RAWToYJRow = RAWToYJRow_LASX;
+      RAWToUVJRow = RAWToUVJRow_LASX;
     }
   }
 #endif

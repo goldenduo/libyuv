@@ -126,9 +126,9 @@ void ScaleRowDown2Linear_SSSE3(const uint8_t* src_ptr,
                                int dst_width) {
   (void)src_stride;
   asm volatile(
-      "pcmpeqb     %%xmm4,%%xmm4                 \n"
-      "psrlw       $0xf,%%xmm4                   \n"
-      "packuswb    %%xmm4,%%xmm4                 \n"
+      "pcmpeqb     %%xmm4,%%xmm4                 \n"  // 0x0101
+      "pabsb       %%xmm4,%%xmm4                 \n"
+
       "pxor        %%xmm5,%%xmm5                 \n"
 
       LABELALIGN
@@ -157,9 +157,8 @@ void ScaleRowDown2Box_SSSE3(const uint8_t* src_ptr,
                             uint8_t* dst_ptr,
                             int dst_width) {
   asm volatile(
-      "pcmpeqb     %%xmm4,%%xmm4                 \n"
-      "psrlw       $0xf,%%xmm4                   \n"
-      "packuswb    %%xmm4,%%xmm4                 \n"
+      "pcmpeqb     %%xmm4,%%xmm4                 \n"  // 0x0101
+      "pabsb       %%xmm4,%%xmm4                 \n"
       "pxor        %%xmm5,%%xmm5                 \n"
 
       LABELALIGN
@@ -225,8 +224,7 @@ void ScaleRowDown2Linear_AVX2(const uint8_t* src_ptr,
   (void)src_stride;
   asm volatile(
       "vpcmpeqb    %%ymm4,%%ymm4,%%ymm4          \n"
-      "vpsrlw      $0xf,%%ymm4,%%ymm4            \n"
-      "vpackuswb   %%ymm4,%%ymm4,%%ymm4          \n"
+      "vpabsb      %%ymm4,%%ymm4                 \n"
       "vpxor       %%ymm5,%%ymm5,%%ymm5          \n"
 
       LABELALIGN
@@ -258,8 +256,7 @@ void ScaleRowDown2Box_AVX2(const uint8_t* src_ptr,
                            int dst_width) {
   asm volatile(
       "vpcmpeqb    %%ymm4,%%ymm4,%%ymm4          \n"
-      "vpsrlw      $0xf,%%ymm4,%%ymm4            \n"
-      "vpackuswb   %%ymm4,%%ymm4,%%ymm4          \n"
+      "vpabsb      %%ymm4,%%ymm4                 \n"
       "vpxor       %%ymm5,%%ymm5,%%ymm5          \n"
 
       LABELALIGN
@@ -420,9 +417,9 @@ void ScaleRowDown4Box_AVX2(const uint8_t* src_ptr,
                            int dst_width) {
   asm volatile(
       "vpcmpeqb    %%ymm4,%%ymm4,%%ymm4          \n"
-      "vpsrlw      $0xf,%%ymm4,%%ymm4            \n"
-      "vpsllw      $0x3,%%ymm4,%%ymm5            \n"
-      "vpackuswb   %%ymm4,%%ymm4,%%ymm4          \n"
+      "vpabsw      %%ymm4,%%ymm5                 \n"
+      "vpabsb      %%ymm4,%%ymm4                 \n"  // 0x0101
+      "vpsllw      $0x3,%%ymm5,%%ymm5            \n"  // 0x0008
 
       LABELALIGN
       "1:          \n"
@@ -2385,8 +2382,7 @@ void ScaleUVRowDown2Box_AVX2(const uint8_t* src_ptr,
                              int dst_width) {
   asm volatile(
       "vpcmpeqb    %%ymm4,%%ymm4,%%ymm4          \n"  // 01010101
-      "vpsrlw      $0xf,%%ymm4,%%ymm4            \n"
-      "vpackuswb   %%ymm4,%%ymm4,%%ymm4          \n"
+      "vpabsb      %%ymm4,%%ymm4                 \n"
       "vpxor       %%ymm5,%%ymm5,%%ymm5          \n"  // zero
       "vbroadcastf128 %4,%%ymm1                  \n"  // split shuffler
       "vbroadcastf128 %5,%%ymm3                  \n"  // merge shuffler
