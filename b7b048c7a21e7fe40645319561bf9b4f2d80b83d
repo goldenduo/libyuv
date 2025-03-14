@@ -51,6 +51,24 @@
       "parentUuid": "8558f1d7_c5dbe7f7",
       "revId": "b7b048c7a21e7fe40645319561bf9b4f2d80b83d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bda7073_d9392938",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2025-03-14T18:34:23Z",
+      "side": 1,
+      "message": "Acknowledged.\nThanks James and Frank for the review.\n\nI tested the suggestion: enabling the cfi_assembly_support, with and without, and they both build without errors.\n\nI\u0027ll have the change as is and add cfi_assembly_support if necessary.",
+      "parentUuid": "eb5e6eba_2522fd12",
+      "revId": "b7b048c7a21e7fe40645319561bf9b4f2d80b83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
