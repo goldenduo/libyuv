@@ -16,6 +16,23 @@
       "message": "PTAL and thank you!",
       "revId": "b7b048c7a21e7fe40645319561bf9b4f2d80b83d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8558f1d7_c5dbe7f7",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-03-14T02:37:24Z",
+      "side": 1,
+      "message": "I wonder if\n\n```\n                config: {\n                    cfi_assembly_support: true,\n                },\n```\n\nis needed. libyuv has inline assembly unlike libvpx:\n\nhttps://cs.android.com/android/platform/superproject/+/android15-qpr1-release:external/libvpx/Android.bp.in;l\u003d52;drc\u003ddfa3b89e65fe635773b696cc62ccef7a051f7d8f\n\nThe flag in question is `-fno-sanitize-cfi-canonical-jump-tables`:\nhttps://cs.android.com/android/platform/superproject/+/android15-qpr1-release:build/soong/cc/sanitize.go;l\u003d76;drc\u003d39fe1946c2ee8cf3e7b94207fe8b01d62ae53984\n\nA test build in Android running the cts tests should catch an error.",
+      "revId": "b7b048c7a21e7fe40645319561bf9b4f2d80b83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
