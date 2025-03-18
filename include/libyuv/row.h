@@ -3692,6 +3692,14 @@ void Convert8To16Row_Any_AVX2(const uint8_t* src_ptr,
                               uint16_t* dst_ptr,
                               int scale,
                               int width);
+void Convert8To16Row_NEON(const uint8_t* src_y,
+                          uint16_t* dst_y,
+                          int scale,
+                          int width);
+void Convert8To16Row_Any_NEON(const uint8_t* src_y,
+                              uint16_t* dst_y,
+                              int scale,
+                              int width);
 
 void Convert16To8Row_C(const uint16_t* src_y,
                        uint8_t* dst_y,

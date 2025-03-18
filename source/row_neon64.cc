@@ -5411,6 +5411,46 @@ void Convert8To8Row_NEON(const uint8_t* src_y,
       : "cc", "memory", "v0", "v1", "v2", "v3", "v4", "v5");
 }
 
+static uint8_t kConvert8To16Shuffle[] = {
+    0,  0,  255, 255, 1,  1,  255, 255, 2,  2,  255, 255, 3,  3,  255, 255,
+    4,  4,  255, 255, 5,  5,  255, 255, 6,  6,  255, 255, 7,  7,  255, 255,
+    8,  8,  255, 255, 9,  9,  255, 255, 10, 10, 255, 255, 11, 11, 255, 255,
+    12, 12, 255, 255, 13, 13, 255, 255, 14, 14, 255, 255, 15, 15, 255, 255};
+
+// Use scale to convert lsb formats to msb, depending how many bits there are:
+// 1024 = 10 bits
+void Convert8To16Row_NEON(const uint8_t* src_y,
+                          uint16_t* dst_y,
+                          int scale,
+                          int width) {
+  asm volatile(
+      "dup    v31.4s, %w[scale]                \n"
+      "ldp    q27, q28, [%[kShuffle]]          \n"
+      "ldp    q29, q30, [%[kShuffle], #32]     \n"
+      "1:                                      \n"
+      "ldr    q0, [%[src]], #16                \n"
+      "tbl    v3.16b, {v0.16b}, v30.16b        \n"
+      "tbl    v2.16b, {v0.16b}, v29.16b        \n"
+      "tbl    v1.16b, {v0.16b}, v28.16b        \n"
+      "tbl    v0.16b, {v0.16b}, v27.16b        \n"
+      "subs   %w[width], %w[width], #16        \n"
+      "mul    v3.4s, v3.4s, v31.4s             \n"
+      "mul    v2.4s, v2.4s, v31.4s             \n"
+      "mul    v1.4s, v1.4s, v31.4s             \n"
+      "mul    v0.4s, v0.4s, v31.4s             \n"
+      "uzp2   v2.8h, v2.8h, v3.8h              \n"
+      "uzp2   v0.8h, v0.8h, v1.8h              \n"
+      "stp    q0, q2, [%[dst]], #32            \n"
+      "b.ne   1b                               \n"
+      : [src] "+r"(src_y),                    // %[src]
+        [dst] "+r"(dst_y),                    // %[dst]
+        [width] "+r"(width)                   // %[width]
+      : [scale] "r"(scale),                   // %[scale]
+        [kShuffle] "r"(kConvert8To16Shuffle)  // %[kShuffle]
+      : "cc", "memory", "v0", "v1", "v2", "v3", "v27", "v28", "v29", "v30",
+        "v31");
+}
+
 #endif  // !defined(LIBYUV_DISABLE_NEON) && defined(__aarch64__)
 
 #ifdef __cplusplus
