@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c31932_814569b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-25T16:32:25Z",
+      "side": 1,
+      "message": "This is still a quick fix for 2 compiler issues - 64 bit elements and vcombine.\n64 bit elements are only used twice in scaling without filtering and easily reworked.  The scale functions can use the same vlseg2 as linear and discard the 2nd word.\nthe vcombine can be avoided by manually constucting a tuple and setv each field.",
+      "revId": "f4b09aea464b6b3d02809ebf638a13a86655a183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
