@@ -33,6 +33,24 @@
       "message": "It would be good to fold the long lines in this CL.\n\nIf you do that by running clang-format, I\u0027d prefer the unrelated formatting changes be moved to a prerequisite CL.",
       "revId": "f4b09aea464b6b3d02809ebf638a13a86655a183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c545f65_08ae6f02",
+        "filename": "include/libyuv/scale_row.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-25T18:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "605e0b04_ab74a747",
+      "revId": "f4b09aea464b6b3d02809ebf638a13a86655a183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
