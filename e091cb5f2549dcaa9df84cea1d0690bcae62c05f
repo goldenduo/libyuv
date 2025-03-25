@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaeca77c_3988c7a1",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-25T16:23:11Z",
+      "side": 1,
+      "message": "Done.  sorted",
+      "parentUuid": "82119646_3ba82f2c",
+      "revId": "e091cb5f2549dcaa9df84cea1d0690bcae62c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd57ff9a_64e9c10b",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b7b41c7_ef1660a0",
+        "filename": "source/row_rvv.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-25T16:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd57ff9a_64e9c10b",
+      "revId": "e091cb5f2549dcaa9df84cea1d0690bcae62c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39fa9f74_b0de8c95",
@@ -48,6 +84,24 @@
       "writtenOn": "2025-03-25T15:46:13Z",
       "side": 1,
       "message": "Please fold this long line.\n\nNote: I wanted to suggest running clang-format, but I am worried that will add too many unrelated changes to this CL. If you run clang-format, it is better to make that a separate CL before this CL.",
+      "revId": "e091cb5f2549dcaa9df84cea1d0690bcae62c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8cb5bc_b601e18a",
+        "filename": "source/scale_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-25T16:23:11Z",
+      "side": 1,
+      "message": "There are several new long lines I\u0027d rather use clang format on when the review is near complete",
+      "parentUuid": "39fa9f74_b0de8c95",
       "revId": "e091cb5f2549dcaa9df84cea1d0690bcae62c05f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
