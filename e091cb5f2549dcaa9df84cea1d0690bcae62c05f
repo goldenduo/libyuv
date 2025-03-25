@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82119646_3ba82f2c",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-25T15:46:13Z",
+      "side": 1,
+      "message": "Did you mean to move this line? The new location is not in alphabetical order.",
+      "revId": "e091cb5f2549dcaa9df84cea1d0690bcae62c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd57ff9a_64e9c10b",
+        "filename": "source/row_rvv.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-25T15:46:13Z",
+      "side": 1,
+      "message": "Undo this change. The blank line doesn\u0027t seem necessary.",
+      "revId": "e091cb5f2549dcaa9df84cea1d0690bcae62c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39fa9f74_b0de8c95",
+        "filename": "source/scale_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-25T15:46:13Z",
+      "side": 1,
+      "message": "Please fold this long line.\n\nNote: I wanted to suggest running clang-format, but I am worried that will add too many unrelated changes to this CL. If you run clang-format, it is better to make that a separate CL before this CL.",
+      "revId": "e091cb5f2549dcaa9df84cea1d0690bcae62c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
