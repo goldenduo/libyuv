@@ -16,6 +16,24 @@
       "message": "note I use clang-format from chrome\n\nmore ~/bin/formatyuv \n#!/bin/bash\nset -e -x\n\nls source/*neon* source/*gcc* | xargs -n1 assembly_prettify.py\n\nclang-format -style\u003dfile -i include/*.h                  \u0026\nclang-format -style\u003dfile -i include/libyuv/*.h           \u0026\nclang-format -style\u003dfile -i unit_test/*.h unit_test/*.cc \u0026\nclang-format -style\u003dfile -i source/*.cc                  \u0026\nclang-format -style\u003dfile -i util/*.cc util/*.h           \u0026\nwait\n\nfbarchard@fbarchard:~/build/libyuv/src (clangformat)$ which clang-format\n/usr/local/google/home/fbarchard/build/chrome/src/buildtools/linux64/clang-format",
       "revId": "32988e483e077cbd3306c88b1caee503d1d8b80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a947b5e3_39a76889",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-25T18:53:59Z",
+      "side": 1,
+      "message": "I usually use clang-format from Chrome\u0027s depot_tools.\n\n\n```\n$ which clang-format\n/home/wtc/depot_tools/clang-format\n```\n\nWhere does assembly_prettify.py come from? That may be the reason the formatting in libyuv is \"unstable\", because most of the formatting changes are in the gcc inline assembly code.",
+      "parentUuid": "a7e5478e_218e7c5d",
+      "revId": "32988e483e077cbd3306c88b1caee503d1d8b80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
