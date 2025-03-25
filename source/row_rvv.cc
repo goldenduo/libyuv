@@ -487,6 +487,7 @@ void RAWToRGB24Row_RVV(const uint8_t* src_raw, uint8_t* dst_rgb24, int width) {
 #endif
 #endif
 
+
 #ifdef HAS_ARGBTORAWROW_RVV
 #ifdef LIBYUV_RVV_HAS_TUPLE_TYPE
 void ARGBToRAWRow_RVV(const uint8_t* src_argb, uint8_t* dst_raw, int width) {
