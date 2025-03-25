@@ -104,6 +104,24 @@
       "parentUuid": "39fa9f74_b0de8c95",
       "revId": "e091cb5f2549dcaa9df84cea1d0690bcae62c05f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca36138_fa6d5385",
+        "filename": "source/scale_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-25T18:20:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ff8cb5bc_b601e18a",
+      "revId": "e091cb5f2549dcaa9df84cea1d0690bcae62c05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
