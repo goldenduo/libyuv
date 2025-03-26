@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a5f4f71_7695fbe3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-26T10:58:08Z",
+      "side": 1,
+      "message": "your changes are missing files?  to make a CL:\ngit add file.cc\ngit commit\ngit cl upload\n\nsubsequent changes git commit --amend is good\nor file an issue and if the change is small include it in the issue",
+      "revId": "3bb6f14896adee6f6c300798e1b516847c8f84f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
