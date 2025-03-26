@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de5f31d_12aec33e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-26T10:51:52Z",
+      "side": 1,
+      "message": "Its George!  Long time no CL.  You worry about 16 bit RGB565 too much  :-)  It was done for early Android devices with 16 bit displays, but I doubt its used anymore.\n\nI would like to ask you about the sve ARGBToUV... couldnt we make that like I8MM doing 8 bit usdot instead of converting to 16 bit first?",
+      "revId": "9e4db847bac3d6636bd8be87a7a6388b9d3c15e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
