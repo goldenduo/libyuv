@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf1589f_253a315b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-27T22:58:54Z",
+      "side": 1,
+      "message": "Frankie: I created this commit with the command\n\n```\ngit commit -a --author\u003d\"Frankie Dintino \u003cfdintino@gmail.com\u003e\"\n```\n\nBut when I uploaded this CL with the command `git cl upload`, the `Author` field (line 2) became me. So this is the best I can do.",
+      "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e92ef24e_7efac94e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-27T22:58:54Z",
+      "side": 1,
+      "message": "George, Jonathan: Please review. Thanks!",
+      "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
