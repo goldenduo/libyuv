@@ -104,6 +104,23 @@
       "message": "Gentle ping -- one more CR+1 needed for the loong64 GYP build fix to land, which helps integration into Firefox that I\u0027m currently working on.",
       "revId": "a26cd45cbf10466fc09870ea39f2566a633d2f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89c84c43_c7067944",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-27T18:46:07Z",
+      "side": 1,
+      "message": "the arm additions are high risk... would be safer to do mips and arm in 2 CL",
+      "revId": "a26cd45cbf10466fc09870ea39f2566a633d2f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
