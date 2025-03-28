@@ -67,6 +67,24 @@
       "message": "libaom uses `-march\u003darmv9-a+i8mm+sve2` for SVE2. libvpx uses `-march\u003darmv9-a+sve2` for SVE2.\n\nWhich flag should we use for SVE2 in libyuv?",
       "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c557da_5d6fc1c2",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-03-28T05:17:31Z",
+      "side": 1,
+      "message": "So unpacking a few different things here:\n\n* SVE2 is an Arm v9-only feature so writing it as -march\u003darmv8...+sve2 is technically wrong but compilers seem happy enough to accept it so I guess that\u0027s fine.\n\n* Arm v9.0-A is based on the v8.5-A revision of the architecture, however the I8MM extension only became mandatory from v8.6/v9.1, so +sve2 does not imply +i8mm. (DotProd became mandatory from v8.4, so omitting +dotprod is fine).\n\n* While there is no strict dependency between Neon DotProd-\u003eI8MM-\u003eSVE2, in practice I\u0027m not aware of any micro-architecture that has SVE2 but does not have I8MM. The runtime CPU feature detection code in the libraries we contribute to (including libyuv) is written such that we cannot enable SVE2 without I8MM. This restriction enables us to write kernels that use both SVE2 and I8MM together without unnecessary additional complication.\n\nSince Arm v9.0-A is based on v8.5-A I think this is fine, if regrettable. I would prefer \"-march\u003darmv8.5-a+i8mm+sve2\" for the reasons listed above.\n\nObviously it goes without saying that using such an old compiler version for anything other than assembly code is going to result in extremely poor code generation performance for AArch64, especially for code that is heavily intrinsics based like libaom or libvpx where both LLVM and GCC have seen significant improvements in recent years...",
+      "parentUuid": "ba28bbb3_bbdaf015",
+      "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
