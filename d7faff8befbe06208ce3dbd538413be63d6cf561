@@ -16,6 +16,23 @@
       "message": "Looks good now, thanks.\nps to reduce complexity/support I\u0027m wondering if we can deprecate MSA?  lsx/lasx is the focus.\nOn the other platforms I\u0027m changing some math accuracy mainly around subsampling, rgb to/from argb and scaling, and it requires tweaks to keep the code working.\nI\u0027ve made no attempt to fix the mips assembly but it still requires ongoing support to keep msa consistent with avx/neon etc",
       "revId": "d7faff8befbe06208ce3dbd538413be63d6cf561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5c3508_479d8e59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-28T20:45:06Z",
+      "side": 1,
+      "message": "Needs an updated review, Mirko",
+      "revId": "d7faff8befbe06208ce3dbd538413be63d6cf561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
