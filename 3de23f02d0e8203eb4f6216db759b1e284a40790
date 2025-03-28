@@ -85,6 +85,24 @@
       "parentUuid": "ba28bbb3_bbdaf015",
       "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0d5950c_28ddcf4e",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1247893
+      },
+      "writtenOn": "2025-03-28T11:38:14Z",
+      "side": 1,
+      "message": "Seconding George\u0027s comments.",
+      "parentUuid": "d4c557da_5d6fc1c2",
+      "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
