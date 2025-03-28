@@ -33,6 +33,40 @@
       "message": "George, Jonathan: Please review. Thanks!",
       "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede538a5_12cb0800",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-28T02:10:35Z",
+      "side": 1,
+      "message": "libaom also uses `-march\u003darmv8.2-a+dotprod+i8mm`.",
+      "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba28bbb3_bbdaf015",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-28T02:10:35Z",
+      "side": 1,
+      "message": "libaom uses `-march\u003darmv9-a+i8mm+sve2` for SVE2. libvpx uses `-march\u003darmv9-a+sve2` for SVE2.\n\nWhich flag should we use for SVE2 in libyuv?",
+      "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
