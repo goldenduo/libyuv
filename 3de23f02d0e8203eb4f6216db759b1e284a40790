@@ -103,6 +103,24 @@
       "parentUuid": "d4c557da_5d6fc1c2",
       "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6fda140_1aef5389",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-28T20:15:27Z",
+      "side": 1,
+      "message": "George Steed wrote:\n\n\u003e Since Arm v9.0-A is based on v8.5-A I think this is fine, if regrettable. I would prefer \"-march\u003darmv8.5-a+i8mm+sve2\" for the reasons listed above.\n\nI\u0027d like to confirm I understand your suggestion correctly:\n\n1) In libyuv, I will use `-march\u003darmv8.5-a+i8mm+sve2` for gcc 10 support. (libyuv uses only GCC inline assembly for Arm, so it should be fine to support older versions of gcc such as gcc 10.)\n\nShould I add a comment that it should be changed to `-march\u003darmv9-a+i8mm+sve2` when we drop support for gcc 10?\n\n2) In libvpx, I will change `-march\u003darmv9-a+sve2` to `-march\u003darmv9-a+i8mm+sve2`.\n\nIs the above correct?",
+      "parentUuid": "c0d5950c_28ddcf4e",
+      "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
