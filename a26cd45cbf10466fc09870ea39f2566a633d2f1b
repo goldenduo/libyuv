@@ -121,6 +121,24 @@
       "message": "the arm additions are high risk... would be safer to do mips and arm in 2 CL",
       "revId": "a26cd45cbf10466fc09870ea39f2566a633d2f1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41aba51_695afbce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549607
+      },
+      "writtenOn": "2025-03-28T16:19:24Z",
+      "side": 1,
+      "message": "Hmm, I\u0027ve done this just to be safe. (I have checked the sources when I first wrote this, but it won\u0027t hurt to split the changes anyway, and as it turned out I actually didn\u0027t have time to properly test arm64.) Please check again, thanks!",
+      "parentUuid": "89c84c43_c7067944",
+      "revId": "a26cd45cbf10466fc09870ea39f2566a633d2f1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
