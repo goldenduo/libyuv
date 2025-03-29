@@ -33,6 +33,24 @@
       "message": "Needs an updated review, Mirko",
       "revId": "d7faff8befbe06208ce3dbd538413be63d6cf561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e38b42e_b3706f66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221903
+      },
+      "writtenOn": "2025-03-29T07:06:01Z",
+      "side": 1,
+      "message": "I also focused on lsx/lasx too.",
+      "parentUuid": "8a1d1e00_74366998",
+      "revId": "d7faff8befbe06208ce3dbd538413be63d6cf561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
