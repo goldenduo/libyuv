@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b75c9c_698fe3dc",
+        "filename": "source/row_common.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-29T07:18:23Z",
+      "side": 1,
+      "message": "Should 65.481 be rounded to 65 instead of 66?",
+      "revId": "c060118bea3f28ceb837d3c85e479d3bb4c21726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
