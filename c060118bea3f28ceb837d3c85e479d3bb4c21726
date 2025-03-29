@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9950f231_6a5c5b5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 32
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-03-29T08:04:14Z",
+      "side": 1,
+      "message": "According to the formulas in ITU-T H.273, UV (before adding the 128 offset) should only reach -0.5 * 255 \u003d -127.5 in the negative direction. The Round() operation is applied after adding the 128 offset, so the minimum value of UV is Round(-127.5 + 128) \u003d Round(0.5) \u003d 1, not Round(-127.5) + 128 \u003d -128 + 128 \u003d 0.",
+      "revId": "c060118bea3f28ceb837d3c85e479d3bb4c21726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22b75c9c_698fe3dc",
         "filename": "source/row_common.cc",
         "patchSetId": 32
