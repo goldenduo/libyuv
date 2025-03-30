@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "916415d2_2890dce9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 32
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-30T23:57:52Z",
+      "side": 1,
+      "message": "the 3 channels are added as 16 bit fixed point, so no rounding is applied after each multiply/add.  the final UV is 16 bit signed but negated so 0x7fff to 0x8000 (+32767 to -32768).  The negation is done by 0x8000 - v converting the 16 bit value to unsigned 0 to 0xffff.   Then converted down to 8 bit, which is where rounding could be done, but we found the maximum values of 0xffff + 128 overflowed and produced 0 and I dont think rounding makes sense when reducing bits, if the coefficients added up to 256 instead of 255.  We want an equal distribution of values to each 8 bit value including the first (0) and last (255).  An add produce half as many 0 values and 1.5x as many 255 values.",
+      "parentUuid": "9950f231_6a5c5b5d",
+      "revId": "c060118bea3f28ceb837d3c85e479d3bb4c21726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22b75c9c_698fe3dc",
         "filename": "source/row_common.cc",
         "patchSetId": 32
@@ -31,6 +49,24 @@
       "writtenOn": "2025-03-29T07:18:23Z",
       "side": 1,
       "message": "Should 65.481 be rounded to 65 instead of 66?",
+      "revId": "c060118bea3f28ceb837d3c85e479d3bb4c21726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8359de34_1c368e19",
+        "filename": "source/row_common.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-30T23:57:52Z",
+      "side": 1,
+      "message": "This is commonly used math and a quick search shows 66 is what other websites document the value as.\nSee studio swing\nhttps://en.wikipedia.org/wiki/YCbCr\nhttps://learn.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering\n\nY channel is 16 to 235 inclusive, so 235-16\u003d219.\nIf we treat this as 220 is 1.0 then the multiply should be 220.  0.299 * 220 \u003d 65.78\nThe comments could use an update",
+      "parentUuid": "22b75c9c_698fe3dc",
       "revId": "c060118bea3f28ceb837d3c85e479d3bb4c21726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
