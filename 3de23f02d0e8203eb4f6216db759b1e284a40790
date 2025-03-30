@@ -37,6 +37,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "00d646d8_64b94c90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-30T23:18:10Z",
+      "side": 1,
+      "message": "I expect this will come back to haunt us, so a comment and/or bug on why gcc 10 requires 8.5 would be good",
+      "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ede538a5_12cb0800",
         "filename": "CMakeLists.txt",
         "patchSetId": 2
