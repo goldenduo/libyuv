@@ -16,6 +16,23 @@
       "message": "I personally have 3.31.5.  Is that newer than 3.5?\n\ncmake --version\ncmake version 3.31.5\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
       "revId": "4f6ef2e3bc0023185374ba6206b1c927acfa9af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2f11aff_d49aa3aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-31T20:14:37Z",
+      "side": 1,
+      "message": "confirmed versions https://cmake.org/cmake/help/latest/release/index.html",
+      "revId": "4f6ef2e3bc0023185374ba6206b1c927acfa9af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
