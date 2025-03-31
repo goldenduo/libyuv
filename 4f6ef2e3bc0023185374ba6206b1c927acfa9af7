@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87dc3712_43a0f915",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-03-31T20:08:49Z",
+      "side": 1,
+      "message": "I personally have 3.31.5.  Is that newer than 3.5?\n\ncmake --version\ncmake version 3.31.5\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+      "revId": "4f6ef2e3bc0023185374ba6206b1c927acfa9af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
