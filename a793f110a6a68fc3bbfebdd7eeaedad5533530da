@@ -68,6 +68,24 @@
       ],
       "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d97e992_7668cc33",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-04-02T21:38:41Z",
+      "side": 1,
+      "message": "I got this change second-handed. I think gcc 10 is known to not accept `-march\u003darmv9-a+i8mm+sve2`. Since we need to support gcc 10, we have to use `-march\u003darmv8.5-a+i8mm+sve2`.\n\nI don\u0027t know if `-march\u003darmv9-a+i8mm+sve2` is supported by gcc 11.\n\nWould you like me to rewrite this comment so that we only say what we know?\n\n```\n    # SVE2 is an Arm v9-only feature. gcc 10 does not support\n    # -march\u003darmv9-a+i8mm+sve2. Use -march\u003darmv8.5-a+i8mm+sve2,\n    # which is technically wrong, for compatibility with gcc 10.\n```",
+      "parentUuid": "f00188e6_2cb427e3",
+      "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
