@@ -16,6 +16,24 @@
       "message": "Looks like I need another reviewer ... mbonadei@, can you take a look and CQ+2 if it LGTY? Thanks!",
       "revId": "432d2e47b36ec7498ad84cd2a7dffd1f8441d3f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ba72cd_29df4f3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-04-02T22:54:37Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "b8a0c182_312f4db5",
+      "revId": "432d2e47b36ec7498ad84cd2a7dffd1f8441d3f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
