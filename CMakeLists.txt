@@ -112,13 +112,16 @@ if(NOT MSVC)
       ${ly_src_dir}/rotate_neon64.cc
       ${ly_src_dir}/row_neon64.cc
       ${ly_src_dir}/scale_neon64.cc)
-    target_compile_options(${ly_lib_name}_neon64 PRIVATE -march=armv8-a+dotprod+i8mm)
+    target_compile_options(${ly_lib_name}_neon64 PRIVATE -march=armv8.2-a+dotprod+i8mm)
     list(APPEND ly_lib_parts $<TARGET_OBJECTS:${ly_lib_name}_neon64>)
 
     # Enable AArch64 SVE kernels.
     add_library(${ly_lib_name}_sve OBJECT
       ${ly_src_dir}/row_sve.cc)
-    target_compile_options(${ly_lib_name}_sve PRIVATE -march=armv9-a+sve2)
+    # SVE2 is an Arm v9-only feature, so -march=armv8.5-a+i8mm+sve2 is
+    # technically wrong. Use -march=armv9-a+i8mm+sve2 instead when we drop
+    # support for gcc 10.
+    target_compile_options(${ly_lib_name}_sve PRIVATE -march=armv8.5-a+i8mm+sve2)
     list(APPEND ly_lib_parts $<TARGET_OBJECTS:${ly_lib_name}_sve>)
 
     set(OLD_CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS})
