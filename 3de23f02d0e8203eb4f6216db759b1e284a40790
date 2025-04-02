@@ -156,6 +156,24 @@
       "parentUuid": "f6fda140_1aef5389",
       "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034e2acd_693970a6",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-04-02T17:37:07Z",
+      "side": 1,
+      "message": "I will add the comment today. Sorry about the delay.",
+      "parentUuid": "924a2a9d_ffc8b513",
+      "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
