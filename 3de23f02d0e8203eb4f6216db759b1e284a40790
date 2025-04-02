@@ -174,6 +174,24 @@
       "parentUuid": "924a2a9d_ffc8b513",
       "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1beded2_56143f8b",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-04-02T18:31:33Z",
+      "side": 1,
+      "message": "Done. Changed `-march\u003darmv8.5-a+sve2` to `-march\u003darmv8.5-a+i8mm+sve2` and added a comment.",
+      "parentUuid": "034e2acd_693970a6",
+      "revId": "3de23f02d0e8203eb4f6216db759b1e284a40790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
