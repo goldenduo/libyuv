@@ -86,6 +86,24 @@
       "parentUuid": "f00188e6_2cb427e3",
       "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af3cb6f_11ef3988",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-04-02T23:30:03Z",
+      "side": 1,
+      "message": "I did some more Web searches for this topic. Here are my findings.\n\n`+i8mm` and `+sve2` first appeared in GCC 10. `-march\u003darmv9-a` first appeared in GCC 12. So we can use `-march\u003darmv8.5-a+i8mm+sve2` with GCC 10 or later, and we can use `-march\u003darmv9-a+i8mm+sve2` with GCC 12 or later.\n\nhttps://gcc.gnu.org/onlinedocs/gcc-9.5.0/gcc/AArch64-Options.html\nhttps://gcc.gnu.org/onlinedocs/gcc-10.5.0/gcc/AArch64-Options.html\nhttps://gcc.gnu.org/onlinedocs/gcc-11.5.0/gcc/AArch64-Options.html\nhttps://gcc.gnu.org/onlinedocs/gcc-12.4.0/gcc/AArch64-Options.html\n\nAnd an official Arm blog post tells people to use `-march\u003darmv8.5-a+sve2`, so I removed the comment I added in patchset 4:\nhttps://community.arm.com/arm-community-blogs/b/tools-software-ides-blog/posts/making-the-most-of-the-arm-architecture-in-gcc-10\n\nGeorge: GCC manual also says +sve2 is included by default in `-march\u003darmv9-a`. Does this mean `-march\u003darmv9-a+i8mm+sve2` can be shortened to `-march\u003darmv9-a+i8mm`?",
+      "parentUuid": "8d97e992_7668cc33",
+      "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
