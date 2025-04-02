@@ -33,6 +33,41 @@
       "message": "lgtm, thanks!",
       "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00188e6_2cb427e3",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-04-02T21:00:14Z",
+      "side": 1,
+      "message": "to be clear, we are doing this due to an issue in gcc 9 that is fixed in gcc 10+ ?",
+      "fixSuggestions": [
+        {
+          "fixId": "6ecae390_2d03dc3f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "CMakeLists.txt",
+              "range": {
+                "startLine": 122,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": "    # technically wrong. GCC 9 and earlier incorrectly allowed SVE2 to be\n    # enabled with -march\u003darmv8.5-a, but this was fixed in GCC 10. Use\n    # -march\u003darmv9-a+i8mm+sve2 instead when we drop support for gcc 10.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
