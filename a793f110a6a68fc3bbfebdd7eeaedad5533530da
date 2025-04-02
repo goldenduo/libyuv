@@ -16,6 +16,23 @@
       "message": "Frank, George: Please review patchset 4. Thanks!",
       "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31d38ac_50a0576a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-04-02T20:10:34Z",
+      "side": 1,
+      "message": "lgtm, thanks!",
+      "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
