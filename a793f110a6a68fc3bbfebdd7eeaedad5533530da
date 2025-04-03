@@ -104,6 +104,24 @@
       "parentUuid": "8d97e992_7668cc33",
       "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb7e03de_b2586d03",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-04-03T08:52:42Z",
+      "side": 1,
+      "message": "Indeed it seems like GCC 12 is the first one that accepts -march\u003darmv9-a: https://godbolt.org/z/zh8fe1rWM , LLVM accepts it from LLVM 14: https://godbolt.org/z/c7aTajo6K .\n\nI have a weak preference against simplifying the command line to remove the explicit +sve2 extension. The architecture specification is somewhat vague here, stating that SVE2 is technically optional in Arm v9.0-A but mandatory for \"All Armv9-A systems that support standard operating\nsystems with rich application environments\". You can see some related discussions on the LLVM project here: https://github.com/llvm/llvm-project/issues/114987 .\n\nAt the time we started writing SVE2 code to put upstream there wasn\u0027t an obvious consensus about whether -march\u003darmv9-a by itself would continue to enable SVE2 in newer compilers, so it was safer to keep +sve2 explicitly enabled. It appears that now this is mostly settled in favour of the status-quo so it\u0027s probably okay to be removed now if it ends up being problematic to keep it.",
+      "parentUuid": "2af3cb6f_11ef3988",
+      "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
