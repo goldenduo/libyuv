@@ -122,6 +122,24 @@
       "parentUuid": "2af3cb6f_11ef3988",
       "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f31e95_d61583e2",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-04-03T19:58:11Z",
+      "side": 1,
+      "message": "Thank you, George, for the reply. I will keep the explicit `+sve2` extension in `-march\u003darmv9-a+i8mm+sve2`.",
+      "parentUuid": "eb7e03de_b2586d03",
+      "revId": "a793f110a6a68fc3bbfebdd7eeaedad5533530da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
