@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aafcad1a_e04a0611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-04-04T20:18:12Z",
+      "side": 1,
+      "message": "note i\u0027m avoiding making changes until the roll into chrome/google3 passes golden tests for ARGB To J420.  These seem safe but can complicate integration",
+      "revId": "5efaf31493e4db57cd907438a7a7179331e819dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
