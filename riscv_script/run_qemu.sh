@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 set -e
-
+# test
 USE_RVV="${USE_RVV:-OFF}"
 TOOLCHAIN_PATH="${TOOLCHAIN_PATH:-../../build-toolchain-qemu/riscv-clang}"
 QEMU_PREFIX_PATH="${QEMU_PREFIX_PATH:-../../build-toolchain-qemu/riscv-qemu/}"
