@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "036d5b54_c0e52da0",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-04-11T22:44:05Z",
+      "side": 1,
+      "message": "The two cmake warnings fixed by this CL are:\n\n```\nCMake Warning (dev) at CMakeLists.txt:7 (project):\n  cmake_minimum_required() should be called prior to this top-level project()\n  call.  Please see the cmake-commands(7) manual for usage documentation of\n  both commands.\nThis warning is for project developers.  Use -Wno-dev to suppress it.\n```\n\nand\n\n```\nCMake Deprecation Warning at CMakeLists.txt:8 (cmake_minimum_required):\n  Compatibility with CMake \u003c 3.10 will be removed from a future version of\n  CMake.\n\n  Update the VERSION argument \u003cmin\u003e value.  Or, use the \u003cmin\u003e...\u003cmax\u003e syntax\n  to tell CMake that the project requires at least \u003cmin\u003e but has been updated\n  to work with policies introduced by \u003cmax\u003e or earlier.\n```",
+      "revId": "75086a5ac459426c0bbb099234dffe7e02841dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e5ca37_e6ea51f9",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-04-11T22:44:05Z",
+      "side": 1,
+      "message": "To fix the second cmake warning, it suffices to change the cmake_minimum_required version to 3.10. But I suggest we change it to 3.16, which comes from [Google\u0027s Foundational C++ Support matrix](https://github.com/google/oss-policies-info/blob/main/foundational-cxx-support-matrix.md).",
+      "revId": "75086a5ac459426c0bbb099234dffe7e02841dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
