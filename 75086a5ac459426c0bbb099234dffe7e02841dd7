@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dcec146b_dbef89b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2025-04-12T02:38:36Z",
+      "side": 1,
+      "message": "I don\u0027t see any use of `cmake_policy` that needs to be cleaned up.",
+      "revId": "75086a5ac459426c0bbb099234dffe7e02841dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "036d5b54_c0e52da0",
         "filename": "CMakeLists.txt",
         "patchSetId": 1
