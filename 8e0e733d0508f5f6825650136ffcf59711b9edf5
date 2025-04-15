@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9010669e_32cad4ce",
+        "filename": "libyuv.gypi",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-04-15T20:46:52Z",
+      "side": 1,
+      "message": "Do you know why BUILD.gn doesn\u0027t need to list `include/libyuv/cpu_support.h` in the source file list?",
+      "revId": "8e0e733d0508f5f6825650136ffcf59711b9edf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
