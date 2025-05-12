@@ -52,6 +52,24 @@
       "parentUuid": "69b6baec_3d779e45",
       "revId": "9e4db847bac3d6636bd8be87a7a6388b9d3c15e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b63c8c_435c62b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-05-12T09:49:23Z",
+      "side": 1,
+      "message": "Done here: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6535686",
+      "parentUuid": "51dc9d12_5e127395",
+      "revId": "9e4db847bac3d6636bd8be87a7a6388b9d3c15e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
