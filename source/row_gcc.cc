@@ -1833,6 +1833,9 @@ void OMITFP ARGBToUVMatrixRow_AVX2(
       :);
 
   asm volatile(
+#if !defined(__i386__)
+      "vmovdqa     0(%5),%%ymm8                  \n"
+#endif
       "vmovdqa     32(%5),%%ymm5                 \n"
       "sub         %1,%2                         \n"
 
@@ -1866,8 +1869,11 @@ void OMITFP ARGBToUVMatrixRow_AVX2(
       "vpsrlw      $0x8,%%ymm0,%%ymm0            \n"
       "vpackuswb   %%ymm0,%%ymm1,%%ymm0          \n"
       "vpermq      $0xd8,%%ymm0,%%ymm0           \n"
+#if defined(__i386__)
       "vpshufb     (%5),%%ymm0,%%ymm0            \n"
-
+#else
+      "vpshufb     %%ymm8,%%ymm0,%%ymm0            \n"
+#endif
       "vextractf128 $0x0,%%ymm0,(%1)             \n"
       "vextractf128 $0x1,%%ymm0,0x0(%1,%2,1)     \n"
       "lea         0x10(%1),%1                   \n"
