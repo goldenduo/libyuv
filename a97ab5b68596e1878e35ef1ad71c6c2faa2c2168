@@ -16,6 +16,218 @@
       "message": "This addresses the suggestion left here: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6395137",
       "revId": "a97ab5b68596e1878e35ef1ad71c6c2faa2c2168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed1ed17_19b146ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-12T17:50:22Z",
+      "side": 1,
+      "message": "Looks good, thanks!  Can the SVE/SME use 8 bit dot product as well?",
+      "revId": "a97ab5b68596e1878e35ef1ad71c6c2faa2c2168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "345aeea4_c905462e",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-12T17:50:22Z",
+      "side": 1,
+      "message": "note as far as I know, BGRA is not used.   ABGR is the most common on Android and ARGB (little endian) is common on every other platform.\nBGRA would be for big endian platforms, except the ones I\u0027ve worked on (sgi/mac) adopted R,G,B,A which is ABGR.  On the 3D0 armv3, it had big endian arm, but little endian gpu, so it was a mix of graphics formats.\nIts probably not worth doing BGRA and RGBA ordered low levels for arm/intel/riscv.  The higher levels may support them if someone wants to port to a big endian platform, or someone requests those channel orders.\n\nAlso the matrix functions will become the low level API that the high levels call, once a unified matrix api is available on all platforms.",
+      "fixSuggestions": [
+        {
+          "fixId": "45a66bd2_28ffd6b4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/libyuv/row.h",
+              "range": {
+                "startLine": 561,
+                "startChar": 0,
+                "endLine": 561,
+                "endChar": 0
+              },
+              "replacement": "// Note that BGRA is not commonly used. ABGR is the most common on Android\n// and ARGB (little endian) is common on every other platform. BGRA would be\n// for big endian platforms, except the ones I\u0027ve worked with.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a97ab5b68596e1878e35ef1ad71c6c2faa2c2168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94536628_40c8f089",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3452,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-12T17:50:22Z",
+      "side": 1,
+      "message": "nit  I\u0027m not sure how I feel about this ABCD naming... my tendancy is to call it ARGB but it has a Matrix so it is understood it takes parameters that allow different ordering/colorspace.  The actual channels are still A,R,G and B.\nbut no big deal.",
+      "fixSuggestions": [
+        {
+          "fixId": "907d39a5_0ba3c53c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3452,
+                "startChar": 0,
+                "endLine": 3453,
+                "endChar": 0
+              },
+              "replacement": "static void ARGBToUVMatrixRow_NEON_I8MM(const uint8_t* src,\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3554,
+                "startChar": 0,
+                "endLine": 3555,
+                "endChar": 0
+              },
+              "replacement": "  ARGBToUVMatrixRow_NEON_I8MM(src_argb, src_stride_argb, dst_u, dst_v, width,\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3563,
+                "startChar": 0,
+                "endLine": 3564,
+                "endChar": 0
+              },
+              "replacement": "  ARGBToUVMatrixRow_NEON_I8MM(src_abgr, src_stride_abgr, dst_u, dst_v, width,\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3572,
+                "startChar": 0,
+                "endLine": 3573,
+                "endChar": 0
+              },
+              "replacement": "  ARGBToUVMatrixRow_NEON_I8MM(src_bgra, src_stride_bgra, dst_u, dst_v, width,\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3581,
+                "startChar": 0,
+                "endLine": 3582,
+                "endChar": 0
+              },
+              "replacement": "  ARGBToUVMatrixRow_NEON_I8MM(src_rgba, src_stride_rgba, dst_u, dst_v, width,\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3609,
+                "startChar": 0,
+                "endLine": 3610,
+                "endChar": 0
+              },
+              "replacement": "  ARGBToUVMatrixRow_NEON_I8MM(src_argb, src_stride_argb, dst_u, dst_v, width,\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3618,
+                "startChar": 0,
+                "endLine": 3619,
+                "endChar": 0
+              },
+              "replacement": "  ARGBToUVMatrixRow_NEON_I8MM(src_abgr, src_stride_abgr, dst_u, dst_v, width,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a97ab5b68596e1878e35ef1ad71c6c2faa2c2168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "088f13f4_886f60ec",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3491,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-12T17:50:22Z",
+      "side": 1,
+      "message": "note: instead of 0, it would be possible to initialize to the 128 that we subtract from at line 3504, but we still need to reduce the value to byte, so not a clear win.",
+      "fixSuggestions": [
+        {
+          "fixId": "5017dcf6_fa096d52",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3491,
+                "startChar": 0,
+                "endLine": 3493,
+                "endChar": 0
+              },
+              "replacement": "      \"movi        v0.4s, #0x80808080              \\n\"  // U\n      \"movi        v1.4s, #0x80808080              \\n\"  // U\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3496,
+                "startChar": 0,
+                "endLine": 3498,
+                "endChar": 0
+              },
+              "replacement": "      \"movi        v2.4s, #0x80808080              \\n\"  // V\n      \"movi        v3.4s, #0x80808080              \\n\"  // V\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3504,
+                "startChar": 0,
+                "endLine": 3506,
+                "endChar": 0
+              },
+              "replacement": "      \"sqrshrun    v0.8b, v0.8h, #0                \\n\"  // +128 -\u003e unsigned\n      \"sqrshrun    v1.8b, v1.8h, #0                \\n\"  // +128 -\u003e unsigned\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 3517,
+                "startChar": 0,
+                "endLine": 3518,
+                "endChar": 0
+              },
+              "replacement": "        \"v24\", \"v25\"\n  );\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a97ab5b68596e1878e35ef1ad71c6c2faa2c2168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
