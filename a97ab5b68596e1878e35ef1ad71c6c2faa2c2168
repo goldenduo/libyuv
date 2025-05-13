@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "14a14a65_6037b6b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-05-13T12:00:26Z",
+      "side": 1,
+      "message": "Probably, although I might end up deleting the SVE code since it no longer provides a performance win over the Neon I8MM implementation.",
+      "parentUuid": "4ed1ed17_19b146ac",
+      "revId": "a97ab5b68596e1878e35ef1ad71c6c2faa2c2168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "345aeea4_c905462e",
         "filename": "include/libyuv/row.h",
         "patchSetId": 1
