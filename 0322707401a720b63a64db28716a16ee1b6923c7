@@ -33,6 +33,24 @@
       "message": "Mirko is the expert here.\nI am somewhat interested though... this is profiling support?\nI profile libyuv alot, but I use perf / simpleperf for linux and android.  I\u0027m interested in how to profile on Windows... in the past I used \u0027Formula 1\u0027, but that doesnt appear to be an option in Visual Studio Consumer Edition.",
       "revId": "0322707401a720b63a64db28716a16ee1b6923c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2162c1df_44feed98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-05-15T08:23:42Z",
+      "side": 1,
+      "message": "Yes, IIUC this is https://perfetto.dev/.\n\nChromium has a way to integrate with it. But libyuv doesn\u0027t depend on //base anymore, so if we want to use it, we should do that from //third_party with libyuv only code.",
+      "parentUuid": "74a37c12_952860a1",
+      "revId": "0322707401a720b63a64db28716a16ee1b6923c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
