@@ -16,6 +16,138 @@
       "message": "Sorry I missed this!",
       "revId": "6412e584fb8e800d89185dfcb924a0926c2534af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07387107_f32a2bf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-22T20:23:43Z",
+      "side": 1,
+      "message": "I dont have a way to test SME... I assume the best way atm would be a Mac with M4?\nWe dont have emulators either.  But its easy to get a Samsung S22/S23 Exynos for sve2 testing.  Makes me think we should lean toward doing SVE2, as well as SME, as a way to test the code that SME uses.  In the future, when SVE converges and has the same vector length, and/or is longer than NEON, the sve2 kernels may become a win, even if they\u0027re not today.",
+      "revId": "6412e584fb8e800d89185dfcb924a0926c2534af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f34343c_e75c673f",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-22T20:23:43Z",
+      "side": 1,
+      "message": "there are times I wish we have a WRITERGB macro, as we do on intel, so that it can be implemented with non-trival shuffling to avoid ST3B etc for A510.\nBut not for now... this is one of ARM\u0027s strengths, is a simple load/store for 3 bytes.",
+      "fixSuggestions": [
+        {
+          "fixId": "482aa020_4a41a48c",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 296,
+                "startChar": 0,
+                "endLine": 296,
+                "endChar": 0
+              },
+              "replacement": "#define STORE_RGB_SVE(num_channels, reg_b, reg_g, reg_r, predicate, dst_ptr) \\\n  \"st\" #num_channels \"b     {\" #reg_b \".b, \" #reg_g \".b, \" #reg_r             \\\n  \".b}, \" #predicate \", [%[\" #dst_ptr \"]] \\n\"                                \\\n  \"incb     %[\" #dst_ptr \"], all, mul #\" #num_channels \"                \\n\"\n\n"
+            },
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 381,
+                "startChar": 0,
+                "endLine": 383,
+                "endChar": 0
+              },
+              "replacement": "      STORE_RGB_SVE(3, z16, z17, z18, p1, dst_rgb24)\n"
+            },
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 393,
+                "startChar": 0,
+                "endLine": 394,
+                "endChar": 0
+              },
+              "replacement": "      STORE_RGB_SVE(3, z16, z17, z18, p1, dst_rgb24)\n"
+            },
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 522,
+                "startChar": 0,
+                "endLine": 524,
+                "endChar": 0
+              },
+              "replacement": "      STORE_RGB_SVE(3, z16, z17, z18, p1, dst_argb)\n"
+            },
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 534,
+                "startChar": 0,
+                "endLine": 535,
+                "endChar": 0
+              },
+              "replacement": "      STORE_RGB_SVE(3, z16, z17, z18, p1, dst_argb)\n"
+            },
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 1003,
+                "startChar": 0,
+                "endLine": 1005,
+                "endChar": 0
+              },
+              "replacement": "      STORE_RGB_SVE(3, z16, z17, z18, p1, dst_rgb24)\n"
+            },
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 1015,
+                "startChar": 0,
+                "endLine": 1016,
+                "endChar": 0
+              },
+              "replacement": "      STORE_RGB_SVE(3, z16, z17, z18, p1, dst_rgb24)\n"
+            },
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 1054,
+                "startChar": 0,
+                "endLine": 1056,
+                "endChar": 0
+              },
+              "replacement": "      STORE_RGB_SVE(3, z16, z17, z18, p1, dst_rgb24)\n"
+            },
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 1066,
+                "startChar": 0,
+                "endLine": 1067,
+                "endChar": 0
+              },
+              "replacement": "      STORE_RGB_SVE(3, z16, z17, z18, p1, dst_rgb24)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6412e584fb8e800d89185dfcb924a0926c2534af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
