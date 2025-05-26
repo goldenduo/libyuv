@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa067c0_1f177bf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-05-26T13:30:13Z",
+      "side": 1,
+      "message": "Accepting the breakage on MSVC for now, let\u0027s fix in a follow-up so we unblock the migration to SISO.",
+      "revId": "a865338ed4a0d0ac4770ecc1c9a74d187fd113a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
