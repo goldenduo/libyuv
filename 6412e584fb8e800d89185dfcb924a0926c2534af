@@ -54,6 +54,42 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "27d12ded_c6e4df23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-05-27T11:52:20Z",
+      "side": 1,
+      "message": "Qemu supports SME and can be used for testing all SVE/SME vector lengths. Arm Instruction Emulator also exists ( https://developer.arm.com/Tools%20and%20Software/Arm%20Instruction%20Emulator ) but only supports SVE for now.",
+      "parentUuid": "07387107_f32a2bf8",
+      "revId": "6412e584fb8e800d89185dfcb924a0926c2534af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "109a24a4_6175ffa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-05-27T11:52:20Z",
+      "side": 1,
+      "message": "Hmm perhaps, it probably wouldn\u0027t give the same bit-exact answer as the existing impl due to the intermediate truncation from the umulh Y multiply discarding the low half of the result.",
+      "parentUuid": "9c329623_2d594f85",
+      "revId": "6412e584fb8e800d89185dfcb924a0926c2534af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9f34343c_e75c673f",
         "filename": "include/libyuv/row_sve.h",
         "patchSetId": 1
@@ -163,6 +199,24 @@
           ]
         }
       ],
+      "revId": "6412e584fb8e800d89185dfcb924a0926c2534af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "980beae6_924e7223",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-05-27T11:52:20Z",
+      "side": 1,
+      "message": "ST3B got a lot better on Cortex-A520 so it\u0027s probably not worth trying to work around this for a single core design.",
+      "parentUuid": "9f34343c_e75c673f",
       "revId": "6412e584fb8e800d89185dfcb924a0926c2534af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
