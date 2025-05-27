@@ -16,6 +16,24 @@
       "message": "LGTM, please use `No-Try: True` since MSVC bots are failing (known issue).",
       "revId": "27c303302c985399ccef26e81bbec4b8b44e06f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58df39d6_a019c363",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366072
+      },
+      "writtenOn": "2025-05-27T08:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e836a9d0_2b565ccf",
+      "revId": "27c303302c985399ccef26e81bbec4b8b44e06f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
