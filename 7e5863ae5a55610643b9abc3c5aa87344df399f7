@@ -16,6 +16,24 @@
       "message": "Benchmarked on Pixel 9\n\ntaskset 3 libyuv_test \u0027--gunit_filter\u003d*I420ToAR30*\u0027 --gunit_also_run_disabled_tests --libyuv_width\u003d1280 --libyuv_height\u003d720 --libyuv_repeat\u003d1000 --libyuv_flags\u003d-1 --libyuv_cpu_info\u003d-1\n\nPixel 9 little core Cortex A520\nWas I420ToAR30_Opt (2442 ms)\nNow I420ToAR30_Opt (2639 ms)\n\nPixel 9 big core Cortex X4\nWas I420ToAR30_Opt (366 ms)\nNow I420ToAR30_Opt (369 ms)",
       "revId": "7e5863ae5a55610643b9abc3c5aa87344df399f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3f4f44_57bf84cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-05-27T19:15:59Z",
+      "side": 1,
+      "message": "Seems believable.\n\nSTOREAR30_SVE is worse for in-order cores than the Neon equivalent since we have fewer choices about register allocation (the input and output registers are tied together in many SVE instructions), leading to us putting some dependent instructions adjacent in SVE where they could be interleaved in Neon. This is mitigated somewhat by being able to use UMULH in I4XXTORGB_SVE which is a strict improvement compared to Neon.\n\nThe other benefit of using SVE here is that we can be more aggressive with unrolling compared to the Neon thanks to being able to use predication, so it should be possible to use a _2X implementation here similar to what we do in e.g. I422ToARGBRow_SVE_SC to process twice as much in one iteration (and therefore we can interleave the independent computations). I\u0027ve not tried to do this yet.",
+      "parentUuid": "70672635_37785f27",
+      "revId": "7e5863ae5a55610643b9abc3c5aa87344df399f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
