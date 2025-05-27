@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70672635_37785f27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-27T19:04:16Z",
+      "side": 1,
+      "message": "Benchmarked on Pixel 9\n\ntaskset 3 libyuv_test \u0027--gunit_filter\u003d*I420ToAR30*\u0027 --gunit_also_run_disabled_tests --libyuv_width\u003d1280 --libyuv_height\u003d720 --libyuv_repeat\u003d1000 --libyuv_flags\u003d-1 --libyuv_cpu_info\u003d-1\n\nPixel 9 little core Cortex A520\nWas I420ToAR30_Opt (2442 ms)\nNow I420ToAR30_Opt (2639 ms)\n\nPixel 9 big core Cortex X4\nWas I420ToAR30_Opt (366 ms)\nNow I420ToAR30_Opt (369 ms)",
+      "revId": "7e5863ae5a55610643b9abc3c5aa87344df399f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
