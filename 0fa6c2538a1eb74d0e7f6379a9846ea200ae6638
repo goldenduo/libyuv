@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "031bde67_1f47c4c0",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5421,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-27T20:31:40Z",
+      "side": 1,
+      "message": "overall this feels inefficient?... we are simply converting 8 bits to 16 bits, effectively with a shift that lengthens?\nzip could replicate the bytes, if shift cant lengthen.\nmull or mulw could lengthen from 8 to 16 bits and apply a shift.",
+      "fixSuggestions": [
+        {
+          "fixId": "e332ef6f_0871d6d6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 5421,
+                "startChar": 0,
+                "endLine": 5422,
+                "endChar": 0
+              },
+              "replacement": "// 1024 \u003d 10 bits.  Scale is a fixed point value.\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 5437,
+                "startChar": 0,
+                "endLine": 5441,
+                "endChar": 0
+              },
+              "replacement": "      \"sqdmulh v3.4s, v3.4s, v31.4s             \\n\"\n      \"sqdmulh v2.4s, v2.4s, v31.4s             \\n\"\n      \"sqdmulh v1.4s, v1.4s, v31.4s             \\n\"\n      \"sqdmulh v0.4s, v0.4s, v31.4s             \\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0fa6c2538a1eb74d0e7f6379a9846ea200ae6638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
