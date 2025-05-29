@@ -33,6 +33,23 @@
       "message": "This is good, but I\u0027m wondering if we would get the same results using a simple 16 bit multiply\n1.  zero extend the byte to short (or use a widening multiply)\n2.  use a simple 16 bit multiply with 16 bit result\n0.  adjust the scale.  instead of 1024, use scale\u003d4 for 10 bit\n3.  store the 16 bit values.\niirc there is not \u0027widening\u0027 multiply, where the scale value could be 16 bit and the data is 8 bit, but widened.\n\nThis approach would apply to intel and C code, if it works.\nI think in the past I thought I might shift right or bit replicate with the scale values, but its basically just a left shift of 0 to 8 bits.  The multiply is still a handy and fast way to do that.  If we did want to try shift, a lzc can get the shift amount from the scale parameter.\nI\u0027ll land this as is, and if simplified 16 bit multiply works, it can be done as followup.\nI assume if Neon was missing, SME/SVE2 is missing too",
       "revId": "af8cd1aa13928bb91e014fb7a7e9cd3eebf0b934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe83bc5_ec808bf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-05-29T10:21:54Z",
+      "side": 1,
+      "message": "I just realised this isn\u0027t quite right, it\u0027s missing the #define that actually enables this being used in planar_functions.cc. I\u0027ll put up a fix in a bit.",
+      "revId": "af8cd1aa13928bb91e014fb7a7e9cd3eebf0b934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
