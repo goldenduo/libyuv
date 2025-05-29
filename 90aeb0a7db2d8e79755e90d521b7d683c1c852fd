@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc3e113_703e65ae",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5593,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-29T17:29:48Z",
+      "side": 1,
+      "message": "This comment relies on historical knowledge that the alternative was to produce a 32 bit value.  The new basic algorithm is 2 steps:\n1. replicate the byte to short\n2. shift right to the appropriate number of bits\nThe shift is not obvious... this value 15 - clz produces a negative, which means shl will shift right.  I\u0027ve done this elsewhere in libyuv so it doesnt need excessive documentation, but its not obvious.",
+      "fixSuggestions": [
+        {
+          "fixId": "a8effcaf_165f0bd7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 5591,
+                "startChar": 0,
+                "endLine": 5594,
+                "endChar": 0
+              },
+              "replacement": "  // The algorithm is:\n  // 1. replicate the byte to short\n  // 2. shift right to the appropriate number of bits\n  // Since scale is a power of two, compute the shift to use.\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 5599,
+                "startChar": 0,
+                "endLine": 5599,
+                "endChar": 0
+              },
+              "replacement": "      // Replicate the byte to short.\n"
+            },
+            {
+              "path": "source/row_neon64.cc",
+              "range": {
+                "startLine": 5602,
+                "startChar": 0,
+                "endLine": 5602,
+                "endChar": 0
+              },
+              "replacement": "      // Shift right.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "90aeb0a7db2d8e79755e90d521b7d683c1c852fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
