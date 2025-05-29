@@ -50,6 +50,42 @@
       "message": "I just realised this isn\u0027t quite right, it\u0027s missing the #define that actually enables this being used in planar_functions.cc. I\u0027ll put up a fix in a bit.",
       "revId": "af8cd1aa13928bb91e014fb7a7e9cd3eebf0b934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba990d90_e97c26ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-05-29T14:05:48Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ebe83bc5_ec808bf0",
+      "revId": "af8cd1aa13928bb91e014fb7a7e9cd3eebf0b934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faecbc08_05f6e4fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-05-29T14:05:48Z",
+      "side": 1,
+      "message": "We can avoid the need to widen by fusing the scale into the shift by 16. Not sure if that\u0027s exactly what you\u0027re suggesting, but seems to work well!",
+      "parentUuid": "88f36af5_4d1115c3",
+      "revId": "af8cd1aa13928bb91e014fb7a7e9cd3eebf0b934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
