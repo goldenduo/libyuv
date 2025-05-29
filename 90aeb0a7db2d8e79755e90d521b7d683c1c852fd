@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1304dbb1_674d7d2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-29T17:48:53Z",
+      "side": 1,
+      "message": "The pesky A520 is happy now :-)\nI was thinking about this problem and there are 2 solutions.\nreplicate first and then shift into position\nor zero extend and replicate with a shift or multiply\ne.g. multiply by 0x0101 replicates.\nThe intel code uses vpmulhuw which multiplies 16 bit values and returns the upper 16 bits of 32 bit, which allows the multiply to replicate and shift right.\nThe ideal ARM version would be a single multiply (or shift) instruction that lengthens, replicates and shifts into position.\nIn the simple case of producing I010 which uses the low 10 bits, I think it can be shift and lengthen but not replicate.\nconvert int to float can do fixed point, but multiply does have fixed point... pity.\n\nI completely different approach is shuffles.  New cpus have bit shuffling, which would be perfect for things like AR30, but until shuffles can take full 8 bit indexed (like a GPU) I dont think we can do this with Neon.\n\nSo I think you\u0027ve found the optimal solution.  There could be specialized version for I016 that dont need the shift, or I008 that could zero extend, but we\u0027re probably simple enough to be limited by load/store.",
+      "revId": "90aeb0a7db2d8e79755e90d521b7d683c1c852fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cc3e113_703e65ae",
@@ -52,6 +69,24 @@
           ]
         }
       ],
+      "revId": "90aeb0a7db2d8e79755e90d521b7d683c1c852fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65094edf_d1b1365d",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5593,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-05-29T17:48:53Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7cc3e113_703e65ae",
       "revId": "90aeb0a7db2d8e79755e90d521b7d683c1c852fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
