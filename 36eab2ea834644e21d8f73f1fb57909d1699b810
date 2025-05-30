@@ -16,6 +16,23 @@
       "message": "Friendly ping -- the parent CL is finally merged so let\u0027s give this another try.",
       "revId": "36eab2ea834644e21d8f73f1fb57909d1699b810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7feb009_d55f539e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549607
+      },
+      "writtenOn": "2025-05-30T07:58:09Z",
+      "side": 1,
+      "message": "Friendly ping^2.",
+      "revId": "36eab2ea834644e21d8f73f1fb57909d1699b810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
