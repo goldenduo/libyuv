@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7396ea0_bb81a6c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-06-02T06:51:34Z",
+      "side": 1,
+      "message": "Feel free to use No-Try to skip MSVC issues, we are still looking into that.",
+      "revId": "0ec7081b7d5749faa701ba039b169dd67591eccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
