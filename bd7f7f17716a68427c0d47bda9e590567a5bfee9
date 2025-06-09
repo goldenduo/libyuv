@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb176f06_1ef2ecf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-09T02:41:37Z",
+      "side": 1,
+      "message": "Good catch.  Those are hard to find and causes subtle bugs when used with link time code generation",
+      "revId": "bd7f7f17716a68427c0d47bda9e590567a5bfee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
