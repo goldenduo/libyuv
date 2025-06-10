@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d795de_3d271d4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002174
+      },
+      "writtenOn": "2025-06-10T21:34:56Z",
+      "side": 1,
+      "message": "lgtm (i don\u0027t have any voting rights here).",
+      "revId": "b27fe93216c84615106d57f39826e0d5a7cfc92c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
