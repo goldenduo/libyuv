@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e0dea2_5790d552",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5597,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-10T22:52:52Z",
+      "side": 1,
+      "message": "its clang format adding some white space",
+      "parentUuid": "3310f2bb_7b09792d",
+      "revId": "e4d585f5b66ba86a4d18cae7077dac0a3ded86c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbef13a0_c18622d6",
@@ -55,6 +73,30 @@
           ]
         }
       ],
+      "revId": "e4d585f5b66ba86a4d18cae7077dac0a3ded86c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88ef02f_b07caa6b",
+        "filename": "unit_test/convert_argb_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2747,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-10T22:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbef13a0_c18622d6",
+      "range": {
+        "startLine": 2747,
+        "startChar": 11,
+        "endLine": 2747,
+        "endChar": 26
+      },
       "revId": "e4d585f5b66ba86a4d18cae7077dac0a3ded86c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
