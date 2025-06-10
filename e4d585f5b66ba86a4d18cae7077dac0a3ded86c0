@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3310f2bb_7b09792d",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5597,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-06-10T22:50:05Z",
+      "side": 1,
+      "message": "This seems wrong. Undo it?",
+      "revId": "e4d585f5b66ba86a4d18cae7077dac0a3ded86c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbef13a0_c18622d6",
+        "filename": "unit_test/convert_argb_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2747,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-06-10T22:50:05Z",
+      "side": 1,
+      "message": "Also fix the comment.",
+      "range": {
+        "startLine": 2747,
+        "startChar": 11,
+        "endLine": 2747,
+        "endChar": 26
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a208e5b7_009b61cc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "unit_test/convert_argb_test.cc",
+              "range": {
+                "startLine": 2747,
+                "startChar": 0,
+                "endLine": 2748,
+                "endChar": 0
+              },
+              "replacement": "#endif  // defined(__x86_64__) || defined(_M_X64) || defined(__aarch64__)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e4d585f5b66ba86a4d18cae7077dac0a3ded86c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
