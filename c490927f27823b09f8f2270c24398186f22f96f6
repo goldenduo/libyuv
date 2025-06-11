@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "914f0a75_49d3ca27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-11T12:07:14Z",
+      "side": 1,
+      "message": "(This resolves the slowdown on Cortex-A520 identified in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/6592332 )",
+      "revId": "c490927f27823b09f8f2270c24398186f22f96f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
