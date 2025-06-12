@@ -284,6 +284,30 @@
       ],
       "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4f44dd_09fee62a",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-12T09:26:28Z",
+      "side": 1,
+      "message": "UADALP does exist in SVE2, that was one of my ideas as well, but it is slow on Cortex-A510 and requires permuting (or LD3/LD4) for all eight of the loaded input vectors (as opposed to only needing to permute two vectors of the results after averaging).",
+      "parentUuid": "e2cc166d_257fa5b0",
+      "range": {
+        "startLine": 290,
+        "startChar": 72,
+        "endLine": 290,
+        "endChar": 76
+      },
+      "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
