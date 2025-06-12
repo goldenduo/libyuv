@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f414c602_a0631ae9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T09:42:13Z",
+      "side": 1,
+      "message": "wouldnt this benefit from sme?\nwould sme2 register groups handle unrolling more efficiently than literal unrolling?\n\nnote there are \u0027vertical\u0027 dot products in sme2.  i\u0027m not sure how those are useful, but if you have 2 rows, or use ld2 and end up with 4 vectors, they can add up 4 pixels.\n\na different approach to subsampling is convert 4 pixels to 4 uv and apply the averaging after, preferably for free by adjusting the coefficients, setting the dot product accumulator to 2 instead of 0, and zip to get the high byte instead of shift. Its similar to what neon used to do, but the results are different... hopefully higher quality.\nthe subsampling first keeps the code simplier.  You could scale the ARGB to half sie and then convert to I444 and get the same result.",
+      "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2cc166d_257fa5b0",
