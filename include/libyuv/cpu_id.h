@@ -79,7 +79,7 @@ int InitCpuFlags(void);
 // Returns non-zero if instruction set is detected
 static __inline int TestCpuFlag(int test_flag) {
   LIBYUV_API extern int cpu_info_;
-#ifdef __ATOMIC_RELAXED
+#ifdef __ATOMIC_RELAXED && !defined(LIBYUV_DISABLE_ATOMICS_MSVC)
   int cpu_info = __atomic_load_n(&cpu_info_, __ATOMIC_RELAXED);
 #else
   int cpu_info = cpu_info_;
@@ -131,7 +131,7 @@ int MaskCpuFlags(int enable_flags);
 // CPU detection.
 static __inline void SetCpuFlags(int cpu_flags) {
   LIBYUV_API extern int cpu_info_;
-#ifdef __ATOMIC_RELAXED
+#ifdef __ATOMIC_RELAXED && !defined(LIBYUV_DISABLE_ATOMICS_MSVC)
   __atomic_store_n(&cpu_info_, cpu_flags, __ATOMIC_RELAXED);
 #else
   cpu_info_ = cpu_flags;
