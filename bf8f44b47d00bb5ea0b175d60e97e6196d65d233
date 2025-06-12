@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c044a54_19acde44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-12T09:36:59Z",
+      "side": 1,
+      "message": "LD2 is still technically a permute, so I think the current approach of delaying the permute until we have as few vectors to permute as possible (two vectors after the reduction versus eight loaded) is going to be the best we can do here.",
+      "parentUuid": "de5e6e5e_bcfcfc35",
+      "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2cc166d_257fa5b0",
