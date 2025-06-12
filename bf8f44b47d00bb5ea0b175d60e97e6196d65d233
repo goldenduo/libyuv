@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5e6e5e_bcfcfc35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T09:11:57Z",
+      "side": 1,
+      "message": "the tbl to fix addp makes me think theres a way to avoid it.\nmaybe ld2 of 32 bit values to split even and odd argb pixels into 2 vectors?\nthen addw to add 4 vectors? \nif you have no immediate ideas, we can land it... its a big improvement",
+      "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2cc166d_257fa5b0",
