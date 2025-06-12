@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14a59fd4_8c0e5022",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-12T10:40:34Z",
+      "side": 1,
+      "message": "Yep, at least a streaming-SVE implementation is on my TODO list. I\u0027m aware of the vertical dotprods, I\u0027ll have to take a look to see whether they are applicable here.\n\nThe SME2 multi-reg loads are good in theory but would necessitate us specializing the SVE2/SME2 implementations (the multi-reg loads are only present from SVE2.1). This can possibly be resolved with even more macros...",
+      "parentUuid": "f414c602_a0631ae9",
+      "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2cc166d_257fa5b0",
@@ -359,6 +377,30 @@
       "side": 1,
       "message": "I dont quite follow why addp on 32 bit values.  the previous addl converted argb bytes to argb shorts, but still b,g,r,a?  so you have 64 bit pixels... seems like the addp should be .d (double)?\nbut i assume you tested this.\nfor sve I can run tests on samsung s23/s24 for performance.\nfor sme we can run unittests on chromium\u0027s emulator, but it doesnt provide speed analysis.  I think we\u0027re still waiting for something with x930 for sme benchmarking.",
       "parentUuid": "5f4f44dd_09fee62a",
+      "range": {
+        "startLine": 290,
+        "startChar": 72,
+        "endLine": 290,
+        "endChar": 76
+      },
+      "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40acad78_fc419675",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-12T10:40:34Z",
+      "side": 1,
+      "message": "The UADDL[BT] produces widened pairs of 16-bit (only 9-bits non-zero) elements: either br or ga. The 32-bit ADDP then adds adjacent components. We regain the fully four-interleaved components by the RSHRN[BT] interleaving narrowing instructions later.\n\nIf we had used a widening load instruction to widen from 8-\u003e16-bits as part of the load then we would be able to add without de-interleaving and could use a 64-bit element ADDP as you suggest. This works okay for that bit, but then we would be interleaving unrelated elements with the later RSHRN[BT] so we would still need the permutes to undo this later. Additionally, using widening loads means we would need double the number of instructions which isn\u0027t ideal either.",
+      "parentUuid": "7f46ae3a_a9cb6990",
       "range": {
         "startLine": 290,
         "startChar": 72,
