@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bbcb303_b8c140b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T21:07:51Z",
+      "side": 1,
+      "message": "Re more macros.  On x86 the I420ToARGB etc use 3 macros.  LOAD, YUV2RGB, STORE.  The load and store macros vary by format and ISA.\nOn ARM the store is usually so simple we dont have a macro for it.\n\nOur macro approaches have some drawbacks.  They use hard coded register interfaces that are fragile and its hard to read the code.  The SVE macros have 2 purposes\n1. share sve amd sme code\n2. share main loop with remainder\nBoth have alternatives that might be simplier\n1. dont share sve/sme code... write custom sme,  we\u0027ll have to see how chips roll out sme, but if sme2.1 becomes the norm, drop sme in favor of sme2.1 and use multi-reg everywhere.\n1b. An alternative way to share would be an actual sve row function, and the sme row function literally calls the sve function.\nA more ambitious way is have the planar functions detect sme, enter streaming mode and call the sve2 code.  The sve would need to written carefully to work as both sve and sme, but there would be less code, less overhead.  And more danger.\nOn x86 the equivalent is the vzeroupper, that we used to do in the planar functions, but now every row function does it... simplier/safer, but slower.\nIn the future we\u0027ll remove vzeroupper and commit for avx2.\n\n\nThere are 2 alternatives for remainder.  Use an \u0027any\u0027 function.  Complicated by not known \u0027vl\u0027 before hand.  And have the main loop do the remainder.\nMain loop using predicates would work on RVV, AVX512 and SVE, but there is a bit of cost to compute the predicate, which ideally happens when you fall out of the main loop.  With a bit of throught I think efficient code could be done.  Similar to how sve remainder is done now, but compute predicate, branch back to main loop for a final pass.  The compute predicate would need to also be done for the first iteration of the loop, if less than vl.",
+      "parentUuid": "14a59fd4_8c0e5022",
+      "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2cc166d_257fa5b0",
