@@ -1,0 +1,66 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ac17d3_df4f542d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T09:31:21Z",
+      "side": 1,
+      "message": "Cortex X1 sometimes has problems with unrolled code.  I think X2 is similar.\nPixel 6 and 7 use X1.  \n\nThe win on little core outweighs the loss on medium cores, but it would be good to understand why.\n\nAR30 is pretty much the only 10 bit RGB format.  Is it supported on Mali?\nGPU people tend to prefer fp16.  There are fp16 ARGB texture formats.  I wonder if those would be faster to convert to",
+      "revId": "2c287b63c917a86e93ac901270a5fe4bf05e650a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54bff49c_1f71b499",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T09:31:21Z",
+      "side": 1,
+      "message": "best to sprinkle the prfm out, so they can dispatch while doing math",
+      "fixSuggestions": [
+        {
+          "fixId": "36943f5f_a7c8d618",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 127,
+                "startChar": 0,
+                "endLine": 127,
+                "endChar": 0
+              },
+              "replacement": "  \"prfm       pldl1keep, [%[src_y], 448]                 \\n\" \\\n  \"prfm       pldl1keep, [%[src_u], 128]                 \\n\" \\\n  \"prfm       pldl1keep, [%[src_v], 128]                 \\n\" \\\n"
+            },
+            {
+              "path": "include/libyuv/row_sve.h",
+              "range": {
+                "startLine": 134,
+                "startChar": 0,
+                "endLine": 137,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2c287b63c917a86e93ac901270a5fe4bf05e650a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
