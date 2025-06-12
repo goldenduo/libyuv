@@ -55,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7b324f61_1f59b19e",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-12T09:34:43Z",
+      "side": 1,
+      "message": "The unrolling means we would need use ST4H rather than ST2H, since consecutive components are spread across the vectors, so I\u0027m using the ZIP to avoid the need for ST4H while also allowing us to continue to use predication. Predication wouldn\u0027t work well for ST4H here since the predicate is the same for all four vectors, so ST4H would need us to introduce \"any\" kernels as well.",
+      "parentUuid": "edb6846f_573dc234",
+      "revId": "c490927f27823b09f8f2270c24398186f22f96f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ca8e2443_072bb436",
         "filename": "include/libyuv/row_sve.h",
         "patchSetId": 1
