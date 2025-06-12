@@ -1,0 +1,272 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "471403fe_919e5e40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T09:07:54Z",
+      "side": 1,
+      "message": "the dot product looks great.  the averaging of 4 pixels is frustratingly more than half the code.  I\u0027m struggling with the x86 version too.\n\nNote I suspect the unittests on check U, not V.\nThe UV plane in the unittest allocates row planar uv for efficiency.\nthe uv plane is half width.  we allocate enough per row for all the u followed by all the v.  the stride will be 2 * halfwidth.\nbut the test for equality only checked half width",
+      "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2cc166d_257fa5b0",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T09:07:54Z",
+      "side": 1,
+      "message": "overall this averaging is complicated and i wonder if theres a simplier way?\non intel i have a cl that uses zip to weave 2 pixels...\ne.g ARGBARGB -\u003e AARRGGBB, still as bytes, so that I can do paired adds with lengthen.\non neon i find addlp for first row and adalp for second row eliminates the \u0027add\u0027, since adalp does \u0027accumulate\u0027.  does sve2 have that?",
+      "range": {
+        "startLine": 290,
+        "startChar": 72,
+        "endLine": 290,
+        "endChar": 76
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a1ffdfb1_c17f8a23",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 280,
+                "startChar": 0,
+                "endLine": 288,
+                "endChar": 0
+              },
+              "replacement": "  \"uaddw    z16.h, z0.b, z4.b                     \\n\" /* ABCD(br) */        \\\n  \"uaddw    z17.h, z1.b, z5.b                     \\n\" /* EFGH(br) */        \\\n  \"uaddw    z18.h, z2.b, z6.b                     \\n\" /* IJKL(br) */        \\\n  \"uaddw    z19.h, z3.b, z7.b                     \\n\" /* MNOP(br) */        \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 289,
+                "startChar": 0,
+                "endLine": 294,
+                "endChar": 0
+              },
+              "replacement": "  \"rshrnb    z0.b, z16.h, #2                      \\n\" /* ABEFCDGH(b0) */  \\\n  \"rshrnb    z1.b, z17.h, #2                      \\n\" /* ABEFCDGH(r0) */  \\\n  \"rshrnb    z2.b, z18.h, #2                      \\n\" /* IJMNKLOP(b0) */  \\\n  \"rshrnb    z3.b, z19.h, #2                      \\n\" /* IJMNKLOP(r0) */  \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 295,
+                "startChar": 0,
+                "endLine": 299,
+                "endChar": 0
+              },
+              "replacement": "  \"zip1      z0.s, z0.b, z1.b                     \\n\" /* ABEFCDGH(bgra) */  \\\n  \"zip1      z1.s, z2.b, z3.b                     \\n\" /* IJMNKLOP(bgra) */  \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 311,
+                "startChar": 0,
+                "endLine": 311,
+                "endChar": 0
+              },
+              "replacement": "  \"usdot     z20.s, z0.b, z25.b                   \\n\"                       \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 312,
+                "startChar": 0,
+                "endLine": 313,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 319,
+                "startChar": 0,
+                "endLine": 319,
+                "endChar": 0
+              },
+              "replacement": "  \"zip1     z16.h, z16.b, z17.b                   \\n\"                       \\\n  \"zip1     z20.h, z20.b, z21.b                   \\n\"                       \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 320,
+                "startChar": 0,
+                "endLine": 325,
+                "endChar": 0
+              },
+              "replacement": "  \"st1b     {z16.b}, p5, [%[dst_u]]               \\n\" /* U */               \\\n  \"st1b     {z20.b}, p5, [%[dst_v]]               \\n\" /* V */               \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 347,
+                "startChar": 0,
+                "endLine": 348,
+                "endChar": 0
+              },
+              "replacement": "      // Generate some TBL indices to undo the interleaving from ZIP1.\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 359,
+                "startChar": 0,
+                "endLine": 360,
+                "endChar": 0
+              },
+              "replacement": "      \"ptrue  p5.b                                   \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 373,
+                "startChar": 0,
+                "endLine": 374,
+                "endChar": 0
+              },
+              "replacement": "      \"whilelt  p5.b, wzr, %w[width]                 \\n\"  //\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 570,
+                "startChar": 0,
+                "endLine": 571,
+                "endChar": 0
+              },
+              "replacement": "      \"cntb    %x[vl]                                  \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 589,
+                "startChar": 0,
+                "endLine": 591,
+                "endChar": 0
+              },
+              "replacement": "      \"whilelt p1.b, wzr, %w[width]                    \\n\"\n      \"whilelt p2.b, %w[vl], %w[width]                 \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 638,
+                "startChar": 0,
+                "endLine": 639,
+                "endChar": 0
+              },
+              "replacement": "      \"cnth    %x[vl]                            \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 677,
+                "startChar": 0,
+                "endLine": 678,
+                "endChar": 0
+              },
+              "replacement": "      \"cnth    %x[vl]                            \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 832,
+                "startChar": 0,
+                "endLine": 832,
+                "endChar": 0
+              },
+              "replacement": "  uint32_t rem;\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 855,
+                "startChar": 0,
+                "endLine": 855,
+                "endChar": 0
+              },
+              "replacement": "      \"add     %w[rem], %w[width], %w[width], lsl #1     \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 864,
+                "startChar": 0,
+                "endLine": 865,
+                "endChar": 0
+              },
+              "replacement": "        [vl] \"\u003d\u0026r\"(vl),                      // %[vl]\n        [rem] \"\u003d\u0026r\"(rem)                      // %[rem]\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 878,
+                "startChar": 0,
+                "endLine": 879,
+                "endChar": 0
+              },
+              "replacement": "      \"ptrue   p1.b, mul3                                \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 904,
+                "startChar": 0,
+                "endLine": 905,
+                "endChar": 0
+              },
+              "replacement": "      \"add     %w[rem_mul3], %w[width], %w[width], lsl #1  \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 999,
+                "startChar": 0,
+                "endLine": 1000,
+                "endChar": 0
+              },
+              "replacement": "      // the tail. We use p1 to load the second half of the vector.\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1066,
+                "startChar": 0,
+                "endLine": 1066,
+                "endChar": 0
+              },
+              "replacement": "      // We use p1, p2, p3 to load the remaining elements.\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1121,
+                "startChar": 0,
+                "endLine": 1121,
+                "endChar": 0
+              },
+              "replacement": "      // We use p1 to load the second half of the vector.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
