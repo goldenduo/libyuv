@@ -343,6 +343,30 @@
       },
       "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f46ae3a_a9cb6990",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T09:54:56Z",
+      "side": 1,
+      "message": "I dont quite follow why addp on 32 bit values.  the previous addl converted argb bytes to argb shorts, but still b,g,r,a?  so you have 64 bit pixels... seems like the addp should be .d (double)?\nbut i assume you tested this.\nfor sve I can run tests on samsung s23/s24 for performance.\nfor sme we can run unittests on chromium\u0027s emulator, but it doesnt provide speed analysis.  I think we\u0027re still waiting for something with x930 for sme benchmarking.",
+      "parentUuid": "5f4f44dd_09fee62a",
+      "range": {
+        "startLine": 290,
+        "startChar": 72,
+        "endLine": 290,
+        "endChar": 76
+      },
+      "revId": "bf8f44b47d00bb5ea0b175d60e97e6196d65d233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
