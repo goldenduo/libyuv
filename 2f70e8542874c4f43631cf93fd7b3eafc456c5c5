@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcaef969_11c8798a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T17:47:38Z",
+      "side": 1,
+      "message": "You indicated offline this didnt fix the issue, but I\u0027m okay with adding a flag... I\u0027d just suggest making it work for all compilers, allowing users to make single threaded embedded apps with libyuv, avoiding atomics overhead",
+      "revId": "2f70e8542874c4f43631cf93fd7b3eafc456c5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "516caa77_574b2379",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T17:47:38Z",
+      "side": 1,
+      "message": "I would prefer a non-platform specific name so we can also disable atomics for clang/gcc, not just Visual C.\n\"LIBYUV_DISABLE_ATOMICS\"",
+      "revId": "2f70e8542874c4f43631cf93fd7b3eafc456c5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07e12edd_2faa2584",
+        "filename": "include/libyuv/cpu_id.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-12T17:47:38Z",
+      "side": 1,
+      "message": "I got the impression from documentation that __ATOMIC_RELAXED comes from gcc and is supported by llvm but not msvc? \n\nMy Windows machine has msvc but not ninja, so my only ability to build is CMake/make, but they\u0027re defaulting to GCC.  So I can\u0027t locally test solutions yet.\nI would put a #error here to see if the atomic is used.\n\nReguardless, the link error appears to be from outside libyuv... a bad dependency?",
+      "revId": "2f70e8542874c4f43631cf93fd7b3eafc456c5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
