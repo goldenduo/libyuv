@@ -16,11 +16,18 @@
 #include <ctype.h>
 #include <sys/utsname.h>
 #endif
+#include <unistd.h>  // for num_cpus
+#endif
+#if defined(_WIN32)
+#include <windows.h>  // for num_cpus
+#endif
 
 #include "libyuv/cpu_id.h"
 
 #ifdef __cplusplus
 using namespace libyuv;
+#endif
+
 #endif
 
 #ifdef __linux__
@@ -152,6 +159,23 @@ int main(int argc, const char* argv[]) {
     cpu_info[1] = cpu_info[3];
     cpu_info[3] = 0;
     printf("Cpu Vendor: %s\n", (char*)(&cpu_info[0]));
+
+#if defined(__linux__)
+    int num_cpus = sysconf(_SC_NPROCESSORS_ONLN);
+#elif defined(_WIN32)
+    SYSTEM_INFO sysInfo;
+    GetSystemInfo(&sysInfo);
+    int num_cpus = (int) sysInfo.dwNumberOfProcessors;
+#else
+    int num_cpus = 1;
+#endif
+    printf("Number of online processors: %d\n", num_cpus);
+    for (int n = 0; n < num_cpus; ++n) {
+      // Check EDX bit 15 for hybrid design indication
+      CpuId(7, n, &cpu_info[0]);
+      int hybrid  = (cpu_info[3] >> 15) & 1;
+      printf("  Cpu %d Hybrid %d\n", n, hybrid);
+    }
 
     // CPU Family and Model
     // 3:0 - Stepping
