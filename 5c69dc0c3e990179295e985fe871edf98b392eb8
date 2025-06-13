@@ -16,6 +16,24 @@
       "message": "The man page says these two headers should be included in this order:\n\n```\n#include \u003csys/types.h\u003e\n#include \u003csys/sysctl.h\u003e\n```\n\nIf clang-format places `\u003csys/types.h\u003e` after `\u003csys/sysctl.h\u003e`, we can delete it. Sorry about the trouble.",
       "revId": "5c69dc0c3e990179295e985fe871edf98b392eb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8856cf0a_7f2b55ee",
+        "filename": "util/cpuid.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T20:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b25fbbd1_ffe3c420",
+      "revId": "5c69dc0c3e990179295e985fe871edf98b392eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

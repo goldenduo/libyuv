@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7ed8e4_fe1be111",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T20:10:35Z",
+      "side": 1,
+      "message": "I think you hate clang format more than me :-)\nNormally I like that we dont need to spend time on code reviews, pointing to the coding standards.\nBut its not great at C and assembly",
+      "revId": "928d983c0d1960036ede37b2c2254ad2dfda178d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
