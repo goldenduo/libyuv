@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10790906_12456c2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T19:30:55Z",
+      "side": 1,
+      "message": "uarch is what pytorch and XNNPack call it for micro-architecture.",
+      "parentUuid": "a4288284_f37e9221",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41692fb0_b95b1b60",
@@ -43,6 +67,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f75ca8cf_4645463f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T19:30:55Z",
+      "side": 1,
+      "message": "Done.  yes it was intended because its a for loop thru the cpu count",
+      "parentUuid": "41692fb0_b95b1b60",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "74acec06_e111bda7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -54,6 +96,23 @@
       "writtenOn": "2025-06-13T02:09:12Z",
       "side": 1,
       "message": "Fixes ARM build error for chromiumos and android\nAdds num_cpu to cpuid utility",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c101d73_babd60e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T19:30:55Z",
+      "side": 1,
+      "message": "Most of the bad formatting is clang-format.  I dont know what it is thinking sometimes... might be worth filing some bugs",
       "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
