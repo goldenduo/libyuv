@@ -134,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5051dd_019b4f52",
+        "filename": "source/row_any.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T19:48:34Z",
+      "side": 1,
+      "message": "This is clang-format.  If clang-format changes, it\u0027ll get updated.",
+      "parentUuid": "98b96144_53599d33",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2442ef3c_f2a2a583",
@@ -147,6 +165,24 @@
       "writtenOn": "2025-06-13T17:04:38Z",
       "side": 1,
       "message": "This whitespace change and the next one at line 1724 don\u0027t seem right. Is there something wrong with the formatting program/script?",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f791fc02_64563673",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1653,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T19:48:34Z",
+      "side": 1,
+      "message": "this is just clang-format.  I manually run it for git using this script\n\nclang-format -style\u003dfile -i include/*.h                  \u0026\nclang-format -style\u003dfile -i include/libyuv/*.h           \u0026\nclang-format -style\u003dfile -i unit_test/*.h unit_test/*.cc \u0026\nclang-format -style\u003dfile -i source/*.cc                  \u0026\nclang-format -style\u003dfile -i util/*.cc util/*.h           \u0026\n\nclang-format --version\nclang-format version 17.0.0 (https://chromium.googlesource.com/a/external/github.com/llvm/llvm-project 547e3456660000a16fc5c2a2f819f1a2b5d35b5d)\n\nI\u0027m guessing this is a chrome specific version, compared to internally \u0027g4 fix\u0027  But this is how I format both git and google3.",
+      "parentUuid": "2442ef3c_f2a2a583",
       "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -168,6 +204,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74d919b5_8f1c03ca",
+        "filename": "source/row_neon.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T19:48:34Z",
+      "side": 1,
+      "message": "Acknowledged.  Yes, clang-format makes a mess of assembly.\nGeorge came up with a work around - adding a comment to end of line prevents lines from being merged.\nBut I\u0027m not sure why clang-format would indent?\nThis one looks stupid, but is still readable, so I vote let clang-format do its thing",
+      "parentUuid": "d3bea8d3_617aedc3",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "428d67c0_6e739949",
@@ -185,6 +239,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "effd5fe4_7c04d660",
+        "filename": "util/cpuid.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T19:48:34Z",
+      "side": 1,
+      "message": "Done.  Okay but I did test mac builds and it worked, and the interesting thing is mac x86 build run (via emulation) on my Apple M1.\n\narm build on Apple M1\n./cpuid\nNumber of cpus: 10\nHas Arm 0x2\nHas Neon 0x100\nHas Neon DotProd 0x200\nHas Neon I8MM 0x0\nHas SVE 0x0\nHas SVE2 0x0\nHas SME 0x0\nHas SME2 0x0\n\nIntel build, run on Apple M1:\n\n./cpuid\nNumber of cpus: 10\nCpu Vendor: GenuineIntel\n  Cpu 0 Hybrid 0\n  Cpu 1 Hybrid 0\n  Cpu 2 Hybrid 0\n  Cpu 3 Hybrid 0\n  Cpu 4 Hybrid 0\n  Cpu 5 Hybrid 0\n  Cpu 6 Hybrid 0\n  Cpu 7 Hybrid 0\n  Cpu 8 Hybrid 0\n  Cpu 9 Hybrid 0\nCpu Family 6 (0x6), Model 44 (0x2c)\nHas X86 0x8\nHas SSE2 0x100\nHas SSSE3 0x200\nHas SSE4.1 0x400\nHas SSE4.2 0x800\nHas AVX 0x0\nHas AVX2 0x0\nHas ERMS 0x0\nHas FSMR 0x0\nHas FMA3 0x0\nHas F16C 0x0\nHas AVX512BW 0x0\nHas AVX512VL 0x0\nHas AVX512VNNI 0x0\nHas AVX512VBMI 0x0\nHas AVX512VBMI2 0x0\nHas AVX512VBITALG 0x0\nHas AVX10 0x0\nHas AVX10_2 0x0\nHAS AVXVNNI 0x0\nHas AVXVNNIINT8 0x0\nHas AMXINT8 0x0",
+      "parentUuid": "428d67c0_6e739949",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a66f9793_bf2c929a",
@@ -198,6 +270,30 @@
       "writtenOn": "2025-06-13T17:04:38Z",
       "side": 1,
       "message": "Nit: Delete the space after the `int` cast?",
+      "range": {
+        "startLine": 64,
+        "startChar": 17,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6c07a9_99b6244c",
+        "filename": "util/cpuid.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T19:48:34Z",
+      "side": 1,
+      "message": "Done.  Our clang format is:\n\n# Defines the Chromium style for automatic reformatting.\n# http://clang.llvm.org/docs/ClangFormatStyleOptions.html\nBasedOnStyle: Chromium\n---\nLanguage: Java\nBasedOnStyle: Google\n\noh but this file is .c and I formatted\nclang-format -style\u003dfile -i util/*.cc util/*.h     \n\nThis file could be .cc but its a test that we actually can build/link for C users\nChanged format script to also do .c files",
+      "parentUuid": "a66f9793_bf2c929a",
       "range": {
         "startLine": 64,
         "startChar": 17,
