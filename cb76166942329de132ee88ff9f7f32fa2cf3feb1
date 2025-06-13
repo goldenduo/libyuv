@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4288284_f37e9221",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-06-13T17:04:38Z",
+      "side": 1,
+      "message": "Nit: uarch \u003d\u003e arch",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41692fb0_b95b1b60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-06-13T17:04:38Z",
+      "side": 1,
+      "message": "Nit: Is the indentation intended?",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74acec06_e111bda7",
@@ -14,6 +54,97 @@
       "writtenOn": "2025-06-13T02:09:12Z",
       "side": 1,
       "message": "Fixes ARM build error for chromiumos and android\nAdds num_cpu to cpuid utility",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b96144_53599d33",
+        "filename": "source/row_any.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-06-13T17:04:38Z",
+      "side": 1,
+      "message": "Undo this change.",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2442ef3c_f2a2a583",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1653,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-06-13T17:04:38Z",
+      "side": 1,
+      "message": "This whitespace change and the next one at line 1724 don\u0027t seem right. Is there something wrong with the formatting program/script?",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3bea8d3_617aedc3",
+        "filename": "source/row_neon.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-06-13T17:04:38Z",
+      "side": 1,
+      "message": "This formatting also looks bad...",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428d67c0_6e739949",
+        "filename": "util/cpuid.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-06-13T17:04:38Z",
+      "side": 1,
+      "message": "Nit: The man page says also include \u003csys/types.h\u003e before \u003csys/sysctl.h\u003e.",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66f9793_bf2c929a",
+        "filename": "util/cpuid.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-06-13T17:04:38Z",
+      "side": 1,
+      "message": "Nit: Delete the space after the `int` cast?",
+      "range": {
+        "startLine": 64,
+        "startChar": 17,
+        "endLine": 64,
+        "endChar": 22
+      },
       "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
