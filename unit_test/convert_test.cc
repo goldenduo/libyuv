@@ -628,7 +628,7 @@ TESTBPTOBP(P010, uint16_t, 2, 2, 2, NV12, uint8_t, 1, 2, 2, 8, 1, 1)
       }                                                                        \
     }                                                                          \
     for (int i = 0; i < SUBSAMPLE(kHeight, SUBSAMP_Y) * 2; ++i) {              \
-      for (int j = 0; j < kStrideUV; ++j) {                                    \
+      for (int j = 0; j < kStrideUV; ++j) {             /* TODO kStrideUV*2 */   \
         EXPECT_EQ(dst_uv_c[i * kStrideUV + j], dst_uv_opt[i * kStrideUV + j]); \
       }                                                                        \
     }                                                                          \

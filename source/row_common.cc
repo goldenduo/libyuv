@@ -36,10 +36,10 @@ extern "C" {
 // LIBYUV_UNLIMITED_BT709
 // LIBYUV_UNLIMITED_BT2020
 
-#if !defined(LIBYUV_BIT_EXACT) && (defined(__x86_64__) || defined(_M_X64) || \
-                                   defined(__i386__) || defined(_M_IX86))
-#define LIBYUV_ARGBTOUV_PAVGB 1
-#endif
+//if !defined(LIBYUV_BIT_EXACT) && (defined(__x86_64__) || defined(_M_X64) || \
+//                                  defined(__i386__) || defined(_M_IX86))
+//define LIBYUV_ARGBTOUV_PAVGB 1
+//endif
 #if defined(LIBYUV_BIT_EXACT)
 #define LIBYUV_UNATTENUATE_DUP 1
 #endif

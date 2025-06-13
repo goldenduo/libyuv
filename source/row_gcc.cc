@@ -1734,8 +1734,93 @@ void ARGBToUV444MatrixRow_AVX2(const uint8_t* src_argb,
 
 #ifdef HAS_ARGBTOUVROW_SSSE3
 
-void OMITFP
-ARGBToUVMatrixRow_SSSE3(const uint8_t* src_argb,
+// New ARGBToUV does rounding average of 4 pixels
+void ARGBToUVMatrixRow_SSSE3(const uint8_t* src_argb,
+                             int src_stride_argb,
+                             uint8_t* dst_u,
+                             uint8_t* dst_v,
+                             int width,
+                             const struct RgbUVConstants* rgbuvconstants) {
+
+  asm volatile(
+      "pcmpeqb     %%xmm6,%%xmm6                 \n"  // 0x0101
+      "pabsb       %%xmm6,%%xmm6                 \n"
+      "pcmpeqw     %%xmm5,%%xmm5                 \n"  // 0x00020002
+      "pabsw       %%xmm5,%%xmm5                 \n"
+      "paddw       %%xmm5,%%xmm5                 \n"
+      "sub         %1,%2                         \n"
+
+      LABELALIGN
+      "1:          \n"
+      "movdqu      (%0),%%xmm0                   \n"  // Read 8 ARGB Pixels
+      "movdqu      0x10(%0),%%xmm1               \n"
+      "movdqa      %%xmm0,%%xmm7                 \n"
+      "shufps      $0x88,%%xmm1,%%xmm0           \n"  // Even
+      "shufps      $0xdd,%%xmm1,%%xmm7           \n"  // Odd pixels
+      "movdqa      %%xmm0,%%xmm7                 \n"
+      "punpcklbw   %%xmm1,%%xmm0                 \n"  // aarrgbb
+      "punpckhbw   %%xmm7,%%xmm1                 \n"
+      "pmaddubsw   %%xmm6,%%xmm0                 \n"  // paired add argb
+      "pmaddubsw   %%xmm6,%%xmm1                 \n"
+
+      "movdqu      0x00(%0,%4,1),%%xmm2          \n"  // Read 2nd row
+      "movdqu      0x10(%0,%4,1),%%xmm3          \n"
+      "movdqa      %%xmm2,%%xmm7                 \n"
+      "shufps      $0x88,%%xmm3,%%xmm2           \n"  // Even
+      "shufps      $0xdd,%%xmm3,%%xmm7           \n"  // Odd pixels
+      "movdqa      %%xmm2,%%xmm7                 \n"
+      "punpcklbw   %%xmm3,%%xmm2                 \n"  // aarrgbb
+      "punpckhbw   %%xmm7,%%xmm3                 \n"
+      "pmaddubsw   %%xmm6,%%xmm2                 \n"  // argb
+      "pmaddubsw   %%xmm6,%%xmm3                 \n"
+
+      "paddw       %%xmm2,%%xmm0                 \n"
+      "paddw       %%xmm3,%%xmm1                 \n"
+      "paddw       %%xmm5,%%xmm0                 \n"  // + 2
+      "paddw       %%xmm5,%%xmm1                 \n"  // + 2
+      "psrlw       $2,%%xmm0                     \n"
+      "psrlw       $2,%%xmm1                     \n"
+      "packuswb    %%xmm1,%%xmm0                 \n"  // 4 ARGB pixels
+
+      "movdqa      %%xmm0,%%xmm1                 \n"
+      "pmaddubsw   %5,%%xmm0                     \n"  // u
+      "pmaddubsw   %6,%%xmm1                     \n"  // v
+      "phaddw      %%xmm1,%%xmm0                 \n"  // uuuuvvvv
+
+      "movdqa      %7,%%xmm2                     \n"  // 0x8000
+      "psubw       %%xmm0,%%xmm2                 \n"  // unsigned 0 to 0xffff
+      "psrlw       $0x8,%%xmm2                   \n"
+      "packuswb    %%xmm2,%%xmm2                 \n"
+      "movd        %%xmm2,(%1)                   \n"  // Write 4 U's
+      "movhlps     %%xmm2,%%xmm3                 \n"
+      "movd        %%xmm3,0x00(%1,%2,1)          \n"  // Write 4 V's
+
+      "lea         0x20(%0),%0                   \n"
+      "lea         0x4(%1),%1                    \n"
+      "subl        $0x8,%3                       \n"
+      "jg          1b                            \n"
+      : "+r"(src_argb),  // %0
+        "+r"(dst_u),     // %1
+        "+r"(dst_v),     // %2
+#if defined(__i386__)
+        "+m"(width)  // %3
+#else
+        "+rm"(width)  // %3
+#endif
+      : "r"((intptr_t)(src_stride_argb)), // %4
+        "m"(rgbuvconstants->kRGBToU),  // %5
+        "m"(rgbuvconstants->kRGBToV),  // %6
+        "m"(kAddUV128)                 // %7
+
+      : "memory", "cc", "xmm0", "xmm1", "xmm2", "xmm3", "xmm4", "xmm5", "xmm6",
+        "xmm7");
+}
+#endif  // HAS_ARGBTOUVROW_SSSE3
+
+
+#ifdef HAS_ARGBTOUVROW_SSSE3_OLD
+
+void OMITFP ARGBToUVMatrixRow_SSSE3(const uint8_t* src_argb,
                         int src_stride_argb,
                         uint8_t* dst_u,
                         uint8_t* dst_v,
@@ -1810,7 +1895,7 @@ ARGBToUVMatrixRow_SSSE3(const uint8_t* src_argb,
                  "xmm6", "xmm7");
 }
 
-#endif  // HAS_ARGBTOUVROW_SSSE3
+#endif  // HAS_ARGBTOUVROW_SSSE3_OLD
 
 // vpshufb for vphaddw + vpackuswb packed to shorts.
 // Coefficients expressed as negatives to allow 128
