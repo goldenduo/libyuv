@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74acec06_e111bda7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-13T02:09:12Z",
+      "side": 1,
+      "message": "Fixes ARM build error for chromiumos and android\nAdds num_cpu to cpuid utility",
+      "revId": "cb76166942329de132ee88ff9f7f32fa2cf3feb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
