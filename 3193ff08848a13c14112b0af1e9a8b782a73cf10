@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66cea830_8fdcbf63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002030
+      },
+      "writtenOn": "2025-06-13T00:45:19Z",
+      "side": 1,
+      "message": "I think we can single source this for Windows pretty easy in the future. And look at AVX 10.1 and 10.2 if you want to differentiate or just look for AVX512. Pros and Cons",
+      "revId": "3193ff08848a13c14112b0af1e9a8b782a73cf10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
