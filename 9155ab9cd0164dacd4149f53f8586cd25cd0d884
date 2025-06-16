@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f11230de_f6eff445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002030
+      },
+      "writtenOn": "2025-06-16T22:25:07Z",
+      "side": 1,
+      "message": "This lgtm. Everything is exact. We can revisit AVX2 in the near future.",
+      "revId": "9155ab9cd0164dacd4149f53f8586cd25cd0d884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
