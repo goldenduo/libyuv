@@ -11,6 +11,7 @@
 #include "libyuv/row.h"
 
 #include <assert.h>
+#include <stdio.h>   // For printf
 #include <string.h>  // For memcpy and memset.
 
 #include "libyuv/basic_types.h"
@@ -36,10 +37,10 @@ extern "C" {
 // LIBYUV_UNLIMITED_BT709
 // LIBYUV_UNLIMITED_BT2020
 
-#if !defined(LIBYUV_BIT_EXACT) && (defined(__x86_64__) || defined(_M_X64) || \
-                                   defined(__i386__) || defined(_M_IX86))
-#define LIBYUV_ARGBTOUV_PAVGB 1
-#endif
+//if !defined(LIBYUV_BIT_EXACT) && (defined(__x86_64__) || defined(_M_X64) || \
+//                                  defined(__i386__) || defined(_M_IX86))
+// define LIBYUV_ARGBTOUV_PAVGB 1
+// endif
 #if defined(LIBYUV_BIT_EXACT)
 #define LIBYUV_UNATTENUATE_DUP 1
 #endif
@@ -627,7 +628,6 @@ void AR64ShuffleRow_C(const uint8_t* src_ar64,
 // b -0.1406 * 128 = −17.9968 = -18
 // g -0.7344 * 128 = −94.0032 = -94
 // r  0.875  * 128 = 112.0    = 112
-
 static __inline uint8_t RGBToY(uint8_t r, uint8_t g, uint8_t b) {
   return STATIC_CAST(uint8_t, (66 * r + 129 * g + 25 * b + 0x1080) >> 8);
 }
@@ -642,6 +642,7 @@ static __inline uint8_t RGBToV(uint8_t r, uint8_t g, uint8_t b) {
 // ARGBToY_C and ARGBToUV_C
 // Intel version of UV mimic SSE/AVX which does 2 pavgb
 #if defined(LIBYUV_ARGBTOUV_PAVGB)
+#error pavgb
 #define MAKEROWY(NAME, R, G, B, BPP)                                       \
   void NAME##ToYRow_C(const uint8_t* src_rgb, uint8_t* dst_y, int width) { \
     int x;                                                                 \

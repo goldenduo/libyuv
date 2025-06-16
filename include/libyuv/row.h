@@ -79,12 +79,10 @@ extern "C" {
 #define HAS_YUY2TOUV422ROW_SSE2
 #define HAS_YUY2TOUVROW_SSE2
 #define HAS_YUY2TOYROW_SSE2
-#if !defined(LIBYUV_BIT_EXACT)
 #define HAS_ABGRTOUVROW_SSSE3
 #define HAS_ARGBTOUVROW_SSSE3
 #define HAS_BGRATOUVROW_SSSE3
 #define HAS_RGBATOUVROW_SSSE3
-#endif
 
 // Effects:
 #define HAS_ARGBADDROW_SSE2
@@ -272,11 +270,11 @@ extern "C" {
 #define HAS_RGB24TOYROW_SSSE3
 #define HAS_RGBATOYROW_SSSE3
 
-#if !defined(LIBYUV_BIT_EXACT)
-// TODO: adjust row_win to use 8 bit negative coefficients.
+// if !defined(LIBYUV_BIT_EXACT)
+//  TODO: adjust row_win to use 8 bit negative coefficients.
 #define HAS_ABGRTOUVJROW_SSSE3
 #define HAS_ARGBTOUVJROW_SSSE3
-#endif
+// endif
 
 #if defined(__x86_64__) || !defined(__pic__)
 // TODO(fbarchard): fix build error on android_full_debug=1
@@ -351,10 +349,10 @@ extern "C" {
 #define HAS_SWAPUVROW_AVX2
 #define HAS_YUY2TONVUVROW_AVX2
 #if !defined(LIBYUV_BIT_EXACT)
-#define HAS_ABGRTOUVJROW_AVX2
-#define HAS_ABGRTOUVROW_AVX2
-#define HAS_ARGBTOUVJROW_AVX2
-#define HAS_ARGBTOUVROW_AVX2
+// #define HAS_ABGRTOUVJROW_AVX2
+// #define HAS_ABGRTOUVROW_AVX2
+// #define HAS_ARGBTOUVJROW_AVX2
+// #define HAS_ARGBTOUVROW_AVX2
 #endif
 
 #if defined(__x86_64__) || !defined(__pic__)
