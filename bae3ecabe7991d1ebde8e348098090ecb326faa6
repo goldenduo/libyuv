@@ -33,6 +33,24 @@
       "message": "consider updating the comment on line 256 for why we need +i8mm",
       "revId": "bae3ecabe7991d1ebde8e348098090ecb326faa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e5682c_9d40a96f",
+        "filename": "BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-19T19:08:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0e38f0d3_c1d290a8",
+      "revId": "bae3ecabe7991d1ebde8e348098090ecb326faa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
