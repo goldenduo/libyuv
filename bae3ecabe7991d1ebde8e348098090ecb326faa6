@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "936f58bf_e1a8d02e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-19T19:08:34Z",
+      "side": 1,
+      "message": "I\u0027ll go ahead and land this... a comment or documentation on ISA might be helpful at some point.  ARM ISA have become a bit complicated.\n\nIts weird that armv9 doesnt include i8mm or sve... seems like its just armv8\nShould we be checking for i8mm instructions, when using usdot in sve2 code?\n\nFYI we also need this type of build for bazel, but its not in git.\nI have a version with this fix for \u0027blaze\u0027 but another team did a bazel that should work as a generic alternative way to build.  They did this part (sve) wrong, enabling it for neon code, and ran into crashes on cpus that dont have sve, so the flag somehow affected the C and/or neon code.  So it would be good to get a bazel build going.\nAlso the gn may change and chrome is migrating away from ninja.",
+      "revId": "bae3ecabe7991d1ebde8e348098090ecb326faa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e38f0d3_c1d290a8",
