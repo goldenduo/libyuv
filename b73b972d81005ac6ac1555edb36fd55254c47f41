@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5ec82f_0468c606",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-19T18:04:32Z",
+      "side": 1,
+      "message": "i assume this is really SVE2 since it uses bytes.\nis the sve really slower than NEON?  the ld1b seems like an advantage\nif you did sve it would not need \u0027any\u0027 and would be testable/benchmarkable on samsung s22 exynos and later",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "147f1c86_3e422d75",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-19T18:04:32Z",
+      "side": 1,
+      "message": "does sve not allow loads to 2 registers like neon?",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bb1ca3_aa38ee5b",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-19T18:04:32Z",
+      "side": 1,
+      "message": "shouldnt this be incrementing by vl * 2?",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28cd98b0_352d1167",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-19T18:04:32Z",
+      "side": 1,
+      "message": "an alternative would be ld1t as well.  sometimes redundent loads schedule better... 4 loads with no dependencies can be better than 2 loads and 2 math instructions that need to wait on them.",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08dd86d_d0005b6d",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-19T18:04:32Z",
+      "side": 1,
+      "message": "is it performance wise an advantage to do group register load for sme2.1?",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
