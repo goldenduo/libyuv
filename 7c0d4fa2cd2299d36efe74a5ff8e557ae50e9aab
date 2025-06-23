@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad241ec_1f495263",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-23T17:29:50Z",
+      "side": 1,
+      "message": "I\u0027d like Mirko to have final approval on this, when ready.\n\nSo this make gn default to siso ?   In my typical build:\ngn gen out/Release --args\u003dis_debug\u003dfalse\nninja -v -C out/Release\n\nthis is equivalent to adding the option to gn\ngn gen out/Release \"--args\u003dis_debug\u003dfalse use_siso\u003dtrue\"\nninja -v -C out/Release",
+      "revId": "7c0d4fa2cd2299d36efe74a5ff8e557ae50e9aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
