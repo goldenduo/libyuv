@@ -16,6 +16,24 @@
       "message": "I\u0027d like Mirko to have final approval on this, when ready.\n\nSo this make gn default to siso ?   In my typical build:\ngn gen out/Release --args\u003dis_debug\u003dfalse\nninja -v -C out/Release\n\nthis is equivalent to adding the option to gn\ngn gen out/Release \"--args\u003dis_debug\u003dfalse use_siso\u003dtrue\"\nninja -v -C out/Release",
       "revId": "7c0d4fa2cd2299d36efe74a5ff8e557ae50e9aab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de0ab83_e33a65b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-06-23T18:41:17Z",
+      "side": 1,
+      "message": "Hi Frank, this LGTM I also sent out the PSA earlier today (https://groups.google.com/g/discuss-libyuv/c/V3eeQEmWBWg).\n\nThis is correct, but instead of using `ninja` just use `autoninja`, something like this:\n\n```\ngn gen out/Release\"--args\u003dis_debug\u003dfalse use_siso\u003dtrue`\nautoninja -C out/Release\n```",
+      "parentUuid": "fad241ec_1f495263",
+      "revId": "7c0d4fa2cd2299d36efe74a5ff8e557ae50e9aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
