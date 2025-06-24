@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8842d3c0_79b7160e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-24T14:38:16Z",
+      "side": 1,
+      "message": "-march\u003darmv9-a in the compiler is mostly equivalent to -march\u003darmv8.5-a+sve2, so it does enable +dotprod and +sve2 automatically, but not +i8mm (which only became mandatory in v8.6). The reason we left +sve2 in the explicit-enable list is because there was talk at some point of removing it from being enabled by default (although that seems to have gone away now). SME remains an optional feature so we need to explicitly enable it.\n\nThere is some documentation already here: https://chromium.googlesource.com/libyuv/libyuv/+/refs/changes/18/6656718/1/docs/feature_detection.md#the-scalable-vector-extension-sve\n\nLet me know if you think there is something else that you think would be beneficial to add to the existing doc?",
+      "parentUuid": "936f58bf_e1a8d02e",
+      "revId": "bae3ecabe7991d1ebde8e348098090ecb326faa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e38f0d3_c1d290a8",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Acknowledged",
       "parentUuid": "0e38f0d3_c1d290a8",
+      "revId": "bae3ecabe7991d1ebde8e348098090ecb326faa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f435e9_d4a6cb88",
+        "filename": "BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-24T14:38:16Z",
+      "side": 1,
+      "message": "There\u0027s a bit of doc already for this here: https://chromium.googlesource.com/libyuv/libyuv/+/refs/changes/18/6656718/1/docs/feature_detection.md#the-scalable-vector-extension-sve",
+      "parentUuid": "f7e5682c_9d40a96f",
       "revId": "bae3ecabe7991d1ebde8e348098090ecb326faa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
