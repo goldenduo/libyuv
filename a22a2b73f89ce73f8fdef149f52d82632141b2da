@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36040c03_144eea46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-24T17:46:40Z",
+      "side": 1,
+      "message": "LG... added some notes about future direction.\nIdeally quote a performance relative to NEON or SVE.  Is ARMIE / ARM Fast Models a good way to emulate performance?",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe6e96b_ddf36022",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-24T17:46:40Z",
+      "side": 1,
+      "message": "FYI when the matrix functions are portable, these move to row_common.  If necessary they can be different for neon and sme, but preferably use the 8 bit dot product form.  They may want to be neon friendly 16 bytes.",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "724fb654_2bc9c370",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2094,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-24T17:46:40Z",
+      "side": 1,
+      "message": "In general avoid scaling width to loop count; Its a wasted instruction.\nsubtract twice as much from the loop count.\nthe code can use %w[vl], lsl #4 instead\nyou dont need to worry about an odd width too much, since the any masked out the low bit.\nit looks like it would mess up the remainder predicate though, so I guess keep it here",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e37023a_c3d69616",
+        "filename": "source/convert_from_argb.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-24T17:46:40Z",
+      "side": 1,
+      "message": "this means if the width is odd, which is rare, the remainder (1) will use sme, and the rest will be the rest of the width.  Its not how I intended any to be used, but it works perfectly.",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8585366_775a2035",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-24T17:46:40Z",
+      "side": 1,
+      "message": "note that at some point the Matrix function will be directly used by the calling image function and these wrappers go away.\nThe structure needs to be handled in a consistent way, which I think works in the case of ARM.  Mainly need to add row_common matrix functions.",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
