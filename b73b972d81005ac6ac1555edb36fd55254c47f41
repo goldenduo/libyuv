@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff1d5946_2325dc76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-24T14:49:43Z",
+      "side": 1,
+      "message": "Arm hasn\u0027t announced a successor to the Cortex-X925 at time of writing, so I cannot confirm any performance numbers at this time.\n\nThe assumption for SME implementations is that the potential for a longer vector length compared to current-generation SVE cores means that this should be an unconditional improvement. If it turns out that there exist SME implementations with a vector length less-than or equal-to the SVE vector length then we might want to revisit this (e.g. by conditionally enabling the implementation based on comparing the vector lengths, we could do the same for SVE vs Neon in some cases). But it seems premature to add such logic until we know what real implementations look like.",
+      "parentUuid": "c67cfed6_e80a9e84",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f5ec82f_0468c606",
@@ -55,6 +73,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8558eba1_9ae31db3",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-24T14:49:43Z",
+      "side": 1,
+      "message": "LD1B doesn\u0027t save us anything here (it just means we use TRN1 rather than ZIP1 for the interleaving), it just makes the predicates line up nicer so we can use the same predicate for the load and store instructions.",
+      "parentUuid": "42478fc6_1a2e1c23",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "147f1c86_3e422d75",
         "filename": "source/row_sme.cc",
         "patchSetId": 1
@@ -66,6 +102,24 @@
       "writtenOn": "2025-06-19T18:04:32Z",
       "side": 1,
       "message": "does sve not allow loads to 2 registers like neon?",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44cf43af_5b67f2de",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-24T14:49:43Z",
+      "side": 1,
+      "message": "Good point. The existing SME code is only SME1, but SME2 (and SVE2.1) do have multi-vector loads. We may want to revisit these at some point, but I don\u0027t think it will change performance much.\n\nWe would need new feature detection, files, and code paths for SME2 vs SME1, so I\u0027m not rushing to do this...",
+      "parentUuid": "147f1c86_3e422d75",
       "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -101,6 +155,24 @@
       "side": 1,
       "message": "Acknowledged.  Oh I think I get it.  You\u0027re are reading bytes into words, so 2 reads of bytes to words is 1 incb of bytes.",
       "parentUuid": "47bb1ca3_aa38ee5b",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c529b5_d1c57c88",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-24T14:49:43Z",
+      "side": 1,
+      "message": "Indeed!",
+      "parentUuid": "4c1ffc6c_e964c6a5",
       "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -142,6 +214,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "953dee05_7854c2bc",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-24T14:49:43Z",
+      "side": 1,
+      "message": "There is no load instruction that replicates within the loaded data, unfortunately.",
+      "parentUuid": "8c9ace2b_9d7f3da4",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d08dd86d_d0005b6d",
         "filename": "source/row_sme.cc",
         "patchSetId": 1
@@ -153,6 +243,24 @@
       "writtenOn": "2025-06-19T18:04:32Z",
       "side": 1,
       "message": "is it performance wise an advantage to do group register load for sme2.1?",
+      "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23102858_3b02d93a",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-24T14:49:43Z",
+      "side": 1,
+      "message": "I can\u0027t comment on this. We may want to revisit some of these kernels once real hardware becomes available.",
+      "parentUuid": "d08dd86d_d0005b6d",
       "revId": "b73b972d81005ac6ac1555edb36fd55254c47f41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
