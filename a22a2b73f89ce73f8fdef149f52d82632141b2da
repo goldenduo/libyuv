@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "52219db0_a721935f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-25T07:56:00Z",
+      "side": 1,
+      "message": "Armie can get us instruction count but doesn\u0027t give any kind of performance indications unfortunately.",
+      "parentUuid": "36040c03_144eea46",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "abe6e96b_ddf36022",
         "filename": "include/libyuv/row_sve.h",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2025-06-24T17:46:40Z",
       "side": 1,
       "message": "FYI when the matrix functions are portable, these move to row_common.  If necessary they can be different for neon and sme, but preferably use the 8 bit dot product form.  They may want to be neon friendly 16 bytes.",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ad3862_d87d5631",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-25T07:56:00Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "abe6e96b_ddf36022",
       "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9e2cf73c_b0b9ecc4",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2094,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-25T07:56:00Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "724fb654_2bc9c370",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6e37023a_c3d69616",
         "filename": "source/convert_from_argb.cc",
         "patchSetId": 1
@@ -71,6 +125,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1cf6c63b_7291918c",
+        "filename": "source/convert_from_argb.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-25T07:56:00Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "6e37023a_c3d69616",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d8585366_775a2035",
         "filename": "source/row_sme.cc",
         "patchSetId": 1
@@ -82,6 +154,24 @@
       "writtenOn": "2025-06-24T17:46:40Z",
       "side": 1,
       "message": "note that at some point the Matrix function will be directly used by the calling image function and these wrappers go away.\nThe structure needs to be handled in a consistent way, which I think works in the case of ARM.  Mainly need to add row_common matrix functions.",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a480ba7_4eb3710a",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-06-25T07:56:00Z",
+      "side": 1,
+      "message": "I think that should be fine, as long as the coefficients can be guaranteed to stay in 8-bit range.",
+      "parentUuid": "d8585366_775a2035",
       "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
