@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad5d01cd_4bc52a53",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2059,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-30T17:29:01Z",
+      "side": 1,
+      "message": "Gemini claims these fmov may be a bug?\n\nThese fmov instructions only clear the lower 32 bits of the z registers, but the following usdot instructions operate on the full vector width. usdot accumulates, so the destination registers should be zeroed out entirely before use.\n\nThe previous implementation used movi vXX.8h, #0, which correctly zeroed the full z register.\n\nPlease consider using an instruction that zeros the entire vector, for example dup z16.s, wzr.",
+      "revId": "007b920232baa76e8f37ad1a184409a5ecb70836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
