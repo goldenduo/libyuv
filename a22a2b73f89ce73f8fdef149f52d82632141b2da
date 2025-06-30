@@ -191,6 +191,24 @@
       "parentUuid": "d8585366_775a2035",
       "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb7eb40_5e3f31d9",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-06-30T16:20:15Z",
+      "side": 1,
+      "message": "yes, but the previous sve used positive int16 values and the current sve is negated int8 values.  If the old sve code was necessary, the function would need to convert int8 to int16 before using them, or have different structures for sve vs neon.\n\nFor yuv to rgb the neon structures are currently different for aarch64 vs 32 bit arm, and imho the 32 bit arm structures make more sense.  Would be good to avoid that with future datatypes and keep all of arm the same structures for neon/sve/sme.  x86 already does this for sse/avx/avx512 by using sse (16) byte and broadcasting to the larger vector sizes.",
+      "parentUuid": "2a480ba7_4eb3710a",
+      "revId": "a22a2b73f89ce73f8fdef149f52d82632141b2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
