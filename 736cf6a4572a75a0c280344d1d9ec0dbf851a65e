@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57160538_a0210abf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-01T17:34:15Z",
+      "side": 1,
+      "message": "Is disabling modules the only solution for libraries containing SIMD?\nDoes this only affect ARM, or Intel and RISC-V use of -march would also be affected?",
+      "revId": "736cf6a4572a75a0c280344d1d9ec0dbf851a65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
