@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e0d032_c7032b8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-07-01T09:36:52Z",
+      "side": 1,
+      "message": "LGTM, feel free to use No-Try since the issue on win64 is not related",
+      "revId": "8f009a5715f47eae97050c1b0212df99035b4f19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
