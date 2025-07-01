@@ -34,6 +34,24 @@
       "parentUuid": "ad5d01cd_4bc52a53",
       "revId": "007b920232baa76e8f37ad1a184409a5ecb70836",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69acd329_991a7c16",
+        "filename": "include/libyuv/row_sve.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2059,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2025-07-01T13:13:23Z",
+      "side": 1,
+      "message": "You can also prove this easily with a short C program, e.g.\n\n    #include \u003cstdio.h\u003e\n    #include \u003cstdint.h\u003e\n\n    int main() {\n      uint32_t x[4];\n      asm volatile(\n          \"movi v0.16b, #0xff \\n\"\n          \"fmov s0, wzr       \\n\"\n          \"str q0, [%0]       \\n\":: \"r\"(x): \"v0\");\n      printf(\"%08x %08x %08x %08x\\n\", x[0], x[1], x[2], x[3]);\n    }\n\nWhich fills the vector with 1s, then does the FMOV to show that the whole vector is zeroed:\n\n    $ gcc test.c -O3\n    $ ./a.out\n    00000000 00000000 00000000 00000000",
+      "parentUuid": "1a1d05b1_cc76dbcd",
+      "revId": "007b920232baa76e8f37ad1a184409a5ecb70836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
