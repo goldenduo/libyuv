@@ -5106,6 +5106,7 @@ void Convert8To16Row_AVX2(const uint8_t* src_y,
                           uint16_t* dst_y,
                           int scale,
                           int width) {
+  int shift = __builtin_clz(scale) - 15;
   asm volatile(
       "vmovd       %3,%%xmm2                     \n"
       "vpbroadcastw %%xmm2,%%ymm2                \n"
@@ -5118,8 +5119,8 @@ void Convert8To16Row_AVX2(const uint8_t* src_y,
       "add         $0x20,%0                      \n"
       "vpunpckhbw  %%ymm0,%%ymm0,%%ymm1          \n"
       "vpunpcklbw  %%ymm0,%%ymm0,%%ymm0          \n"
-      "vpmulhuw    %%ymm2,%%ymm0,%%ymm0          \n"
-      "vpmulhuw    %%ymm2,%%ymm1,%%ymm1          \n"
+      "vpsrlvw     %%ymm2,%%ymm0,%%ymm0          \n"
+      "vpsrlvw     %%ymm2,%%ymm1,%%ymm1          \n"
       "vmovdqu     %%ymm0,(%1)                   \n"
       "vmovdqu     %%ymm1,0x20(%1)               \n"
       "add         $0x40,%1                      \n"
@@ -5129,7 +5130,7 @@ void Convert8To16Row_AVX2(const uint8_t* src_y,
       : "+r"(src_y),  // %0
         "+r"(dst_y),  // %1
         "+r"(width)   // %2
-      : "r"(scale)    // %3
+      : "r"(shift)    // %3
       : "memory", "cc", "xmm0", "xmm1", "xmm2");
 }
 #endif  // HAS_CONVERT8TO16ROW_AVX2
