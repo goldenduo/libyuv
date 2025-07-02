@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66d3a63_495e1171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3632996
+      },
+      "writtenOn": "2025-07-02T02:40:47Z",
+      "side": 1,
+      "message": "Nice improvement!",
+      "revId": "0db85012539d04cbe24c2f4b3cc7fa1db060cee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70324e80_10370611",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5109,
+      "author": {
+        "id": 3632996
+      },
+      "writtenOn": "2025-07-02T02:40:47Z",
+      "side": 1,
+      "message": "nit: const? (Or do it in assembly, as e.g. lzcnt(scale \u003c\u003c 15)?)",
+      "range": {
+        "startLine": 5109,
+        "startChar": 2,
+        "endLine": 5109,
+        "endChar": 5
+      },
+      "revId": "0db85012539d04cbe24c2f4b3cc7fa1db060cee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
