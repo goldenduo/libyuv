@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60b8113_eaabbd47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-02T16:30:32Z",
+      "side": 1,
+      "message": "made godbolt that has both functions https://godbolt.org/z/Psazeqbzd",
+      "revId": "12d0be74cb20a9dfee5aeec7bbf43b3845b2f7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
