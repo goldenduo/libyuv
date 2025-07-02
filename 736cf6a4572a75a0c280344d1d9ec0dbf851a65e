@@ -16,6 +16,24 @@
       "message": "Is disabling modules the only solution for libraries containing SIMD?\nDoes this only affect ARM, or Intel and RISC-V use of -march would also be affected?",
       "revId": "736cf6a4572a75a0c280344d1d9ec0dbf851a65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f71c9d7d_9af012c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1161379
+      },
+      "writtenOn": "2025-07-02T03:45:51Z",
+      "side": 1,
+      "message": "Currently, modules is built with different `-march` flag, and that causes config mismatch error as it is incompatible in modules.\n\nBut we don\u0027t see such issue in intel build. We\u0027ll take a look at RISC-V when we\u0027ll enable modules build for RISC-V.",
+      "parentUuid": "57160538_a0210abf",
+      "revId": "736cf6a4572a75a0c280344d1d9ec0dbf851a65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
