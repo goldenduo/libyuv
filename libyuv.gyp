@@ -126,6 +126,9 @@
         # 'LIBYUV_USING_SHARED_LIBRARY',
         # TODO(fbarchard): Make these into gyp defines.
       ],
+      'defines': [
+        'LIBYUV_BUILD_GYP',
+      ],
       'include_dirs': [
         'include',
         '.',

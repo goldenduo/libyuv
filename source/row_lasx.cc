@@ -12,7 +12,8 @@
 
 #include "libyuv/row.h"
 
-#if !defined(LIBYUV_DISABLE_LASX) && defined(__loongarch_asx)
+#if !defined(LIBYUV_DISABLE_LASX) && defined(__loongarch__)
+#include "libyuv/loongson_set_lasx.h"
 #include "libyuv/loongson_intrinsics.h"
 
 #ifdef __cplusplus
@@ -2317,4 +2318,5 @@ void ARGBToUVJRow_LASX(const uint8_t* src_argb,
 }  // namespace libyuv
 #endif
 
-#endif  // !defined(LIBYUV_DISABLE_LASX) && defined(__loongarch_asx)
+#include "libyuv/loongson_unset_target.h"
+#endif  // !defined(LIBYUV_DISABLE_LASX) && defined(__loongarch__)

@@ -63,6 +63,9 @@ LOCAL_OBJ_FILES := \
 	source/scale_win.o         \
 	source/video_common.o
 
+$(filter %_lsx.o, $(LOCAL_OBJ_FILES)) : CXXFLAGS += -mlsx
+$(filter %_lasx.o, $(LOCAL_OBJ_FILES)) : CXXFLAGS += -mlasx
+
 .cc.o:
 	$(CXX) -c $(CXXFLAGS) $*.cc -o $*.o
 
