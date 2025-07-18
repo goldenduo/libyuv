@@ -148,31 +148,6 @@ int main(void) { return 0; }
   endif()
 endif()
 
-if(LOONGARCH64)
-  include(CheckCXXSourceCompiles)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-narrowing")
-  check_cxx_source_compiles("
-    int main(int argc, char **argv) {
-      __asm__ volatile (
-         \"vadd.w $vr0, $vr1, $vr1\"
-      );
-    return 0; }" SUPPORTS_LSX)
-
-  check_cxx_source_compiles("
-    int main(int argc, char **argv) {
-      __asm__ volatile (
-         \"xvadd.w $xr0, $xr1, $xr1\"
-      );
-    return 0; }" SUPPORTS_LASX)
-
-  if(SUPPORTS_LSX)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mlsx")
-  endif()
-  if(SUPPORTS_LASX)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mlasx")
-  endif()
-endif()
-
 # this creates the static library (.a)
 add_library( ${ly_lib_static} STATIC ${ly_lib_parts})
 

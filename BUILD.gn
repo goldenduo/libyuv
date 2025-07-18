@@ -307,7 +307,6 @@ if (libyuv_use_lsx) {
     ]
 
     cflags_cc = [
-      "-mlsx",
       "-Wno-c++11-narrowing",
     ]
 
@@ -325,7 +324,6 @@ if (libyuv_use_lasx) {
     ]
 
     cflags_cc = [
-      "-mlasx",
       "-Wno-c++11-narrowing",
     ]
 
