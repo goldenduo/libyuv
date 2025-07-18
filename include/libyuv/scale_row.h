@@ -149,7 +149,7 @@ extern "C" {
 #define HAS_SCALEROWDOWN4_MSA
 #endif
 
-#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch_sx)
+#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch__)
 #define HAS_SCALEARGBROWDOWN2_LSX
 #define HAS_SCALEARGBROWDOWNEVEN_LSX
 #define HAS_SCALEROWDOWN2_LSX

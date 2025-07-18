@@ -756,7 +756,7 @@ extern "C" {
 #define HAS_YUY2TOYROW_MSA
 #endif
 
-#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch_sx)
+#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch__)
 #define HAS_ABGRTOUVROW_LSX
 #define HAS_ABGRTOYROW_LSX
 #define HAS_ARGB1555TOARGBROW_LSX
@@ -841,11 +841,11 @@ extern "C" {
 #define HAS_RAWTOYJROW_LSX
 #endif
 
-#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch_sx)
+#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch__)
 #define HAS_I422TOARGBROW_LSX
 #endif
 
-#if !defined(LIBYUV_DISABLE_LASX) && defined(__loongarch_asx)
+#if !defined(LIBYUV_DISABLE_LASX) && defined(__loongarch__)
 #define HAS_ARGB1555TOARGBROW_LASX
 #define HAS_ARGB1555TOUVROW_LASX
 #define HAS_ARGB1555TOYROW_LASX

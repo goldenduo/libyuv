@@ -65,7 +65,7 @@ extern "C" {
 #define HAS_TRANSPOSEUVWX16_MSA
 #endif
 
-#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch_sx)
+#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch__)
 #define HAS_TRANSPOSEWX16_LSX
 #define HAS_TRANSPOSEUVWX16_LSX
 #endif
