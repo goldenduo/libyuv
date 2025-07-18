@@ -12,7 +12,8 @@
 
 #include "libyuv/row.h"
 
-#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch_sx)
+#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch__)
+#include "libyuv/loongson_set_lsx.h"
 #include "libyuv/loongson_intrinsics.h"
 
 #ifdef __cplusplus
@@ -3000,4 +3001,5 @@ void RAWToYRow_LSX(const uint8_t* src_raw, uint8_t* dst_y, int width) {
 }  // namespace libyuv
 #endif
 
-#endif  // !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch_sx)
+#include "libyuv/loongson_unset_target.h"
+#endif  // !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch__)
