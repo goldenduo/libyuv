@@ -11,6 +11,9 @@
 #ifndef INCLUDE_LIBYUV_LOONGSON_INTRINSICS_H
 #define INCLUDE_LIBYUV_LOONGSON_INTRINSICS_H
 
+/* For LIBYUV_DISABLE_LSX and LIBYUV_DISABLE_LASX.  */
+#include "cpu_support.h"
+
 /*
  * Copyright (c) 2022 Loongson Technology Corporation Limited
  * All rights reserved.
@@ -21,9 +24,6 @@
  * This file is a header file for loongarch builtin extension.
  *
  */
-
-#ifndef LOONGSON_INTRINSICS_H
-#define LOONGSON_INTRINSICS_H
 
 /**
  * MAJOR version: Macro usage changes.
@@ -72,7 +72,11 @@
     DUP2_ARG3(_INS, _IN6, _IN7, _IN8, _IN9, _IN10, _IN11, _OUT2, _OUT3);      \
   }
 
-#ifdef __loongarch_sx
+#endif // INCLUDE_LIBYUV_LOONGSON_INTRINSICS_H
+
+#if !defined(LIBYUV_DISABLE_LSX) && defined(__loongarch_sx) && \
+    !defined(INCLUDE_LIBYUV_LOONGSON_INTRINSICS_H_LSX)
+#define INCLUDE_LIBYUV_LOONGSON_INTRINSICS_H_LSX
 #include <lsxintrin.h>
 /*
  * =============================================================================
@@ -701,9 +705,11 @@ static inline __m128i __lsx_vclip255_w(__m128i _in) {
     _out7 = __lsx_vsub_d(_in0, _in7);                                      \
   }
 
-#endif  // LSX
+#endif // LSX
 
-#ifdef __loongarch_asx
+#if !defined(LIBYUV_DISABLE_LASX) && defined(__loongarch_asx) && \
+    !defined(INCLUDE_LIBYUV_LOONGSON_INTRINSICS_H_LASX)
+#define INCLUDE_LIBYUV_LOONGSON_INTRINSICS_H_LASX
 #include <lasxintrin.h>
 /*
  * =============================================================================
@@ -1922,28 +1928,4 @@ static inline __m256i __lasx_xvsplati_h_h(__m256i in, int idx) {
     _out7 = __lasx_xvsub_d(_in0, _in7);                                     \
   }
 
-#endif  // LASX
-
-/*
- * =============================================================================
- * Description : Print out elements in vector.
- * Arguments   : Inputs  - RTYPE, _element_num, _in0, _enter
- *               Outputs -
- * Details     : Print out '_element_num' elements in 'RTYPE' vector '_in0', if
- *               '_enter' is TRUE, prefix "\nVP:" will be added first.
- * Example     : VECT_PRINT(v4i32,4,in0,1); // in0: 1,2,3,4
- *               VP:1,2,3,4,
- * =============================================================================
- */
-#define VECT_PRINT(RTYPE, element_num, in0, enter) \
-  {                                                \
-    RTYPE _tmp0 = (RTYPE)in0;                      \
-    int _i = 0;                                    \
-    if (enter)                                     \
-      printf("\nVP:");                             \
-    for (_i = 0; _i < element_num; _i++)           \
-      printf("%d,", _tmp0[_i]);                    \
-  }
-
-#endif /* LOONGSON_INTRINSICS_H */
-#endif /* INCLUDE_LIBYUV_LOONGSON_INTRINSICS_H */
+#endif // LASX
