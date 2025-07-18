@@ -91,6 +91,27 @@ extern "C" {
 #define CLANG_HAS_SME 1
 #endif
 
+// When the gyp build system is used,  we cannot specify compiler flags
+// for a subset of the source files.  So we need to use a pragma that only
+// Clang and GCC >= 15 have provided to build LSX/LASX routines, unless
+// __loongarch_{,a}sx is already defined (indicating LSX/LASX is already
+// enabled globally with toolchain default or compiler flag).
+//
+// Clang 18 required for LSX/LASX.
+#if defined(__loongarch__) && defined(LIBYUV_BUILD_GYP) && \
+    (!defined(__clang__) || __clang_major__ < 18) && \
+    (!defined(__GNUC__) || __GNUC__ < 15)
+
+#if !defined(LIBYUV_DISABLE_LSX) && !defined(__loongarch_sx)
+#define LIBYUV_DISABLE_LSX
+#endif
+
+#if !defined(LIBYUV_DISABLE_LASX) && !defined(__loongarch_asx)
+#define LIBYUV_DISABLE_LASX
+#endif
+
+#endif
+
 #ifdef __cplusplus
 }  // extern "C"
 }  // namespace libyuv
