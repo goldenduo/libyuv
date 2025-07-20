@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f945edf9_98212ba0",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T02:35:07Z",
+      "side": 1,
+      "message": "`__loongarch_sx` is not deprecated.  Here we can enable LSX (i.e. not to define LIBYUV_DISABLE_LSX) if the compiler is new enough to support the target attribute, **or** LSX is already enabled globally with CFLAGS or toolchain default.  `__loongarch_sx` checks the second condition.\n\nAnd the point here is not only if the compiler supports LSX.  GCC 14 supports LSX but it does not support `#pragma GCC target` on LoongArch, thus we have no way to enable LSX with the GYP build system unless it\u0027s already enabled globally, and we\u0027d have to disable LSX.  Only GCC \u003e\u003d 15 supports the target pragma.\n\nI\u0027ll check the minimum Clang version for the LSX/LASX support.",
+      "parentUuid": "2c49b14e_68e6d4a5",
+      "revId": "b34a31fe1eeef8260d7d03c58776a6b5666468f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d4a782a_61d4fe58",
         "filename": "include/libyuv/scale_row.h",
         "patchSetId": 1
