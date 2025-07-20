@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c49b14e_68e6d4a5",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T01:14:50Z",
+      "side": 1,
+      "message": "defined(__loongarch_sx) is deprecated?  use defined(__loongarch__)\n\nBut this section seems a little wrong?\nThere are 2 features this header does\nCLANG_HAS_LSX\nCLANG_HAS_LASX\nshould indicate the version of clang is new enough to support LSX/LASX intrinsics.\nand you could do the same for GCC\nI find godbolt.org very handy for determining the compiler version that works.\n\nThe disable macros\nLIBYUV_DISABLE_LSX\nLIBYUV_DISABLE_LASX\nare provided for the user to disable SIMD and fallback on C, incase they want to test without simd.\nThey can also be set in cases where LSX / LASX would normally be on, but needs to be disabled, such as msan (line 30)",
+      "revId": "b34a31fe1eeef8260d7d03c58776a6b5666468f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4a782a_61d4fe58",
+        "filename": "include/libyuv/scale_row.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T01:14:50Z",
+      "side": 1,
+      "message": "consider adding CLANG_HAS_LSX\nSee how neon etc detect do this above (e.g. SME at line 129)",
+      "revId": "b34a31fe1eeef8260d7d03c58776a6b5666468f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
