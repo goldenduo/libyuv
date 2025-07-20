@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52642825_40a4c3e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T03:28:53Z",
+      "side": 1,
+      "message": "Uploaded v3 to correct the minimum Clang version. It should be 18, not 19.",
+      "revId": "9b0f61e25fece8381eca34f27453e9ed1a364d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
