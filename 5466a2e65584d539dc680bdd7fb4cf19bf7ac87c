@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "458f0e71_c67d5e45",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T04:08:37Z",
+      "side": 1,
+      "message": "avoid dependency on GYP, which is deprecated.\nWe still want to test the compiler supports LSX/LASX for any build system\n\nNormally we\u0027d LSX and LASX with different versions and different compilers",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3da35e6_4be884a7",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T04:08:37Z",
+      "side": 1,
+      "message": "#if !defined(LIBYUV_DISABLE_LSX)\nis enough, and necessary if already disabled by the user",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9aea7e4_fdeb472c",
         "filename": "include/libyuv/loongson_set_lasx.h",
         "patchSetId": 2
@@ -32,6 +66,41 @@
       "side": 1,
       "message": "It\u0027s for the GYP build system where we have no way to set a flag for a subset of source files.\n\nI did some search on the Internet and they told me to create a separate static library (something like libyuv_lsx) to work around the issue.  But here we want a standalone libyuv.a archive, and this approach did not include the content of libyuv_lsx.a into libyuv.a, so I guess we cannot use it.  Thus I have to work it around with the #pragma magic.\n\nIt\u0027s not needed in the public headers, should I remove it from libyuv.gypi then?",
       "parentUuid": "a9aea7e4_fdeb472c",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2107dacd_30784ccb",
+        "filename": "include/libyuv/loongson_set_lasx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T04:08:37Z",
+      "side": 1,
+      "message": "top 3 concerns\n1. gyp is deprecated.  we removed support but on request added it back in, but its unsupported.  Unless its important to lsx/lasx, i\u0027d suggest making support just use the common code.\n\n2. the attribute tends to clash with compile options and different compilers.  if a user builds with conflicting build options (e.g. -mno-lsx) the command line wins and the attribute can produce a fatal build error, requiring a code change\nfor arm/x86 the assembly doesnt usually need a build option, but the usual intrinsics approach is to break up library by build options.  It complicates the build files, but you likely want to do that for the important builds.  in chrome thats GN/Ninja/SISO.\nNote that libyuv currently has unresolved build errors relating to attribute target for sme, so its disabled on most builds.\nNote 2 heads up that I plan to add bazel.\nI\u0027ll counter propose removing libyuv.gyp\n\n3. if this file needs to exist, it should be either integrated into an existing header, such as cpu_support.h or moved to an internal folder\nbut I\u0027d only advice either if it is necessary for GN/Bazel/Cmake",
+      "parentUuid": "6bfc3944_ab9397fb",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b2fa51_7911b1e6",
+        "filename": "include/libyuv/loongson_set_lasx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T04:08:37Z",
+      "side": 1,
+      "message": "this looks dangerous... all cpus such as ppc, arm etc, are not loongarch, and clang, so we can hit the attribute lsx and have unintented breakage\nall source files should have guards so *.c *.h can compile on any cpu and the file will stub itself.",
       "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -73,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a782e132_678da260",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T04:08:37Z",
+      "side": 1,
+      "message": "I guess we do it for other platforms where there are 3+ compilers: MSVC, GCC, CLANG and 32 bit vs 64 bit, so a row function may be more specifically built or disabled without disabling everything.  And the DISABLE is meant for the user to completely disable and ISA, reguardless of compiler support.\nIf you dont need that, its ok but less consistent",
+      "parentUuid": "f7d60dd6_f74c9835",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6101711b_58cf7137",
         "filename": "include/libyuv/row.h",
         "patchSetId": 2
@@ -102,6 +189,24 @@
       "side": 1,
       "message": "Yes but we cannot define HAS_ABGRTOUVROW_LSX etc. or we\u0027ll hit a linker error, as the generic code does something like\n\n```\n// pseudo code\n#ifdef HAS_ABGRTOUVROW_LSX\nif (hardware_supports_lsx)\n  ABGRToUVRow_func_ptr \u003d ABGRToUVRow_LSX;\n#endif\n```\n\nAnd when LSX is disabled there\u0027s no abgrtouvrow_lsx, thus the linker will report an undefined symbol.",
       "parentUuid": "6101711b_58cf7137",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d73784b5_cb0e0cdd",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T04:08:37Z",
+      "side": 1,
+      "message": "btw the ARGBToUV functions may need work.  On x86/arm the \u0027Matrix\u0027 versions",
+      "parentUuid": "90b0a0cf_879b6bc3",
       "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +242,24 @@
       "side": 1,
       "message": "Maybe, but it can be done in a future patchset anyway.",
       "parentUuid": "f18d2843_5cdebef9",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9fef389_89e70202",
+        "filename": "linux.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T04:08:37Z",
+      "side": 1,
+      "message": "Acknowledged.  This isnt really meant to be used, its the simpliest possible build.",
+      "parentUuid": "51a2aa10_dcdd5f0a",
       "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
