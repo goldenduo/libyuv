@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545a54ed_b76eed08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T01:03:13Z",
+      "side": 1,
+      "message": "Note I\u0027m thinking of deprecating MSA in favor of LSX/LASX to keep the focus on most relevant optimization.  Other SIMD ISA and cpus can always fallback on C versions.",
+      "revId": "a63b91b6d216e030d17109fd4cdd2f073f3b7adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
