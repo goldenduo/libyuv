@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3f9111_c23333ac",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T02:55:12Z",
+      "side": 1,
+      "message": "I added a Clang version check here.",
+      "parentUuid": "f945edf9_98212ba0",
+      "revId": "b34a31fe1eeef8260d7d03c58776a6b5666468f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d4a782a_61d4fe58",
@@ -49,6 +67,24 @@
       "writtenOn": "2025-07-20T01:14:50Z",
       "side": 1,
       "message": "consider adding CLANG_HAS_LSX\nSee how neon etc detect do this above (e.g. SME at line 129)",
+      "revId": "b34a31fe1eeef8260d7d03c58776a6b5666468f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84fd28a4_87d56326",
+        "filename": "include/libyuv/scale_row.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T02:55:12Z",
+      "side": 1,
+      "message": "I still don\u0027t want to add it as I think SME is not a very good example.  `grep -r \u0027#if.*CLANG_HAS_SME\u0027` shows:\n\n```\nsource/row_sme.cc:#if !defined(LIBYUV_DISABLE_SME) \u0026\u0026 defined(CLANG_HAS_SME) \u0026\u0026 \\\nsource/scale_sme.cc:#if !defined(LIBYUV_DISABLE_SME) \u0026\u0026 defined(CLANG_HAS_SME) \u0026\u0026 \\\nsource/rotate_sme.cc:#if !defined(LIBYUV_DISABLE_SME) \u0026\u0026 defined(CLANG_HAS_SME) \u0026\u0026 \\\ninclude/libyuv/rotate_row.h:#if !defined(LIBYUV_DISABLE_SME) \u0026\u0026 defined(CLANG_HAS_SME) \u0026\u0026 \\\ninclude/libyuv/row.h:#if !defined(LIBYUV_DISABLE_SME) \u0026\u0026 defined(CLANG_HAS_SME) \u0026\u0026 \\\ninclude/libyuv/row_sve.h:#if !defined(LIBYUV_DISABLE_SME) \u0026\u0026 defined(CLANG_HAS_SME) \u0026\u0026 \\\ninclude/libyuv/scale_row.h:#if !defined(LIBYUV_DISABLE_SME) \u0026\u0026 defined(CLANG_HAS_SME) \u0026\u0026 \\\n```\n\nWe can see CLANG_HAS_SME is always used together with `\u0026\u0026 !defined(LIBYUV_DISABLE_SME)`, thus why not just simply define LIBYUV_DISABLE_SME if clang does not support SME?  I think Neon provides a better example:\n\n```\n// clang \u003e\u003d 3.5.0 required for Arm64.\n#if defined(__clang__) \u0026\u0026 defined(__aarch64__) \u0026\u0026 !defined(LIBYUV_DISABLE_NEON)\n#if (__clang_major__ \u003c 3) || (__clang_major__ \u003d\u003d 3 \u0026\u0026 (__clang_minor__ \u003c 5))\n#define LIBYUV_DISABLE_NEON\n#endif  // clang \u003e\u003d 3.5\n#endif  // __clang__\n```\n\nSo I just added the Clang version check into the logic above.  If you insist to add CLANG_HAS_L{,A}SX for a reason please reply and I\u0027ll make the change.",
+      "parentUuid": "5d4a782a_61d4fe58",
       "revId": "b34a31fe1eeef8260d7d03c58776a6b5666468f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
