@@ -74,6 +74,24 @@
       "parentUuid": "1f707c5f_a9841f82",
       "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bb72fc_d6e13ae4",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T18:18:38Z",
+      "side": 1,
+      "message": "The cpucfg instruction should work identically on linux, indicating lsx or lasx isa are available?\nhwcap wont work, even on linux, if\n1. it is not implemented/complete... which has been an issue for arm\n2. within chrome sandbox.  the simd instructions work, but hwcaps can not be called.\n3. different OS like unix (apple), windows, or embedded systems\n4. within emulators\n\nas long as the instruction is available in user mode?\n\nI\u0027m fine with landing hwcaps, if this is what loongson wants, but agree with wtc@ the cpucfg looks useful, at least for non-linux",
+      "parentUuid": "ec43a631_5c65b2ce",
+      "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
