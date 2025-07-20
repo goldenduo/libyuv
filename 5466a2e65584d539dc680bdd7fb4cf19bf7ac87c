@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bfc3944_ab9397fb",
+        "filename": "include/libyuv/loongson_set_lasx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T03:21:23Z",
+      "side": 1,
+      "message": "It\u0027s for the GYP build system where we have no way to set a flag for a subset of source files.\n\nI did some search on the Internet and they told me to create a separate static library (something like libyuv_lsx) to work around the issue.  But here we want a standalone libyuv.a archive, and this approach did not include the content of libyuv_lsx.a into libyuv.a, so I guess we cannot use it.  Thus I have to work it around with the #pragma magic.\n\nIt\u0027s not needed in the public headers, should I remove it from libyuv.gypi then?",
+      "parentUuid": "a9aea7e4_fdeb472c",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51802429_86fe7c8b",
         "filename": "include/libyuv/rotate_row.h",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2025-07-20T03:05:49Z",
       "side": 1,
       "message": "these LSX functions will only build with a new enough clang... add \u0026\u0026 defined(CLANG_HAS_LSX)",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d60dd6_f74c9835",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T03:21:23Z",
+      "side": 1,
+      "message": "I already defined LIBYUV_DISABLE_LSX when Clang is too old in v2, and I don\u0027t want to introduce CLANG_HAS_LSX if it\u0027s always combined with !defined(LIBYUV_DISABLE_LSX).  See my comment above above the SME example vs. Neon example.\n\nStill if you really insist to introduce it I can add it, but better with a really good reason...",
+      "parentUuid": "51802429_86fe7c8b",
       "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b0a0cf_879b6bc3",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T03:21:23Z",
+      "side": 1,
+      "message": "Yes but we cannot define HAS_ABGRTOUVROW_LSX etc. or we\u0027ll hit a linker error, as the generic code does something like\n\n```\n// pseudo code\n#ifdef HAS_ABGRTOUVROW_LSX\nif (hardware_supports_lsx)\n  ABGRToUVRow_func_ptr \u003d ABGRToUVRow_LSX;\n#endif\n```\n\nAnd when LSX is disabled there\u0027s no abgrtouvrow_lsx, thus the linker will report an undefined symbol.",
+      "parentUuid": "6101711b_58cf7137",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f18d2843_5cdebef9",
@@ -65,6 +119,24 @@
       "writtenOn": "2025-07-20T03:05:49Z",
       "side": 1,
       "message": "are you able to test this?  this list of targets only has 1 lasx file... oh i guess thats right... seems like the lsx row functions should be ported to lasx.\nthere should normally be\ncompare_lasx.o\nrotate_lasx.o\nrow_lasx.o\nscale_lasx.o",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a2aa10_dcdd5f0a",
+        "filename": "linux.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T03:21:23Z",
+      "side": 1,
+      "message": "Maybe, but it can be done in a future patchset anyway.",
+      "parentUuid": "f18d2843_5cdebef9",
       "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
