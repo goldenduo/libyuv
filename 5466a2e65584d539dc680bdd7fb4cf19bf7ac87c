@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9463477_d3af218a",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T04:40:52Z",
+      "side": 1,
+      "message": "Unfortunately Firefox still uses GYP to build libyuv.\n\nI can add another check for non-GYP build (with `__GNUC__ \u003c 14` instead of 15) but that won\u0027t be very helpful for other build systems.\n\nCMakeList.txt can check if the toolchain supports LSX/LASX and define LIBYUV_DISABLE_L{,A}SX on its own, so for CMake a check here is not needed.  (To be noted the check there isn\u0027t really correct: it actually checks if the **assembler** supports LSX/LASX, not the compiler, but in fact we need to check both.  I\u0027ll make a fix.)\n\nGN (if LSX/LASX is enabled with loongarch64_enable_l{,a}sx) and linux.mk just pass -mlsx/-mlasx to the compiler (w/o checking if the compiler supports them), and the build will fail anyway if the compiler doesn\u0027t support LSX/LASX.\n\nI can try to make linux.mk check the toolchain support for LSX/LASX like CMakeList.txt if you want, but for GN it may be impossible (currently GN is depending on the manual switches loongarch64_enable_l{,a}sx, and they are disabled by default in the Chromium build).\n\nOr maybe we can make GN and linux.mk not to pass -mlsx/-mlasx, but use the same approach as GYP (i.e. the attribute).  If you are OK with this I\u0027ll make the change.",
+      "parentUuid": "458f0e71_c67d5e45",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3da35e6_4be884a7",
         "filename": "include/libyuv/cpu_support.h",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2025-07-20T04:08:37Z",
       "side": 1,
       "message": "#if !defined(LIBYUV_DISABLE_LSX)\nis enough, and necessary if already disabled by the user",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f244f643_e6dd1b40",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T04:40:52Z",
+      "side": 1,
+      "message": "With GCC-14 if the user sets CXXFLAGS\u003d-mlsx we can use LSX, so `!defined(__loongarch_sx)` covers this.\n\nThe problem is GCC-14 starts to support LSX, but only GCC-15 starts to support the target pragma on LoongArch.\n\nAnd if the user already defines LIBYUV_DISABLE_LSX, we don\u0027t need to redefine it again anyway, thus `!defined(__loongarch_sx)` does not matter in this case.",
+      "parentUuid": "a3da35e6_4be884a7",
       "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -90,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a094434_7980c0a2",
+        "filename": "include/libyuv/loongson_set_lasx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T04:40:52Z",
+      "side": 1,
+      "message": "\u003e top 3 concerns\n\u003e 1. gyp is deprecated.  we removed support but on request added it back in, but its unsupported.  Unless its important to lsx/lasx, i\u0027d suggest making support just use the common code.\n\nAnnoyingly Firefox still uses gyp.  If it used GN I\u0027d not touch GYP at all :(.\n\n\u003e 2. the attribute tends to clash with compile options and different compilers.  if a user builds with conflicting build options (e.g. -mno-lsx) the command line wins and the attribute can produce a fatal build error, requiring a code change\n\nNah, with GCC and Clang on LoongArch (and also more popular arches like x86 and aarch64) the pragma always override the build option.\n\n\u003e for arm/x86 the assembly doesnt usually need a build option, but the usual intrinsics approach is to break up library by build options.  It complicates the build files, but you likely want to do that for the important builds.  in chrome thats GN/Ninja/SISO.\n\nSo is it acceptable to make gyp also do that?  Like how Firefox patches gyp for Neon and SVE: https://github.com/mozilla-firefox/firefox/blob/FIREFOX_140_0_4_RELEASE/media/libyuv/03_add_neon64_and_sve_gyp_targets.patch.\n\nOr would you advice me not to care about GYP here but make it a downstream patch in Firefox like the Neon and SVE case?\n\n\u003e Note that libyuv currently has unresolved build errors relating to attribute target for sme, so its disabled on most builds.\n\u003e Note 2 heads up that I plan to add bazel.\n\u003e I\u0027ll counter propose removing libyuv.gyp\n\u003e \n\u003e 3. if this file needs to exist, it should be either integrated into an existing header, such as cpu_support.h or moved to an internal folder\n\u003e but I\u0027d only advice either if it is necessary for GN/Bazel/Cmake\n\nDoes \"internal folder\" means a subdirectory in include/ or in source/ or a new directory like loong64_internal/?",
+      "parentUuid": "2107dacd_30784ccb",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83b2fa51_7911b1e6",
         "filename": "include/libyuv/loongson_set_lasx.h",
         "patchSetId": 2
@@ -101,6 +155,24 @@
       "writtenOn": "2025-07-20T04:08:37Z",
       "side": 1,
       "message": "this looks dangerous... all cpus such as ppc, arm etc, are not loongarch, and clang, so we can hit the attribute lsx and have unintented breakage\nall source files should have guards so *.c *.h can compile on any cpu and the file will stub itself.",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11245cf6_18c3a188",
+        "filename": "include/libyuv/loongson_set_lasx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T04:40:52Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "83b2fa51_7911b1e6",
       "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +226,24 @@
       "side": 1,
       "message": "I guess we do it for other platforms where there are 3+ compilers: MSVC, GCC, CLANG and 32 bit vs 64 bit, so a row function may be more specifically built or disabled without disabling everything.  And the DISABLE is meant for the user to completely disable and ISA, reguardless of compiler support.\nIf you dont need that, its ok but less consistent",
       "parentUuid": "f7d60dd6_f74c9835",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8123119_c6db189e",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-20T04:40:52Z",
+      "side": 1,
+      "message": "\u003e I guess we do it for other platforms where there are 3+ compilers: MSVC, GCC, CLANG and 32 bit vs 64 bit, so a row function may be more specifically built or disabled without disabling everything.  And the DISABLE is meant for the user to completely disable and ISA, reguardless of compiler support.\n\u003e If you dont need that, its ok but less consistent\n\nIn the LoongArch case the LSX/LASX optimization completely depends on the compiler support because they use intrinsics instead of inline-asm.  Thus no compiler support means we have to disable the ISA extension...",
+      "parentUuid": "a782e132_678da260",
       "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
