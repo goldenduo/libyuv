@@ -16,6 +16,46 @@
       "message": "cpuid looks good.  Needs a second reviewer",
       "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde50b24_295fc7fb",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-20T15:24:14Z",
+      "side": 1,
+      "message": "[This question is unrelated to this CL.]\n\nFrank: Do these *MipsCpuCaps() functions need to be declared with `LIBYUV_API`? I think `LIBYUV_API` exports the functions from the shared libraries / DLLs.",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 10
+      },
+      "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f707c5f_a9841f82",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-20T15:24:14Z",
+      "side": 1,
+      "message": "Should we keep the original cpucfg code for non-Linux platforms like the folllowing?\n\n```\n#if defined(__loongarch__)\n#if defined(__linux__)\n// Define hwcap values ourselves: building with an old auxv header where these\n// hwcap values are not defined should not prevent features from being enabled.\n#define YUV_LOONGARCH_HWCAP_LSX (1 \u003c\u003c 4)\n#define YUV_LOONGARCH_HWCAP_LASX (1 \u003c\u003c 5)\n\nLIBYUV_API SAFEBUFFERS int LoongarchCpuCaps(void) {\n  int flag \u003d 0;\n  unsigned long hwcap \u003d getauxval(AT_HWCAP);\n\n  if (hwcap \u0026 YUV_LOONGARCH_HWCAP_LSX)\n    flag |\u003d kCpuHasLSX;\n\n  if (hwcap \u0026 YUV_LOONGARCH_HWCAP_LASX)\n    flag |\u003d kCpuHasLASX;\n  return flag;\n}\n#else  // !defined(__linux__)\n#define LOONGARCH_CFG2 0x2\n#define LOONGARCH_CFG2_LSX (1 \u003c\u003c 6)\n#define LOONGARCH_CFG2_LASX (1 \u003c\u003c 7)\n\nLIBYUV_API SAFEBUFFERS int LoongarchCpuCaps(void) {\n  int flag \u003d 0;\n  uint32_t cfg2 \u003d 0;\n\n  __asm__ volatile(\"cpucfg %0, %1 \\n\\t\" : \"+\u0026r\"(cfg2) : \"r\"(LOONGARCH_CFG2));\n\n  if (cfg2 \u0026 LOONGARCH_CFG2_LSX)\n    flag |\u003d kCpuHasLSX;\n\n  if (cfg2 \u0026 LOONGARCH_CFG2_LASX)\n    flag |\u003d kCpuHasLASX;\n  return flag;\n}\n#endif. // defined(__linux__)\n#endif. // defined(__loongarch__)\n```",
+      "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
