@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9aea7e4_fdeb472c",
+        "filename": "include/libyuv/loongson_set_lasx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T03:05:49Z",
+      "side": 1,
+      "message": "is this header needed in public headers?\nwhy would the caller need attribute lsx?  the build file enables -mlsx for row_lsx.cc etc\nremove if not necessary",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51802429_86fe7c8b",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T03:05:49Z",
+      "side": 1,
+      "message": "these LSX functions will only build with a new enough clang... add \u0026\u0026 defined(CLANG_HAS_LSX)",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6101711b_58cf7137",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T03:05:49Z",
+      "side": 1,
+      "message": "is it not possible to build for __loongarch__ with LSX disabled?",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f18d2843_5cdebef9",
+        "filename": "linux.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T03:05:49Z",
+      "side": 1,
+      "message": "are you able to test this?  this list of targets only has 1 lasx file... oh i guess thats right... seems like the lsx row functions should be ported to lasx.\nthere should normally be\ncompare_lasx.o\nrotate_lasx.o\nrow_lasx.o\nscale_lasx.o",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
