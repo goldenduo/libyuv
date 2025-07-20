@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21668624_d7679cb9",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-20T18:02:52Z",
+      "side": 1,
+      "message": "no the code, especially public headers, should not be sensitive to the build.\nyou could make -mlsx or -mlasx the default for all files in gyp?",
+      "parentUuid": "a9463477_d3af218a",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3da35e6_4be884a7",
         "filename": "include/libyuv/cpu_support.h",
         "patchSetId": 2
