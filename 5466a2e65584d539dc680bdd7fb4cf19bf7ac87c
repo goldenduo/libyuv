@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e35aa389_85320224",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-21T01:18:57Z",
+      "side": 1,
+      "message": "No we cannot.  -mlsx and -mlasx does **not** only allow the intrinsics to compile.  It also allows the compiler to use LSX/LASX in auto-vectorization, memcpy expansion, etc.  Thus doing so will render the runtime check pointless as LSX/LASX is invoked before the runtime check, triggering a SIGILL on hardware lacking them.",
+      "parentUuid": "21668624_d7679cb9",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3da35e6_4be884a7",
         "filename": "include/libyuv/cpu_support.h",
         "patchSetId": 2
@@ -156,6 +174,24 @@
       "side": 1,
       "message": "\u003e top 3 concerns\n\u003e 1. gyp is deprecated.  we removed support but on request added it back in, but its unsupported.  Unless its important to lsx/lasx, i\u0027d suggest making support just use the common code.\n\nAnnoyingly Firefox still uses gyp.  If it used GN I\u0027d not touch GYP at all :(.\n\n\u003e 2. the attribute tends to clash with compile options and different compilers.  if a user builds with conflicting build options (e.g. -mno-lsx) the command line wins and the attribute can produce a fatal build error, requiring a code change\n\nNah, with GCC and Clang on LoongArch (and also more popular arches like x86 and aarch64) the pragma always override the build option.\n\n\u003e for arm/x86 the assembly doesnt usually need a build option, but the usual intrinsics approach is to break up library by build options.  It complicates the build files, but you likely want to do that for the important builds.  in chrome thats GN/Ninja/SISO.\n\nSo is it acceptable to make gyp also do that?  Like how Firefox patches gyp for Neon and SVE: https://github.com/mozilla-firefox/firefox/blob/FIREFOX_140_0_4_RELEASE/media/libyuv/03_add_neon64_and_sve_gyp_targets.patch.\n\nOr would you advice me not to care about GYP here but make it a downstream patch in Firefox like the Neon and SVE case?\n\n\u003e Note that libyuv currently has unresolved build errors relating to attribute target for sme, so its disabled on most builds.\n\u003e Note 2 heads up that I plan to add bazel.\n\u003e I\u0027ll counter propose removing libyuv.gyp\n\u003e \n\u003e 3. if this file needs to exist, it should be either integrated into an existing header, such as cpu_support.h or moved to an internal folder\n\u003e but I\u0027d only advice either if it is necessary for GN/Bazel/Cmake\n\nDoes \"internal folder\" means a subdirectory in include/ or in source/ or a new directory like loong64_internal/?",
       "parentUuid": "2107dacd_30784ccb",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb91ff5c_cba01020",
+        "filename": "include/libyuv/loongson_set_lasx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-21T01:18:57Z",
+      "side": 1,
+      "message": "Also to be noted another Chromium subproject (",
+      "parentUuid": "4a094434_7980c0a2",
       "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
