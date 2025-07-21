@@ -125,6 +125,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a51384_0db59778",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-21T02:28:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f244f643_e6dd1b40",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9aea7e4_fdeb472c",
@@ -281,6 +299,24 @@
       "side": 1,
       "message": "Will do.",
       "parentUuid": "83b2fa51_7911b1e6",
+      "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a507b20_c3cc33c7",
+        "filename": "include/libyuv/loongson_set_lasx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-21T02:28:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11245cf6_18c3a188",
       "revId": "5466a2e65584d539dc680bdd7fb4cf19bf7ac87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
