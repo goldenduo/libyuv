@@ -92,6 +92,41 @@
       "parentUuid": "ec43a631_5c65b2ce",
       "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "342c48c5_d9fb5d34",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-21T01:55:02Z",
+      "side": 1,
+      "message": "Ruoyao: You are right. I verified that `LoongarchCpuCaps()` is called only inside `#if defined(__loongarch__) \u0026\u0026 defined(__linux__)`. So it is correct to define `LoongarchCpuCaps()` inside  `#if defined(__loongarch__) \u0026\u0026 defined(__linux__)` here.",
+      "parentUuid": "47bb72fc_d6e13ae4",
+      "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d731968_96befa29",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-21T01:55:02Z",
+      "side": 1,
+      "message": "`LoongarchCpuCaps()` is only called here, inside `#if defined(__loongarch__) \u0026\u0026 defined(__linux__)`.",
+      "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
