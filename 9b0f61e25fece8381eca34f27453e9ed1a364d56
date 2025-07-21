@@ -16,6 +16,23 @@
       "message": "Uploaded v3 to correct the minimum Clang version. It should be 18, not 19.",
       "revId": "9b0f61e25fece8381eca34f27453e9ed1a364d56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e80193_447c4961",
+        "filename": "linux.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-21T02:03:39Z",
+      "side": 1,
+      "message": "Oops, this breaks build on non-LoongArch :(.",
+      "revId": "9b0f61e25fece8381eca34f27453e9ed1a364d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
