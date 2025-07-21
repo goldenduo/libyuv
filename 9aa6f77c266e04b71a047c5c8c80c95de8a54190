@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa627b7_49426680",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-21T02:30:11Z",
+      "side": 1,
+      "message": "So the remaining points: do we really need \"CLANG_HAS_LSX\" and do we need to move the headers for #pragma into a separate directory (and if so, how to name the directory?)",
+      "revId": "9aa6f77c266e04b71a047c5c8c80c95de8a54190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
