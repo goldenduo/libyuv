@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ecf6689_3509c655",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-21T02:18:43Z",
+      "side": 1,
+      "message": "Alright, so let\u0027s Keep It Simple and Stupid and get rid of the build-system-agnostic things.",
+      "revId": "37401b958f1346c8e2601963c3692986b23777ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
