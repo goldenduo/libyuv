@@ -130,6 +130,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d605e45_2a220b0d",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-22T08:18:38Z",
+      "side": 1,
+      "message": "\u003e The cpucfg instruction should work identically on linux, indicating lsx or lasx isa are available?\n\nThe ISA is available but we\u0027ll still get SIGILL if the kernel does not support it.  See https://www.kernelconfig.io/CONFIG_CPU_HAS_LSX.\n\n\u003e hwcap wont work, even on linux, if\n\u003e 1. it is not implemented/complete... which has been an issue for arm\n\nIt\u0027s implemented on LoongArch since Linux starts to support LoongArch, i.e. Linux 5.19.\n\n\u003e 2. within chrome sandbox.  the simd instructions work, but hwcaps can not be called.\n\nIIUC the auxiliary vectors are loaded from kernel into the process once a process starts, and getauxval() does not actually invoke a syscall so it won\u0027t be blocked by the sandbox.  And aarch64-linux already uses getauxval(AT_HWCAP) anyway.\n\n\u003e 3. different OS like unix (apple), windows, or embedded systems\n\nLoongArch does not have a different OS at least now.\n\n\u003e 4. within emulators\n\nI\u0027d say the emulator is buggy if it tries to emulate Linux but fail to implement HWCAP.\n\n\u003e \n\u003e as long as the instruction is available in user mode?\n\nThe ISA needs kernel support even in user mode.\n\n\u003e \n\u003e I\u0027m fine with landing hwcaps, if this is what loongson wants, but agree with wtc@ the cpucfg looks useful, at least for non-linux",
+      "parentUuid": "47bb72fc_d6e13ae4",
+      "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8d731968_96befa29",
