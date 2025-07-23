@@ -150,6 +150,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "61327617_fe5e63e8",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-23T08:12:17Z",
+      "side": 1,
+      "message": "Wan-Ten: Per my knowledge getauxval() does not invoke any syscall.  We can demonstrate it with a simple test program:\n\n```\n#include \u003csys/prctl.h\u003e\n#include \u003cseccomp.h\u003e\n#include \u003csys/auxv.h\u003e\n#include \u003csys/syscall.h\u003e\n#include \u003cunistd.h\u003e\nint main()\n{\n\tprctl(PR_SET_SECCOMP, SECCOMP_MODE_STRICT);\n\t_Bool x \u003d getauxval(AT_HWCAP) \u0026 HWCAP_LOONGARCH_LASX;\n        // The normal exit routine invokes syscall and fail with SECCOMP_MODE_STRICT\n\tsyscall(SYS_exit, !x);\n}\n```\n\nThe program successfully runs.\n\nWhen the program starts the kernel fills the \"auxiliary vector\" into the program memory, so getauxval() is just a simple memory load.",
+      "parentUuid": "6d605e45_2a220b0d",
+      "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8d731968_96befa29",
         "filename": "source/cpu_id.cc",
         "patchSetId": 3
