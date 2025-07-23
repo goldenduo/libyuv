@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c45570_45a250b0",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 4233841
+      },
+      "writtenOn": "2025-07-23T08:12:39Z",
+      "side": 1,
+      "message": "Marking as resolved as not related to this CL.",
+      "parentUuid": "cde50b24_295fc7fb",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 10
+      },
+      "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f707c5f_a9841f82",
