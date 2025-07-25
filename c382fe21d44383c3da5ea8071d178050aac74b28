@@ -234,6 +234,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d587b7c2_6b8ceda0",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-25T06:42:59Z",
+      "side": 1,
+      "message": "On ARM in the sandbox we assume NEON is always there and will crssh if not.\n\nRe cpucfg \nhwcap is the same?  A cpu with LSX/LASX will crash is linux does not support saving the vector registers... or at least, its dangerous\nSame as avx/avx512\nIntel cpuid has OSSAVE to indicate the OS saves the ymm or zmm registers\nBut for AMX an OS call to detect and ENABLE the OS is necessary, on linux.\nThese are unrelated to the cpuid ISA detect, which could be hwcap or cpuid\n\nI\u0027m afraid the new way is less portable and wont work in the sandbox, but if youre okay with that, I\u0027m fine landing... you can always followup",
+      "parentUuid": "3c6c05ee_e159d1bc",
+      "revId": "c382fe21d44383c3da5ea8071d178050aac74b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8d731968_96befa29",
         "filename": "source/cpu_id.cc",
         "patchSetId": 3
