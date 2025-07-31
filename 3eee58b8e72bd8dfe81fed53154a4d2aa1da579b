@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0ddbe0_6c040625",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-31T20:16:31Z",
+      "side": 1,
+      "message": "Frank: I suggest some changes.",
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51ea24d_00ab2d40",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-31T20:16:31Z",
+      "side": 1,
+      "message": "Here, before any `#include` statements, add the following:\n\n```\n#ifdef __linux__\n#ifndef _GNU_SOURCE\n#define _GNU_SOURCE\n#endif\n#endif\n```\n\nThen delete `#define __USE_GNU` at line 19.\n\nSee the following Stack Overflow page for the reason:\nhttps://stackoverflow.com/questions/7296963/gnu-source-and-use-gnu",
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a246e03c_8f509a17",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-31T20:16:31Z",
+      "side": 1,
+      "message": "Frank: This file is now a .c file. So we should delete the `#ifdef __cplusplus` code, right?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c426d5_7e3b3bae",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-31T20:16:31Z",
+      "side": 1,
+      "message": "In C99 or later, we should use `#include \u003cstdbool.h\u003e` instead of defining `bool`, `true`, and `false` ourselves.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 15
+      },
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa5dc167_67f3f9e4",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-31T20:16:31Z",
+      "side": 1,
+      "message": "Change this function to return `bool` instead of using an output parameter.\n\n```\nbool isHybridCPU(void) {\n```",
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4941b533_29ffcf96",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-31T20:16:31Z",
+      "side": 1,
+      "message": "Change this function to return `bool` instead of using an output parameter.\n\n```\nbool isPerformanceCore(void) {\n```",
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2141d3_afb1a6db",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-07-31T20:16:31Z",
+      "side": 1,
+      "message": "Nit: Declare the output parameter in the array notation to give the compiler a hint on te array size:\n\n```\nvoid KernelVersion(int version[2]) {\n```",
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
