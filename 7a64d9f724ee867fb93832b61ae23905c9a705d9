@@ -22,6 +22,30 @@
       },
       "revId": "7a64d9f724ee867fb93832b61ae23905c9a705d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc67800_d3a5a84d",
+        "filename": "include/libyuv/version.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-07-31T09:41:05Z",
+      "side": 1,
+      "message": "no, but external developers usually forget to bump the version... e.g. the loongson cpuid CL.  It helps to have a version number to identify the version in Google3 and Android",
+      "parentUuid": "9b37b409_aa1d86c0",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "7a64d9f724ee867fb93832b61ae23905c9a705d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
