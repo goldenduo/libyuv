@@ -2802,6 +2802,8 @@ TEST_F(LibYUVConvertTest, TestARGBToUVRow) {
 #endif
 
 #if defined(__x86_64__) || defined(_M_X64) || defined(__aarch64__)
+// TODO(fbarchard): Consider _set_new_mode(0) to make malloc return NULL
+
 TEST_F(LibYUVConvertTest, TestI400LargeSize) {
   // The width and height are chosen as follows:
   // - kWidth * kHeight is not a multiple of 8: This lets us to use the Any
