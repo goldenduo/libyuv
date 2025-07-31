@@ -16,6 +16,9 @@
 #include <ctype.h>
 #include <sys/utsname.h>
 #include <unistd.h>  // for sysconf
+#define __USE_GNU
+#include <pthread.h>
+#include <sched.h>
 #endif
 #if defined(_WIN32)
 #include <windows.h>  // for GetSystemInfo
@@ -29,6 +32,62 @@
 #ifdef __cplusplus
 using namespace libyuv;
 #endif
+
+#if defined(__i386__) || defined(__x86_64__) || defined(_M_IX86) || \
+    defined(_M_X64)
+
+// global definitions
+typedef char bool;
+#define true 1
+#define false 0
+bool isaPerformanceCore = false;
+
+// tests Intel and AMD cpuid flags for hybrid cpu
+void isHybridCPU(bool* isaHybrid) {
+  unsigned int edx;
+
+  __asm__(
+      "movl $0x07, %%eax \n"
+      "xor %%ecx, %%ecx  \n"
+      "cpuid             \n"
+      "movl %%edx, %0     \n"
+      : "=r"(edx)  // %0
+      :
+      : "eax", "ebx", "ecx", "edx");
+
+  if (edx & (1 << 0x0F)) {
+    *isaHybrid = true;
+  } else {
+    *isaHybrid = false;
+  }
+}
+
+// tests Intel and AMD cpuid flags for performance core
+// 0x40 = performance core, 0x20 = efficient core
+void isPerformanceCore(bool* isaPCore) {
+  unsigned int EAX;
+  unsigned int core_type;
+
+  __asm__(
+      "movl $0x1A, %%eax  \n"
+      "xor %%ecx, %%ecx  \n"
+      "cpuid            \n"
+      "movl %%eax, %0   \n"
+
+      : "=r"(EAX)  // %0
+      :
+      : "eax", "ebx", "ecx", "edx");
+
+  // core type from eax 24-31
+  core_type = (EAX >> 24) & 0xFF;
+  if (core_type == 0x40) {
+    *isaPCore = true;
+  } else if (core_type == 0x20) {  // e-core
+    *isaPCore = false;
+  } else {
+    *isaPCore = false;
+  }
+}
 
 #ifdef __linux__
 static void KernelVersion(int* version) {
@@ -45,12 +104,88 @@ static void KernelVersion(int* version) {
     }
   }
 }
+
+bool runningCoreThread;
+
+void* core_thread(void* arg) {
+  int core_id = *(int*)arg;
+  cpu_set_t cpuset;
+  CPU_ZERO(&cpuset);
+  CPU_SET(core_id, &cpuset);
+  pthread_t thread = pthread_self();
+  if (pthread_setaffinity_np(thread, sizeof(cpu_set_t), &cpuset) == 0) {
+    runningCoreThread = true;
+  } else {
+    runningCoreThread = false;
+  }
+  // confirm affinity
+  CPU_ZERO(&cpuset);
+  pthread_getaffinity_np(thread, sizeof(cpu_set_t), &cpuset);
+  printf("thread running on cpu: ");
+  for (int i = 0; i < CPU_SETSIZE; i++) {
+    if (CPU_ISSET(i, &cpuset)) {
+      printf("%d ", i);
+      if (runningCoreThread) {
+        isPerformanceCore(&isaPerformanceCore);
+        if (isaPerformanceCore) {
+          printf("Core[%d] - Performance\n", i);
+        } else {
+          printf("Core[%d] - Efficient\n", i);
+        }
+      }
+    }
+  }
+  return NULL;
+}
+
 #endif
+
+void detectCoreType(int num_cpus) {
+#if defined(_WIN32)
+  int i;
+  HANDLE hThread = NULL;
+  DWORD_PTR prevThreadPtr = 0;
+  DWORD_PTR affinityMask = 0;
+
+  for (i = 0; i < num_cpus; i++) {
+    hThread = GetCurrentThread();
+    affinityMask = 1ULL << i;  // Select core (0-based index)
+    prevThreadPtr = SetThreadAffinityMask(hThread, affinityMask);
+    if (prevThreadPtr != 0) {
+      isPerformanceCore(&isaPerformanceCore);
+      if (isaPerformanceCore) {
+        printf("Core[%d] - Performance\n", i);
+      } else {
+        printf("Core[%d] - Efficient\n", i);
+      }
+    } else {
+      printf("Core[%d] - Error setting affinity\n", i);
+    }
+  }
+#endif
+
+#if defined(__linux__)
+  int i;
+  pthread_t threadx[2];
+  int core_id;
+
+  for (i = 0; i < num_cpus; i++) {
+    core_id = i;
+    if (pthread_create(&threadx[i], NULL, core_thread, &core_id) != 0) {
+      printf("error linux thread\n");
+    } else {
+      pthread_join(threadx[i], NULL);
+    }
+  }
+#endif
+}
+#endif // defined(__i386__) || defined(__x86_64__) || defined(_M_IX86) || \
+       // defined(_M_X64)
 
 int main(int argc, const char* argv[]) {
   (void)argc;
   (void)argv;
-
+  bool isaHybridCPU = false;
 #if defined(__linux__)
   {
     int kernelversion[2];
@@ -179,12 +314,13 @@ int main(int argc, const char* argv[]) {
     cpu_info[3] = 0;
     printf("Cpu Vendor: %s\n", (char*)(&cpu_info[0]));
 
-    for (int n = 0; n < num_cpus; ++n) {
-      // Check EDX bit 15 for hybrid design indication
-      CpuId(7, n, &cpu_info[0]);
-      int hybrid = (cpu_info[3] >> 15) & 1;
-      printf("  Cpu %d Hybrid %d\n", n, hybrid);
-    }
+    isHybridCPU(&isaHybridCPU);
+    // rrw    if (isaHybridCPU == true) {
+    detectCoreType(num_cpus);
+    //     }
+    //     else {
+    //      printf("Non hybrid core\n");
+    // rrw    }
 
     // CPU Family and Model
     // 3:0 - Stepping
