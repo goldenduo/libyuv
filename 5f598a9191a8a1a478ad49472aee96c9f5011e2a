@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89106f4a_d0691caa",
+        "filename": "util/cpuid.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-08-04T23:11:04Z",
+      "side": 1,
+      "message": "I think we should include this header because the Linux man page for CPU_ZERO says so.",
+      "revId": "5f598a9191a8a1a478ad49472aee96c9f5011e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f0342f_a72fc947",
+        "filename": "util/cpuid.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-08-04T23:11:04Z",
+      "side": 1,
+      "message": "Nit: It is not necessary to flush `stdout` when we are about to return from the main() function. It will be flushed when the process exits.",
+      "revId": "5f598a9191a8a1a478ad49472aee96c9f5011e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
