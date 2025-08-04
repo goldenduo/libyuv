@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f885a09_49a48da3",
+        "filename": "util/cpuid.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-08-04T23:14:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89106f4a_d0691caa",
+      "revId": "5f598a9191a8a1a478ad49472aee96c9f5011e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71f0342f_a72fc947",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-08-04T23:11:04Z",
       "side": 1,
       "message": "Nit: It is not necessary to flush `stdout` when we are about to return from the main() function. It will be flushed when the process exits.",
+      "revId": "5f598a9191a8a1a478ad49472aee96c9f5011e2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644125a7_fdf2079c",
+        "filename": "util/cpuid.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-08-04T23:14:16Z",
+      "side": 1,
+      "message": "Done.  It was crashing so the printf didnt get flushed before the segfault.  But its working now so I\u0027ve removed the printf and flush.",
+      "parentUuid": "71f0342f_a72fc947",
       "revId": "5f598a9191a8a1a478ad49472aee96c9f5011e2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
