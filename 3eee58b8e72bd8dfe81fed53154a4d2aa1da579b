@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e02329_40da5543",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-08-04T20:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f51ea24d_00ab2d40",
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a246e03c_8f509a17",
@@ -65,6 +83,30 @@
       "writtenOn": "2025-07-31T20:16:31Z",
       "side": 1,
       "message": "Frank: This file is now a .c file. So we should delete the `#ifdef __cplusplus` code, right?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a69dc735_85fa089e",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-08-04T20:17:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a246e03c_8f509a17",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b17e31_d03e0306",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-08-04T20:17:31Z",
+      "side": 1,
+      "message": "Done.  But C99 / bool requires a relatively new Visual C.  Too avoid breaking other platforms I\u0027ve limited it to x86",
+      "parentUuid": "f0c426d5_7e3b3bae",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 15
+      },
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa5dc167_67f3f9e4",
@@ -111,6 +177,24 @@
       "writtenOn": "2025-07-31T20:16:31Z",
       "side": 1,
       "message": "Change this function to return `bool` instead of using an output parameter.\n\n```\nbool isHybridCPU(void) {\n```",
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c729619_f0cfba0f",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-08-04T20:17:31Z",
+      "side": 1,
+      "message": "Acknowledged.  To avoid breakage I\u0027ve removed this call.\nIn future we dont need to know the cpu is a hybrid, we\u0027ll want to enumerate the cpu family/model.  But if we do want to know overall if the cpu is hybrid, it can be moved into the actual cpu_id.cc as an ISA",
+      "parentUuid": "aa5dc167_67f3f9e4",
       "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +216,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a35b618_c36a54c8",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-08-04T20:17:31Z",
+      "side": 1,
+      "message": "Done.  But we\u0027ll want to switch this to the existing Cpuid() function",
+      "parentUuid": "4941b533_29ffcf96",
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d2141d3_afb1a6db",
@@ -145,6 +247,24 @@
       "writtenOn": "2025-07-31T20:16:31Z",
       "side": 1,
       "message": "Nit: Declare the output parameter in the array notation to give the compiler a hint on te array size:\n\n```\nvoid KernelVersion(int version[2]) {\n```",
+      "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2623a4a2_bfd24042",
+        "filename": "util/cpuid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-08-04T20:17:31Z",
+      "side": 1,
+      "message": "Done.  But does that work in c89?  When I ask gemini for examples of c89 and c99 it uses a pointer + size.  In C++ it recommends int (\u0026version)[2]",
+      "parentUuid": "7d2141d3_afb1a6db",
       "revId": "3eee58b8e72bd8dfe81fed53154a4d2aa1da579b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
