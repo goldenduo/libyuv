@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4de600_bfdaeda0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-08-05T18:22:57Z",
+      "side": 1,
+      "message": "Good catch!\nYou didnt fix x86? :-)   I checked and it does the fraction as a GPR calculation inside the assembly, which has the advantage of coming after the specialized branches\n\n\"sub         %1,%0                         \\n\"\n\"cmp         $0x0,%3                       \\n\"\n\"je          100f                          \\n\"\n\"cmp         $0x80,%3                      \\n\"\n\"je          50f                           \\n\"\n\"movd        %3,%%xmm0                     \\n\"\n\"neg         %3                            \\n\"\n\"add         $0x100,%3                     \\n\"\n\"movd        %3,%%xmm5                     \\n\"\n\nbut it does modify the fraction variable (%3).",
+      "revId": "a5f428a5a05dcb616b404a2021aa09f93428bbfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
