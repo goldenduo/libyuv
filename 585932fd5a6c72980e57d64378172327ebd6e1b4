@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9349594b_cb425d7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1161379
+      },
+      "writtenOn": "2025-08-12T08:41:18Z",
+      "side": 1,
+      "message": "Hmm, CQ for libyuv is broken due to reason unrelated to this CL?",
+      "revId": "585932fd5a6c72980e57d64378172327ebd6e1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
