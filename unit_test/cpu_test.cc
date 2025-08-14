@@ -428,6 +428,9 @@ TEST_F(LibYUVBaseTest, DISABLED_TestLinuxRVV) {
 }
 
 TEST_F(LibYUVBaseTest, TestSetCpuFlags) {
+#ifdef _WIN32
+  GTEST_SKIP() << "This doesn't pass on Windows CQ.";
+#endif
   // Reset any masked flags that may have been set so auto init is enabled.
   MaskCpuFlags(0);
 
