@@ -33,6 +33,24 @@
       "message": "Nit: I suggest we also remove this comment. The remaining sentence states something obvious so it can be omitted. The original comment was added for the is_nacl workaround in https://codereview.chromium.org/1403813002.",
       "revId": "585932fd5a6c72980e57d64378172327ebd6e1b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80d57ea7_3943183a",
+        "filename": "BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1161379
+      },
+      "writtenOn": "2025-08-14T02:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88f569c9_39513570",
+      "revId": "585932fd5a6c72980e57d64378172327ebd6e1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
