@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1dd116d_e29ca6ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-08-14T06:40:30Z",
+      "side": 1,
+      "message": "Yes, feel free to use No-Try since we have not fixed these yet.",
+      "parentUuid": "601c0fcb_6d611f33",
+      "revId": "585932fd5a6c72980e57d64378172327ebd6e1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88f569c9_39513570",
