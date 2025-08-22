@@ -16,6 +16,24 @@
       "message": "I\u0027ll get the reviews started but I\u0027ll wait until crbug.com/440182383 is closed to submit. PTAL",
       "revId": "eaa372829903a64ae11dc5470fc444957ee899e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dae0ac7_cb10f0cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-08-22T11:33:23Z",
+      "side": 1,
+      "message": "Feel free to use No-Try: True if the win bot is the only one failing.",
+      "parentUuid": "a2a2115d_5663026a",
+      "revId": "eaa372829903a64ae11dc5470fc444957ee899e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
