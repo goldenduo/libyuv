@@ -16,6 +16,24 @@
       "message": "do you have a bug or more detail on the issue?  is it because \u0027windows\u0027 is arm?\nthis test seems dubious anyway, since it is sensitive to the cpu being tested on.\nI sometimes set the value to \u00271\u0027, which i use to mean no-simd, just C\nstatic const int kCpuInitialized \u003d 0x1;\nsetting to 1 should always work.\nsetting to 0 will redetect and should always be non-zero.",
       "revId": "3159351a31c76e7d3a6de3a013d1271d44bc589e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f26cfd37_e0986b37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1161379
+      },
+      "writtenOn": "2025-08-22T09:47:09Z",
+      "side": 1,
+      "message": "\u003e do you have a bug or more detail on the issue?\n\nNo.\n\n\u003e is it because \u0027windows\u0027 is arm?\n\nNo, this happens on intel bot.\n\n\nI don\u0027t know about the function, but I just disabled the test as it broke CQ.",
+      "parentUuid": "9fd3b917_9844da55",
+      "revId": "3159351a31c76e7d3a6de3a013d1271d44bc589e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
