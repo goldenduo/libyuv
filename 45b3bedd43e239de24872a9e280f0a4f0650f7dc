@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f61d6b_c8b0ce59",
+        "filename": "infra/config/cr-buildbucket.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-08-27T13:07:23Z",
+      "side": 1,
+      "message": "The new properties_j strings are less readable than the old properties strings. Can they be formatted in multiple lines?",
+      "revId": "45b3bedd43e239de24872a9e280f0a4f0650f7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
