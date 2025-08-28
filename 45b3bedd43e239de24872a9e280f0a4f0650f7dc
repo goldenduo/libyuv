@@ -16,6 +16,24 @@
       "message": "The new properties_j strings are less readable than the old properties strings. Can they be formatted in multiple lines?",
       "revId": "45b3bedd43e239de24872a9e280f0a4f0650f7dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2091ad3_3f34f585",
+        "filename": "infra/config/cr-buildbucket.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1161379
+      },
+      "writtenOn": "2025-08-28T06:29:16Z",
+      "side": 1,
+      "message": "I don\u0027t know why there are changes like this, but I filed http://b/441636405 to improve this.\n\nAnyway, can I submit this to cleanup python migration config for now?",
+      "parentUuid": "31f61d6b_c8b0ce59",
+      "revId": "45b3bedd43e239de24872a9e280f0a4f0650f7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
