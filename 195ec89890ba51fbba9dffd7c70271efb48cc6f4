@@ -16,6 +16,23 @@
       "message": "Frank: Could you approve and submit this CL? Thanks.",
       "revId": "195ec89890ba51fbba9dffd7c70271efb48cc6f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29c095a_45aae0bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-09-06T03:04:11Z",
+      "side": 1,
+      "message": "Looks fine.  The better approach is break LSX/LASX into their own libraries and compile with the required flags, while keeping the main common code generic.  The ninja and bazel builds are like this.",
+      "revId": "195ec89890ba51fbba9dffd7c70271efb48cc6f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
