@@ -16,6 +16,23 @@
       "message": "Note the __riscv_v_intrinsic predefine is not set correctly in initial 1.2 so I tested both with and without \n-D__riscv_v_intrinsic\u003d12000\nThere are still functions not ported to 1.2 API\ninclude/libyuv$ grep __riscv_v_intrinsic *\nrow.h:#if defined(__riscv_v_intrinsic) \u0026\u0026 __riscv_v_intrinsic \u003e 11000\nscale_row.h:    defined(__riscv_v_intrinsic) \u0026\u0026 __riscv_v_intrinsic \u003d\u003d 11000\nscale_row.h:    defined(__riscv_v_intrinsic) \u0026\u0026 __riscv_v_intrinsic \u003d\u003d 11000",
       "revId": "ecf6621a07e4022d9f5ac83ecb9131df9c6d3b1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a5047fc_d6e170a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-09-16T21:06:19Z",
+      "side": 1,
+      "message": "LGTM. Note that the Code Review tool says \"Merge Conflict\", but this patch applies cleanly to the current libyuv tree that I checked out locally.",
+      "revId": "ecf6621a07e4022d9f5ac83ecb9131df9c6d3b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
