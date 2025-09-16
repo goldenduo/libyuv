@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a80bae_205fd9b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-09-16T16:48:47Z",
+      "side": 1,
+      "message": "Note the __riscv_v_intrinsic predefine is not set correctly in initial 1.2 so I tested both with and without \n-D__riscv_v_intrinsic\u003d12000\nThere are still functions not ported to 1.2 API\ninclude/libyuv$ grep __riscv_v_intrinsic *\nrow.h:#if defined(__riscv_v_intrinsic) \u0026\u0026 __riscv_v_intrinsic \u003e 11000\nscale_row.h:    defined(__riscv_v_intrinsic) \u0026\u0026 __riscv_v_intrinsic \u003d\u003d 11000\nscale_row.h:    defined(__riscv_v_intrinsic) \u0026\u0026 __riscv_v_intrinsic \u003d\u003d 11000",
+      "revId": "ecf6621a07e4022d9f5ac83ecb9131df9c6d3b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
