@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a35e2fb_c17fe11a",
+        "filename": "unit_test/convert_argb_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2780,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-09-16T20:55:25Z",
+      "side": 1,
+      "message": "Frank: Should we keep the original SSSE3 code with `#elif`?\n\n```\n#if defined(HAS_ARGBTOUVROW_AVX2)\n    int has_avx2 \u003d TestCpuFlag(kCpuHasAVX2);\n    if (has_avx2) {\n      ARGBToUVRow_AVX2(\u0026orig_argb_pixels[0], 0, \u0026dest_u[0], \u0026dest_v[0], 64);\n    } else {\n      ARGBToUVRow_C(\u0026orig_argb_pixels[0], 0, \u0026dest_u[0], \u0026dest_v[0], 64);\n    }\n#eliif defined(HAS_ARGBTOUVROW_SSSE3)\n    int has_ssse3 \u003d TestCpuFlag(kCpuHasSSSE3);\n    if (has_ssse3) {\n      ARGBToUVRow_SSSE3(\u0026orig_argb_pixels[0], 0, \u0026dest_u[0], \u0026dest_v[0], 64);\n    } else {\n      ARGBToUVRow_C(\u0026orig_argb_pixels[0], 0, \u0026dest_u[0], \u0026dest_v[0], 64);\n    }\n#elif defined(HAS_ARGBTOUVROW_NEON)\n...\n```",
+      "revId": "a61882c0491829e8caecc580e14c060b1f575e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
