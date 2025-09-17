@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb9ac6e_3a6e1492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002325
+      },
+      "writtenOn": "2025-09-17T07:07:08Z",
+      "side": 1,
+      "message": "This ends up compiled on i386 as well, resulting in compile errors; the `#define HAS_ARGBTOUVROW_AVX2` is within this condition:\n\n    #if !defined(LIBYUV_DISABLE_X86) \u0026\u0026                       \\\n        (defined(__x86_64__) || defined(__i386__)) \u0026\u0026         \\\n        (defined(CLANG_HAS_AVX2) || defined(GCC_HAS_AVX2)) \u0026\u0026 \\\n        !defined(LIBYUV_ENABLE_ROWWIN)",
+      "revId": "a61882c0491829e8caecc580e14c060b1f575e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3a35e2fb_c17fe11a",
