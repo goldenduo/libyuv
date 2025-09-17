@@ -130,6 +130,18 @@ extern "C" {
 
 #endif
 
+// The following are available for AVX2 gcc/clang x64 platforms:
+// TODO(fbarchard): Port to Visual C
+// TODO(fbarchard): Port to x86 32 bit
+#if !defined(LIBYUV_DISABLE_X86) && defined(__x86_64__) &&  \
+    (defined(CLANG_HAS_AVX2) || defined(GCC_HAS_AVX2)) && \
+    !defined(LIBYUV_ENABLE_ROWWIN)
+#define HAS_ABGRTOUVJROW_AVX2
+#define HAS_ABGRTOUVROW_AVX2
+#define HAS_ARGBTOUVJROW_AVX2
+#define HAS_ARGBTOUVROW_AVX2
+#endif
+
 // The following are available on all x86 platforms, but
 // require VS2012, clang 3.4 or gcc 4.7.
 #if !defined(LIBYUV_DISABLE_X86) &&                          \
@@ -346,11 +358,6 @@ extern "C" {
 #define HAS_SPLITXRGBROW_AVX2
 #define HAS_SWAPUVROW_AVX2
 #define HAS_YUY2TONVUVROW_AVX2
-// TODO: Port SSSE3 to AVX2
-// #define HAS_ABGRTOUVJROW_AVX2
-// #define HAS_ABGRTOUVROW_AVX2
-// #define HAS_ARGBTOUVJROW_AVX2
-#define HAS_ARGBTOUVROW_AVX2
 
 #if defined(__x86_64__) || !defined(__pic__)
 // TODO(fbarchard): fix build error on android_full_debug=1
