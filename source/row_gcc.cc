@@ -1824,12 +1824,15 @@ void ARGBToUVMatrixRow_SSSE3(const uint8_t* src_argb,
 
 #ifdef HAS_ARGBTOUVROW_AVX2
 
-// UYVY shuf 8 UV to 16 UV.
-static const vec8 kShuffleAARRGGBB = {0, 4,  1, 5,  2,  6,  3,  7,
-   8, 12,  9, 13,  10,  14,  11,  15};
+// ARGBARGB to AARRGGBB shuffle
+static const lvec8 kShuffleAARRGGBB = {
+  0, 4, 1, 5, 2, 6, 3, 7, 8, 12, 9, 13, 10, 14, 11, 15,
+  0, 4, 1, 5, 2, 6, 3, 7, 8, 12, 9, 13, 10, 14, 11, 15,
+};
 
 // 16x2 -> 8x1 ARGB pixels converted to 8 U and 8 V
 // ARGBToUV does rounding average of 4 ARGB pixels
+// TODO: unroll to 32x2 or update caller/any to 16 pixels
 void ARGBToUVMatrixRow_AVX2(const uint8_t* src_argb,
                              int src_stride_argb,
                              uint8_t* dst_u,
@@ -1837,15 +1840,18 @@ void ARGBToUVMatrixRow_AVX2(const uint8_t* src_argb,
                              int width,
                              const struct RgbUVConstants* rgbuvconstants) {
   asm volatile(
-      "vbroadcastf128 %7,%%ymm15                 \n"  // kShuffleAARRGGBB
+      "vmovdqa     %7,%%ymm15                    \n"  // kShuffleAARRGGBB
       "vpcmpeqb    %%ymm14,%%ymm14,%%ymm14       \n"  // 0x0101
       "vpabsb      %%ymm14,%%ymm14               \n"
       "vpxor       %%ymm13,%%ymm13,%%ymm13       \n"  // 0 for vpavgw
+      "vpcmpeqw    %%ymm12,%%ymm12,%%ymm12       \n"  // -1
 
       "vbroadcastf128 %5,%%ymm6                  \n"  // RGBToU
       "vbroadcastf128 %6,%%ymm7                  \n"  // RGBToV
-      "vpcmpeqb    %%ymm5,%%ymm5,%%ymm5          \n"  // 0x8000
-      "vpsllw      $15,%%ymm5,%%ymm5             \n"
+
+      "vpcmpeqd    %%ymm5,%%ymm5,%%ymm5          \n"  // 128
+      "vpabsd      %%ymm5,%%ymm5               \n"
+      "vpslld      $7,%%ymm5,%%ymm5             \n"
 
       "sub         %1,%2                         \n"
 
@@ -1874,19 +1880,23 @@ void ARGBToUVMatrixRow_AVX2(const uint8_t* src_argb,
 
       "vpmaddubsw  %%ymm7,%%ymm0,%%ymm1          \n"  // 8 V
       "vpmaddubsw  %%ymm6,%%ymm0,%%ymm0          \n"  // 8 U
-      "vphaddw     %%ymm1,%%ymm0,%%ymm0          \n"  // uuuuvvvv uuuuvvvv
+      "vpmaddwd    %%ymm12,%%ymm1,%%ymm1         \n"  // negate + hadd
+      "vpmaddwd    %%ymm12,%%ymm0,%%ymm0         \n"
+      "vpsrad      $0x8,%%ymm1,%%ymm1            \n"
+      "vpsrad      $0x8,%%ymm0,%%ymm0            \n"
+      "vpaddd      %%ymm1,%%ymm5,%%ymm1          \n"  // +128 = 0 to 255
+      "vpaddd      %%ymm0,%%ymm5,%%ymm0          \n"
+      "vpackusdw   %%ymm1,%%ymm0,%%ymm0          \n"  // mutates
       "vpermq      $0xd8,%%ymm0,%%ymm0           \n"  // uuuuuuuu vvvvvvvv
-      "vpsubw      %%ymm0,%%ymm5,%%ymm2          \n"
-      "vpsrlw      $0x8,%%ymm2,%%ymm2            \n"
-      "vpackuswb   %%ymm2,%%ymm2,%%ymm2          \n"  // mutates 8U8u- 8V8v
-      "vmovq       %%xmm2,(%1)                   \n"  // Write 8 U's
-      "vextractf128 $0x1,%%ymm2,%%xmm2           \n"  // Copy V to low 8 bytes
-      "vmovq       %%xmm2,0x00(%1,%2,1)          \n"  // Write 8 V's
+      "vpackuswb   %%ymm0,%%ymm0,%%ymm0          \n"  // mutates
+      "vmovq       %%xmm0,(%1)                   \n"  // Write 8 U's
+      "vextractf128 $0x1,%%ymm0,%%xmm0           \n"  // Copy V to low 8 bytes
+      "vmovq       %%xmm0,0x00(%1,%2,1)          \n"  // Write 8 V's
 
       "lea         0x40(%0),%0                   \n"
       "lea         0x8(%1),%1                    \n"
       "subl        $0x10,%3                      \n"
-      "jg          1b                           \n"
+      "jg          1b                            \n"
       "vzeroupper  \n"
       : "+r"(src_argb),  // %0
         "+r"(dst_u),     // %1
@@ -1897,12 +1907,11 @@ void ARGBToUVMatrixRow_AVX2(const uint8_t* src_argb,
         "m"(rgbuvconstants->kRGBToV),      // %6
         "m"(kShuffleAARRGGBB)              // %7
       : "memory", "cc", "xmm0", "xmm1", "xmm2", "xmm5", "xmm6", "xmm7",
-                        "xmm8", "xmm9", "xmm10", "xmm11", "xmm13", "xmm14", "xmm15");
+                        "xmm8", "xmm9", "xmm10", "xmm11", "xmm12", "xmm13", "xmm14", "xmm15");
 }
 #endif  // HAS_ARGBTOUVROW_AVX2
 
-
-#ifdef HAS_ARGBTOUV444ROW_SSSE3
+#if defined(HAS_ARGBTOUV444ROW_SSSE3) || defined(HAS_ARGBTOUVROW_AVX2)
 
 // RGB to BT601 coefficients
 // UB   0.875 coefficient = 112
@@ -1916,6 +1925,20 @@ static const struct RgbUVConstants kARGBI601UVConstants = {
     {-112, 74, 38, 0, -112, 74, 38, 0, -112, 74, 38, 0, -112, 74, 38, 0},
     {18, 94, -112, 0, 18, 94, -112, 0, 18, 94, -112, 0, 18, 94, -112, 0}};
 
+static const struct RgbUVConstants kABGRI601UVConstants = {
+    {38, 74, -112, 0, 38, 74, -112, 0, 38, 74, -112, 0, 38, 74, -112, 0},
+    {-112, 94, 18, 0, -112, 94, 18, 0, -112, 94, 18, 0, -112, 94, 18, 0}};
+
+static const struct RgbUVConstants kBGRAI601UVConstants = {
+    {0, 38, 74, -112, 0, 38, 74, -112, 0, 38, 74, -112, 0, 38, 74, -112},
+    {0, -112, 94, 18, 0, -112, 94, 18, 0, -112, 94, 18, 0, -112, 94, 18}};
+
+static const struct RgbUVConstants kRGBAI601UVConstants = {
+    {0, -112, 74, 38, 0, -112, 74, 38, 0, -112, 74, 38, 0, -112, 74, 38},
+    {0, 18, 94, -112, 0, 18, 94, -112, 0, 18, 94, -112, 0, 18, 94, -112}};
+#endif
+
+#ifdef HAS_ARGBTOUV444ROW_SSSE3
 void ARGBToUV444Row_SSSE3(const uint8_t* src_argb,
                           uint8_t* dst_u,
                           uint8_t* dst_v,
@@ -1935,18 +1958,6 @@ void ARGBToUV444Row_AVX2(const uint8_t* src_argb,
 }
 #endif  // HAS_ARGBTOUV444ROW_AVX2
 
-#ifdef HAS_ARGBTOUVROW_AVX2
-void ARGBToUVRow_AVX2(const uint8_t* src_argb,
-                       int src_stride_argb,
-                       uint8_t* dst_u,
-                       uint8_t* dst_v,
-                       int width) {
-  ARGBToUVMatrixRow_AVX2(src_argb, src_stride_argb, dst_u, dst_v, width,
-                          &kARGBI601UVConstants);
-}
-#endif  // HAS_ARGBTOUVROW_AVX2
-
-
 #ifdef HAS_ARGBTOUVROW_SSSE3
 void ARGBToUVRow_SSSE3(const uint8_t* src_argb,
                        int src_stride_argb,
@@ -1957,10 +1968,6 @@ void ARGBToUVRow_SSSE3(const uint8_t* src_argb,
                           &kARGBI601UVConstants);
 }
 
-static const struct RgbUVConstants kABGRI601UVConstants = {
-    {38, 74, -112, 0, 38, 74, -112, 0, 38, 74, -112, 0, 38, 74, -112, 0},
-    {-112, 94, 18, 0, -112, 94, 18, 0, -112, 94, 18, 0, -112, 94, 18, 0}};
-
 void ABGRToUVRow_SSSE3(const uint8_t* src_abgr,
                        int src_stride_abgr,
                        uint8_t* dst_u,
@@ -1969,10 +1976,6 @@ void ABGRToUVRow_SSSE3(const uint8_t* src_abgr,
   ARGBToUVMatrixRow_SSSE3(src_abgr, src_stride_abgr, dst_u, dst_v, width,
                           &kABGRI601UVConstants);
 }
-
-static const struct RgbUVConstants kBGRAI601UVConstants = {
-    {0, 38, 74, -112, 0, 38, 74, -112, 0, 38, 74, -112, 0, 38, 74, -112},
-    {0, -112, 94, 18, 0, -112, 94, 18, 0, -112, 94, 18, 0, -112, 94, 18}};
 
 void BGRAToUVRow_SSSE3(const uint8_t* src_bgra,
                        int src_stride_bgra,
@@ -1983,10 +1986,6 @@ void BGRAToUVRow_SSSE3(const uint8_t* src_bgra,
                           &kBGRAI601UVConstants);
 }
 
-static const struct RgbUVConstants kRGBAI601UVConstants = {
-    {0, -112, 74, 38, 0, -112, 74, 38, 0, -112, 74, 38, 0, -112, 74, 38},
-    {0, 18, 94, -112, 0, 18, 94, -112, 0, 18, 94, -112, 0, 18, 94, -112}};
-
 void RGBAToUVRow_SSSE3(const uint8_t* src_rgba,
                        int src_stride_rgba,
                        uint8_t* dst_u,
@@ -1996,6 +1995,27 @@ void RGBAToUVRow_SSSE3(const uint8_t* src_rgba,
                           &kRGBAI601UVConstants);
 }
 #endif  // HAS_ARGBTOUVROW_SSSE3
+
+#ifdef HAS_ARGBTOUVROW_AVX2
+void ARGBToUVRow_AVX2(const uint8_t* src_argb,
+                       int src_stride_argb,
+                       uint8_t* dst_u,
+                       uint8_t* dst_v,
+                       int width) {
+  ARGBToUVMatrixRow_AVX2(src_argb, src_stride_argb, dst_u, dst_v, width,
+                          &kARGBI601UVConstants);
+}
+
+void ABGRToUVRow_AVX2(const uint8_t* src_abgr,
+                       int src_stride_abgr,
+                       uint8_t* dst_u,
+                       uint8_t* dst_v,
+                       int width) {
+  ARGBToUVMatrixRow_AVX2(src_abgr, src_stride_abgr, dst_u, dst_v, width,
+                          &kABGRI601UVConstants);
+}
+#endif  // HAS_ARGBTOUVROW_AVX2
+
 
 #ifdef HAS_ARGBTOUVJ444ROW_SSSE3
 // RGB to JPEG coefficients
@@ -2043,7 +2063,9 @@ void ARGBToUVJRow_SSSE3(const uint8_t* src_argb,
   ARGBToUVMatrixRow_SSSE3(src_argb, src_stride_argb, dst_u, dst_v, width,
                           &kARGBJPEGUVConstants);
 }
+#endif  // HAS_ARGBTOUVJROW_SSSE3
 
+#ifdef HAS_ABGRTOUVJROW_SSSE3
 void ABGRToUVJRow_SSSE3(const uint8_t* src_abgr,
                         int src_stride_abgr,
                         uint8_t* dst_u,
@@ -2053,6 +2075,28 @@ void ABGRToUVJRow_SSSE3(const uint8_t* src_abgr,
                           &kABGRJPEGUVConstants);
 }
 #endif  // HAS_ABGRTOUVJROW_SSSE3
+
+#ifdef HAS_ARGBTOUVJROW_AVX2
+void ARGBToUVJRow_AVX2(const uint8_t* src_argb,
+                        int src_stride_argb,
+                        uint8_t* dst_u,
+                        uint8_t* dst_v,
+                        int width) {
+  ARGBToUVMatrixRow_AVX2(src_argb, src_stride_argb, dst_u, dst_v, width,
+                          &kARGBJPEGUVConstants);
+}
+#endif  // HAS_ARGBTOUVJROW_AVX2
+
+#ifdef HAS_ABGRTOUVJROW_AVX2
+void ABGRToUVJRow_AVX2(const uint8_t* src_abgr,
+                        int src_stride_abgr,
+                        uint8_t* dst_u,
+                        uint8_t* dst_v,
+                        int width) {
+  ARGBToUVMatrixRow_AVX2(src_abgr, src_stride_abgr, dst_u, dst_v, width,
+                          &kABGRJPEGUVConstants);
+}
+#endif  // HAS_ABGRTOUVJROW_AVX2
 
 void BGRAToYRow_SSSE3(const uint8_t* src_bgra, uint8_t* dst_y, int width) {
   asm volatile(
