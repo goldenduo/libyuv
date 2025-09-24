@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4201413c_02592e33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386926
+      },
+      "writtenOn": "2025-09-24T20:49:46Z",
+      "side": 1,
+      "message": "Hello,\nI updated some AVX2 implementations to ensure they compile on 32-bit PIC builds. This change is required to unblock the Clang roll on WebRTC. I verified it locally by running libyuv_unittest, and all tests passed.\n\nPlease take a look, thanks!",
+      "revId": "c4125551591cb245ee40ade422079e01dd4e0ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
