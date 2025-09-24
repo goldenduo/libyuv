@@ -127,7 +127,7 @@ __declspec(naked) void ScaleRowDown2Linear_SSSE3(const uint8_t* src_ptr,
     mov        edx, [esp + 12]  // dst_ptr
     mov        ecx, [esp + 16]  // dst_width
 
-    pcmpeqb    xmm4, xmm4  // constant 0x0101
+    pcmpeqd    xmm4, xmm4  // constant 0x0101
     psrlw      xmm4, 15
     packuswb   xmm4, xmm4
     pxor       xmm5, xmm5  // constant 0
@@ -162,7 +162,7 @@ __declspec(naked) void ScaleRowDown2Box_SSSE3(const uint8_t* src_ptr,
     mov        edx, [esp + 4 + 12]  // dst_ptr
     mov        ecx, [esp + 4 + 16]  // dst_width
 
-    pcmpeqb    xmm4, xmm4  // constant 0x0101
+    pcmpeqd    xmm4, xmm4  // constant 0x0101
     psrlw      xmm4, 15
     packuswb   xmm4, xmm4
     pxor       xmm5, xmm5  // constant 0
@@ -235,7 +235,7 @@ __declspec(naked) void ScaleRowDown2Linear_AVX2(const uint8_t* src_ptr,
     mov         edx, [esp + 12]  // dst_ptr
     mov         ecx, [esp + 16]  // dst_width
 
-    vpcmpeqb    ymm4, ymm4, ymm4  // '1' constant, 8b
+    vpcmpeqd    ymm4, ymm4, ymm4  // '1' constant, 8b
     vpsrlw      ymm4, ymm4, 15
     vpackuswb   ymm4, ymm4, ymm4
     vpxor       ymm5, ymm5, ymm5  // constant 0
@@ -274,7 +274,7 @@ __declspec(naked) void ScaleRowDown2Box_AVX2(const uint8_t* src_ptr,
     mov         edx, [esp + 4 + 12]  // dst_ptr
     mov         ecx, [esp + 4 + 16]  // dst_width
 
-    vpcmpeqb    ymm4, ymm4, ymm4  // '1' constant, 8b
+    vpcmpeqd    ymm4, ymm4, ymm4  // '1' constant, 8b
     vpsrlw      ymm4, ymm4, 15
     vpackuswb   ymm4, ymm4, ymm4
     vpxor       ymm5, ymm5, ymm5  // constant 0
@@ -319,7 +319,7 @@ __declspec(naked) void ScaleRowDown4_SSSE3(const uint8_t* src_ptr,
     // src_stride ignored
     mov        edx, [esp + 12]  // dst_ptr
     mov        ecx, [esp + 16]  // dst_width
-    pcmpeqb    xmm5, xmm5       // generate mask 0x00ff0000
+    pcmpeqd    xmm5, xmm5       // generate mask 0x00ff0000
     psrld      xmm5, 24
     pslld      xmm5, 16
 
@@ -354,7 +354,7 @@ __declspec(naked) void ScaleRowDown4Box_SSSE3(const uint8_t* src_ptr,
     mov        edx, [esp + 8 + 12]  // dst_ptr
     mov        ecx, [esp + 8 + 16]  // dst_width
     lea        edi, [esi + esi * 2]  // src_stride * 3
-    pcmpeqb    xmm4, xmm4  // constant 0x0101
+    pcmpeqd    xmm4, xmm4  // constant 0x0101
     psrlw      xmm4, 15
     movdqa     xmm5, xmm4
     packuswb   xmm4, xmm4
@@ -410,7 +410,7 @@ __declspec(naked) void ScaleRowDown4_AVX2(const uint8_t* src_ptr,
     // src_stride ignored
     mov         edx, [esp + 12]  // dst_ptr
     mov         ecx, [esp + 16]  // dst_width
-    vpcmpeqb    ymm5, ymm5, ymm5  // generate mask 0x00ff0000
+    vpcmpeqd    ymm5, ymm5, ymm5  // generate mask 0x00ff0000
     vpsrld      ymm5, ymm5, 24
     vpslld      ymm5, ymm5, 16
 
@@ -448,7 +448,7 @@ __declspec(naked) void ScaleRowDown4Box_AVX2(const uint8_t* src_ptr,
     mov         edx, [esp + 8 + 12]  // dst_ptr
     mov         ecx, [esp + 8 + 16]  // dst_width
     lea         edi, [esi + esi * 2]  // src_stride * 3
-    vpcmpeqb    ymm4, ymm4, ymm4  // constant 0x0101
+    vpcmpeqd    ymm4, ymm4, ymm4  // constant 0x0101
     vpsrlw      ymm4, ymm4, 15
     vpsllw      ymm5, ymm4, 3  // constant 0x0008
     vpackuswb   ymm4, ymm4, ymm4
@@ -896,9 +896,9 @@ __declspec(naked) void ScaleFilterCols_SSSE3(uint8_t* dst_ptr,
     movd       xmm3, [esp + 12 + 20]  // dx
     mov        eax, 0x04040000  // shuffle to line up fractions with pixel.
     movd       xmm5, eax
-    pcmpeqb    xmm6, xmm6  // generate 0x007f for inverting fraction.
+    pcmpeqd    xmm6, xmm6  // generate 0x007f for inverting fraction.
     psrlw      xmm6, 9
-    pcmpeqb    xmm7, xmm7  // generate 0x0001
+    pcmpeqd    xmm7, xmm7  // generate 0x0001
     psrlw      xmm7, 15
     pextrw     eax, xmm2, 1  // get x0 integer. preroll
     sub        ecx, 2
@@ -1273,7 +1273,7 @@ __declspec(naked) void ScaleARGBFilterCols_SSSE3(uint8_t* dst_argb,
     movd       xmm3, [esp + 8 + 20]  // dx
     movdqa     xmm4, xmmword ptr kShuffleColARGB
     movdqa     xmm5, xmmword ptr kShuffleFractions
-    pcmpeqb    xmm6, xmm6  // generate 0x007f for inverting fraction.
+    pcmpeqd    xmm6, xmm6  // generate 0x007f for inverting fraction.
     psrlw      xmm6, 9
     pextrw     eax, xmm2, 1  // get x0 integer. preroll
     sub        ecx, 2

@@ -126,7 +126,7 @@ void ScaleRowDown2Linear_SSSE3(const uint8_t* src_ptr,
                                int dst_width) {
   (void)src_stride;
   asm volatile(
-      "pcmpeqb     %%xmm4,%%xmm4                 \n"  // 0x0101
+      "pcmpeqd     %%xmm4,%%xmm4                 \n"  // 0x0101
       "pabsb       %%xmm4,%%xmm4                 \n"
 
       "pxor        %%xmm5,%%xmm5                 \n"
@@ -157,7 +157,7 @@ void ScaleRowDown2Box_SSSE3(const uint8_t* src_ptr,
                             uint8_t* dst_ptr,
                             int dst_width) {
   asm volatile(
-      "pcmpeqb     %%xmm4,%%xmm4                 \n"  // 0x0101
+      "pcmpeqd     %%xmm4,%%xmm4                 \n"  // 0x0101
       "pabsb       %%xmm4,%%xmm4                 \n"
       "pxor        %%xmm5,%%xmm5                 \n"
 
@@ -223,7 +223,7 @@ void ScaleRowDown2Linear_AVX2(const uint8_t* src_ptr,
                               int dst_width) {
   (void)src_stride;
   asm volatile(
-      "vpcmpeqb    %%ymm4,%%ymm4,%%ymm4          \n"
+      "vpcmpeqd    %%ymm4,%%ymm4,%%ymm4          \n"
       "vpabsb      %%ymm4,%%ymm4                 \n"
       "vpxor       %%ymm5,%%ymm5,%%ymm5          \n"
 
@@ -255,7 +255,7 @@ void ScaleRowDown2Box_AVX2(const uint8_t* src_ptr,
                            uint8_t* dst_ptr,
                            int dst_width) {
   asm volatile(
-      "vpcmpeqb    %%ymm4,%%ymm4,%%ymm4          \n"
+      "vpcmpeqd    %%ymm4,%%ymm4,%%ymm4          \n"
       "vpabsb      %%ymm4,%%ymm4                 \n"
       "vpxor       %%ymm5,%%ymm5,%%ymm5          \n"
 
@@ -297,7 +297,7 @@ void ScaleRowDown4_SSSE3(const uint8_t* src_ptr,
                          int dst_width) {
   (void)src_stride;
   asm volatile(
-      "pcmpeqb     %%xmm5,%%xmm5                 \n"
+      "pcmpeqd     %%xmm5,%%xmm5                 \n"
       "psrld       $0x18,%%xmm5                  \n"
       "pslld       $0x10,%%xmm5                  \n"
 
@@ -328,7 +328,7 @@ void ScaleRowDown4Box_SSSE3(const uint8_t* src_ptr,
                             int dst_width) {
   intptr_t stridex3;
   asm volatile(
-      "pcmpeqb     %%xmm4,%%xmm4                 \n"
+      "pcmpeqd     %%xmm4,%%xmm4                 \n"
       "pabsw       %%xmm4,%%xmm5                 \n"
       "pabsb       %%xmm4,%%xmm4                 \n"  // 0x0101
       "psllw       $0x3,%%xmm5                   \n"  // 0x0008
@@ -382,7 +382,7 @@ void ScaleRowDown4_AVX2(const uint8_t* src_ptr,
                         int dst_width) {
   (void)src_stride;
   asm volatile(
-      "vpcmpeqb    %%ymm5,%%ymm5,%%ymm5          \n"
+      "vpcmpeqd    %%ymm5,%%ymm5,%%ymm5          \n"
       "vpsrld      $0x18,%%ymm5,%%ymm5           \n"
       "vpslld      $0x10,%%ymm5,%%ymm5           \n"
 
@@ -415,7 +415,7 @@ void ScaleRowDown4Box_AVX2(const uint8_t* src_ptr,
                            uint8_t* dst_ptr,
                            int dst_width) {
   asm volatile(
-      "vpcmpeqb    %%ymm4,%%ymm4,%%ymm4          \n"
+      "vpcmpeqd    %%ymm4,%%ymm4,%%ymm4          \n"
       "vpabsw      %%ymm4,%%ymm5                 \n"
       "vpabsb      %%ymm4,%%ymm4                 \n"  // 0x0101
       "vpsllw      $0x3,%%ymm5,%%ymm5            \n"  // 0x0008
@@ -1836,9 +1836,9 @@ void ScaleFilterCols_SSSE3(uint8_t* dst_ptr,
       "movd        %7,%%xmm3                     \n"
       "movl        $0x04040000,%k2               \n"
       "movd        %k2,%%xmm5                    \n"
-      "pcmpeqb     %%xmm6,%%xmm6                 \n"
+      "pcmpeqd     %%xmm6,%%xmm6                 \n"
       "psrlw       $0x9,%%xmm6                   \n"  // 0x007f007f
-      "pcmpeqb     %%xmm7,%%xmm7                 \n"
+      "pcmpeqd     %%xmm7,%%xmm7                 \n"
       "psrlw       $15,%%xmm7                    \n"  // 0x00010001
 
       "pextrw      $0x1,%%xmm2,%k3               \n"
@@ -2233,7 +2233,7 @@ void ScaleARGBFilterCols_SSSE3(uint8_t* dst_argb,
   asm volatile(
       "movd        %5,%%xmm2                     \n"
       "movd        %6,%%xmm3                     \n"
-      "pcmpeqb     %%xmm6,%%xmm6                 \n"
+      "pcmpeqd     %%xmm6,%%xmm6                 \n"
       "psrlw       $0x9,%%xmm6                   \n"
       "pextrw      $0x1,%%xmm2,%k3               \n"
       "sub         $0x2,%2                       \n"
@@ -2340,7 +2340,7 @@ void ScaleUVRowDown2Box_SSSE3(const uint8_t* src_ptr,
                               uint8_t* dst_ptr,
                               int dst_width) {
   asm volatile(
-      "pcmpeqb     %%xmm4,%%xmm4                 \n"  // 01010101
+      "pcmpeqd     %%xmm4,%%xmm4                 \n"  // 01010101
       "psrlw       $0xf,%%xmm4                   \n"
       "packuswb    %%xmm4,%%xmm4                 \n"
       "pxor        %%xmm5, %%xmm5                \n"  // zero
@@ -2380,7 +2380,7 @@ void ScaleUVRowDown2Box_AVX2(const uint8_t* src_ptr,
                              uint8_t* dst_ptr,
                              int dst_width) {
   asm volatile(
-      "vpcmpeqb    %%ymm4,%%ymm4,%%ymm4          \n"  // 01010101
+      "vpcmpeqd    %%ymm4,%%ymm4,%%ymm4          \n"  // 01010101
       "vpabsb      %%ymm4,%%ymm4                 \n"
       "vpxor       %%ymm5,%%ymm5,%%ymm5          \n"  // zero
       "vbroadcastf128 %4,%%ymm1                  \n"  // split shuffler
