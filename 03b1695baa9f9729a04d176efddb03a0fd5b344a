@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70649b03_29fefc57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-09-24T16:54:05Z",
+      "side": 1,
+      "message": "Use vpcmpeqd for generating -1 constants to allow future ports to avx512",
+      "revId": "03b1695baa9f9729a04d176efddb03a0fd5b344a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
