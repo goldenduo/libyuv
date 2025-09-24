@@ -1748,6 +1748,73 @@ void ARGBToUVMatrixRow_SSSE3(const uint8_t* src_argb,
                              uint8_t* dst_v,
                              int width,
                              const struct RgbUVConstants* rgbuvconstants) {
+#if defined(__i386__) && defined(__pic__)
+  // i386 + PIC builds: Inline asm may run out of general-purpose registers.
+  // In PIC, EBX is reserved for the GOT (and with a frame pointer EBP is also
+  // unavailable), so addressing struct fields via memory operands can require
+  // extra temporaries that the compiler cannot allocate given the asm constraints.
+  // To avoid this, copy the RGB-to-UV constants to stack locals first and let the
+  // asm use simple stack-relative addressing.
+  const vec8 local_kRGBToU = rgbuvconstants->kRGBToU;
+  const vec8 local_kRGBToV = rgbuvconstants->kRGBToV;
+  asm volatile(
+      "movdqa     %5,%%xmm4                     \n"  // RGBToU
+      "movdqa     %6,%%xmm5                     \n"  // RGBToV
+      "pcmpeqb    %%xmm6,%%xmm6                 \n"  // 0x0101
+      "pabsb      %%xmm6,%%xmm6                 \n"
+      "movdqa     %7,%%xmm7                     \n"  // kShuffleAARRGGBB
+      "sub         %1,%2                        \n"
+
+      "1:          \n"
+      "movdqu     (%0),%%xmm0                   \n"  // Read 8x2 ARGB Pixels
+      "movdqu     0x10(%0),%%xmm1               \n"
+      "movdqu     0x00(%0,%4,1),%%xmm2          \n"
+      "movdqu     0x10(%0,%4,1),%%xmm3          \n"
+      "pshufb     %%xmm7,%%xmm0                 \n"  // aarrggbb
+      "pshufb     %%xmm7,%%xmm1                 \n"
+      "pshufb     %%xmm7,%%xmm2                 \n"
+      "pshufb     %%xmm7,%%xmm3                 \n"
+      "pmaddubsw  %%xmm6,%%xmm0                 \n"  // 8x2 -> 4x2
+      "pmaddubsw  %%xmm6,%%xmm1                 \n"
+      "pmaddubsw  %%xmm6,%%xmm2                 \n"
+      "pmaddubsw  %%xmm6,%%xmm3                 \n"
+      "paddw      %%xmm2,%%xmm0                 \n"  // 4x2 -> 4x1
+      "paddw      %%xmm3,%%xmm1                 \n"
+      "pxor       %%xmm2,%%xmm2                 \n"  // 0 for vpavgw
+      "psrlw      $1,%%xmm0                     \n"
+      "psrlw      $1,%%xmm1                     \n"
+      "pavgw      %%xmm2,%%xmm0                 \n"
+      "pavgw      %%xmm2,%%xmm1                 \n"
+      "packuswb   %%xmm1,%%xmm0                 \n"  // mutates
+
+      "movdqa     %%xmm6,%%xmm2                 \n"
+      "psllw      $15,%%xmm2                    \n"  // 0x8000
+      "movdqa     %%xmm0,%%xmm1                 \n"
+      "pmaddubsw  %%xmm5,%%xmm1                 \n"  // 4 V
+      "pmaddubsw  %%xmm4,%%xmm0                 \n"  // 4 U
+      "phaddw     %%xmm1,%%xmm0                 \n"  // uuuuvvvv
+      "psubw      %%xmm0,%%xmm2                 \n"
+      "psrlw      $0x8,%%xmm2                   \n"
+      "packuswb   %%xmm2,%%xmm2                 \n"
+      "movd       %%xmm2,(%1)                   \n"  // Write 4 U's
+      "pshufd     $0x55,%%xmm2,%%xmm2           \n"  // Copy V to low 4 bytes
+      "movd       %%xmm2,0x00(%1,%2,1)          \n"  // Write 4 V's
+
+      "lea         0x20(%0),%0                  \n"
+      "lea         0x4(%1),%1                   \n"
+      "subl        $0x8,%3                      \n"
+      "jg          1b                           \n"
+      : "+r"(src_argb),                    // %0
+        "+r"(dst_u),                       // %1
+        "+r"(dst_v),                       // %2
+        "+m"(width)                        // %3
+      : "r"((intptr_t)(src_stride_argb)),  // %4
+        "m"(local_kRGBToU),                // %5
+        "m"(local_kRGBToV),                // %6
+        "m"(kShuffleAARRGGBB)              // %7
+      : "memory", "cc", "xmm0", "xmm1", "xmm2", "xmm3", "xmm4", "xmm5", "xmm6",
+        "xmm7");
+#else
   asm volatile(
       "movdqa     %5,%%xmm4                     \n"  // RGBToU
       "movdqa     %6,%%xmm5                     \n"  // RGBToV
@@ -1809,6 +1876,7 @@ void ARGBToUVMatrixRow_SSSE3(const uint8_t* src_argb,
         "m"(kShuffleAARRGGBB)              // %7
       : "memory", "cc", "xmm0", "xmm1", "xmm2", "xmm3", "xmm4", "xmm5",
                         "xmm6", "xmm7");
+#endif
 }
 
 #endif  // HAS_ARGBTOUVROW_SSSE3
@@ -1823,6 +1891,75 @@ void ARGBToUVMatrixRow_AVX2(const uint8_t* src_argb,
                              uint8_t* dst_v,
                              int width,
                              const struct RgbUVConstants* rgbuvconstants) {
+#if defined(__i386__) && defined(__pic__)
+  // i386 + PIC builds: Inline asm may run out of general-purpose registers.
+  // In PIC, EBX is reserved for the GOT (and with a frame pointer EBP is also
+  // unavailable), so addressing struct fields via memory operands can require
+  // extra temporaries that the compiler cannot allocate given the asm constraints.
+  // To avoid this, copy the RGB-to-UV constants to stack locals first and let the
+  // asm use simple stack-relative addressing.
+  const vec8 local_kRGBToU = rgbuvconstants->kRGBToU;
+  const vec8 local_kRGBToV = rgbuvconstants->kRGBToV;
+
+  asm volatile(
+      "vbroadcastf128 %5,%%ymm4                  \n"  // RGBToU
+      "vbroadcastf128 %6,%%ymm5                  \n"  // RGBToV
+      "vpcmpeqb    %%ymm6,%%ymm6,%%ymm6          \n"  // 0x0101
+      "vpabsb      %%ymm6,%%ymm6                 \n"
+      "vmovdqu     %7,%%ymm7                     \n"  // kShuffleAARRGGBB
+      "sub         %1,%2                         \n"
+
+      "1:          \n"
+      "vmovdqu     (%0),%%ymm0                   \n"  // Read 16x2 ARGB Pixels
+      "vmovdqu     0x20(%0),%%ymm1               \n"
+      "vmovdqu     0x00(%0,%4,1),%%ymm2          \n"
+      "vmovdqu     0x20(%0,%4,1),%%ymm3          \n"
+      "vpshufb     %%ymm7,%%ymm0,%%ymm0          \n"  // aarrggbb
+      "vpshufb     %%ymm7,%%ymm1,%%ymm1          \n"
+      "vpshufb     %%ymm7,%%ymm2,%%ymm2          \n"
+      "vpshufb     %%ymm7,%%ymm3,%%ymm3          \n"
+      "vpmaddubsw  %%ymm6,%%ymm0,%%ymm0          \n"  // 16x2 -> 8x2
+      "vpmaddubsw  %%ymm6,%%ymm1,%%ymm1          \n"
+      "vpmaddubsw  %%ymm6,%%ymm2,%%ymm2          \n"
+      "vpmaddubsw  %%ymm6,%%ymm3,%%ymm3          \n"
+      "vpaddw      %%ymm0,%%ymm2,%%ymm0          \n"  // 8x2 -> 8x1
+      "vpaddw      %%ymm1,%%ymm3,%%ymm1          \n"
+      "vpxor       %%ymm2,%%ymm2,%%ymm2          \n"  // 0 for vpavgw
+      "vpsrlw      $1,%%ymm0,%%ymm0              \n"
+      "vpsrlw      $1,%%ymm1,%%ymm1              \n"
+      "vpavgw      %%ymm2,%%ymm0,%%ymm0          \n"
+      "vpavgw      %%ymm2,%%ymm1,%%ymm1          \n"
+      "vpackuswb   %%ymm1,%%ymm0,%%ymm0          \n"  // mutates
+      "vpermq      $0xd8,%%ymm0,%%ymm0           \n"  // 8 ARGB Pixels
+
+      "vpsllw      $15,%%ymm6,%%ymm2             \n"  // 0x8000
+      "vpmaddubsw  %%ymm5,%%ymm0,%%ymm1          \n"  // 8 V
+      "vpmaddubsw  %%ymm4,%%ymm0,%%ymm0          \n"  // 8 U
+      "vphaddw     %%ymm1,%%ymm0,%%ymm0          \n"  // uuuuvvvv uuuuvvvv
+      "vpermq      $0xd8,%%ymm0,%%ymm0           \n"  // uuuuuuuu vvvvvvvv
+      "vpsubw      %%ymm0,%%ymm2,%%ymm0          \n"
+      "vpsrlw      $0x8,%%ymm0,%%ymm0            \n"
+      "vpackuswb   %%ymm0,%%ymm0,%%ymm0          \n"  // mutates 8U8u- 8V8v
+      "vmovq       %%xmm0,(%1)                   \n"  // Write 8 U's
+      "vextractf128 $0x1,%%ymm0,%%xmm0           \n"  // Copy V to low 8 bytes
+      "vmovq       %%xmm0,0x00(%1,%2,1)          \n"  // Write 8 V's
+
+      "lea         0x40(%0),%0                   \n"
+      "lea         0x8(%1),%1                    \n"
+      "subl        $0x10,%3                      \n"
+      "jg          1b                            \n"
+      "vzeroupper  \n"
+      : "+r"(src_argb),                    // %0
+        "+r"(dst_u),                       // %1
+        "+r"(dst_v),                       // %2
+        "+r"(width)                        // %3
+      : "r"((intptr_t)(src_stride_argb)),  // %4
+        "m"(local_kRGBToU),                // %5
+        "m"(local_kRGBToV),                // %6
+        "m"(kShuffleAARRGGBB)              // %7
+      : "memory", "cc", "xmm0", "xmm1", "xmm2", "xmm3", "xmm4", "xmm5", "xmm6",
+        "xmm7");
+#else
   asm volatile(
       "vbroadcastf128 %5,%%ymm4                  \n"  // RGBToU
       "vbroadcastf128 %6,%%ymm5                  \n"  // RGBToV
@@ -1885,6 +2022,7 @@ void ARGBToUVMatrixRow_AVX2(const uint8_t* src_argb,
         "m"(kShuffleAARRGGBB)              // %7
       : "memory", "cc", "xmm0", "xmm1", "xmm2", "xmm3", "xmm4", "xmm5",
                         "xmm6", "xmm7");
+#endif
 }
 #endif  // HAS_ARGBTOUVROW_AVX2
 
