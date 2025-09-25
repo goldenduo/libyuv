@@ -16,6 +16,23 @@
       "message": "Hello,\nI updated some AVX2 implementations to ensure they compile on 32-bit PIC builds. This change is required to unblock the Clang roll on WebRTC. I verified it locally by running libyuv_unittest, and all tests passed.\n\nPlease take a look, thanks!",
       "revId": "c4125551591cb245ee40ade422079e01dd4e0ba5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "969bfc1f_4f1f9b54",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1758,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-09-25T01:03:46Z",
+      "side": 1,
+      "message": "If this is your only change, I suggest just always using this version, to simplify maintenance.  Some alternatives:\n1. the actual values for RGBToU and RGBToV are 4 bytes each... they could be passed as int32 data values\n2. The problem happens when \"m\" needs to be addressable, so code generates to call/pop the epc which takes a register.  One way to reduce registers is create a single structure with all constants and pass it as \"r\".  Thats what yuv to rgb does for constants.  Pointers need to be registers... there are 2 source and 2 dest \u003d 4 registers.  The 5th would be the structure for all constants.\n3. two asm blocks.  The initial constants are loaded into vectors.  An asm block that does just that, will use some temporary GPR registers.\n4. OMITFP which does __attribute__((optimize(\"omit-frame-pointer\"))) can free up ebp.\n5. passing the vector registers, rather then a GPR or memory pointer, puts the register juggling in the hands of the C code.  But I think that creates as many issues as it solves.",
+      "revId": "c4125551591cb245ee40ade422079e01dd4e0ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
