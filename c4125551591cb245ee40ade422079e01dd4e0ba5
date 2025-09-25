@@ -33,6 +33,24 @@
       "message": "If this is your only change, I suggest just always using this version, to simplify maintenance.  Some alternatives:\n1. the actual values for RGBToU and RGBToV are 4 bytes each... they could be passed as int32 data values\n2. The problem happens when \"m\" needs to be addressable, so code generates to call/pop the epc which takes a register.  One way to reduce registers is create a single structure with all constants and pass it as \"r\".  Thats what yuv to rgb does for constants.  Pointers need to be registers... there are 2 source and 2 dest \u003d 4 registers.  The 5th would be the structure for all constants.\n3. two asm blocks.  The initial constants are loaded into vectors.  An asm block that does just that, will use some temporary GPR registers.\n4. OMITFP which does __attribute__((optimize(\"omit-frame-pointer\"))) can free up ebp.\n5. passing the vector registers, rather then a GPR or memory pointer, puts the register juggling in the hands of the C code.  But I think that creates as many issues as it solves.",
       "revId": "c4125551591cb245ee40ade422079e01dd4e0ba5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde3c96a_a3ce0220",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1758,
+      "author": {
+        "id": 1386926
+      },
+      "writtenOn": "2025-09-25T06:07:14Z",
+      "side": 1,
+      "message": "I\u0027ve made some cleanups from #2.\nTo reduce code duplication, I merged the two asm volatile blocks into one and consolidated the differences. I also added alignment requirements to the stack variables.\n\nWhat do you think?",
+      "parentUuid": "969bfc1f_4f1f9b54",
+      "revId": "c4125551591cb245ee40ade422079e01dd4e0ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
