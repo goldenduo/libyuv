@@ -51,6 +51,24 @@
       "parentUuid": "969bfc1f_4f1f9b54",
       "revId": "c4125551591cb245ee40ade422079e01dd4e0ba5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718a6585_8f12697b",
+        "filename": "source/row_gcc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1758,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-09-25T20:48:38Z",
+      "side": 1,
+      "message": "Its good enough for now, but the more I think about it, (5) is the right solution.\n\"m\" is the problem.  The original structure was in text segment, but this function was already passed a pointer, so the calling code did the call/pop to get the address.  We have a few arguments, so the pointer may be on the stack.  If we put \"rgbconstants\" into \"r\" the kRGBToU and kRGBToV only take 1 register.\nOriginally I thought the value is literally an int and that I would call the function twice - once for u and once for v, using the same code.  But I think the subsampling is the bottleneck and it isnt a win, for 4:2:0.\nIt could be simplified into 2 steps\nsubsampling into an ARGB row buffer and then use ARGBToUV444.\nBoth the subsample and UV conversion are using a few too many registers and not unrolled as much as they would like to be, so the 2 step version would have 2 row functions that are faster, potentially making up for the overhead.",
+      "parentUuid": "fde3c96a_a3ce0220",
+      "revId": "c4125551591cb245ee40ade422079e01dd4e0ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
