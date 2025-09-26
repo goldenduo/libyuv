@@ -16,6 +16,24 @@
       "message": "This looks good with the right offset. LGTM",
       "revId": "9fbd5cc754679e6ea3ec3275ae680169e4b26cf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50e6aac_061832b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-09-26T19:18:14Z",
+      "side": 1,
+      "message": "tests pass and performance is not measurably affected",
+      "parentUuid": "eb08c470_df23a932",
+      "revId": "9fbd5cc754679e6ea3ec3275ae680169e4b26cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
