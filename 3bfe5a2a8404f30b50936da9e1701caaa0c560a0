@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8477c202_3fc526a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-09-29T18:10:16Z",
+      "side": 1,
+      "message": "best to trust but verify.  Using a code snippet you can try gcc and clang versions in godbolt.  I also ran into bugs with __riscv_v_intrinsic not set correctly.\nMy personal ability to test is with an old clang compiler on emulator, and in future I expect android builds which will come with newer clang versions",
+      "revId": "3bfe5a2a8404f30b50936da9e1701caaa0c560a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b42b80_9c8ebcf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-09-29T18:10:16Z",
+      "side": 1,
+      "message": "thanks for the update",
+      "revId": "3bfe5a2a8404f30b50936da9e1701caaa0c560a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731fbff1_215d1d0e",
+        "filename": "include/libyuv/scale_row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-09-29T18:10:16Z",
+      "side": 1,
+      "message": "nit For consistency this line would go after line 176 // The following...",
+      "revId": "3bfe5a2a8404f30b50936da9e1701caaa0c560a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
