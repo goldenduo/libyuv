@@ -908,7 +908,11 @@ extern "C" {
 #endif
 
 #if !defined(LIBYUV_DISABLE_RVV) && defined(__riscv_vector)
-#if defined(__riscv_v_intrinsic) && __riscv_v_intrinsic > 11000
+#if defined(__riscv_v_intrinsic) && __riscv_v_intrinsic >= 100000
+// Since v1.0, vcreate intrinsic is introduced
+#define LIBYUV_RVV_HAS_VCREATE
+#endif
+#if defined(__riscv_v_intrinsic) && __riscv_v_intrinsic >= 12000
 // Since v0.12, TUPLE_TYPE is introduced for segment load and store.
 #define LIBYUV_RVV_HAS_TUPLE_TYPE
 // Since v0.12, VXRM(fixed-point rounding mode) is included in arguments of
@@ -917,7 +921,6 @@ extern "C" {
 #endif
 #endif
 
-// The following are available for RVV 1.2
 #if !defined(LIBYUV_DISABLE_RVV) && defined(__riscv_vector)
 #define HAS_ABGRTOYJROW_RVV
 #define HAS_ABGRTOYROW_RVV
@@ -943,10 +946,9 @@ extern "C" {
 #define HAS_SPLITRGBROW_RVV
 #define HAS_SPLITUVROW_RVV
 #define HAS_SPLITXRGBROW_RVV
-#endif
 
-// The following are available for RVV 1.1
-// TODO(fbarchard): Port to RVV 1.2 (tuple)
+// The following are available for RVV v0.11 and RVV v1.0
+// TODO(fbarchard): Port to RVV v0.12 (tuple)
 // missing support for vcreate_v:
 //  __riscv_vcreate_v_u16m2x2
 //  __riscv_vcreate_v_u16m2x4
@@ -957,8 +959,8 @@ extern "C" {
 //  __riscv_vcreate_v_u8m2x3
 //  __riscv_vcreate_v_u8m2x4
 //  __riscv_vcreate_v_u8m4x2
-#if !defined(LIBYUV_DISABLE_RVV) && defined(__riscv_vector) && \
-    !defined(LIBYUV_RVV_HAS_TUPLE_TYPE)
+#if (defined(LIBYUV_RVV_HAS_TUPLE_TYPE) && defined(LIBYUV_RVV_HAS_VCREATE)) || \
+    (!defined(LIBYUV_RVV_HAS_TUPLE_TYPE) && !defined(LIBYUV_RVV_HAS_VCREATE))
 #define HAS_AB64TOARGBROW_RVV
 #define HAS_AR64TOAB64ROW_RVV
 #define HAS_ARGBATTENUATEROW_RVV
@@ -992,6 +994,7 @@ extern "C" {
 #define HAS_RAWTORGBAROW_RVV
 #define HAS_RGB24TOARGBROW_RVV
 #define HAS_RGBATOARGBROW_RVV
+#endif
 #endif
 
 #if defined(_MSC_VER) && !defined(__CLR_VER) && !defined(__clang__)
