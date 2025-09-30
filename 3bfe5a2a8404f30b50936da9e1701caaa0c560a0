@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5c21afff_b58c4d01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3711818
+      },
+      "writtenOn": "2025-09-30T01:53:45Z",
+      "side": 1,
+      "message": "Yes, using Godbolt to check the definition of __riscv_v_intrinsic is indeed quite convenient. By the way, my current testing method involves downloading different versions of LLVM (llvm16, llvm17, llvm19, llvm21) from https://github.com/riscv-collab/riscv-gnu-toolchain/tags to cover different intrinsic versions, building libyuv, and testing it on the spacemit k1 (with RVV 1.0) board.",
+      "parentUuid": "8477c202_3fc526a2",
+      "revId": "3bfe5a2a8404f30b50936da9e1701caaa0c560a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "48b42b80_9c8ebcf4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
