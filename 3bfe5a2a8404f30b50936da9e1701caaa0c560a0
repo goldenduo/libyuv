@@ -50,6 +50,24 @@
       "message": "nit For consistency this line would go after line 176 // The following...",
       "revId": "3bfe5a2a8404f30b50936da9e1701caaa0c560a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc48684_b01e2e73",
+        "filename": "include/libyuv/scale_row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 3711818
+      },
+      "writtenOn": "2025-09-30T01:45:43Z",
+      "side": 1,
+      "message": "Addressed",
+      "parentUuid": "731fbff1_215d1d0e",
+      "revId": "3bfe5a2a8404f30b50936da9e1701caaa0c560a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
