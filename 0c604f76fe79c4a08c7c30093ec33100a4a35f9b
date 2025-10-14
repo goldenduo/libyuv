@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc00ef1_275ea277",
+        "filename": "DEPS",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-10-14T07:11:12Z",
+      "side": 1,
+      "message": "Do you think that the following is caused by this line?\n\n```\nerr: missing local outputs out/Release-iphoneos/sdk/xcode_links/iPhoneSimulator15.2.sdk/usr/include/DarwinBasic.modulemap: lstat /Volumes/Work/s/w/ir/cache/osx_sdk/XCode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/include/DarwinBasic.modulemap: no such file or directory\n```\n\nI am not sure, but I suspect it is not. In such case, just open a bug and use No-Try.",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 4
+      },
+      "revId": "0c604f76fe79c4a08c7c30093ec33100a4a35f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
