@@ -16,6 +16,24 @@
       "message": "Jeremy, do you know how to fix the failing bots?\n\nVictor did send out https://chromium-review.googlesource.com/c/libyuv/libyuv/+/7037174 but it didn\u0027t work.",
       "revId": "15c5870f00296de19232a9cd1df1aabde4e603a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55563ad6_1a0fa0b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339017
+      },
+      "writtenOn": "2025-10-14T16:57:48Z",
+      "side": 1,
+      "message": "I have a tentative fix here https://chromium-review.googlesource.com/c/libyuv/libyuv/+/7041203. Let\u0027s submit that and see if things improve",
+      "parentUuid": "1e6e8369_2999b02e",
+      "revId": "15c5870f00296de19232a9cd1df1aabde4e603a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
