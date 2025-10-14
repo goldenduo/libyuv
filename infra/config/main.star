@@ -5,6 +5,8 @@
 
 lucicfg.check_version("1.30.9")
 
+load("@chromium-luci//xcode.star", _xcode = "xcode")
+
 LIBYUV_GIT = "https://chromium.googlesource.com/libyuv/libyuv"
 LIBYUV_GERRIT = "https://chromium-review.googlesource.com/libyuv/libyuv"
 
@@ -191,7 +193,7 @@ def get_os_dimensions(os):
     if os == "android":
         return {"device_type": "walleye"}
     if os == "ios" or os == "mac":
-        return {"os": "Mac-12", "cpu": "x86-64"}
+        return {"os": "Mac-15", "cpu": "x86-64"}
     elif os == "win":
         return {"os": "Windows-10", "cores": "8", "cpu": "x86-64"}
     elif os == "linux":
@@ -199,6 +201,11 @@ def get_os_dimensions(os):
     return {}
 
 def libyuv_ci_builder(name, dimensions, properties, triggered_by):
+    caches = []
+    if "os" in dimensions and dimensions["os"].lower().startswith("mac"):
+      xcode = _xcode.for_ios("17a324")
+      caches.append(xcode.cache)
+      properties.setdefault("xcode_build_version", xcode.version)
     return luci.builder(
         name = name,
         dimensions = dimensions,
@@ -213,9 +220,15 @@ def libyuv_ci_builder(name, dimensions, properties, triggered_by):
             name = "libyuv/libyuv",
             cipd_package = "infra/recipe_bundles/chromium.googlesource.com/chromium/tools/build",
         ),
+        caches = caches
     )
 
 def libyuv_try_builder(name, dimensions, properties, recipe_name = "libyuv/libyuv"):
+    caches = []
+    if "os" in dimensions and dimensions["os"].lower().startswith("mac"):
+      xcode = _xcode.for_ios("17a324")
+      caches.append(xcode.cache)
+      properties.setdefault("xcode_build_version", xcode.version)
     return luci.builder(
         name = name,
         dimensions = dimensions,
@@ -229,6 +242,7 @@ def libyuv_try_builder(name, dimensions, properties, recipe_name = "libyuv/libyu
             name = recipe_name,
             cipd_package = "infra/recipe_bundles/chromium.googlesource.com/chromium/tools/build",
         ),
+        caches = caches
     )
 
 def get_build_properties(bucket):
