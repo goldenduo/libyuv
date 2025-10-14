@@ -191,14 +191,14 @@ def get_os_dimensions(os):
     if os == "android":
         return {"device_type": "walleye"}
     if os == "ios" or os == "mac":
-        return {"os": "Mac-12", "cpu": "x86-64"}
+        return {"os": "Mac-15", "cpu": "x86-64"}
     elif os == "win":
         return {"os": "Windows-10", "cores": "8", "cpu": "x86-64"}
     elif os == "linux":
         return {"os": "Ubuntu-22.04", "cores": "8", "cpu": "x86-64"}
     return {}
 
-def libyuv_ci_builder(name, dimensions, properties, triggered_by):
+def libyuv_ci_builder(name, dimensions, properties, triggered_by, caches):
     return luci.builder(
         name = name,
         dimensions = dimensions,
@@ -213,9 +213,10 @@ def libyuv_ci_builder(name, dimensions, properties, triggered_by):
             name = "libyuv/libyuv",
             cipd_package = "infra/recipe_bundles/chromium.googlesource.com/chromium/tools/build",
         ),
+        caches = caches
     )
 
-def libyuv_try_builder(name, dimensions, properties, recipe_name = "libyuv/libyuv"):
+def libyuv_try_builder(name, dimensions, properties, caches, recipe_name = "libyuv/libyuv"):
     return luci.builder(
         name = name,
         dimensions = dimensions,
@@ -229,6 +230,7 @@ def libyuv_try_builder(name, dimensions, properties, recipe_name = "libyuv/libyu
             name = recipe_name,
             cipd_package = "infra/recipe_bundles/chromium.googlesource.com/chromium/tools/build",
         ),
+        caches = caches
     )
 
 def get_build_properties(bucket):
@@ -243,6 +245,11 @@ def get_build_properties(bucket):
         },
     }
 
+def get_caches(os):
+    if os in ("mac", "ios"):
+      return [swarming.cache("macos_sdk", name = "macos_sdk")]
+    return []
+
 def ci_builder(name, os, category, short_name = None):
     dimensions = get_os_dimensions(os)
     properties = get_build_properties("ci")
@@ -252,7 +259,7 @@ def ci_builder(name, os, category, short_name = None):
 
     triggered_by = ["master-gitiles-trigger" if os != "android" else "Android Debug"]
     libyuv_ci_view(name, category, short_name)
-    return libyuv_ci_builder(name, dimensions, properties, triggered_by)
+    return libyuv_ci_builder(name, dimensions, properties, triggered_by, get_caches(os))
 
 def try_builder(name, os, experiment_percentage = None):
     dimensions = get_os_dimensions(os)
@@ -266,11 +273,11 @@ def try_builder(name, os, experiment_percentage = None):
         properties["repo_name"] = "libyuv"
         properties["runhooks"] = True
         libyuv_try_job_verifier(name, "config", experiment_percentage)
-        return libyuv_try_builder(name, dimensions, properties, recipe_name)
+        return libyuv_try_builder(name, dimensions, properties, get_caches(os), recipe_name)
 
     libyuv_try_job_verifier(name, "master", experiment_percentage)
     libyuv_try_view(name)
-    return libyuv_try_builder(name, dimensions, properties)
+    return libyuv_try_builder(name, dimensions, properties, get_caches(os))
 
 luci.builder(
     name = "DEPS Autoroller",
