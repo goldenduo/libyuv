@@ -48,11 +48,11 @@ vars = {
 
 deps = {
   'src/build':
-    Var('chromium_git') + '/chromium/src/build' + '@' + '7907108fc6c766710fcdebea63b5c2df2e784941',
+    Var('chromium_git') + '/chromium/src/build' + '@' + '02d98ae43e09dd34389afc469995ce4a9964ec02',
   'src/buildtools':
-    Var('chromium_git') + '/chromium/src/buildtools' + '@' + '813bee86eeb7d00fa170b81e221120576a18517a',
+    Var('chromium_git') + '/chromium/src/buildtools' + '@' + '0e7d35148beeb23122a72c2a0cba21e77b83f36f',
   'src/testing':
-    Var('chromium_git') + '/chromium/src/testing' + '@' + '739fbc1a64b4a6413515887b85e73ac22fb9ef44',
+    Var('chromium_git') + '/chromium/src/testing' + '@' + 'b7a075efb250e901a13ceb0d3b714ca1d7377fd2',
   'src/third_party':
     Var('chromium_git') + '/chromium/src/third_party' + '@' + 'a0168b392b4c37996774f3c7e5330490ac989444',
 
@@ -126,7 +126,7 @@ deps = {
     'condition': 'checkout_instrumented_libraries',
   },
   'src/third_party/libc++/src':
-    Var('chromium_git') + '/external/github.com/llvm/llvm-project/libcxx.git' + '@' + 'a01c02c9d4acbdae3b7e8a2f3ee58579a9c29f96',
+    Var('chromium_git') + '/external/github.com/llvm/llvm-project/libcxx.git' + '@' + 'dc1441a0c244cb94e5d1b992911c7b8895d88e2c',
   'src/third_party/libc++abi/src':
     Var('chromium_git') + '/external/github.com/llvm/llvm-project/libcxxabi.git' + '@' + '9810fb23f6ba666f017c2b67c67de2bcac2b44bd',
   'src/third_party/llvm-libc/src':
