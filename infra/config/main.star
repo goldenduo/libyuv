@@ -191,7 +191,7 @@ def get_os_dimensions(os):
     if os == "android":
         return {"device_type": "walleye"}
     if os == "ios" or os == "mac":
-        return {"os": "Mac-12", "cpu": "x86-64"}
+        return {"os": "Mac-15", "cpu": "x86-64"}
     elif os == "win":
         return {"os": "Windows-10", "cores": "8", "cpu": "x86-64"}
     elif os == "linux":
@@ -229,6 +229,7 @@ def libyuv_try_builder(name, dimensions, properties, recipe_name = "libyuv/libyu
             name = recipe_name,
             cipd_package = "infra/recipe_bundles/chromium.googlesource.com/chromium/tools/build",
         ),
+        caches = [swarming.cache("macos_sdk", name = "macos_sdk")] if dimensions.get("os") == "Mac-15" else []
     )
 
 def get_build_properties(bucket):
