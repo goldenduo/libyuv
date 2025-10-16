@@ -239,7 +239,7 @@ deps = {
     'packages': [
       {
         'package': 'chromium/llvm-build-tools/dsymutil',
-        'version': 'OWlhXkmj18li3yhJk59Kmjbc5KdgLh56TwCd1qBdzlIC',
+        'version': '8e05e94b4cc73ba182bdd448a1eca875ab9c4911',
       }
     ],
     'condition': 'checkout_mac',
