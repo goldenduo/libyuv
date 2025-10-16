@@ -51,6 +51,24 @@
       "parentUuid": "052132b8_abef1ba2",
       "revId": "57748f441f90326314c24fe894b1a03924db8275",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925a0594_608639db",
+        "filename": "README.chromium",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-10-16T20:15:32Z",
+      "side": 1,
+      "message": "This is not done. Please modify the version in include/libyuv/version.h:\n\n```\ndiff --git a/include/libyuv/version.h b/include/libyuv/version.h\nindex 52f5a7cd..7c39017f 100644\n--- a/include/libyuv/version.h\n+++ b/include/libyuv/version.h\n@@ -11,6 +11,6 @@\n #ifndef INCLUDE_LIBYUV_VERSION_H_\n #define INCLUDE_LIBYUV_VERSION_H_\n \n-#define LIBYUV_VERSION 1920\n+#define LIBYUV_VERSION 1921\n \n #endif  // INCLUDE_LIBYUV_VERSION_H_\n```",
+      "parentUuid": "f6a98f82_a5f0ff4d",
+      "revId": "57748f441f90326314c24fe894b1a03924db8275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
