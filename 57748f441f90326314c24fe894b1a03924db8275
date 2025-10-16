@@ -16,6 +16,23 @@
       "message": "lgtm",
       "revId": "57748f441f90326314c24fe894b1a03924db8275",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052132b8_abef1ba2",
+        "filename": "README.chromium",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-10-16T01:52:46Z",
+      "side": 1,
+      "message": "Please modify the version in the version header file.",
+      "revId": "57748f441f90326314c24fe894b1a03924db8275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
