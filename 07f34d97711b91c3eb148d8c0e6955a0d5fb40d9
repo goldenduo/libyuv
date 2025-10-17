@@ -52,6 +52,41 @@
       "parentUuid": "6b8b7ea0_31511aba",
       "revId": "07f34d97711b91c3eb148d8c0e6955a0d5fb40d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "754c0ecd_d352f972",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-10-17T18:29:23Z",
+      "side": 1,
+      "message": "I managed to test your CL... looks good\n[----------] Global test environment tear-down\n[\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] 3474 tests from 8 test suites ran. (415439 ms total)\n[  PASSED  ] 3474 tests.",
+      "parentUuid": "bfdf1a19_33b9ad86",
+      "revId": "07f34d97711b91c3eb148d8c0e6955a0d5fb40d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38808fa2_c88d1009",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-10-17T18:29:23Z",
+      "side": 1,
+      "message": "to clean this up in the future, we can requires a new compiler/intrinsics version and if not available, disable RVV entirely.",
+      "revId": "07f34d97711b91c3eb148d8c0e6955a0d5fb40d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
