@@ -16,6 +16,24 @@
       "message": "rebased.  I dont have an easy way to test this, so let me know if you want to go ahead",
       "revId": "07f34d97711b91c3eb148d8c0e6955a0d5fb40d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8b7ea0_31511aba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3711818
+      },
+      "writtenOn": "2025-10-17T02:27:22Z",
+      "side": 1,
+      "message": "Thanks.I want to go ahead, I believe that more and more people will use RVV with intrinsic\u003e\u003dv1.0",
+      "parentUuid": "cfc69b32_37195463",
+      "revId": "07f34d97711b91c3eb148d8c0e6955a0d5fb40d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
