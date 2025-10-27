@@ -33,6 +33,24 @@
       "message": "I found that include/libyuv/cpu_id.h is a public header. For backward compatibility we should not change the values of the constants `kCpuHasSME` and `kCpuHasSME2`.\n\nAre `kCpuHasSME` and `kCpuHasSME2` part of libyuv\u0027s public API? Or are they actually internal constants and just exposed in a public header unintentionally?",
       "revId": "f39d0b21a51dfcc89e169b0e96dcf7a8c80fffc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "111fabb9_770d575a",
+        "filename": "include/libyuv/cpu_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-10-27T21:18:04Z",
+      "side": 1,
+      "message": "Done.  The names of the constants (kCpuHasSME) are public, but the user is expected to compile against the named constants, not bypass them.  We\u0027ve done renumbering in the past, several times.  \nBut in this case, its easy to avoid, so done",
+      "parentUuid": "b690f4b0_5b9f9cf5",
+      "revId": "f39d0b21a51dfcc89e169b0e96dcf7a8c80fffc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
