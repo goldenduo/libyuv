@@ -51,6 +51,24 @@
       "parentUuid": "b690f4b0_5b9f9cf5",
       "revId": "f39d0b21a51dfcc89e169b0e96dcf7a8c80fffc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac9b512_d95b80ef",
+        "filename": "include/libyuv/cpu_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2025-10-27T21:23:23Z",
+      "side": 1,
+      "message": "Thanks for the reply. This means libyuv doesn\u0027t provide binary compatibility. (Binary compatibility means an application that uses the libyuv shared library (.so) does not need to be recompiled when a new version of the libyuv shared library is installed.)",
+      "parentUuid": "111fabb9_770d575a",
+      "revId": "f39d0b21a51dfcc89e169b0e96dcf7a8c80fffc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
