@@ -69,6 +69,24 @@
       "parentUuid": "111fabb9_770d575a",
       "revId": "f39d0b21a51dfcc89e169b0e96dcf7a8c80fffc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d002a7_e820eb80",
+        "filename": "include/libyuv/cpu_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-10-27T21:29:56Z",
+      "side": 1,
+      "message": "It wasnt really on my radar, but I did notice hwcaps attempts to be binary compatible.  I dont know if we should make any promises, but lets try not to break binary compatibility.\n\nthe yuv to rgb \u0027matrix\u0027 structures would be the main binary format.  If a user defined one and the format changed, it would break.\n\ncpus come and go, so its mainly been about keeping tidy and less than 32 bits.  But tidiness can be deferred until a cleanup is necessary",
+      "parentUuid": "cac9b512_d95b80ef",
+      "revId": "f39d0b21a51dfcc89e169b0e96dcf7a8c80fffc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
