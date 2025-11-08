@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6d02a12_1369768c",
+        "filename": "infra/config/cr-buildbucket.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339017
+      },
+      "writtenOn": "2025-11-08T18:17:10Z",
+      "side": 1,
+      "message": "Keeping thread open to prevent submitting unless we revert all the dependencies too",
+      "revId": "fccbaf5e01f1e97f2c8337c0c57d46411425d472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
