@@ -1,6 +1,7 @@
 Name: libyuv
 URL: https://chromium.googlesource.com/libyuv/libyuv/
-Version: 1920
+Version: N/A
+Revision: 94417b9d213364905ce849c25719b819b8dbbaaa
 License: BSD-3-Clause
 License File: LICENSE
 Shipped: yes
