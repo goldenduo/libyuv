@@ -48,7 +48,7 @@ vars = {
 
 deps = {
   'src/build':
-    Var('chromium_git') + '/chromium/src/build' + '@' + 'b2e55d8d32cfc78c6d598740ceefc8e6dce00545',
+    'https://github.com/victorvianna/chromium-build.git@1bc9e980cfcc84a19274974af87ed044d348f112',
   'src/buildtools':
     Var('chromium_git') + '/chromium/src/buildtools' + '@' + '28a4e2e3dc4dea96027664dd777316c335de1f28',
   'src/testing':
