@@ -18,9 +18,8 @@
 #include "libyuv/row.h"
 #include "libyuv/scale_row.h"
 
-// This module is for clang rvv. GCC hasn't supported segment load & store.
-#if !defined(LIBYUV_DISABLE_RVV) && defined(__riscv_vector) && \
-    defined(__clang__)
+// This module is for RVV (RISC-V Vector extension)
+#if !defined(LIBYUV_DISABLE_RVV) && defined(__riscv_vector)
 #include <assert.h>
 #include <riscv_vector.h>
 #ifdef __cplusplus
