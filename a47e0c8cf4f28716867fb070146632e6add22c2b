@@ -16,6 +16,40 @@
       "message": "This was started by an FTBFS bug on Ubuntu: https://bugs.launchpad.net/ubuntu/+source/libyuv/+bug/2134454\n\nFull Ubuntu build with patch applied was done in a Launchpad ppa: https://launchpad.net/~vhaudiquet/+archive/ubuntu/libyuv-lp2134454/+build/31574520",
       "revId": "a47e0c8cf4f28716867fb070146632e6add22c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee55f6f9_b05a01c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-12-10T03:09:03Z",
+      "side": 1,
+      "message": "thanks for the change... should be fine.\nif you\u0027re feeling ambitious the arm sme code is in a similar state. :-)",
+      "revId": "a47e0c8cf4f28716867fb070146632e6add22c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76088842_309ed602",
+        "filename": "source/row_rvv.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-12-10T03:09:03Z",
+      "side": 1,
+      "message": "this is fine but the very last line of these files has a comment defined(__clang__)\ncould you remove those as well?\n\nas far as I know, theres no visual c or other compilers that support rvv, but this will enable all of them.",
+      "revId": "a47e0c8cf4f28716867fb070146632e6add22c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
