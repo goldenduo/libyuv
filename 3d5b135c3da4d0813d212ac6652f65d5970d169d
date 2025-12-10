@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "834c7d9a_69e5dac8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-12-10T18:37:13Z",
+      "side": 1,
+      "message": "Looks good... needs another reviewer to land.\n2 followups (separate change if you like)\n1. row_rvv.cc has the same ifdef\n// This module is for clang rvv. GCC hasn\u0027t supported segment load \u0026 store.\n#if !defined(LIBYUV_DISABLE_RVV) \u0026\u0026 defined(__riscv_vector) \u0026\u0026 \\\n    defined(__clang__)\n2. the headers such scale_row.h and row.h should match\non arm/x86 I have cpu_support.h sets a macro to indicate each compiler has support for the ISA using version checks\nThen in row.h and example row function like this:\n#if !defined(LIBYUV_DISABLE_X86) \u0026\u0026                          \\\n    (defined(VISUALC_HAS_AVX2) || defined(CLANG_HAS_AVX2) || \\\n     defined(GCC_HAS_AVX2))\n#define HAS_ARGBCOPYALPHAROW_AVX2\nIn the row_gcc.cc and all usage of the row function, the individual HAS_ is used, allowing fine grained row functions to be enabled/disabled.\n\nSo far it hasnt been necessary on RVV but this would be how GCC and future compilers could check if they support RVV or specific extensions (eg fp16) and enable some selectively.\nTo figure out the versions, I use godbolt with some sample code.",
+      "revId": "3d5b135c3da4d0813d212ac6652f65d5970d169d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

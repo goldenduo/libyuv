@@ -68,6 +68,24 @@
       "parentUuid": "76088842_309ed602",
       "revId": "a47e0c8cf4f28716867fb070146632e6add22c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a57d99_4f2391e9",
+        "filename": "source/row_rvv.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-12-10T18:37:13Z",
+      "side": 1,
+      "message": "Na... lets let all compilers attempt to do RVV.",
+      "parentUuid": "795f8f00_eda31d03",
+      "revId": "a47e0c8cf4f28716867fb070146632e6add22c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
