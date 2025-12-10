@@ -50,6 +50,24 @@
       "message": "this is fine but the very last line of these files has a comment defined(__clang__)\ncould you remove those as well?\n\nas far as I know, theres no visual c or other compilers that support rvv, but this will enable all of them.",
       "revId": "a47e0c8cf4f28716867fb070146632e6add22c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "795f8f00_eda31d03",
+        "filename": "source/row_rvv.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4524974
+      },
+      "writtenOn": "2025-12-10T08:33:58Z",
+      "side": 1,
+      "message": "Done! I removed those comments. Thanks for pointing it out, don\u0027t know how I missed them.\n\nI don\u0027t think Visual C even supports the RISC-V ISA? Would you prefer it with CLANG *and* GCC guards? I think this should be fine as is, right?",
+      "parentUuid": "76088842_309ed602",
+      "revId": "a47e0c8cf4f28716867fb070146632e6add22c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
