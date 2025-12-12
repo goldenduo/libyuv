@@ -16,6 +16,24 @@
       "message": "I put questions in the bug.\nthe cat command just returns \u0027commit\u0027?  seems like a catch-22 to supply the version number to query the version number?",
       "revId": "38376d739d4ff66d6182761e7f0c1f139f5d101f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b17caa81_bf7c8236",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2025-12-12T09:00:00Z",
+      "side": 1,
+      "message": "Jordan, I think the question here is if we need to keep the `Version` in this file in sync with https://source.chromium.org/chromium/chromium/src/+/main:third_party/libyuv/include/libyuv/version.h of if that is not required.\n\nThis is a libyuv way to express its code version but Chromium cares about the git commit in the DEPS file.\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/libyuv/include/libyuv/version.h is more of a way for libyuv to say \"you need at least version XXX\" and it might not be increased with all the commits.",
+      "parentUuid": "df7cbdae_b8bf9b26",
+      "revId": "38376d739d4ff66d6182761e7f0c1f139f5d101f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
