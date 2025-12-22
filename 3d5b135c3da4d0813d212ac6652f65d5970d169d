@@ -51,6 +51,23 @@
       "message": "Hard to find reviewers during holidays, but still LG to me",
       "revId": "3d5b135c3da4d0813d212ac6652f65d5970d169d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a045ba97_a013713e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001629
+      },
+      "writtenOn": "2025-12-22T20:59:02Z",
+      "side": 1,
+      "message": "lgtm, but apparently I don\u0027t have lg powers over here 😞",
+      "revId": "3d5b135c3da4d0813d212ac6652f65d5970d169d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
