@@ -16,6 +16,23 @@
       "message": "Yep, my bad (trying to handle too many of these minor changes at once).\n\n\nFor dependencies like this we set the url to this magic string that identify that vulnerability cover is not applicable. Typically url and revision point to a 3p repo and we use the revision to check for vulns.",
       "revId": "0608fc76af2666f955cbfbee389451e93cdbd94b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898ecf59_c4409da8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2025-12-22T18:45:48Z",
+      "side": 1,
+      "message": "The current CL replaces the correct URL with a blurb that doesnt seem useful?  I\u0027d prefer keep the URL to document where libyuv expects to be",
+      "revId": "0608fc76af2666f955cbfbee389451e93cdbd94b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
