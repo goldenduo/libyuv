@@ -16,6 +16,24 @@
       "message": "if we remove this, will neon still be enabled for 32 bit?",
       "revId": "deeb764bb92b6305ee0cb5dae7a5940fdb457fa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67359599_907727b2",
+        "filename": "BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001629
+      },
+      "writtenOn": "2025-12-22T20:58:03Z",
+      "side": 0,
+      "message": "Yes, it\u0027s passed globally here now: https://source.chromium.org/chromium/chromium/src/+/main:build/config/compiler/BUILD.gn;l\u003d1873?q\u003dmfpu%3Dneon%20f:%5Ebuild\n\n(...at least in Chromium. I\u0027m guessing libyuv\u0027s clients all uses Chromium\u0027s gn files?)",
+      "parentUuid": "72f83078_433b0bd4",
+      "revId": "deeb764bb92b6305ee0cb5dae7a5940fdb457fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
