@@ -34,6 +34,24 @@
       "parentUuid": "df7cbdae_b8bf9b26",
       "revId": "38376d739d4ff66d6182761e7f0c1f139f5d101f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f231ea35_738eb649",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3388142
+      },
+      "writtenOn": "2025-12-22T03:15:39Z",
+      "side": 1,
+      "message": "This is not currently required for first party dependencies like this. You can set the version for documentation/maintenance purposes or provide \u0027N/A\u0027.",
+      "parentUuid": "b17caa81_bf7c8236",
+      "revId": "38376d739d4ff66d6182761e7f0c1f139f5d101f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
