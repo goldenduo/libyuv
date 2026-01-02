@@ -33,6 +33,24 @@
       "message": "The current CL replaces the correct URL with a blurb that doesnt seem useful?  I\u0027d prefer keep the URL to document where libyuv expects to be",
       "revId": "0608fc76af2666f955cbfbee389451e93cdbd94b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c83485dc_b5355a52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3388142
+      },
+      "writtenOn": "2026-01-02T04:01:51Z",
+      "side": 1,
+      "message": "Our vulnerability scanner is currently misreporting this as missing coverage because it doesn\u0027t provide a revision, but it can\u0027t provide a revision because this file is in the repo itself and is maintained by chromium committers so we have this magic string \u0027This is the canonical public repository\u0027 to indicate that this is the case.",
+      "parentUuid": "898ecf59_c4409da8",
+      "revId": "0608fc76af2666f955cbfbee389451e93cdbd94b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
