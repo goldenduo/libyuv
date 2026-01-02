@@ -51,6 +51,24 @@
       "parentUuid": "898ecf59_c4409da8",
       "revId": "0608fc76af2666f955cbfbee389451e93cdbd94b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059430c1_49ca4f67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2026-01-02T18:54:13Z",
+      "side": 1,
+      "message": "The `Version: 1922` is the version which is based off the original chromium svn revision but a script increments the version on changes now.  This is used for code via include/libyuv/version.h to identify the API.\n\nThe URL is the chromium location, which seems like useful information.\nCould we add another tag for `revision: This is the canonical public repository` so the current URL and version can be maintained as well?",
+      "parentUuid": "c83485dc_b5355a52",
+      "revId": "0608fc76af2666f955cbfbee389451e93cdbd94b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
