@@ -17,3 +17,15 @@ You can also browse the [docs directory][2] for more documentation.
 
 [1]: ./docs/getting_started.md
 [2]: ./docs/
+
+
+
+### Build 
+
+```bash
+mkdir out
+cd out
+cmake -DCMAKE_BUILD_TYPE="Release" ..
+cmake --build . --config Release
+```
+
